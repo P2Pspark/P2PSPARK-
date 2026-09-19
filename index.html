@@ -1,2407 +1,690 @@
 <!doctype html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 
 <title>P2PSPARK</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-
-:root{
-  --bg:#f5f7fa;
-  --card:#fff;
-  --text:#101827;
-  --muted:#697386;
-  --line:#e4e8ee;
-  --blue:#2563eb;
-  --green:#16a34a;
-  --red:#dc2626;
-  --dark:#111827;
-}
-
 *{
   box-sizing:border-box;
 }
 
-body{
+html,body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  padding:0;
+  min-height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#f3f6fb;
+  color:#101828;
 }
 
-button,
-input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-
-/* =========================
-   LOGIN
-========================= */
-
-.login-screen{
-
+body{
+  display:flex;
+  justify-content:center;
   min-height:100vh;
-
-  display:grid;
-
-  place-items:center;
-
-  padding:20px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #f6f8fb,
-      #eaf0f8
-    );
-
 }
-
-.login-card{
-
-  width:100%;
-
-  max-width:450px;
-
-  background:#fff;
-
-  border-radius:25px;
-
-  padding:34px;
-
-  box-shadow:
-    0 25px 70px
-    rgba(15,23,42,.12);
-
-}
-
-.login-logo{
-
-  text-align:center;
-
-  font-size:31px;
-
-  font-weight:950;
-
-  letter-spacing:1px;
-
-}
-
-.login-logo span{
-  color:var(--blue);
-}
-
-.login-sub{
-
-  text-align:center;
-
-  color:var(--muted);
-
-  letter-spacing:4px;
-
-  font-size:11px;
-
-  font-weight:750;
-
-  margin:8px 0 30px;
-
-}
-
-.login-card h2{
-
-  text-align:center;
-
-  font-size:27px;
-
-  margin:0 0 8px;
-
-}
-
-.subtitle{
-
-  color:var(--muted);
-
-  margin-top:5px;
-
-}
-
-.field{
-  margin-top:17px;
-}
-
-.field label{
-
-  display:block;
-
-  font-size:13px;
-
-  font-weight:750;
-
-  margin-bottom:7px;
-
-}
-
-.field input{
-
-  width:100%;
-
-  border:0;
-
-  background:#fff;
-
-  border-radius:11px;
-
-  padding:13px;
-
-  outline:none;
-
-  box-shadow:
-    0 0 0 1px #e4e8ee;
-
-}
-
-.field input:focus{
-
-  box-shadow:
-    0 0 0 3px
-    rgba(37,99,235,.1);
-
-}
-
-.btn{
-
-  border:0;
-
-  border-radius:10px;
-
-  padding:11px 16px;
-
-  font-weight:750;
-
-}
-
-.primary{
-
-  background:var(--blue);
-
-  color:#fff;
-
-}
-
-.login-button{
-
-  width:100%;
-
-  margin-top:20px;
-
-  height:50px;
-
-}
-
-.error{
-
-  display:none;
-
-  background:#fee2e2;
-
-  color:#b91c1c;
-
-  border-radius:10px;
-
-  padding:12px;
-
-  margin-top:15px;
-
-  font-size:13px;
-
-  line-height:1.45;
-
-}
-
-.success{
-
-  display:none;
-
-  background:#dcfce7;
-
-  color:#15803d;
-
-  border-radius:10px;
-
-  padding:12px;
-
-  margin-top:15px;
-
-  font-size:13px;
-
-  line-height:1.45;
-
-}
-
-.debug{
-
-  display:none;
-
-  margin-top:15px;
-
-  padding:12px;
-
-  background:#111827;
-
-  color:#fff;
-
-  border-radius:10px;
-
-  font-size:11px;
-
-  line-height:1.5;
-
-  word-break:break-word;
-
-}
-
-
-/* =========================
-   APP
-========================= */
 
 .app{
-
-  height:100vh;
-
-  overflow:hidden;
-
-}
-
-.sidebar{
-
-  position:fixed;
-
-  left:0;
-
-  top:0;
-
-  bottom:0;
-
-  width:245px;
-
-  height:100vh;
-
-  background:#fff;
-
-  padding:25px 15px;
-
-  z-index:20;
-
-  overflow-y:auto;
-
-  scrollbar-width:none;
-
-}
-
-.sidebar::-webkit-scrollbar{
-  display:none;
-}
-
-.logo{
-
-  font-size:25px;
-
-  font-weight:900;
-
-  letter-spacing:.5px;
-
-  padding:4px 14px 28px;
-
-}
-
-.logo span{
-  color:var(--blue);
-}
-
-.nav-title{
-
-  font-size:11px;
-
-  text-transform:uppercase;
-
-  letter-spacing:1.2px;
-
-  color:#9aa3b2;
-
-  margin:17px 13px 7px;
-
-}
-
-.nav{
-
-  min-height:calc(100vh - 90px);
-
-  display:flex;
-
-  flex-direction:column;
-
-}
-
-.nav button{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:16px;
-
   width:100%;
-
-  border:0;
-
-  background:transparent;
-
-  text-align:left;
-
-  padding:13px;
-
-  border-radius:12px;
-
-  color:#657083;
-
-  margin:3px 0;
-
-  font-weight:600;
-
-  font-size:17px;
-
-}
-
-.nav button:hover,
-.nav button.active{
-
-  background:#e9eaed;
-
-  color:#101827;
-
-}
-
-.nav-icon{
-
-  width:38px;
-
-  height:38px;
-
-  display:grid;
-
-  place-items:center;
-
-  flex:0 0 38px;
-
-}
-
-.admin-button{
-  color:#101827 !important;
-}
-
-.menu-close{
-  display:none;
-}
-
-.main{
-
-  margin-left:245px;
-
-  padding:30px;
-
-  max-width:1500px;
-
-  height:100vh;
-
-  overflow-y:auto;
-
-}
-
-.top{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  margin-bottom:25px;
-
-}
-
-.top h1{
-
-  margin:0;
-
-  font-size:30px;
-
-}
-
-.userbox{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-}
-
-.avatar{
-
-  width:42px;
-
-  height:42px;
-
-  border-radius:50%;
-
-  background:var(--dark);
-
-  color:#fff;
-
-  display:grid;
-
-  place-items:center;
-
-  font-weight:800;
-
-}
-
-.mobile-menu{
-
-  display:none;
-
-  border:1px solid var(--line);
-
-  background:#fff;
-
-  border-radius:10px;
-
-  padding:9px 12px;
-
-}
-
-.section{
-  display:none;
-}
-
-.section.active{
-  display:block;
-}
-
-.grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
-
-  gap:18px;
-
+  max-width:760px;
+  min-height:100vh;
+  padding:30px 16px;
 }
 
 .card{
-
-  background:var(--card);
-
-  border-radius:17px;
-
-  padding:21px;
-
-  box-shadow:
-    0 6px 25px
-    rgba(16,24,40,.04);
-
-  margin-bottom:18px;
-
-}
-
-.label{
-
-  font-size:13px;
-
-  color:var(--muted);
-
-  font-weight:600;
-
-}
-
-.big{
-
-  font-size:28px;
-
-  font-weight:850;
-
-  margin-top:8px;
-
-}
-
-.green{
-  color:var(--green);
-}
-
-.small{
-
-  font-size:13px;
-
-  color:var(--muted);
-
-}
-
-.empty{
-
-  text-align:center;
-
-  color:var(--muted);
-
-  padding:35px;
-
-}
-
-.dashboard-actions{
-
-  display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
-
-  gap:18px;
-
-  margin-top:22px;
-
-}
-
-.dashboard-action{
-
-  border:0;
-
-  border-radius:17px;
-
-  padding:18px 20px;
-
+  width:100%;
   background:#fff;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-  text-align:left;
-
-  box-shadow:
-    0 6px 25px
-    rgba(16,24,40,.04);
-
-  min-height:82px;
-
+  border-radius:32px;
+  padding:42px 36px 34px;
+  box-shadow:0 18px 55px rgba(31,45,70,.12);
 }
 
-.action-icon{
+.logo{
+  text-align:center;
+  margin-bottom:28px;
+}
 
-  width:46px;
+.logo-title{
+  font-size:48px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:-2px;
+  color:#101828;
+}
 
-  height:46px;
+.logo-title span{
+  color:#2864df;
+}
 
-  border-radius:13px;
-
-  display:grid;
-
-  place-items:center;
-
-  font-size:28px;
-
+.logo-subtitle{
+  margin-top:14px;
+  font-size:15px;
   font-weight:800;
-
+  letter-spacing:6px;
+  color:#737d90;
 }
 
-.deposit-action .action-icon{
-
-  background:#eaf1ff;
-
-  color:#2563eb;
-
+h1{
+  text-align:center;
+  font-size:38px;
+  margin:34px 0 12px;
+  font-weight:900;
 }
 
-.withdraw-action .action-icon{
-
-  background:#ecfdf3;
-
-  color:#16a34a;
-
+.subtitle{
+  text-align:center;
+  color:#737d90;
+  font-size:22px;
+  line-height:1.3;
+  font-weight:600;
+  margin-bottom:28px;
 }
 
+.error{
+  display:none;
+  background:#ffe1e1;
+  color:#bd2d2d;
+  border-radius:15px;
+  padding:15px 18px;
+  margin-bottom:22px;
+  font-size:16px;
+  line-height:1.4;
+  font-weight:700;
+}
 
-/* =========================
-   MOBILE
-========================= */
+.debug{
+  display:none;
+  background:#101828;
+  color:#fff;
+  border-radius:15px;
+  padding:17px;
+  margin-bottom:22px;
+  font-family:monospace;
+  font-size:14px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
 
-@media(max-width:900px){
+.field{
+  margin-bottom:22px;
+}
 
-  .sidebar{
+label{
+  display:block;
+  font-size:19px;
+  font-weight:800;
+  margin-bottom:10px;
+}
 
-    transform:translateX(-100%);
+input{
+  width:100%;
+  height:64px;
+  border:1px solid #dfe4ec;
+  border-radius:17px;
+  padding:0 20px;
+  font-size:21px;
+  outline:none;
+  background:#fff;
+  color:#101828;
+  transition:.2s;
+}
 
-    transition:.2s;
+input:focus{
+  border-color:#2864df;
+  box-shadow:0 0 0 4px rgba(40,100,223,.10);
+}
 
-    padding:25px 24px 30px;
+button{
+  width:100%;
+  height:64px;
+  border:0;
+  border-radius:17px;
+  background:#2864df;
+  color:white;
+  font-size:22px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.15s;
+}
 
+button:active{
+  transform:scale(.99);
+}
+
+button:disabled{
+  opacity:.65;
+  cursor:wait;
+}
+
+.bottom-text{
+  text-align:center;
+  color:#737d90;
+  font-size:18px;
+  font-weight:600;
+  margin-top:30px;
+}
+
+.dashboard{
+  display:none;
+}
+
+.welcome{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.welcome h2{
+  font-size:30px;
+  margin:0 0 8px;
+}
+
+.welcome p{
+  margin:0;
+  color:#737d90;
+  font-size:17px;
+}
+
+.panel{
+  background:#f5f7fa;
+  border-radius:22px;
+  padding:24px;
+  margin-bottom:18px;
+}
+
+.panel-title{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.panel-value{
+  font-size:17px;
+  color:#667085;
+  word-break:break-word;
+}
+
+.logout{
+  margin-top:15px;
+  background:#101828;
+}
+
+.loading{
+  display:none;
+  text-align:center;
+  color:#667085;
+  font-size:15px;
+  margin-top:15px;
+}
+
+@media(max-width:600px){
+
+  .app{
+    padding:0;
   }
 
-  .sidebar.open{
-
-    transform:translateX(0);
-
+  .card{
+    min-height:100vh;
+    border-radius:0;
+    padding:38px 32px 30px;
+    box-shadow:none;
   }
 
-  .menu-close{
+  .logo-title{
+    font-size:40px;
+  }
 
-    display:block;
+  .logo-subtitle{
+    font-size:12px;
+    letter-spacing:5px;
+  }
 
-    width:100%;
+  h1{
+    font-size:34px;
+    margin-top:38px;
+  }
 
-    height:58px;
-
-    border:0;
-
-    border-radius:15px;
-
-    background:#111;
-
-    color:#fff;
-
+  .subtitle{
     font-size:20px;
-
-    margin-bottom:35px;
-
   }
 
-  .sidebar .logo{
-    display:none;
+  input{
+    height:62px;
+    font-size:20px;
   }
 
-  .main{
-
-    margin-left:0;
-
-    padding:20px 15px;
-
+  button{
+    height:62px;
   }
-
-  .mobile-menu{
-    display:block;
-  }
-
-  .grid{
-
-    grid-template-columns:
-      repeat(2,1fr);
-
-  }
-
 }
-
-@media(max-width:560px){
-
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .dashboard-actions{
-    grid-template-columns:1fr;
-  }
-
-  .userbox{
-    display:none;
-  }
-
-  .login-card{
-    padding:25px;
-  }
-
-}
-
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 </head>
 
 <body>
 
+<div class="app">
 
-<!-- =========================
-     LOGIN
-========================= -->
+  <!-- LOGIN -->
+  <div class="card" id="loginCard">
 
-<div
-  id="loginScreen"
-  class="login-screen">
+    <div class="logo">
+      <div class="logo-title">
+        P2P<span>SPARK</span>
+      </div>
 
-  <div class="login-card">
-
-    <div class="login-logo">
-      P2P<span>SPARK</span>
+      <div class="logo-subtitle">
+        PEOPLE • DEALS • OPPORTUNITIES
+      </div>
     </div>
 
-    <div class="login-sub">
-      PEOPLE • DEALS • OPPORTUNITIES
+    <h1>Вход в аккаунт</h1>
+
+    <div class="subtitle">
+      Введите данные, выданные<br>
+      администратором
     </div>
 
-    <h2>
-      Вход в аккаунт
-    </h2>
+    <div class="error" id="errorBox"></div>
 
-    <div
-      class="subtitle"
-      style="text-align:center">
+    <div class="debug" id="debugBox"></div>
 
-      Введите данные, выданные администратором
+    <form id="loginForm">
 
-    </div>
+      <div class="field">
+        <label for="email">Почта</label>
 
+        <input
+          id="email"
+          type="email"
+          autocomplete="username"
+          placeholder="admin@gmail.com"
+          required
+        >
+      </div>
 
-    <div
-      id="loginError"
-      class="error">
-    </div>
+      <div class="field">
+        <label for="password">Пароль</label>
 
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Введите пароль"
+          required
+        >
+      </div>
 
-    <div
-      id="loginSuccess"
-      class="success">
-    </div>
+      <button id="loginButton" type="submit">
+        Войти →
+      </button>
 
+      <div class="loading" id="loading">
+        Выполняется вход...
+      </div>
 
-    <div
-      id="loginDebug"
-      class="debug">
-    </div>
+    </form>
 
-
-    <div class="field">
-
-      <label>
-        Почта
-      </label>
-
-      <input
-        id="loginEmail"
-        type="email"
-        autocomplete="username"
-        placeholder="example@gmail.com">
-
-    </div>
-
-
-    <div class="field">
-
-      <label>
-        Пароль
-      </label>
-
-      <input
-        id="loginPassword"
-        type="password"
-        autocomplete="current-password"
-        placeholder="Введите пароль">
-
-    </div>
-
-
-    <button
-      id="loginButton"
-      class="btn primary login-button"
-      onclick="login()">
-
-      Войти →
-
-    </button>
-
-
-    <div
-      class="small"
-      style="
-        text-align:center;
-        margin-top:18px;
-      ">
-
+    <div class="bottom-text">
       Доступ к аккаунту создаёт администратор
-
     </div>
+
+  </div>
+
+
+  <!-- DASHBOARD -->
+  <div class="card dashboard" id="dashboardCard">
+
+    <div class="logo">
+      <div class="logo-title">
+        P2P<span>SPARK</span>
+      </div>
+
+      <div class="logo-subtitle">
+        PEOPLE • DEALS • OPPORTUNITIES
+      </div>
+    </div>
+
+    <div class="welcome">
+      <h2>Добро пожаловать</h2>
+      <p id="userEmail"></p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        Статус аккаунта
+      </div>
+
+      <div class="panel-value">
+        Вы успешно вошли в личный кабинет.
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        ID пользователя
+      </div>
+
+      <div class="panel-value" id="userId">
+        —
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        Роль
+      </div>
+
+      <div class="panel-value" id="userRole">
+        Пользователь
+      </div>
+    </div>
+
+    <button class="logout" id="logoutButton">
+      Выйти
+    </button>
 
   </div>
 
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
-
-<div
-  id="app"
-  class="app"
-  style="display:none">
-
-
-  <aside
-    id="sidebar"
-    class="sidebar">
-
-    <button
-      class="menu-close"
-      onclick="toggleMenu()">
-
-      Закрыть
-
-    </button>
-
-
-    <div class="logo">
-      P2P<span>SPARK</span>
-    </div>
-
-
-    <div class="nav">
-
-      <div class="nav-title">
-        Основное
-      </div>
-
-
-      <button
-        data-page="dashboard"
-        onclick="go('dashboard')">
-
-        <span class="nav-icon">
-          📊
-        </span>
-
-        <span>
-          Дашборд
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="finance"
-        onclick="go('finance')">
-
-        <span class="nav-icon">
-          💰
-        </span>
-
-        <span>
-          Финансы
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="deals"
-        onclick="go('deals')">
-
-        <span class="nav-icon">
-          🔄
-        </span>
-
-        <span>
-          Сделки
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="requests"
-        onclick="go('requests')">
-
-        <span class="nav-icon">
-          🕐
-        </span>
-
-        <span>
-          Заявки
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="disputes"
-        onclick="go('disputes')">
-
-        <span class="nav-icon">
-          ⚠️
-        </span>
-
-        <span>
-          Споры
-        </span>
-
-      </button>
-
-
-      <div class="nav-title">
-        Работа
-      </div>
-
-
-      <button
-        data-page="requisites"
-        onclick="go('requisites')">
-
-        <span class="nav-icon">
-          💳
-        </span>
-
-        <span>
-          Реквизиты
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="devices"
-        onclick="go('devices')">
-
-        <span class="nav-icon">
-          📱
-        </span>
-
-        <span>
-          Устройства
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="messages"
-        onclick="go('messages')">
-
-        <span class="nav-icon">
-          💬
-        </span>
-
-        <span>
-          Сообщения
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="turbo"
-        onclick="go('turbo')">
-
-        <span class="nav-icon">
-          ⚡
-        </span>
-
-        <span>
-          Турбозалив
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="counterparties"
-        onclick="go('counterparties')">
-
-        <span class="nav-icon">
-          👥
-        </span>
-
-        <span>
-          Контрагенты
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="reports"
-        onclick="go('reports')">
-
-        <span class="nav-icon">
-          📄
-        </span>
-
-        <span>
-          Отчёты
-        </span>
-
-      </button>
-
-
-      <button
-        data-page="profile"
-        onclick="go('profile')">
-
-        <span class="nav-icon">
-          👤
-        </span>
-
-        <span>
-          Профиль
-        </span>
-
-      </button>
-
-
-      <div
-        id="adminNav"
-        style="display:none">
-
-        <div class="nav-title">
-          Администрирование
-        </div>
-
-        <button
-          class="admin-button"
-          data-page="admin"
-          onclick="go('admin')">
-
-          <span class="nav-icon">
-            ⚙️
-          </span>
-
-          <span>
-            Админ-панель
-          </span>
-
-        </button>
-
-      </div>
-
-
-      <div class="nav-title">
-        Аккаунт
-      </div>
-
-
-      <button onclick="logout()">
-
-        <span class="nav-icon">
-          🚪
-        </span>
-
-        <span>
-          Выйти
-        </span>
-
-      </button>
-
-
-      <button
-        style="
-          margin-top:auto;
-          background:#eef6ff;
-          color:#1683d8;
-        "
-        onclick="openTelegram()">
-
-        <span class="nav-icon">
-          🤖
-        </span>
-
-        <span>
-          Telegram Бот
-        </span>
-
-      </button>
-
-    </div>
-
-  </aside>
-
-
-  <main class="main">
-
-
-    <div class="top">
-
-      <div
-        style="
-          display:flex;
-          align-items:center;
-          gap:12px;
-        ">
-
-        <button
-          class="mobile-menu"
-          onclick="toggleMenu()">
-
-          ☰
-
-        </button>
-
-
-        <div>
-
-          <h1 id="pageTitle">
-            Дашборд
-          </h1>
-
-          <div class="subtitle">
-            P2PSPARK
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="userbox">
-
-        <div>
-
-          <b id="topEmail"></b>
-
-          <div
-            class="small"
-            id="roleText">
-          </div>
-
-        </div>
-
-
-        <div
-          class="avatar"
-          id="avatar">
-
-          U
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- DASHBOARD -->
-
-    <section
-      id="dashboard"
-      class="section active">
-
-      <div class="grid">
-
-        <div class="card">
-
-          <div class="label">
-            Баланс депозита
-          </div>
-
-          <div
-            id="dDeposit"
-            class="big">
-
-            0 USDT
-
-          </div>
-
-          <div class="small">
-            Текущий баланс
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Активные сделки
-          </div>
-
-          <div
-            id="dDeals"
-            class="big">
-
-            0
-
-          </div>
-
-          <div class="small">
-            На текущий момент
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Оборот
-          </div>
-
-          <div
-            id="dTurnover"
-            class="big">
-
-            0 USDT
-
-          </div>
-
-          <div class="small">
-            За текущий месяц
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Прибыль
-          </div>
-
-          <div
-            id="dProfit"
-            class="big green">
-
-            0 USDT
-
-          </div>
-
-          <div class="small">
-            За текущий месяц
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="dashboard-actions">
-
-        <button
-          class="dashboard-action deposit-action">
-
-          <span class="action-icon">
-            ＋
-          </span>
-
-          <span>
-
-            <b>
-              Пополнить
-            </b>
-
-            <small>
-              Пополнить баланс
-            </small>
-
-          </span>
-
-        </button>
-
-
-        <button
-          class="dashboard-action withdraw-action">
-
-          <span class="action-icon">
-            ↑
-          </span>
-
-          <span>
-
-            <b>
-              Вывести
-            </b>
-
-            <small>
-              Вывести средства
-            </small>
-
-          </span>
-
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- FINANCE -->
-
-    <section
-      id="finance"
-      class="section">
-
-      <h2>
-        Финансы
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Финансовые показатели загружены.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="deals"
-      class="section">
-
-      <h2>
-        Сделки
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Пока нет сделок.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="requests"
-      class="section">
-
-      <h2>
-        Заявки
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Новых заявок нет.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="disputes"
-      class="section">
-
-      <h2>
-        Споры
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Активных споров нет.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="requisites"
-      class="section">
-
-      <h2>
-        Реквизиты
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Реквизиты пока не подключены.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="devices"
-      class="section">
-
-      <h2>
-        Устройства
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Текущее устройство · Активно
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="messages"
-      class="section">
-
-      <h2>
-        Сообщения
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Добро пожаловать в P2PSPARK.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="turbo"
-      class="section">
-
-      <h2>
-        Турбозалив
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Функция будет подключена позже.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="counterparties"
-      class="section">
-
-      <h2>
-        Контрагенты
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Контрагенты пока отсутствуют.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="reports"
-      class="section">
-
-      <h2>
-        Отчёты
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-          Отчёты будут подключены позже.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <section
-      id="profile"
-      class="section">
-
-      <h2>
-        Профиль
-      </h2>
-
-      <div class="card">
-
-        <div class="field">
-
-          <label>
-            Email
-          </label>
-
-          <input
-            id="profileEmail"
-            disabled>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Роль
-          </label>
-
-          <input
-            id="profileRole"
-            disabled>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            Статус
-          </label>
-
-          <input
-            id="profileStatus"
-            disabled>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ADMIN -->
-
-    <section
-      id="admin"
-      class="section">
-
-      <h2>
-        Админ-панель
-      </h2>
-
-      <div class="card">
-
-        <div class="empty">
-
-          Вход ADMIN подтверждён.
-
-          <br><br>
-
-          Управление пользователями подключим
-          следующим этапом.
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-  </main>
-
-</div>
-
-
 <script>
+/* =========================================================
+   SUPABASE CONFIG
+   ========================================================= */
 
-/* =====================================================
-   SUPABASE
-===================================================== */
+/*
+  ВАЖНО:
+
+  Здесь нужен основной URL проекта,
+  БЕЗ /rest/v1/
+
+  Правильно:
+  https://kzdaiqhnjcdsinzaygao.supabase.co
+
+  Неправильно:
+  https://kzdaiqhnjcdsinzaygao.supabase.co/rest/v1/
+*/
 
 const SUPABASE_URL =
-  "https://crjqzqulqjqclqajohzb.supabase.co";
+  "https://kzdaiqhnjcdsinzaygao.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-  "sb_publishable_HMPc8KbTKRB51sq-tRqFJw_5jni_ag";
+  "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
+
+
+/* Создаём Supabase client */
 
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_PUBLISHABLE_KEY,
+    {
+      auth:{
+        autoRefreshToken:true,
+        persistSession:true,
+        detectSessionInUrl:true
+      }
+    }
   );
 
 
-/* =====================================================
-   GLOBAL
-===================================================== */
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
 
-let currentUser = null;
-let currentProfile = null;
+const loginCard =
+  document.getElementById("loginCard");
+
+const dashboardCard =
+  document.getElementById("dashboardCard");
+
+const loginForm =
+  document.getElementById("loginForm");
+
+const emailInput =
+  document.getElementById("email");
+
+const passwordInput =
+  document.getElementById("password");
+
+const loginButton =
+  document.getElementById("loginButton");
+
+const loading =
+  document.getElementById("loading");
+
+const errorBox =
+  document.getElementById("errorBox");
+
+const debugBox =
+  document.getElementById("debugBox");
+
+const logoutButton =
+  document.getElementById("logoutButton");
+
+const userEmail =
+  document.getElementById("userEmail");
+
+const userId =
+  document.getElementById("userId");
+
+const userRole =
+  document.getElementById("userRole");
 
 
-/* =====================================================
+/* =========================================================
    HELPERS
-===================================================== */
+   ========================================================= */
 
-function money(value){
+function showError(message, debug = ""){
 
-  return Number(value || 0)
-    .toLocaleString("ru-RU")
-    + " USDT";
+  errorBox.textContent = message;
+  errorBox.style.display = "block";
 
+  if(debug){
+    debugBox.textContent = debug;
+    debugBox.style.display = "block";
+  }else{
+    debugBox.style.display = "none";
+  }
 }
 
 
-function showLoginError(message){
+function clearError(){
 
-  const el =
-    document.getElementById(
-      "loginError"
-    );
+  errorBox.textContent = "";
+  errorBox.style.display = "none";
 
-  el.textContent =
-    message;
-
-  el.style.display =
-    "block";
-
+  debugBox.textContent = "";
+  debugBox.style.display = "none";
 }
 
 
-function hideLoginError(){
+function setLoading(state){
 
-  const el =
-    document.getElementById(
-      "loginError"
-    );
+  loginButton.disabled = state;
 
-  el.textContent =
-    "";
-
-  el.style.display =
-    "none";
-
+  if(state){
+    loginButton.textContent = "Вход...";
+    loading.style.display = "block";
+  }else{
+    loginButton.textContent = "Войти →";
+    loading.style.display = "none";
+  }
 }
 
 
-function showLoginSuccess(message){
+/* =========================================================
+   SHOW DASHBOARD
+   ========================================================= */
 
-  const el =
-    document.getElementById(
-      "loginSuccess"
-    );
+async function showDashboard(user){
 
-  el.textContent =
-    message;
+  loginCard.style.display = "none";
+  dashboardCard.style.display = "block";
 
-  el.style.display =
-    "block";
+  userEmail.textContent =
+    user.email || "Пользователь";
 
+  userId.textContent =
+    user.id || "—";
+
+  /*
+    Пока роль определяем как пользователь.
+
+    После того как вход заработает,
+    мы подключим таблицу profiles/roles
+    и сделаем настоящий admin panel.
+  */
+
+  userRole.textContent = "Пользователь";
 }
 
 
-function hideLoginSuccess(){
+/* =========================================================
+   SHOW LOGIN
+   ========================================================= */
 
-  const el =
-    document.getElementById(
-      "loginSuccess"
-    );
+function showLogin(){
 
-  el.textContent =
-    "";
-
-  el.style.display =
-    "none";
-
+  dashboardCard.style.display = "none";
+  loginCard.style.display = "block";
 }
 
 
-function showDebug(message){
-
-  const el =
-    document.getElementById(
-      "loginDebug"
-    );
-
-  el.textContent =
-    message;
-
-  el.style.display =
-    "block";
-
-}
-
-
-/* =====================================================
+/* =========================================================
    LOGIN
-===================================================== */
+   ========================================================= */
 
-async function login(){
+loginForm.addEventListener("submit", async function(event){
 
-  hideLoginError();
-  hideLoginSuccess();
+  event.preventDefault();
 
+  clearError();
 
   const email =
-    document.getElementById(
-      "loginEmail"
-    )
-    .value
-    .trim()
-    .toLowerCase();
-
+    emailInput.value.trim();
 
   const password =
-    document.getElementById(
-      "loginPassword"
-    )
-    .value;
+    passwordInput.value;
 
+  if(!email || !password){
 
-  if(!email){
-
-    showLoginError(
-      "Введите email."
+    showError(
+      "Введите почту и пароль."
     );
 
     return;
-
   }
 
-
-  if(!password){
-
-    showLoginError(
-      "Введите пароль."
-    );
-
-    return;
-
-  }
-
-
-  const button =
-    document.getElementById(
-      "loginButton"
-    );
-
-
-  button.disabled =
-    true;
-
-  button.textContent =
-    "Проверяем...";
-
+  setLoading(true);
 
   try{
 
-    console.log(
-      "P2PSPARK LOGIN START"
-    );
-
-
-    const {
-      data,
-      error
-    } =
-      await supabaseClient.auth
-        .signInWithPassword({
-
-          email,
-          password
-
-        });
-
-
-    console.log(
-      "AUTH RESULT:",
-      data,
-      error
-    );
-
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
 
     if(error){
 
-      showLoginError(
-        "Ошибка входа: " +
-        error.message
+      console.error(
+        "SUPABASE LOGIN ERROR:",
+        error
       );
 
-      showDebug(
+      showError(
+        "Ошибка входа: " + error.message,
+
         "AUTH ERROR: " +
-        JSON.stringify(
-          error,
-          null,
-          2
-        )
+        JSON.stringify({
+          name:error.name,
+          message:error.message,
+          status:error.status
+        })
       );
+
+      setLoading(false);
 
       return;
-
     }
 
+    if(!data || !data.user){
 
-    if(!data?.user){
-
-      showLoginError(
+      showError(
         "Supabase не вернул пользователя."
       );
 
-      return;
+      setLoading(false);
 
+      return;
     }
 
-
-    currentUser =
-      data.user;
-
-
-    showLoginSuccess(
-      "Авторизация прошла. Проверяем профиль..."
+    console.log(
+      "LOGIN SUCCESS:",
+      data.user
     );
 
-
-    const profileOk =
-      await loadProfile();
-
-
-    if(!profileOk){
-
-      await supabaseClient.auth.signOut();
-
-      currentUser =
-        null;
-
-      return;
-
-    }
-
-
-    if(
-      currentProfile.status ===
-      "blocked"
-    ){
-
-      showLoginError(
-        "Этот аккаунт заблокирован."
-      );
-
-      await supabaseClient.auth.signOut();
-
-      currentUser =
-        null;
-
-      currentProfile =
-        null;
-
-      return;
-
-    }
-
-
-    openApp();
-
+    await showDashboard(data.user);
 
   }catch(error){
 
     console.error(
-      "LOGIN EXCEPTION:",
+      "UNEXPECTED ERROR:",
       error
     );
 
-    showLoginError(
-      "Неожиданная ошибка: " +
-      error.message
-    );
+    showError(
+      "Произошла ошибка при подключении к Supabase.",
 
-    showDebug(
-      String(error.stack || error)
+      "ERROR: " +
+      String(error?.message || error)
     );
 
   }finally{
 
-    button.disabled =
-      false;
-
-    button.textContent =
-      "Войти →";
+    setLoading(false);
 
   }
 
-}
+});
 
 
-/* =====================================================
-   LOAD PROFILE
-===================================================== */
-
-async function loadProfile(){
-
-  if(!currentUser){
-
-    showLoginError(
-      "Пользователь Auth не найден."
-    );
-
-    return false;
-
-  }
-
-
-  console.log(
-    "AUTH USER ID:",
-    currentUser.id
-  );
-
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select("*")
-      .eq(
-        "id",
-        currentUser.id
-      )
-      .maybeSingle();
-
-
-  console.log(
-    "PROFILE RESULT:",
-    data,
-    error
-  );
-
-
-  if(error){
-
-    showLoginError(
-      "Ошибка чтения profiles: " +
-      error.message
-    );
-
-    showDebug(
-      "PROFILE ERROR:\n" +
-      JSON.stringify(
-        error,
-        null,
-        2
-      )
-    );
-
-    return false;
-
-  }
-
-
-  if(!data){
-
-    showLoginError(
-      "Пользователь вошёл в Auth, но профиль не найден."
-    );
-
-    showDebug(
-      "AUTH UID:\n" +
-      currentUser.id +
-      "\n\n" +
-      "В таблице public.profiles должна существовать строка:\n" +
-      "id = " +
-      currentUser.id
-    );
-
-    return false;
-
-  }
-
-
-  currentProfile =
-    data;
-
-
-  console.log(
-    "PROFILE LOADED:",
-    currentProfile
-  );
-
-
-  return true;
-
-}
-
-
-/* =====================================================
-   OPEN APP
-===================================================== */
-
-function openApp(){
-
-  document.getElementById(
-    "loginScreen"
-  ).style.display =
-    "none";
-
-
-  document.getElementById(
-    "app"
-  ).style.display =
-    "block";
-
-
-  const isAdmin =
-    String(
-      currentProfile.role || ""
-    ).toUpperCase() ===
-    "ADMIN";
-
-
-  document.getElementById(
-    "adminNav"
-  ).style.display =
-    isAdmin
-      ? "block"
-      : "none";
-
-
-  const email =
-    currentProfile.email ||
-    currentUser.email ||
-    "";
-
-
-  document.getElementById(
-    "topEmail"
-  ).textContent =
-    email;
-
-
-  document.getElementById(
-    "roleText"
-  ).textContent =
-    currentProfile.role ||
-    "USER";
-
-
-  document.getElementById(
-    "avatar"
-  ).textContent =
-    (
-      currentProfile.name ||
-      email ||
-      "U"
-    )
-    .charAt(0)
-    .toUpperCase();
-
-
-  document.getElementById(
-    "profileEmail"
-  ).value =
-    email;
-
-
-  document.getElementById(
-    "profileRole"
-  ).value =
-    currentProfile.role ||
-    "USER";
-
-
-  document.getElementById(
-    "profileStatus"
-  ).value =
-    currentProfile.status ||
-    "active";
-
-
-  renderDashboard();
-
-
-  console.log(
-    "P2PSPARK APP OPENED",
-    currentProfile
-  );
-
-}
-
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-function renderDashboard(){
-
-  if(!currentProfile)
-    return;
-
-
-  document.getElementById(
-    "dDeposit"
-  ).textContent =
-    money(
-      currentProfile.deposit
-    );
-
-
-  document.getElementById(
-    "dDeals"
-  ).textContent =
-    currentProfile.deals ||
-    0;
-
-
-  document.getElementById(
-    "dTurnover"
-  ).textContent =
-    money(
-      currentProfile.turnover
-    );
-
-
-  document.getElementById(
-    "dProfit"
-  ).textContent =
-    money(
-      currentProfile.profit
-    );
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-function go(page){
-
-  if(
-    page === "admin" &&
-    String(
-      currentProfile?.role || ""
-    ).toUpperCase() !==
-    "ADMIN"
-  ){
-
-    alert(
-      "Доступ запрещён."
-    );
-
-    return;
-
-  }
-
-
-  document
-    .querySelectorAll(
-      ".section"
-    )
-    .forEach(
-      section => {
-
-        section.classList.remove(
-          "active"
-        );
-
-      }
-    );
-
-
-  const target =
-    document.getElementById(
-      page
-    );
-
-
-  if(target){
-
-    target.classList.add(
-      "active"
-    );
-
-  }
-
-
-  const titles = {
-
-    dashboard:"Дашборд",
-
-    finance:"Финансы",
-
-    deals:"Сделки",
-
-    requests:"Заявки",
-
-    disputes:"Споры",
-
-    requisites:"Реквизиты",
-
-    devices:"Устройства",
-
-    messages:"Сообщения",
-
-    turbo:"Турбозалив",
-
-    counterparties:"Контрагенты",
-
-    reports:"Отчёты",
-
-    profile:"Профиль",
-
-    admin:"Админ-панель"
-
-  };
-
-
-  document.getElementById(
-    "pageTitle"
-  ).textContent =
-    titles[page] ||
-    page;
-
-
-  document
-    .querySelectorAll(
-      ".nav button[data-page]"
-    )
-    .forEach(
-      button => {
-
-        button.classList.toggle(
-          "active",
-          button.dataset.page ===
-          page
-        );
-
-      }
-    );
-
-
-  document.getElementById(
-    "sidebar"
-  ).classList.remove(
-    "open"
-  );
-
-}
-
-
-/* =====================================================
-   MENU
-===================================================== */
-
-function toggleMenu(){
-
-  document.getElementById(
-    "sidebar"
-  ).classList.toggle(
-    "open"
-  );
-
-}
-
-
-/* =====================================================
-   TELEGRAM
-===================================================== */
-
-function openTelegram(){
-
-  window.open(
-    "https://t.me/P2PSparkSupportBot",
-    "_blank"
-  );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    LOGOUT
-===================================================== */
+   ========================================================= */
 
-async function logout(){
+logoutButton.addEventListener(
+  "click",
+  async function(){
 
-  await supabaseClient.auth.signOut();
+    await supabaseClient.auth.signOut();
 
-  currentUser =
-    null;
+    passwordInput.value = "";
 
-  currentProfile =
-    null;
-
-  location.reload();
-
-}
-
-
-/* =====================================================
-   AUTH STATE
-===================================================== */
-
-supabaseClient.auth.onAuthStateChange(
-  async (
-    event,
-    session
-  ) => {
-
-    console.log(
-      "AUTH EVENT:",
-      event,
-      session
-    );
-
-    if(
-      session &&
-      !currentUser
-    ){
-
-      currentUser =
-        session.user;
-
-      const ok =
-        await loadProfile();
-
-      if(ok){
-
-        openApp();
-
-      }else{
-
-        await supabaseClient.auth.signOut();
-
-        currentUser =
-          null;
-
-      }
-
-    }
+    showLogin();
 
   }
 );
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================================================
+   CHECK EXISTING SESSION
+   ========================================================= */
 
-async function start(){
+async function checkSession(){
 
   try{
 
     const {
       data,
       error
-    } =
-      await supabaseClient.auth
-        .getSession();
-
+    } = await supabaseClient.auth.getSession();
 
     if(error){
 
@@ -2411,86 +694,72 @@ async function start(){
       );
 
       return;
-
     }
 
+    if(data && data.session){
 
-    currentUser =
-      data.session?.user ||
-      null;
-
-
-    if(!currentUser){
-
-      document.getElementById(
-        "loginScreen"
-      ).style.display =
-        "grid";
-
-      document.getElementById(
-        "app"
-      ).style.display =
-        "none";
-
-      return;
-
-    }
-
-
-    const ok =
-      await loadProfile();
-
-
-    if(!ok){
-
-      await supabaseClient.auth.signOut();
-
-      currentUser =
-        null;
-
-      return;
-
-    }
-
-
-    if(
-      currentProfile.status ===
-      "blocked"
-    ){
-
-      await supabaseClient.auth.signOut();
-
-      currentUser =
-        null;
-
-      currentProfile =
-        null;
-
-      showLoginError(
-        "Этот аккаунт заблокирован."
+      await showDashboard(
+        data.session.user
       );
 
-      return;
+    }else{
+
+      showLogin();
 
     }
-
-
-    openApp();
-
 
   }catch(error){
 
     console.error(
-      "START ERROR:",
+      "SESSION CHECK ERROR:",
       error
     );
 
-  }
+    showLogin();
 
+  }
 }
 
 
-start();
+/* =========================================================
+   AUTH STATE
+   ========================================================= */
+
+supabaseClient.auth.onAuthStateChange(
+  async function(event, session){
+
+    console.log(
+      "AUTH EVENT:",
+      event
+    );
+
+    if(
+      event === "SIGNED_IN" &&
+      session &&
+      session.user
+    ){
+
+      await showDashboard(
+        session.user
+      );
+
+    }
+
+    if(event === "SIGNED_OUT"){
+
+      showLogin();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+checkSession();
 
 </script>
 
