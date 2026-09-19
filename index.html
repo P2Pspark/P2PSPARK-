@@ -10,9 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
   margin:0;
@@ -21,27 +19,12 @@ html,body{
   min-height:100%;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
   background:#f5f7fa;
-  color:#111827;
+  color:#111827
 }
 
-button,
-input,
-select,
-textarea{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.hidden{
-  display:none!important;
-}
-
-/* =========================
-   LOGIN
-========================= */
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
 #loginPage{
   min-height:100vh;
@@ -49,8 +32,7 @@ button{
   align-items:center;
   justify-content:center;
   padding:20px;
-  background:
-    radial-gradient(circle at top left,#e9eef7 0,#f5f7fa 40%,#eef1f5 100%);
+  background:radial-gradient(circle at top left,#e9eef7 0,#f5f7fa 40%,#eef1f5 100%)
 }
 
 .login-box{
@@ -60,14 +42,14 @@ button{
   border:1px solid #e5e7eb;
   border-radius:24px;
   padding:32px;
-  box-shadow:0 20px 60px rgba(15,23,42,.10);
+  box-shadow:0 20px 60px rgba(15,23,42,.10)
 }
 
 .logo{
   display:flex;
   align-items:center;
   gap:12px;
-  margin-bottom:28px;
+  margin-bottom:28px
 }
 
 .logo-mark{
@@ -80,37 +62,35 @@ button{
   background:#111827;
   color:#fff;
   font-weight:800;
-  font-size:17px;
+  font-size:17px
 }
 
 .logo-text{
   font-size:22px;
   font-weight:800;
-  letter-spacing:.3px;
+  letter-spacing:.3px
 }
 
 .login-title{
   margin:0 0 8px;
   font-size:28px;
-  font-weight:800;
+  font-weight:800
 }
 
 .login-subtitle{
   color:#6b7280;
   margin:0 0 24px;
-  line-height:1.5;
+  line-height:1.5
 }
 
-.form-group{
-  margin-bottom:16px;
-}
+.form-group{margin-bottom:16px}
 
 .form-group label{
   display:block;
   font-size:13px;
   font-weight:700;
   margin-bottom:7px;
-  color:#374151;
+  color:#374151
 }
 
 .input{
@@ -121,12 +101,12 @@ button{
   border-radius:12px;
   background:#fff;
   outline:none;
-  transition:.2s;
+  transition:.2s
 }
 
 .input:focus{
   border-color:#111827;
-  box-shadow:0 0 0 3px rgba(17,24,39,.07);
+  box-shadow:0 0 0 3px rgba(17,24,39,.07)
 }
 
 .primary-btn{
@@ -136,17 +116,12 @@ button{
   border-radius:12px;
   background:#111827;
   color:#fff;
-  font-weight:700;
-  transition:.2s;
-}
-
-.primary-btn:hover{
-  opacity:.92;
+  font-weight:700
 }
 
 .primary-btn:disabled{
   opacity:.55;
-  cursor:not-allowed;
+  cursor:not-allowed
 }
 
 .login-error{
@@ -157,19 +132,13 @@ button{
   background:#fef2f2;
   color:#b91c1c;
   font-size:13px;
-  line-height:1.45;
+  line-height:1.45
 }
-
-/* =========================
-   APP
-========================= */
 
 #app{
   min-height:100vh;
-  display:flex;
+  display:flex
 }
-
-/* SIDEBAR */
 
 .sidebar{
   width:250px;
@@ -182,7 +151,7 @@ button{
   bottom:0;
   display:flex;
   flex-direction:column;
-  z-index:50;
+  z-index:50
 }
 
 .sidebar-header{
@@ -190,7 +159,7 @@ button{
   display:flex;
   align-items:center;
   padding:0 20px;
-  border-bottom:1px solid #eef0f2;
+  border-bottom:1px solid #eef0f2
 }
 
 .sidebar-brand{
@@ -198,7 +167,7 @@ button{
   align-items:center;
   gap:10px;
   font-size:18px;
-  font-weight:800;
+  font-weight:800
 }
 
 .sidebar-brand-mark{
@@ -210,13 +179,13 @@ button{
   display:flex;
   justify-content:center;
   align-items:center;
-  font-size:13px;
+  font-size:13px
 }
 
 .sidebar-menu{
   flex:1;
   overflow-y:auto;
-  padding:14px 12px;
+  padding:14px 12px
 }
 
 .menu-section{
@@ -225,7 +194,7 @@ button{
   text-transform:uppercase;
   font-size:10px;
   font-weight:800;
-  letter-spacing:.8px;
+  letter-spacing:.8px
 }
 
 .menu-item{
@@ -241,28 +210,28 @@ button{
   text-align:left;
   margin-bottom:3px;
   font-size:14px;
-  font-weight:600;
+  font-weight:600
 }
 
 .menu-item:hover{
   background:#f3f4f6;
-  color:#111827;
+  color:#111827
 }
 
 .menu-item.active{
   background:#111827;
-  color:#fff;
+  color:#fff
 }
 
 .menu-icon{
   width:20px;
   text-align:center;
-  font-size:16px;
+  font-size:16px
 }
 
 .sidebar-footer{
   padding:12px;
-  border-top:1px solid #eef0f2;
+  border-top:1px solid #eef0f2
 }
 
 .user-mini{
@@ -270,7 +239,7 @@ button{
   align-items:center;
   gap:10px;
   padding:10px;
-  margin-bottom:8px;
+  margin-bottom:8px
 }
 
 .avatar{
@@ -282,32 +251,28 @@ button{
   align-items:center;
   justify-content:center;
   font-weight:800;
-  color:#374151;
+  color:#374151
 }
 
-.user-mini-info{
-  min-width:0;
-}
+.user-mini-info{min-width:0}
 
 .user-mini-name{
   font-size:13px;
   font-weight:700;
   white-space:nowrap;
   overflow:hidden;
-  text-overflow:ellipsis;
+  text-overflow:ellipsis
 }
 
 .user-mini-role{
   color:#9ca3af;
-  font-size:11px;
+  font-size:11px
 }
-
-/* MAIN */
 
 .main{
   margin-left:250px;
   width:calc(100% - 250px);
-  min-height:100vh;
+  min-height:100vh
 }
 
 .topbar{
@@ -320,18 +285,18 @@ button{
   padding:0 28px;
   position:sticky;
   top:0;
-  z-index:30;
+  z-index:30
 }
 
 .topbar-title{
   font-size:21px;
-  font-weight:800;
+  font-weight:800
 }
 
 .topbar-right{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:10px
 }
 
 .mobile-menu-btn{
@@ -340,87 +305,79 @@ button{
   background:#f3f4f6;
   width:42px;
   height:42px;
-  border-radius:10px;
+  border-radius:10px
 }
 
-.page{
-  padding:28px;
-}
+.page{padding:28px}
 
-.page-header{
-  margin-bottom:22px;
-}
+.page-header{margin-bottom:22px}
 
 .page-title{
   margin:0 0 5px;
   font-size:25px;
-  font-weight:800;
+  font-weight:800
 }
 
 .page-description{
   margin:0;
   color:#6b7280;
-  font-size:14px;
+  font-size:14px
 }
-
-/* CARDS */
 
 .stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:16px;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 .stat-card{
   background:#fff;
   border:1px solid #e5e7eb;
   border-radius:16px;
-  padding:20px;
+  padding:20px
 }
 
 .stat-label{
   color:#6b7280;
   font-size:13px;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .stat-value{
   font-size:25px;
-  font-weight:800;
+  font-weight:800
 }
 
 .stat-small{
   margin-top:7px;
   color:#9ca3af;
-  font-size:12px;
+  font-size:12px
 }
-
-/* CONTENT GRID */
 
 .content-grid{
   display:grid;
   grid-template-columns:1.4fr 1fr;
-  gap:18px;
+  gap:18px
 }
 
 .card{
   background:#fff;
   border:1px solid #e5e7eb;
   border-radius:16px;
-  padding:20px;
+  padding:20px
 }
 
 .card-title{
   font-size:17px;
   font-weight:800;
-  margin-bottom:15px;
+  margin-bottom:15px
 }
 
 .actions{
   display:flex;
   gap:10px;
-  flex-wrap:wrap;
+  flex-wrap:wrap
 }
 
 .btn{
@@ -428,63 +385,56 @@ button{
   padding:0 17px;
   border:0;
   border-radius:10px;
-  font-weight:700;
+  font-weight:700
 }
 
 .btn-dark{
   background:#111827;
-  color:#fff;
+  color:#fff
 }
 
 .btn-light{
   background:#f3f4f6;
-  color:#111827;
+  color:#111827
 }
 
 .btn-danger{
   background:#fee2e2;
-  color:#b91c1c;
+  color:#b91c1c
 }
 
 .btn-success{
   background:#dcfce7;
-  color:#166534;
+  color:#166534
 }
 
-/* TABLE */
-
-.table-wrap{
-  overflow-x:auto;
-}
+.table-wrap{overflow-x:auto}
 
 table{
   width:100%;
-  border-collapse:collapse;
+  border-collapse:collapse
 }
 
-th,
-td{
+th,td{
   padding:13px 12px;
   border-bottom:1px solid #eef0f2;
   text-align:left;
   white-space:nowrap;
-  font-size:13px;
+  font-size:13px
 }
 
 th{
   color:#6b7280;
   font-size:11px;
   text-transform:uppercase;
-  letter-spacing:.4px;
+  letter-spacing:.4px
 }
 
 .empty{
   text-align:center;
   color:#9ca3af;
-  padding:30px;
+  padding:30px
 }
-
-/* BADGES */
 
 .badge{
   display:inline-flex;
@@ -492,60 +442,56 @@ th{
   padding:5px 9px;
   border-radius:999px;
   font-size:11px;
-  font-weight:700;
+  font-weight:700
 }
 
 .badge-green{
   background:#dcfce7;
-  color:#166534;
+  color:#166534
 }
 
 .badge-red{
   background:#fee2e2;
-  color:#991b1b;
+  color:#991b1b
 }
 
 .badge-gray{
   background:#f3f4f6;
-  color:#4b5563;
+  color:#4b5563
 }
 
 .badge-dark{
   background:#111827;
-  color:#fff;
+  color:#fff
 }
-
-/* PROFILE */
 
 .profile-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px;
+  gap:16px
 }
 
 .profile-field{
   padding:15px;
   border:1px solid #eef0f2;
-  border-radius:12px;
+  border-radius:12px
 }
 
 .profile-label{
   color:#9ca3af;
   font-size:11px;
-  margin-bottom:5px;
+  margin-bottom:5px
 }
 
 .profile-value{
   font-weight:700;
-  word-break:break-word;
+  word-break:break-word
 }
-
-/* REQUISITES */
 
 .requisite-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px;
+  gap:18px
 }
 
 .qr-box{
@@ -557,13 +503,13 @@ th{
   justify-content:center;
   align-items:center;
   overflow:hidden;
-  background:#f9fafb;
+  background:#f9fafb
 }
 
 .qr-box img{
   max-width:100%;
   max-height:100%;
-  object-fit:contain;
+  object-fit:contain
 }
 
 .info-row{
@@ -571,26 +517,22 @@ th{
   justify-content:space-between;
   gap:20px;
   padding:11px 0;
-  border-bottom:1px solid #eef0f2;
+  border-bottom:1px solid #eef0f2
 }
 
-.info-row:last-child{
-  border-bottom:0;
-}
+.info-row:last-child{border-bottom:0}
 
 .info-label{
   color:#6b7280;
-  font-size:13px;
+  font-size:13px
 }
 
 .info-value{
   font-size:13px;
   font-weight:700;
   text-align:right;
-  word-break:break-all;
+  word-break:break-all
 }
-
-/* MODAL */
 
 .modal{
   position:fixed;
@@ -600,7 +542,7 @@ th{
   align-items:center;
   justify-content:center;
   padding:20px;
-  z-index:100;
+  z-index:100
 }
 
 .modal-box{
@@ -611,19 +553,19 @@ th{
   background:#fff;
   border-radius:18px;
   padding:22px;
-  box-shadow:0 25px 80px rgba(0,0,0,.2);
+  box-shadow:0 25px 80px rgba(0,0,0,.2)
 }
 
 .modal-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
+  margin-bottom:20px
 }
 
 .modal-title{
   font-size:20px;
-  font-weight:800;
+  font-weight:800
 }
 
 .close-btn{
@@ -632,23 +574,21 @@ th{
   border:0;
   border-radius:9px;
   background:#f3f4f6;
-  font-size:18px;
+  font-size:18px
 }
 
 .modal-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:14px;
+  gap:14px
 }
 
 .modal-actions{
   display:flex;
   justify-content:flex-end;
   gap:10px;
-  margin-top:20px;
+  margin-top:20px
 }
-
-/* TOAST */
 
 .toast{
   position:fixed;
@@ -665,123 +605,88 @@ th{
   transform:translateY(20px);
   opacity:0;
   pointer-events:none;
-  transition:.25s;
+  transition:.25s
 }
 
 .toast.show{
   transform:translateY(0);
-  opacity:1;
+  opacity:1
 }
 
-.toast.error{
-  background:#991b1b;
-}
-
-/* LOADING */
+.toast.error{background:#991b1b}
 
 .loading{
   min-height:200px;
   display:flex;
   justify-content:center;
   align-items:center;
-  color:#6b7280;
+  color:#6b7280
 }
 
-/* RESPONSIVE */
-
 @media(max-width:1100px){
-  .stats-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .content-grid{
-    grid-template-columns:1fr;
-  }
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .content-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:800px){
 
   .sidebar{
     transform:translateX(-100%);
-    transition:.25s;
+    transition:.25s
   }
 
   .sidebar.open{
-    transform:translateX(0);
+    transform:translateX(0)
   }
 
   .main{
     margin-left:0;
-    width:100%;
+    width:100%
   }
 
-  .mobile-menu-btn{
-    display:block;
-  }
+  .mobile-menu-btn{display:block}
 
-  .topbar{
-    padding:0 15px;
-  }
+  .topbar{padding:0 15px}
 
-  .page{
-    padding:18px 14px;
-  }
+  .page{padding:18px 14px}
 
   .stats-grid{
     grid-template-columns:1fr 1fr;
-    gap:10px;
+    gap:10px
   }
 
-  .stat-card{
-    padding:15px;
-  }
+  .stat-card{padding:15px}
 
-  .stat-value{
-    font-size:20px;
-  }
+  .stat-value{font-size:20px}
 
   .profile-grid,
   .requisite-grid,
   .modal-grid{
-    grid-template-columns:1fr;
+    grid-template-columns:1fr
   }
 }
 
 @media(max-width:500px){
 
-  .login-box{
-    padding:24px 18px;
-  }
+  .login-box{padding:24px 18px}
 
-  .stats-grid{
-    grid-template-columns:1fr;
-  }
+  .stats-grid{grid-template-columns:1fr}
 
-  .topbar-title{
-    font-size:17px;
-  }
+  .topbar-title{font-size:17px}
 
-  .page-title{
-    font-size:22px;
-  }
+  .page-title{font-size:22px}
 
-  .actions .btn{
-    width:100%;
-  }
+  .actions .btn{width:100%}
 
   .qr-box{
     width:160px;
-    height:160px;
+    height:160px
   }
 }
 </style>
 </head>
 
 <body>
-
-<!-- =========================
-     LOGIN
-========================= -->
 
 <section id="loginPage">
 
@@ -802,6 +707,7 @@ th{
 
       <div class="form-group">
         <label>Email</label>
+
         <input
           id="loginEmail"
           class="input"
@@ -814,6 +720,7 @@ th{
 
       <div class="form-group">
         <label>Пароль</label>
+
         <input
           id="loginPassword"
           class="input"
@@ -841,21 +748,17 @@ th{
 </section>
 
 
-<!-- =========================
-     APP
-========================= -->
-
 <section id="app" class="hidden">
-
-  <!-- SIDEBAR -->
 
   <aside id="sidebar" class="sidebar">
 
     <div class="sidebar-header">
+
       <div class="sidebar-brand">
         <div class="sidebar-brand-mark">PS</div>
         <span>P2PSPARK</span>
       </div>
+
     </div>
 
     <div class="sidebar-menu">
@@ -868,7 +771,7 @@ th{
       </button>
 
       <button class="menu-item" data-page="finances">
-        <span class="menu-icon">₸</span>
+        <span class="menu-icon">₮</span>
         <span>Финансы</span>
       </button>
 
@@ -926,7 +829,9 @@ th{
 
       <div id="adminMenu">
 
-        <div class="menu-section">Администрирование</div>
+        <div class="menu-section">
+          Администрирование
+        </div>
 
         <button class="menu-item" data-page="admin">
           <span class="menu-icon">⚙</span>
@@ -941,9 +846,12 @@ th{
 
       <div class="user-mini">
 
-        <div id="avatar" class="avatar">U</div>
+        <div id="avatar" class="avatar">
+          U
+        </div>
 
         <div class="user-mini-info">
+
           <div id="miniName" class="user-mini-name">
             Пользователь
           </div>
@@ -951,21 +859,23 @@ th{
           <div id="miniRole" class="user-mini-role">
             USER
           </div>
+
         </div>
 
       </div>
 
       <button id="logoutBtn" class="menu-item">
+
         <span class="menu-icon">↪</span>
+
         <span>Выйти</span>
+
       </button>
 
     </div>
 
   </aside>
 
-
-  <!-- MAIN -->
 
   <main class="main">
 
@@ -988,25 +898,27 @@ th{
 
       <div class="topbar-right">
 
-        <span id="topbarUser" class="badge badge-gray">
+        <span
+          id="topbarUser"
+          class="badge badge-gray"
+        >
           USER
+        </span>
+
+        <span class="badge badge-dark">
+          USDT
         </span>
 
       </div>
 
     </header>
 
-    <div id="pageContainer" class="page">
-    </div>
+    <div id="pageContainer" class="page"></div>
 
   </main>
 
 </section>
 
-
-<!-- =========================
-     MODAL
-========================= -->
 
 <div id="modal" class="modal hidden">
 
@@ -1037,7 +949,7 @@ th{
 <script>
 
 /* =====================================================
-   SUPABASE CONFIG
+   SUPABASE
 ===================================================== */
 
 const SUPABASE_URL =
@@ -1070,7 +982,6 @@ function $(id){
   return document.getElementById(id);
 }
 
-
 function escapeHtml(value){
 
   if(value === null || value === undefined){
@@ -1085,14 +996,10 @@ function escapeHtml(value){
     .replaceAll("'","&#039;");
 }
 
-
 function formatMoney(value){
 
-  const number =
-    Number(value || 0);
-
-  return number.toLocaleString(
-    "ru-RU",
+  return Number(value || 0).toLocaleString(
+    "en-US",
     {
       minimumFractionDigits:2,
       maximumFractionDigits:2
@@ -1100,6 +1007,9 @@ function formatMoney(value){
   );
 }
 
+function money(value){
+  return `${formatMoney(value)} USDT`;
+}
 
 function showToast(message,error=false){
 
@@ -1119,26 +1029,21 @@ function showToast(message,error=false){
   },3500);
 }
 
-
 function showLoginError(message){
 
   const box = $("loginError");
 
   box.textContent = message;
-
   box.style.display = "block";
 }
-
 
 function clearLoginError(){
 
   const box = $("loginError");
 
   box.textContent = "";
-
   box.style.display = "none";
 }
-
 
 function getInitials(name,email){
 
@@ -1151,12 +1056,10 @@ function getInitials(name,email){
     source.trim().split(/\s+/);
 
   if(parts.length >= 2){
-
     return (
       parts[0][0] +
       parts[1][0]
     ).toUpperCase();
-
   }
 
   return source
@@ -1164,14 +1067,11 @@ function getInitials(name,email){
     .toUpperCase();
 }
 
-
 function roleName(role){
 
-  if(!role){
-    return "USER";
-  }
-
-  return String(role).toUpperCase();
+  return String(
+    role || "USER"
+  ).toUpperCase();
 }
 
 
@@ -1229,19 +1129,25 @@ async function login(email,password){
       "Не удалось выполнить вход.";
 
     if(
-      message.toLowerCase()
+      message
+        .toLowerCase()
         .includes("invalid login credentials")
     ){
+
       message =
-        "Неверный email или пароль. Проверьте, что этот пользователь создан именно в текущем Supabase.";
+        "Неверный email или пароль.";
+
     }
 
     if(
-      message.toLowerCase()
+      message
+        .toLowerCase()
         .includes("email not confirmed")
     ){
+
       message =
         "Email пользователя не подтверждён в Supabase.";
+
     }
 
     showLoginError(message);
@@ -1252,7 +1158,6 @@ async function login(email,password){
     button.textContent = "Войти";
 
   }
-
 }
 
 
@@ -1291,14 +1196,13 @@ async function loadProfile(){
   if(!data){
 
     throw new Error(
-      "Профиль пользователя не найден в таблице profiles. " +
-      "Нужно создать профиль для этого Auth пользователя."
+      "Профиль пользователя не найден в таблице profiles."
     );
 
   }
 
-  currentProfile = data;
-
+  currentProfile =
+    data;
 }
 
 
@@ -1311,10 +1215,7 @@ async function checkSession(){
     } =
       await supabaseClient.auth.getSession();
 
-    const session =
-      data?.session;
-
-    if(!session){
+    if(!data?.session){
 
       showLogin();
 
@@ -1323,45 +1224,34 @@ async function checkSession(){
     }
 
     currentUser =
-      session.user;
+      data.session.user;
 
-    try{
+    await loadProfile();
 
-      await loadProfile();
-
-      await showApplication();
-
-    }catch(error){
-
-      console.error(error);
-
-      await supabaseClient.auth.signOut();
-
-      showLogin();
-
-      showLoginError(
-        error.message ||
-        "Не удалось загрузить профиль."
-      );
-
-    }
+    await showApplication();
 
   }catch(error){
 
     console.error(
-      "SESSION ERROR",
+      "SESSION ERROR:",
       error
     );
 
+    await supabaseClient.auth.signOut();
+
     showLogin();
 
-  }
+    showLoginError(
+      error.message ||
+      "Не удалось загрузить профиль."
+    );
 
+  }
 }
 
 
 supabaseClient.auth.onAuthStateChange(
-  async(event,session)=>{
+  async(event)=>{
 
     if(event === "SIGNED_OUT"){
 
@@ -1378,7 +1268,7 @@ supabaseClient.auth.onAuthStateChange(
 
 
 /* =====================================================
-   UI AUTH
+   UI
 ===================================================== */
 
 function showLogin(){
@@ -1438,35 +1328,28 @@ function updateUserUI(){
       name,
       currentUser?.email
     );
-
 }
 
 
 function setupAdminMenu(){
 
   const role =
-    String(
-      currentProfile?.role || ""
-    ).toUpperCase();
-
-  const adminMenu =
-    $("adminMenu");
+    roleName(currentProfile?.role);
 
   if(
     role === "ADMIN" ||
     role === "SUPERADMIN"
   ){
 
-    adminMenu.style.display =
+    $("adminMenu").style.display =
       "block";
 
   }else{
 
-    adminMenu.style.display =
+    $("adminMenu").style.display =
       "none";
 
   }
-
 }
 
 
@@ -1475,7 +1358,6 @@ function setupAdminMenu(){
 ===================================================== */
 
 const pageTitles = {
-
   dashboard:"Дашборд",
   finances:"Финансы",
   deals:"Сделки",
@@ -1489,40 +1371,39 @@ const pageTitles = {
   reports:"Отчёты",
   profile:"Профиль",
   admin:"Админ-панель"
-
 };
 
 
 document
-  .querySelectorAll(".menu-item[data-page]")
-  .forEach(button=>{
+.querySelectorAll(".menu-item[data-page]")
+.forEach(button=>{
 
-    button.addEventListener(
-      "click",
-      async()=>{
+  button.addEventListener(
+    "click",
+    async()=>{
 
-        const page =
-          button.dataset.page;
+      const page =
+        button.dataset.page;
 
-        $("sidebar")
-          .classList.remove("open");
+      $("sidebar")
+        .classList.remove("open");
 
-        document
-          .querySelectorAll(
-            ".menu-item[data-page]"
-          )
-          .forEach(item=>{
-            item.classList.remove("active");
-          });
+      document
+      .querySelectorAll(
+        ".menu-item[data-page]"
+      )
+      .forEach(item=>{
+        item.classList.remove("active");
+      });
 
-        button.classList.add("active");
+      button.classList.add("active");
 
-        await renderPage(page);
+      await renderPage(page);
 
-      }
-    );
+    }
+  );
 
-  });
+});
 
 
 async function renderPage(page){
@@ -1531,10 +1412,7 @@ async function renderPage(page){
     pageTitles[page] ||
     "P2PSPARK";
 
-  const container =
-    $("pageContainer");
-
-  container.innerHTML =
+  $("pageContainer").innerHTML =
     `<div class="loading">Загрузка...</div>`;
 
   try{
@@ -1602,8 +1480,9 @@ async function renderPage(page){
 
     console.error(error);
 
-    container.innerHTML = `
+    $("pageContainer").innerHTML = `
       <div class="card">
+
         <div class="card-title">
           Ошибка
         </div>
@@ -1611,11 +1490,11 @@ async function renderPage(page){
         <div style="color:#b91c1c">
           ${escapeHtml(error.message)}
         </div>
+
       </div>
     `;
 
   }
-
 }
 
 
@@ -1631,6 +1510,7 @@ async function renderDashboard(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
+
       <h1 class="page-title">
         Добро пожаловать,
         ${escapeHtml(
@@ -1642,27 +1522,33 @@ async function renderDashboard(){
       </h1>
 
       <p class="page-description">
-        Управление вашим P2PSPARK кабинетом
+        Управление вашим P2PSPARK кабинетом • USDT
       </p>
+
     </div>
+
 
     <div class="stats-grid">
 
       <div class="stat-card">
+
         <div class="stat-label">
           Баланс депозита
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.deposit)} ₸
+          ${money(p.deposit)}
         </div>
 
         <div class="stat-small">
-          Доступный баланс
+          USDT • TRC20
         </div>
+
       </div>
 
+
       <div class="stat-card">
+
         <div class="stat-label">
           Активные сделки
         </div>
@@ -1674,48 +1560,57 @@ async function renderDashboard(){
         <div class="stat-small">
           Текущие операции
         </div>
+
       </div>
 
+
       <div class="stat-card">
+
         <div class="stat-label">
           Оборот
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.turnover)} ₸
+          ${money(p.turnover)}
         </div>
 
         <div class="stat-small">
-          Общий оборот
+          USDT
         </div>
+
       </div>
 
+
       <div class="stat-card">
+
         <div class="stat-label">
           Прибыль
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.profit)} ₸
+          ${money(p.profit)}
         </div>
 
         <div class="stat-small">
-          Общая прибыль
+          USDT
         </div>
+
       </div>
 
     </div>
+
 
     <div class="content-grid">
 
       <div class="card">
 
         <div class="card-title">
-          Финансовые операции
+          Операции с USDT
         </div>
 
         <p style="color:#6b7280;font-size:13px;line-height:1.5">
-          Управляйте депозитом и заявками на вывод средств.
+          Пополнение и вывод средств осуществляются в USDT.
+          Основная сеть — TRC20.
         </p>
 
         <div class="actions">
@@ -1724,19 +1619,20 @@ async function renderDashboard(){
             class="btn btn-dark"
             onclick="openDepositModal()"
           >
-            Пополнить
+            Пополнить USDT
           </button>
 
           <button
             class="btn btn-light"
             onclick="openWithdrawModal()"
           >
-            Вывести
+            Вывести USDT
           </button>
 
         </div>
 
       </div>
+
 
       <div class="card">
 
@@ -1758,6 +1654,33 @@ async function renderDashboard(){
 
         </div>
 
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Актив
+          </span>
+
+          <span class="info-value">
+            USDT
+          </span>
+
+        </div>
+
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Сеть
+          </span>
+
+          <span class="info-value">
+            TRC20
+          </span>
+
+        </div>
+
+
         <div class="info-row">
 
           <span class="info-label">
@@ -1772,6 +1695,7 @@ async function renderDashboard(){
 
         </div>
 
+
         <div class="info-row">
 
           <span class="info-label">
@@ -1779,16 +1703,20 @@ async function renderDashboard(){
           </span>
 
           <span>
+
             <span class="badge ${
               String(p.status).toLowerCase()
               === "blocked"
               ? "badge-red"
               : "badge-green"
             }">
+
               ${escapeHtml(
                 p.status || "active"
               )}
+
             </span>
+
           </span>
 
         </div>
@@ -1798,7 +1726,6 @@ async function renderDashboard(){
     </div>
 
   `;
-
 }
 
 
@@ -1814,58 +1741,73 @@ async function renderFinances(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
+
       <h1 class="page-title">
         Финансы
       </h1>
 
       <p class="page-description">
-        Управление депозитом, оборотом и прибылью
+        Все суммы отображаются в USDT
       </p>
+
     </div>
+
 
     <div class="stats-grid">
 
       <div class="stat-card">
+
         <div class="stat-label">
           Депозит
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.deposit)} ₸
+          ${money(p.deposit)}
         </div>
+
       </div>
 
+
       <div class="stat-card">
+
         <div class="stat-label">
           Оборот
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.turnover)} ₸
+          ${money(p.turnover)}
         </div>
+
       </div>
 
+
       <div class="stat-card">
+
         <div class="stat-label">
           Прибыль
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.profit)} ₸
+          ${money(p.profit)}
         </div>
+
       </div>
 
+
       <div class="stat-card">
+
         <div class="stat-label">
           Комиссия
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.commission)} ₸
+          ${money(p.commission)}
         </div>
+
       </div>
 
     </div>
+
 
     <div class="card">
 
@@ -1879,14 +1821,14 @@ async function renderFinances(){
           class="btn btn-dark"
           onclick="openDepositModal()"
         >
-          Пополнить
+          Пополнить USDT
         </button>
 
         <button
           class="btn btn-light"
           onclick="openWithdrawModal()"
         >
-          Вывести
+          Вывести USDT
         </button>
 
       </div>
@@ -1894,7 +1836,6 @@ async function renderFinances(){
     </div>
 
   `;
-
 }
 
 
@@ -1907,14 +1848,17 @@ async function renderDeals(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
+
       <h1 class="page-title">
         Сделки
       </h1>
 
       <p class="page-description">
-        Ваши текущие и завершённые сделки
+        Сделки в USDT
       </p>
+
     </div>
+
 
     <div class="card">
 
@@ -1923,6 +1867,7 @@ async function renderDeals(){
         <table>
 
           <thead>
+
             <tr>
               <th>ID</th>
               <th>Тип</th>
@@ -1930,6 +1875,7 @@ async function renderDeals(){
               <th>Статус</th>
               <th>Дата</th>
             </tr>
+
           </thead>
 
           <tbody>
@@ -1949,7 +1895,6 @@ async function renderDeals(){
     </div>
 
   `;
-
 }
 
 
@@ -1962,14 +1907,17 @@ async function renderRequests(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
+
       <h1 class="page-title">
         Заявки
       </h1>
 
       <p class="page-description">
-        Пополнение и вывод средств
+        Пополнение и вывод USDT
       </p>
+
     </div>
+
 
     <div class="card">
 
@@ -1978,19 +1926,22 @@ async function renderRequests(){
         <table>
 
           <thead>
+
             <tr>
               <th>ID</th>
               <th>Тип</th>
-              <th>Сумма</th>
+              <th>Сумма USDT</th>
+              <th>Сеть</th>
               <th>Статус</th>
               <th>Дата</th>
             </tr>
+
           </thead>
 
           <tbody>
 
             <tr>
-              <td colspan="5" class="empty">
+              <td colspan="6" class="empty">
                 Заявок пока нет
               </td>
             </tr>
@@ -2004,7 +1955,6 @@ async function renderRequests(){
     </div>
 
   `;
-
 }
 
 
@@ -2017,13 +1967,15 @@ async function renderDisputes(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
+
       <h1 class="page-title">
         Споры
       </h1>
 
       <p class="page-description">
-        Открытые и завершённые споры
+        Управление спорными операциями
       </p>
+
     </div>
 
     <div class="card">
@@ -2035,7 +1987,6 @@ async function renderDisputes(){
     </div>
 
   `;
-
 }
 
 
@@ -2068,8 +2019,7 @@ async function loadRequisites(){
         error.message
       );
 
-      currentRequisites =
-        null;
+      currentRequisites = null;
 
       return;
 
@@ -2086,7 +2036,6 @@ async function loadRequisites(){
       null;
 
   }
-
 }
 
 
@@ -2106,17 +2055,18 @@ async function renderRequisites(){
       </h1>
 
       <p class="page-description">
-        Реквизиты для пополнения и вывода
+        USDT • TRC20
       </p>
 
     </div>
+
 
     <div class="requisite-grid">
 
       <div class="card">
 
         <div class="card-title">
-          QR-код
+          QR-код USDT
         </div>
 
         <div class="qr-box">
@@ -2126,7 +2076,7 @@ async function renderRequisites(){
             ?
             `<img
               src="${escapeHtml(r.qr_url)}"
-              alt="QR"
+              alt="USDT TRC20 QR"
             >`
             :
             `<span style="color:#9ca3af">
@@ -2138,25 +2088,26 @@ async function renderRequisites(){
 
       </div>
 
+
       <div class="card">
 
         <div class="card-title">
-          Реквизиты
+          Реквизиты USDT
         </div>
+
 
         <div class="info-row">
 
           <span class="info-label">
-            Платёжная система
+            Актив
           </span>
 
           <span class="info-value">
-            ${escapeHtml(
-              r?.payment_method || "—"
-            )}
+            USDT
           </span>
 
         </div>
+
 
         <div class="info-row">
 
@@ -2166,11 +2117,12 @@ async function renderRequisites(){
 
           <span class="info-value">
             ${escapeHtml(
-              r?.network || "—"
+              r?.network || "TRC20"
             )}
           </span>
 
         </div>
+
 
         <div class="info-row">
 
@@ -2185,6 +2137,7 @@ async function renderRequisites(){
           </span>
 
         </div>
+
 
         <div class="info-row">
 
@@ -2217,12 +2170,11 @@ async function renderRequisites(){
     </div>
 
   `;
-
 }
 
 
 /* =====================================================
-   DEVICES
+   OTHER PAGES
 ===================================================== */
 
 async function renderDevices(){
@@ -2230,41 +2182,28 @@ async function renderDevices(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
-      <h1 class="page-title">
-        Устройства
-      </h1>
-
+      <h1 class="page-title">Устройства</h1>
       <p class="page-description">
-        История устройств и входов
+        История входов и устройств
       </p>
     </div>
 
     <div class="card">
-
       <div class="empty">
         Информация об устройствах пока не подключена.
       </div>
-
     </div>
 
   `;
-
 }
 
-
-/* =====================================================
-   MESSAGES
-===================================================== */
 
 async function renderMessages(){
 
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
-      <h1 class="page-title">
-        Сообщения
-      </h1>
-
+      <h1 class="page-title">Сообщения</h1>
       <p class="page-description">
         Связь с поддержкой
       </p>
@@ -2283,25 +2222,17 @@ async function renderMessages(){
     </div>
 
   `;
-
 }
 
-
-/* =====================================================
-   TURBO
-===================================================== */
 
 async function renderTurbo(){
 
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
-      <h1 class="page-title">
-        Турбозалив
-      </h1>
-
+      <h1 class="page-title">Турбозалив</h1>
       <p class="page-description">
-        Управление быстрыми операциями
+        Быстрые операции с USDT
       </p>
     </div>
 
@@ -2314,25 +2245,17 @@ async function renderTurbo(){
     </div>
 
   `;
-
 }
 
-
-/* =====================================================
-   COUNTERPARTIES
-===================================================== */
 
 async function renderCounterparties(){
 
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
-      <h1 class="page-title">
-        Контрагенты
-      </h1>
-
+      <h1 class="page-title">Контрагенты</h1>
       <p class="page-description">
-        Список контрагентов
+        Контрагенты P2PSPARK
       </p>
     </div>
 
@@ -2345,13 +2268,8 @@ async function renderCounterparties(){
     </div>
 
   `;
-
 }
 
-
-/* =====================================================
-   REPORTS
-===================================================== */
 
 async function renderReports(){
 
@@ -2361,15 +2279,17 @@ async function renderReports(){
   $("pageContainer").innerHTML = `
 
     <div class="page-header">
+
       <h1 class="page-title">
         Отчёты
       </h1>
 
       <p class="page-description">
-        Финансовая статистика
+        Статистика операций в USDT
       </p>
 
     </div>
+
 
     <div class="stats-grid">
 
@@ -2380,10 +2300,11 @@ async function renderReports(){
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.turnover)} ₸
+          ${money(p.turnover)}
         </div>
 
       </div>
+
 
       <div class="stat-card">
 
@@ -2392,23 +2313,14 @@ async function renderReports(){
         </div>
 
         <div class="stat-value">
-          ${formatMoney(p.profit)} ₸
+          ${money(p.profit)}
         </div>
 
       </div>
 
     </div>
 
-    <div class="card">
-
-      <div class="empty">
-        Детальная аналитика будет подключена к данным сделок.
-      </div>
-
-    </div>
-
   `;
-
 }
 
 
@@ -2430,10 +2342,11 @@ async function renderProfile(){
       </h1>
 
       <p class="page-description">
-        Информация вашего аккаунта
+        Информация аккаунта
       </p>
 
     </div>
+
 
     <div class="card">
 
@@ -2455,6 +2368,7 @@ async function renderProfile(){
 
         </div>
 
+
         <div class="profile-field">
 
           <div class="profile-label">
@@ -2471,6 +2385,7 @@ async function renderProfile(){
 
         </div>
 
+
         <div class="profile-field">
 
           <div class="profile-label">
@@ -2484,6 +2399,33 @@ async function renderProfile(){
           </div>
 
         </div>
+
+
+        <div class="profile-field">
+
+          <div class="profile-label">
+            Актив
+          </div>
+
+          <div class="profile-value">
+            USDT
+          </div>
+
+        </div>
+
+
+        <div class="profile-field">
+
+          <div class="profile-label">
+            Сеть
+          </div>
+
+          <div class="profile-value">
+            TRC20
+          </div>
+
+        </div>
+
 
         <div class="profile-field">
 
@@ -2504,7 +2446,6 @@ async function renderProfile(){
     </div>
 
   `;
-
 }
 
 
@@ -2515,9 +2456,7 @@ async function renderProfile(){
 async function renderAdmin(){
 
   const role =
-    String(
-      currentProfile?.role || ""
-    ).toUpperCase();
+    roleName(currentProfile?.role);
 
   if(
     role !== "ADMIN" &&
@@ -2541,26 +2480,23 @@ async function renderAdmin(){
     `;
 
     return;
-
   }
 
-  let users = [];
-
   const {
-    data,
+    data:users,
     error
   } =
     await supabaseClient
       .from("profiles")
       .select("*")
-      .order("created_at",{ascending:false});
+      .order(
+        "created_at",
+        {ascending:false}
+      );
 
   if(error){
     throw error;
   }
-
-  users =
-    data || [];
 
   $("pageContainer").innerHTML = `
 
@@ -2571,10 +2507,11 @@ async function renderAdmin(){
       </h1>
 
       <p class="page-description">
-        Управление пользователями и финансовыми показателями
+        Управление пользователями • USDT
       </p>
 
     </div>
+
 
     <div class="card">
 
@@ -2602,6 +2539,7 @@ async function renderAdmin(){
 
       </div>
 
+
       <div class="table-wrap">
 
         <table>
@@ -2613,18 +2551,19 @@ async function renderAdmin(){
               <th>Email</th>
               <th>Роль</th>
               <th>Статус</th>
-              <th>Депозит</th>
-              <th>Оборот</th>
-              <th>Прибыль</th>
+              <th>Депозит USDT</th>
+              <th>Оборот USDT</th>
+              <th>Прибыль USDT</th>
               <th></th>
             </tr>
 
           </thead>
 
+
           <tbody>
 
             ${
-              users.length
+              users?.length
               ?
               users.map(user=>`
 
@@ -2646,42 +2585,53 @@ async function renderAdmin(){
                   </td>
 
                   <td>
+
                     <span class="badge ${
-                      String(user.role).toUpperCase()
+                      roleName(user.role)
                       === "ADMIN"
                       ? "badge-dark"
                       : "badge-gray"
                     }">
+
                       ${escapeHtml(
                         roleName(user.role)
                       )}
+
                     </span>
+
                   </td>
 
+
                   <td>
+
                     <span class="badge ${
                       String(user.status).toLowerCase()
                       === "blocked"
                       ? "badge-red"
                       : "badge-green"
                     }">
+
                       ${escapeHtml(
                         user.status || "active"
                       )}
+
                     </span>
+
+                  </td>
+
+
+                  <td>
+                    ${money(user.deposit)}
                   </td>
 
                   <td>
-                    ${formatMoney(user.deposit)} ₸
+                    ${money(user.turnover)}
                   </td>
 
                   <td>
-                    ${formatMoney(user.turnover)} ₸
+                    ${money(user.profit)}
                   </td>
 
-                  <td>
-                    ${formatMoney(user.profit)} ₸
-                  </td>
 
                   <td>
 
@@ -2700,9 +2650,14 @@ async function renderAdmin(){
               :
               `
                 <tr>
-                  <td colspan="8" class="empty">
+
+                  <td
+                    colspan="8"
+                    class="empty"
+                  >
                     Пользователей нет
                   </td>
+
                 </tr>
               `
             }
@@ -2716,12 +2671,11 @@ async function renderAdmin(){
     </div>
 
   `;
-
 }
 
 
 /* =====================================================
-   ADMIN USER EDIT
+   EDIT USER
 ===================================================== */
 
 function openEditUser(user){
@@ -2747,6 +2701,7 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
         <label>Email</label>
@@ -2761,19 +2716,27 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
         <label>Роль</label>
 
-        <select id="editRole" class="input">
+        <select
+          id="editRole"
+          class="input"
+        >
 
-          <option value="USER"
-            ${String(user.role).toUpperCase()==="USER"?"selected":""}>
+          <option
+            value="USER"
+            ${roleName(user.role)==="USER"?"selected":""}
+          >
             USER
           </option>
 
-          <option value="ADMIN"
-            ${String(user.role).toUpperCase()==="ADMIN"?"selected":""}>
+          <option
+            value="ADMIN"
+            ${roleName(user.role)==="ADMIN"?"selected":""}
+          >
             ADMIN
           </option>
 
@@ -2781,19 +2744,27 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
         <label>Статус</label>
 
-        <select id="editStatus" class="input">
+        <select
+          id="editStatus"
+          class="input"
+        >
 
-          <option value="active"
-            ${String(user.status).toLowerCase()==="active"?"selected":""}>
+          <option
+            value="active"
+            ${String(user.status).toLowerCase()==="active"?"selected":""}
+          >
             active
           </option>
 
-          <option value="blocked"
-            ${String(user.status).toLowerCase()==="blocked"?"selected":""}>
+          <option
+            value="blocked"
+            ${String(user.status).toLowerCase()==="blocked"?"selected":""}
+          >
             blocked
           </option>
 
@@ -2801,9 +2772,10 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Депозит</label>
+        <label>Депозит USDT</label>
 
         <input
           id="editDeposit"
@@ -2815,9 +2787,10 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Оборот</label>
+        <label>Оборот USDT</label>
 
         <input
           id="editTurnover"
@@ -2829,9 +2802,10 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Прибыль</label>
+        <label>Прибыль USDT</label>
 
         <input
           id="editProfit"
@@ -2843,9 +2817,10 @@ function openEditUser(user){
 
       </div>
 
+
       <div class="form-group">
 
-        <label>Комиссия</label>
+        <label>Комиссия USDT</label>
 
         <input
           id="editCommission"
@@ -2858,6 +2833,7 @@ function openEditUser(user){
       </div>
 
     </div>
+
 
     <div class="modal-actions">
 
@@ -2880,7 +2856,6 @@ function openEditUser(user){
   `;
 
   openModal();
-
 }
 
 
@@ -2898,18 +2873,27 @@ async function saveUser(userId){
       $("editStatus").value,
 
     deposit:
-      Number($("editDeposit").value || 0),
+      Number(
+        $("editDeposit").value || 0
+      ),
 
     turnover:
-      Number($("editTurnover").value || 0),
+      Number(
+        $("editTurnover").value || 0
+      ),
 
     profit:
-      Number($("editProfit").value || 0),
+      Number(
+        $("editProfit").value || 0
+      ),
 
     commission:
-      Number($("editCommission").value || 0)
+      Number(
+        $("editCommission").value || 0
+      )
 
   };
+
 
   const {
     error
@@ -2918,6 +2902,7 @@ async function saveUser(userId){
       .from("profiles")
       .update(payload)
       .eq("id",userId);
+
 
   if(error){
 
@@ -2929,6 +2914,7 @@ async function saveUser(userId){
     return;
 
   }
+
 
   closeModal();
 
@@ -2965,10 +2951,16 @@ function openCreateUserInfo(){
         font-size:13px;
       "
     >
-      Создание Auth-пользователя нельзя безопасно выполнять
-      непосредственно из браузера через publishable key.
-      Для этого нужна серверная Edge Function с service_role key.
+
+      Для безопасного создания Auth-пользователя
+      нужна серверная Edge Function.
+
+      Publishable key нельзя использовать
+      для создания пользователей через
+      административный Auth API.
+
     </div>
+
 
     <div class="modal-actions">
 
@@ -2998,29 +2990,35 @@ function openDepositModal(){
     currentRequisites;
 
   $("modalTitle").textContent =
-    "Пополнение";
+    "Пополнение USDT";
 
   $("modalContent").innerHTML = `
 
-    <div class="card" style="padding:0;border:0">
+    <div>
 
-      <p style="color:#6b7280;font-size:13px">
-        Используйте реквизиты, которые указал администратор.
-      </p>
+      <div
+        style="
+          background:#f3f4f6;
+          padding:13px;
+          border-radius:11px;
+          margin-bottom:15px;
+          font-size:13px;
+        "
+      >
 
-      <div class="info-row">
+        <strong>USDT</strong>
 
-        <span class="info-label">
-          Сеть
-        </span>
+        <br>
 
-        <span class="info-value">
+        Сеть:
+        <strong>
           ${escapeHtml(
-            r?.network || "—"
+            r?.network || "TRC20"
           )}
-        </span>
+        </strong>
 
       </div>
+
 
       <div class="info-row">
 
@@ -3030,23 +3028,32 @@ function openDepositModal(){
 
         <span class="info-value">
           ${escapeHtml(
-            r?.wallet || "—"
+            r?.wallet || "Реквизит не указан"
           )}
         </span>
 
       </div>
 
+
       ${
         r?.qr_url
         ?
         `
-          <div style="margin-top:15px">
+          <div
+            style="
+              margin-top:18px;
+              display:flex;
+              justify-content:center;
+            "
+          >
 
             <div class="qr-box">
+
               <img
                 src="${escapeHtml(r.qr_url)}"
-                alt="QR"
+                alt="USDT TRC20 QR"
               >
+
             </div>
 
           </div>
@@ -3055,13 +3062,54 @@ function openDepositModal(){
         ""
       }
 
-      <div style="margin-top:20px">
+
+      ${
+        r?.wallet_link
+        ?
+        `
+          <div style="margin-top:15px">
+
+            <a
+              href="${escapeHtml(r.wallet_link)}"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-light"
+              style="
+                display:inline-flex;
+                align-items:center;
+                text-decoration:none;
+              "
+            >
+              Открыть кошелёк
+            </a>
+
+          </div>
+        `
+        :
+        ""
+      }
+
+
+      <div
+        style="
+          margin-top:18px;
+          color:#6b7280;
+          font-size:12px;
+          line-height:1.5;
+        "
+      >
+        Перед отправкой USDT обязательно проверьте,
+        что выбрана сеть TRC20.
+      </div>
+
+
+      <div class="modal-actions">
 
         <button
-          class="btn btn-light"
+          class="btn btn-dark"
           onclick="closeModal()"
         >
-          Закрыть
+          Готово
         </button>
 
       </div>
@@ -3071,7 +3119,6 @@ function openDepositModal(){
   `;
 
   openModal();
-
 }
 
 
@@ -3082,13 +3129,15 @@ function openDepositModal(){
 function openWithdrawModal(){
 
   $("modalTitle").textContent =
-    "Вывод средств";
+    "Вывод USDT";
 
   $("modalContent").innerHTML = `
 
     <div class="form-group">
 
-      <label>Сумма</label>
+      <label>
+        Сумма USDT
+      </label>
 
       <input
         id="withdrawAmount"
@@ -3096,14 +3145,17 @@ function openWithdrawModal(){
         type="number"
         min="0"
         step="0.01"
-        placeholder="Введите сумму"
+        placeholder="Введите сумму USDT"
       >
 
     </div>
 
+
     <div class="form-group">
 
-      <label>Кошелёк / реквизиты</label>
+      <label>
+        USDT TRC20 кошелёк
+      </label>
 
       <input
         id="withdrawWallet"
@@ -3111,10 +3163,26 @@ function openWithdrawModal(){
         value="${escapeHtml(
           currentRequisites?.wallet || ""
         )}"
-        placeholder="Введите реквизиты"
+        placeholder="Введите TRC20 адрес"
       >
 
     </div>
+
+
+    <div
+      style="
+        background:#f3f4f6;
+        padding:12px;
+        border-radius:10px;
+        color:#6b7280;
+        font-size:12px;
+        line-height:1.5;
+      "
+    >
+      Актив: <strong>USDT</strong><br>
+      Сеть: <strong>TRC20</strong>
+    </div>
+
 
     <div class="modal-actions">
 
@@ -3137,7 +3205,6 @@ function openWithdrawModal(){
   `;
 
   openModal();
-
 }
 
 
@@ -3151,37 +3218,37 @@ async function submitWithdraw(){
   const wallet =
     $("withdrawWallet").value.trim();
 
+
   if(!amount || amount <= 0){
 
     showToast(
-      "Введите корректную сумму.",
+      "Введите корректную сумму USDT.",
       true
     );
 
     return;
-
   }
+
 
   if(!wallet){
 
     showToast(
-      "Введите реквизиты.",
+      "Введите TRC20 адрес.",
       true
     );
 
     return;
-
   }
 
+
   /*
-    Здесь можно подключить таблицу withdrawals,
-    когда она есть в вашем Supabase.
+    Здесь позже подключается таблица withdrawals.
   */
 
   closeModal();
 
   showToast(
-    "Заявка подготовлена. После подключения таблицы withdrawals она будет записываться в базу."
+    "Заявка на вывод USDT подготовлена."
   );
 
 }
@@ -3198,7 +3265,6 @@ function openModal(){
 
 }
 
-
 function closeModal(){
 
   $("modal")
@@ -3206,54 +3272,53 @@ function closeModal(){
 
 }
 
-
 $("closeModal")
-  .addEventListener(
-    "click",
-    closeModal
-  );
+.addEventListener(
+  "click",
+  closeModal
+);
 
 
 $("modal")
-  .addEventListener(
-    "click",
-    event=>{
+.addEventListener(
+  "click",
+  event=>{
 
-      if(event.target === $("modal")){
-        closeModal();
-      }
-
+    if(event.target === $("modal")){
+      closeModal();
     }
-  );
+
+  }
+);
 
 
 /* =====================================================
-   LOGIN FORM
+   LOGIN
 ===================================================== */
 
 $("loginForm")
-  .addEventListener(
-    "submit",
-    async event=>{
+.addEventListener(
+  "submit",
+  async event=>{
 
-      event.preventDefault();
+    event.preventDefault();
 
-      const email =
-        $("loginEmail")
-          .value
-          .trim();
+    const email =
+      $("loginEmail")
+        .value
+        .trim();
 
-      const password =
-        $("loginPassword")
-          .value;
+    const password =
+      $("loginPassword")
+        .value;
 
-      await login(
-        email,
-        password
-      );
+    await login(
+      email,
+      password
+    );
 
-    }
-  );
+  }
+);
 
 
 /* =====================================================
@@ -3261,36 +3326,36 @@ $("loginForm")
 ===================================================== */
 
 $("logoutBtn")
-  .addEventListener(
-    "click",
-    async()=>{
+.addEventListener(
+  "click",
+  async()=>{
 
-      await supabaseClient.auth.signOut();
+    await supabaseClient.auth.signOut();
 
-      currentUser = null;
-      currentProfile = null;
-      currentRequisites = null;
+    currentUser = null;
+    currentProfile = null;
+    currentRequisites = null;
 
-      showLogin();
+    showLogin();
 
-    }
-  );
+  }
+);
 
 
 /* =====================================================
-   MOBILE MENU
+   MOBILE
 ===================================================== */
 
 $("mobileMenuBtn")
-  .addEventListener(
-    "click",
-    ()=>{
+.addEventListener(
+  "click",
+  ()=>{
 
-      $("sidebar")
-        .classList.toggle("open");
+    $("sidebar")
+      .classList.toggle("open");
 
-    }
-  );
+  }
+);
 
 
 /* =====================================================
