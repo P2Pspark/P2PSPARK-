@@ -3,16 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-
 <title>P2PSPARK</title>
-
+<!-- Supabase JS -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
 *{
   box-sizing:border-box;
 }
-
 html,body{
   margin:0;
   padding:0;
@@ -21,20 +18,17 @@ html,body{
   background:#f3f6fb;
   color:#101828;
 }
-
 body{
   display:flex;
   justify-content:center;
   min-height:100vh;
 }
-
 .app{
   width:100%;
   max-width:760px;
   min-height:100vh;
   padding:30px 16px;
 }
-
 .card{
   width:100%;
   background:#fff;
@@ -42,12 +36,13 @@ body{
   padding:42px 36px 34px;
   box-shadow:0 18px 55px rgba(31,45,70,.12);
 }
-
+/* =========================
+   LOGO
+========================= */
 .logo{
   text-align:center;
   margin-bottom:28px;
 }
-
 .logo-title{
   font-size:48px;
   line-height:1;
@@ -55,11 +50,9 @@ body{
   letter-spacing:-2px;
   color:#101828;
 }
-
 .logo-title span{
   color:#2864df;
 }
-
 .logo-subtitle{
   margin-top:14px;
   font-size:15px;
@@ -67,14 +60,15 @@ body{
   letter-spacing:6px;
   color:#737d90;
 }
-
+/* =========================
+   LOGIN
+========================= */
 h1{
   text-align:center;
   font-size:38px;
   margin:34px 0 12px;
   font-weight:900;
 }
-
 .subtitle{
   text-align:center;
   color:#737d90;
@@ -83,43 +77,15 @@ h1{
   font-weight:600;
   margin-bottom:28px;
 }
-
-.error{
-  display:none;
-  background:#ffe1e1;
-  color:#bd2d2d;
-  border-radius:15px;
-  padding:15px 18px;
-  margin-bottom:22px;
-  font-size:16px;
-  line-height:1.4;
-  font-weight:700;
-}
-
-.debug{
-  display:none;
-  background:#101828;
-  color:#fff;
-  border-radius:15px;
-  padding:17px;
-  margin-bottom:22px;
-  font-family:monospace;
-  font-size:14px;
-  line-height:1.45;
-  overflow-wrap:anywhere;
-}
-
 .field{
   margin-bottom:22px;
 }
-
 label{
   display:block;
   font-size:19px;
   font-weight:800;
   margin-bottom:10px;
 }
-
 input{
   width:100%;
   height:64px;
@@ -132,34 +98,84 @@ input{
   color:#101828;
   transition:.2s;
 }
-
 input:focus{
   border-color:#2864df;
   box-shadow:0 0 0 4px rgba(40,100,223,.10);
 }
-
+input::placeholder{
+  color:#98a2b3;
+}
 button{
   width:100%;
   height:64px;
   border:0;
   border-radius:17px;
   background:#2864df;
-  color:white;
+  color:#fff;
   font-size:22px;
   font-weight:900;
   cursor:pointer;
   transition:.15s;
 }
-
 button:active{
   transform:scale(.99);
 }
-
 button:disabled{
   opacity:.65;
   cursor:wait;
 }
-
+/* =========================
+   ERRORS
+========================= */
+.error{
+  display:none;
+  background:#ffe1e1;
+  color:#bd2d2d;
+  border-radius:15px;
+  padding:15px 18px;
+  margin-bottom:22px;
+  font-size:16px;
+  line-height:1.4;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+.debug{
+  display:none;
+  background:#101828;
+  color:#fff;
+  border-radius:15px;
+  padding:17px;
+  margin-bottom:22px;
+  font-family:monospace;
+  font-size:13px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.success{
+  display:none;
+  background:#dcfae6;
+  color:#087443;
+  border-radius:15px;
+  padding:15px 18px;
+  margin-bottom:22px;
+  font-size:16px;
+  line-height:1.4;
+  font-weight:700;
+}
+/* =========================
+   LOADING
+========================= */
+.loading{
+  display:none;
+  text-align:center;
+  color:#667085;
+  font-size:15px;
+  margin-top:15px;
+  font-weight:600;
+}
+/* =========================
+   BOTTOM TEXT
+========================= */
 .bottom-text{
   text-align:center;
   color:#737d90;
@@ -167,135 +183,146 @@ button:disabled{
   font-weight:600;
   margin-top:30px;
 }
-
+/* =========================
+   DASHBOARD
+========================= */
 .dashboard{
   display:none;
 }
-
 .welcome{
   text-align:center;
   margin-bottom:28px;
 }
-
 .welcome h2{
   font-size:30px;
   margin:0 0 8px;
+  font-weight:900;
 }
-
 .welcome p{
   margin:0;
   color:#737d90;
   font-size:17px;
+  word-break:break-word;
 }
-
 .panel{
   background:#f5f7fa;
   border-radius:22px;
   padding:24px;
   margin-bottom:18px;
 }
-
 .panel-title{
   font-size:20px;
   font-weight:900;
   margin-bottom:8px;
 }
-
 .panel-value{
   font-size:17px;
   color:#667085;
   word-break:break-word;
 }
-
+.status{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#dcfae6;
+  color:#087443;
+  padding:8px 13px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:800;
+}
+.status-dot{
+  width:8px;
+  height:8px;
+  background:#12b76a;
+  border-radius:50%;
+}
 .logout{
   margin-top:15px;
   background:#101828;
 }
-
-.loading{
-  display:none;
-  text-align:center;
-  color:#667085;
-  font-size:15px;
-  margin-top:15px;
-}
-
+/* =========================
+   MOBILE
+========================= */
 @media(max-width:600px){
-
   .app{
     padding:0;
   }
-
   .card{
     min-height:100vh;
     border-radius:0;
     padding:38px 32px 30px;
     box-shadow:none;
   }
-
   .logo-title{
     font-size:40px;
   }
-
   .logo-subtitle{
     font-size:12px;
     letter-spacing:5px;
   }
-
   h1{
     font-size:34px;
     margin-top:38px;
   }
-
   .subtitle{
     font-size:20px;
   }
-
   input{
     height:62px;
     font-size:20px;
   }
-
   button{
     height:62px;
+  }
+  .welcome h2{
+    font-size:28px;
   }
 }
 </style>
 </head>
-
 <body>
-
 <div class="app">
-
-  <!-- LOGIN -->
+  <!-- =====================================================
+       LOGIN CARD
+  ====================================================== -->
   <div class="card" id="loginCard">
-
     <div class="logo">
       <div class="logo-title">
         P2P<span>SPARK</span>
       </div>
-
       <div class="logo-subtitle">
         PEOPLE • DEALS • OPPORTUNITIES
       </div>
     </div>
-
-    <h1>Вход в аккаунт</h1>
-
+    <h1>
+      Вход в аккаунт
+    </h1>
     <div class="subtitle">
       Введите данные, выданные<br>
       администратором
     </div>
-
-    <div class="error" id="errorBox"></div>
-
-    <div class="debug" id="debugBox"></div>
-
+    <!-- ERROR -->
+    <div
+      class="error"
+      id="errorBox">
+    </div>
+    <!-- DEBUG -->
+    <div
+      class="debug"
+      id="debugBox">
+    </div>
+    <!-- SUCCESS -->
+    <div
+      class="success"
+      id="successBox">
+    </div>
+    <!-- LOGIN FORM -->
     <form id="loginForm">
-
       <div class="field">
-        <label for="email">Почта</label>
-
+        <label for="email">
+          Почта
+        </label>
         <input
           id="email"
           type="email"
@@ -304,10 +331,10 @@ button:disabled{
           required
         >
       </div>
-
       <div class="field">
-        <label for="password">Пароль</label>
-
+        <label for="password">
+          Пароль
+        </label>
         <input
           id="password"
           type="password"
@@ -316,108 +343,128 @@ button:disabled{
           required
         >
       </div>
-
-      <button id="loginButton" type="submit">
+      <button
+        id="loginButton"
+        type="submit">
         Войти →
       </button>
-
-      <div class="loading" id="loading">
+      <div
+        class="loading"
+        id="loading">
         Выполняется вход...
       </div>
-
     </form>
-
     <div class="bottom-text">
       Доступ к аккаунту создаёт администратор
     </div>
-
   </div>
-
-
-  <!-- DASHBOARD -->
-  <div class="card dashboard" id="dashboardCard">
-
+  <!-- =====================================================
+       DASHBOARD
+  ====================================================== -->
+  <div
+    class="card dashboard"
+    id="dashboardCard">
     <div class="logo">
       <div class="logo-title">
         P2P<span>SPARK</span>
       </div>
-
       <div class="logo-subtitle">
         PEOPLE • DEALS • OPPORTUNITIES
       </div>
     </div>
-
     <div class="welcome">
-      <h2>Добро пожаловать</h2>
-      <p id="userEmail"></p>
+      <h2>
+        Добро пожаловать
+      </h2>
+      <p id="userEmail">
+        —
+      </p>
     </div>
-
     <div class="panel">
       <div class="panel-title">
         Статус аккаунта
       </div>
-
       <div class="panel-value">
-        Вы успешно вошли в личный кабинет.
+        <span class="status">
+          <span class="status-dot"></span>
+          Авторизован
+        </span>
       </div>
     </div>
-
     <div class="panel">
       <div class="panel-title">
         ID пользователя
       </div>
-
-      <div class="panel-value" id="userId">
+      <div
+        class="panel-value"
+        id="userId">
         —
       </div>
     </div>
-
     <div class="panel">
       <div class="panel-title">
         Роль
       </div>
-
-      <div class="panel-value" id="userRole">
+      <div
+        class="panel-value"
+        id="userRole">
         Пользователь
       </div>
     </div>
-
-    <button class="logout" id="logoutButton">
+    <button
+      class="logout"
+      id="logoutButton">
       Выйти
     </button>
-
   </div>
-
 </div>
-
-
 <script>
 /* =========================================================
-   SUPABASE CONFIG
+   SUPABASE CONFIGURATION
    ========================================================= */
-
 /*
   ВАЖНО:
-
-  Здесь нужен основной URL проекта,
-  БЕЗ /rest/v1/
-
-  Правильно:
+  URL проекта:
   https://kzdaiqhnjcdsinzaygao.supabase.co
-
-  Неправильно:
+  НЕ:
   https://kzdaiqhnjcdsinzaygao.supabase.co/rest/v1/
 */
-
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
-
+/*
+  Твой PUBLISHABLE KEY
+*/
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
-
-
-/* Создаём Supabase client */
-
+/* =========================================================
+   CHECK SUPABASE LIBRARY
+   ========================================================= */
+if(
+  !window.supabase ||
+  typeof window.supabase.createClient !== "function"
+){
+  document.body.innerHTML = `
+    <div style="
+      padding:40px;
+      font-family:Arial;
+      text-align:center;
+    ">
+      <h2>Ошибка загрузки Supabase</h2>
+      <p>
+        Не удалось загрузить библиотеку Supabase.
+      </p>
+      <p>
+        Проверь подключение к интернету и обнови страницу.
+      </p>
+    </div>
+  `;
+  throw new Error(
+    "Supabase JS library not loaded"
+  );
+}
+/* =========================================================
+   CREATE SUPABASE CLIENT
+   ========================================================= */
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
@@ -430,338 +477,384 @@ const supabaseClient =
       }
     }
   );
-
-
 /* =========================================================
-   ELEMENTS
+   DOM ELEMENTS
    ========================================================= */
-
 const loginCard =
   document.getElementById("loginCard");
-
 const dashboardCard =
   document.getElementById("dashboardCard");
-
 const loginForm =
   document.getElementById("loginForm");
-
 const emailInput =
   document.getElementById("email");
-
 const passwordInput =
   document.getElementById("password");
-
 const loginButton =
   document.getElementById("loginButton");
-
-const loading =
-  document.getElementById("loading");
-
-const errorBox =
-  document.getElementById("errorBox");
-
-const debugBox =
-  document.getElementById("debugBox");
-
 const logoutButton =
   document.getElementById("logoutButton");
-
+const loading =
+  document.getElementById("loading");
+const errorBox =
+  document.getElementById("errorBox");
+const debugBox =
+  document.getElementById("debugBox");
+const successBox =
+  document.getElementById("successBox");
 const userEmail =
   document.getElementById("userEmail");
-
 const userId =
   document.getElementById("userId");
-
 const userRole =
   document.getElementById("userRole");
-
-
 /* =========================================================
-   HELPERS
+   ERROR HANDLING
    ========================================================= */
-
-function showError(message, debug = ""){
-
-  errorBox.textContent = message;
-  errorBox.style.display = "block";
-
-  if(debug){
-    debugBox.textContent = debug;
-    debugBox.style.display = "block";
+function showError(
+  message,
+  debugMessage = ""
+){
+  errorBox.textContent =
+    message;
+  errorBox.style.display =
+    "block";
+  if(debugMessage){
+    debugBox.textContent =
+      debugMessage;
+    debugBox.style.display =
+      "block";
   }else{
-    debugBox.style.display = "none";
+    debugBox.textContent =
+      "";
+    debugBox.style.display =
+      "none";
   }
 }
-
-
-function clearError(){
-
-  errorBox.textContent = "";
-  errorBox.style.display = "none";
-
-  debugBox.textContent = "";
-  debugBox.style.display = "none";
+function clearMessages(){
+  errorBox.textContent =
+    "";
+  errorBox.style.display =
+    "none";
+  debugBox.textContent =
+    "";
+  debugBox.style.display =
+    "none";
+  successBox.textContent =
+    "";
+  successBox.style.display =
+    "none";
 }
-
-
+function showSuccess(message){
+  successBox.textContent =
+    message;
+  successBox.style.display =
+    "block";
+}
+/* =========================================================
+   LOADING
+   ========================================================= */
 function setLoading(state){
-
-  loginButton.disabled = state;
-
+  loginButton.disabled =
+    state;
   if(state){
-    loginButton.textContent = "Вход...";
-    loading.style.display = "block";
+    loginButton.textContent =
+      "Вход...";
+    loading.style.display =
+      "block";
   }else{
-    loginButton.textContent = "Войти →";
-    loading.style.display = "none";
+    loginButton.textContent =
+      "Войти →";
+    loading.style.display =
+      "none";
   }
 }
-
-
 /* =========================================================
    SHOW DASHBOARD
    ========================================================= */
-
-async function showDashboard(user){
-
-  loginCard.style.display = "none";
-  dashboardCard.style.display = "block";
-
-  userEmail.textContent =
-    user.email || "Пользователь";
-
-  userId.textContent =
-    user.id || "—";
-
-  /*
-    Пока роль определяем как пользователь.
-
-    После того как вход заработает,
-    мы подключим таблицу profiles/roles
-    и сделаем настоящий admin panel.
-  */
-
-  userRole.textContent = "Пользователь";
+function showDashboard(user){
+  loginCard.style.display =
+    "none";
+  dashboardCard.style.display =
+    "block";
+  if(user){
+    userEmail.textContent =
+      user.email || "Пользователь";
+    userId.textContent =
+      user.id || "—";
+    /*
+      Если позже добавим profiles,
+      здесь будем получать настоящую
+      роль администратора.
+      Сейчас безопасно показываем
+      обычного пользователя.
+    */
+    userRole.textContent =
+      "Пользователь";
+  }
 }
-
-
 /* =========================================================
    SHOW LOGIN
    ========================================================= */
-
 function showLogin(){
-
-  dashboardCard.style.display = "none";
-  loginCard.style.display = "block";
+  dashboardCard.style.display =
+    "none";
+  loginCard.style.display =
+    "block";
 }
-
-
 /* =========================================================
    LOGIN
    ========================================================= */
-
-loginForm.addEventListener("submit", async function(event){
-
-  event.preventDefault();
-
-  clearError();
-
-  const email =
-    emailInput.value.trim();
-
-  const password =
-    passwordInput.value;
-
-  if(!email || !password){
-
-    showError(
-      "Введите почту и пароль."
-    );
-
-    return;
-  }
-
-  setLoading(true);
-
-  try{
-
-    const { data, error } =
-      await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-
-    if(error){
-
+loginForm.addEventListener(
+  "submit",
+  async function(event){
+    event.preventDefault();
+    clearMessages();
+    const email =
+      emailInput.value.trim();
+    const password =
+      passwordInput.value;
+    /* -------------------------
+       VALIDATION
+    ------------------------- */
+    if(!email){
+      showError(
+        "Введите электронную почту."
+      );
+      emailInput.focus();
+      return;
+    }
+    if(!password){
+      showError(
+        "Введите пароль."
+      );
+      passwordInput.focus();
+      return;
+    }
+    setLoading(true);
+    try{
+      /*
+        Вход через Supabase Auth
+      */
+      const result =
+        await supabaseClient.auth.signInWithPassword({
+          email:email,
+          password:password
+        });
+      const data =
+        result.data;
+      const error =
+        result.error;
+      /* -------------------------
+         SUPABASE ERROR
+      ------------------------- */
+      if(error){
+        console.error(
+          "SUPABASE AUTH ERROR:",
+          error
+        );
+        let message =
+          error.message ||
+          "Не удалось выполнить вход.";
+        /*
+          Специальные понятные
+          сообщения для основных ошибок
+        */
+        if(
+          error.message &&
+          error.message.toLowerCase()
+            .includes("invalid api key")
+        ){
+          message =
+            "Ошибка подключения: Supabase отклонил API key.";
+        }
+        if(
+          error.message &&
+          error.message.toLowerCase()
+            .includes("invalid login credentials")
+        ){
+          message =
+            "Неверная почта или пароль.";
+        }
+        if(
+          error.message &&
+          error.message.toLowerCase()
+            .includes("email not confirmed")
+        ){
+          message =
+            "Почта аккаунта ещё не подтверждена.";
+        }
+        showError(
+          "Ошибка входа: " + message,
+          "AUTH ERROR\n\n" +
+          JSON.stringify(
+            {
+              name:error.name,
+              message:error.message,
+              status:error.status,
+              code:error.code
+            },
+            null,
+            2
+          )
+        );
+        setLoading(false);
+        return;
+      }
+      /* -------------------------
+         USER CHECK
+      ------------------------- */
+      if(
+        !data ||
+        !data.user
+      ){
+        showError(
+          "Supabase не вернул пользователя."
+        );
+        setLoading(false);
+        return;
+      }
+      console.log(
+        "LOGIN SUCCESS:",
+        data.user
+      );
+      /*
+        Очищаем пароль из памяти
+        формы после успешного входа.
+      */
+      passwordInput.value =
+        "";
+      showSuccess(
+        "Вход выполнен успешно."
+      );
+      /*
+        Открываем личный кабинет
+      */
+      showDashboard(
+        data.user
+      );
+    }catch(error){
       console.error(
-        "SUPABASE LOGIN ERROR:",
+        "UNEXPECTED LOGIN ERROR:",
         error
       );
-
       showError(
-        "Ошибка входа: " + error.message,
-
-        "AUTH ERROR: " +
-        JSON.stringify({
-          name:error.name,
-          message:error.message,
-          status:error.status
-        })
+        "Произошла ошибка при подключении к серверу.",
+        "UNEXPECTED ERROR\n\n" +
+        String(
+          error?.message ||
+          error
+        )
       );
-
+    }finally{
       setLoading(false);
-
-      return;
     }
-
-    if(!data || !data.user){
-
-      showError(
-        "Supabase не вернул пользователя."
-      );
-
-      setLoading(false);
-
-      return;
-    }
-
-    console.log(
-      "LOGIN SUCCESS:",
-      data.user
-    );
-
-    await showDashboard(data.user);
-
-  }catch(error){
-
-    console.error(
-      "UNEXPECTED ERROR:",
-      error
-    );
-
-    showError(
-      "Произошла ошибка при подключении к Supabase.",
-
-      "ERROR: " +
-      String(error?.message || error)
-    );
-
-  }finally{
-
-    setLoading(false);
-
   }
-
-});
-
-
+);
 /* =========================================================
    LOGOUT
    ========================================================= */
-
 logoutButton.addEventListener(
   "click",
   async function(){
-
-    await supabaseClient.auth.signOut();
-
-    passwordInput.value = "";
-
+    try{
+      const {
+        error
+      } =
+        await supabaseClient.auth.signOut();
+      if(error){
+        console.error(
+          "LOGOUT ERROR:",
+          error
+        );
+      }
+    }catch(error){
+      console.error(
+        "LOGOUT EXCEPTION:",
+        error
+      );
+    }
+    passwordInput.value =
+      "";
+    clearMessages();
     showLogin();
-
   }
 );
-
-
 /* =========================================================
    CHECK EXISTING SESSION
    ========================================================= */
-
 async function checkSession(){
-
   try{
-
-    const {
-      data,
-      error
-    } = await supabaseClient.auth.getSession();
-
+    const result =
+      await supabaseClient.auth.getSession();
+    const session =
+      result.data?.session;
+    const error =
+      result.error;
     if(error){
-
       console.error(
         "SESSION ERROR:",
         error
       );
-
+      showLogin();
       return;
     }
-
-    if(data && data.session){
-
-      await showDashboard(
-        data.session.user
+    if(
+      session &&
+      session.user
+    ){
+      console.log(
+        "EXISTING SESSION:",
+        session.user
       );
-
+      showDashboard(
+        session.user
+      );
     }else{
-
       showLogin();
-
     }
-
   }catch(error){
-
     console.error(
       "SESSION CHECK ERROR:",
       error
     );
-
     showLogin();
-
   }
 }
-
-
 /* =========================================================
-   AUTH STATE
+   AUTH STATE CHANGE
    ========================================================= */
-
 supabaseClient.auth.onAuthStateChange(
-  async function(event, session){
-
+  function(event, session){
     console.log(
-      "AUTH EVENT:",
+      "AUTH STATE:",
       event
     );
-
     if(
       event === "SIGNED_IN" &&
       session &&
       session.user
     ){
-
-      await showDashboard(
+      showDashboard(
         session.user
       );
-
     }
-
-    if(event === "SIGNED_OUT"){
-
+    if(
+      event === "SIGNED_OUT"
+    ){
       showLogin();
-
     }
-
   }
 );
-
-
 /* =========================================================
-   START
+   START APPLICATION
    ========================================================= */
-
-checkSession();
-
+document.addEventListener(
+  "DOMContentLoaded",
+  function(){
+    checkSession();
+  }
+);
 </script>
-
 </body>
 </html>
