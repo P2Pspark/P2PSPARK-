@@ -3,25 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f7fa">
 
 <title>P2PSPARK</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-:root{
-  --bg:#f5f7fa;
-  --card:#fff;
-  --text:#101827;
-  --muted:#697386;
-  --line:#e4e8ee;
-  --blue:#2563eb;
-  --blue2:#eaf1ff;
-  --green:#16a34a;
-  --red:#dc2626;
-  --dark:#111827;
-}
-
 *{
   box-sizing:border-box;
 }
@@ -31,16 +19,15 @@ html,body{
   padding:0;
   width:100%;
   min-height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:#f5f7fa;
+  color:#111827;
 }
 
-body{
-  overflow-x:hidden;
-}
-
-button,input,select{
+button,
+input,
+select,
+textarea{
   font:inherit;
 }
 
@@ -56,315 +43,378 @@ button{
    LOGIN
 ========================= */
 
-.login-screen{
+#loginPage{
   min-height:100vh;
-  display:grid;
-  place-items:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding:20px;
   background:
-    radial-gradient(circle at top left,#eaf1ff,transparent 40%),
-    linear-gradient(145deg,#f7f9fc,#eaf0f8);
+    radial-gradient(circle at top left,#e9eef7 0,#f5f7fa 40%,#eef1f5 100%);
 }
 
-.login-card{
+.login-box{
   width:100%;
-  max-width:450px;
+  max-width:430px;
   background:#fff;
-  border-radius:25px;
-  padding:34px;
-  box-shadow:0 25px 70px rgba(15,23,42,.12);
+  border:1px solid #e5e7eb;
+  border-radius:24px;
+  padding:32px;
+  box-shadow:0 20px 60px rgba(15,23,42,.10);
 }
 
-.login-logo{
-  text-align:center;
-  font-size:31px;
-  font-weight:950;
-  letter-spacing:1px;
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:28px;
 }
 
-.login-logo span{
-  color:var(--blue);
+.logo-mark{
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111827;
+  color:#fff;
+  font-weight:800;
+  font-size:17px;
 }
 
-.login-sub{
-  text-align:center;
-  color:var(--muted);
-  letter-spacing:4px;
-  font-size:11px;
-  font-weight:750;
-  margin:8px 0 30px;
+.logo-text{
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:.3px;
 }
 
-.login-card h2{
-  text-align:center;
-  font-size:27px;
+.login-title{
   margin:0 0 8px;
+  font-size:28px;
+  font-weight:800;
 }
 
-.subtitle{
-  color:var(--muted);
-  margin-top:5px;
+.login-subtitle{
+  color:#6b7280;
+  margin:0 0 24px;
+  line-height:1.5;
 }
 
-.login-card .subtitle{
-  text-align:center;
+.form-group{
+  margin-bottom:16px;
 }
 
-.field{
-  margin-top:17px;
-}
-
-.field label{
+.form-group label{
   display:block;
   font-size:13px;
-  font-weight:750;
+  font-weight:700;
   margin-bottom:7px;
+  color:#374151;
 }
 
-.field input,
-.field select{
+.input{
   width:100%;
-  border:0;
-  background:#f7f9fc;
-  border-radius:11px;
-  padding:13px;
+  height:48px;
+  padding:0 15px;
+  border:1px solid #dfe3e8;
+  border-radius:12px;
+  background:#fff;
   outline:none;
+  transition:.2s;
 }
 
-.field input:focus,
-.field select:focus{
-  box-shadow:0 0 0 3px rgba(37,99,235,.1);
+.input:focus{
+  border-color:#111827;
+  box-shadow:0 0 0 3px rgba(17,24,39,.07);
 }
 
-.login-card .btn{
+.primary-btn{
   width:100%;
-  margin-top:20px;
-  height:50px;
+  height:48px;
+  border:0;
+  border-radius:12px;
+  background:#111827;
+  color:#fff;
+  font-weight:700;
+  transition:.2s;
 }
 
-.error{
+.primary-btn:hover{
+  opacity:.92;
+}
+
+.primary-btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.login-error{
   display:none;
-  background:#fee2e2;
-  color:#b91c1c;
-  border-radius:10px;
-  padding:11px 12px;
   margin-top:15px;
+  padding:12px 14px;
+  border-radius:10px;
+  background:#fef2f2;
+  color:#b91c1c;
   font-size:13px;
+  line-height:1.45;
 }
 
 /* =========================
    APP
 ========================= */
 
-.app{
+#app{
   min-height:100vh;
+  display:flex;
 }
 
+/* SIDEBAR */
+
 .sidebar{
+  width:250px;
+  min-height:100vh;
+  background:#fff;
+  border-right:1px solid #e5e7eb;
   position:fixed;
   left:0;
   top:0;
   bottom:0;
-  width:245px;
-  height:100vh;
-  background:#fff;
-  padding:25px 15px;
-  z-index:20;
-  overflow-y:auto;
-  scrollbar-width:none;
+  display:flex;
+  flex-direction:column;
+  z-index:50;
 }
 
-.sidebar::-webkit-scrollbar{
-  display:none;
-}
-
-.logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:.5px;
-  padding:4px 14px 28px;
-}
-
-.logo span{
-  color:var(--blue);
-}
-
-.nav-title{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  color:#9aa3b2;
-  margin:17px 13px 7px;
-}
-
-.nav button{
+.sidebar-header{
+  height:76px;
   display:flex;
   align-items:center;
-  gap:16px;
+  padding:0 20px;
+  border-bottom:1px solid #eef0f2;
+}
+
+.sidebar-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:18px;
+  font-weight:800;
+}
+
+.sidebar-brand-mark{
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:#111827;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:13px;
+}
+
+.sidebar-menu{
+  flex:1;
+  overflow-y:auto;
+  padding:14px 12px;
+}
+
+.menu-section{
+  margin:18px 8px 8px;
+  color:#9ca3af;
+  text-transform:uppercase;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.8px;
+}
+
+.menu-item{
   width:100%;
   border:0;
   background:transparent;
+  color:#4b5563;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding:11px 12px;
+  border-radius:10px;
   text-align:left;
-  padding:13px;
-  border-radius:12px;
-  color:#657083;
-  margin:3px 0;
+  margin-bottom:3px;
+  font-size:14px;
   font-weight:600;
-  font-size:17px;
 }
 
-.nav button:hover,
-.nav button.active{
-  background:#e9eaed;
-  color:#101827;
+.menu-item:hover{
+  background:#f3f4f6;
+  color:#111827;
 }
 
-.nav-icon{
+.menu-item.active{
+  background:#111827;
+  color:#fff;
+}
+
+.menu-icon{
+  width:20px;
+  text-align:center;
+  font-size:16px;
+}
+
+.sidebar-footer{
+  padding:12px;
+  border-top:1px solid #eef0f2;
+}
+
+.user-mini{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  margin-bottom:8px;
+}
+
+.avatar{
   width:38px;
   height:38px;
-  display:grid;
-  place-items:center;
-  flex:0 0 38px;
+  border-radius:50%;
+  background:#e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:800;
+  color:#374151;
 }
 
-.nav-icon svg{
-  width:29px;
-  height:29px;
-  stroke:currentColor;
-  fill:none;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.user-mini-info{
+  min-width:0;
 }
 
-.menu-close{
-  display:none;
+.user-mini-name{
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-/* =========================
-   MAIN
-========================= */
+.user-mini-role{
+  color:#9ca3af;
+  font-size:11px;
+}
+
+/* MAIN */
 
 .main{
-  margin-left:245px;
-  padding:30px;
-  max-width:1500px;
+  margin-left:250px;
+  width:calc(100% - 250px);
   min-height:100vh;
 }
 
-.top{
+.topbar{
+  height:76px;
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  margin-bottom:25px;
+  justify-content:space-between;
+  padding:0 28px;
+  position:sticky;
+  top:0;
+  z-index:30;
 }
 
-.top h1{
-  margin:0;
-  font-size:30px;
+.topbar-title{
+  font-size:21px;
+  font-weight:800;
 }
 
-.userbox{
+.topbar-right{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.avatar{
+.mobile-menu-btn{
+  display:none;
+  border:0;
+  background:#f3f4f6;
   width:42px;
   height:42px;
-  border-radius:50%;
-  background:var(--dark);
-  color:#fff;
-  display:grid;
-  place-items:center;
+  border-radius:10px;
+}
+
+.page{
+  padding:28px;
+}
+
+.page-header{
+  margin-bottom:22px;
+}
+
+.page-title{
+  margin:0 0 5px;
+  font-size:25px;
   font-weight:800;
 }
 
-.mobile-menu{
-  display:none;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:10px;
-  padding:9px 12px;
+.page-description{
+  margin:0;
+  color:#6b7280;
+  font-size:14px;
 }
 
-.section{
-  display:none;
-}
+/* CARDS */
 
-.section.active{
-  display:block;
-}
-
-/* =========================
-   CARDS
-========================= */
-
-.grid{
+.stats-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:20px;
+}
+
+.stat-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:20px;
+}
+
+.stat-label{
+  color:#6b7280;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+.stat-value{
+  font-size:25px;
+  font-weight:800;
+}
+
+.stat-small{
+  margin-top:7px;
+  color:#9ca3af;
+  font-size:12px;
+}
+
+/* CONTENT GRID */
+
+.content-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
   gap:18px;
 }
 
 .card{
-  background:var(--card);
-  border-radius:17px;
-  padding:21px;
-  box-shadow:0 6px 25px rgba(16,24,40,.04);
-  margin-bottom:18px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  padding:20px;
 }
 
-.label{
-  font-size:13px;
-  color:var(--muted);
-  font-weight:600;
-}
-
-.big{
-  font-size:28px;
-  font-weight:850;
-  margin-top:8px;
-}
-
-.green{
-  color:var(--green);
-}
-
-.red{
-  color:var(--red);
-}
-
-.small{
-  font-size:13px;
-  color:var(--muted);
-}
-
-.btn{
-  border:0;
-  border-radius:10px;
-  padding:11px 16px;
-  font-weight:750;
-}
-
-.primary{
-  background:var(--blue);
-  color:#fff;
-}
-
-.light{
-  background:#eef2f7;
-  color:#253044;
-}
-
-.danger{
-  background:#fee2e2;
-  color:#b91c1c;
-}
-
-.success{
-  background:#dcfce7;
-  color:#15803d;
+.card-title{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:15px;
 }
 
 .actions{
@@ -373,569 +423,541 @@ button{
   flex-wrap:wrap;
 }
 
-/* =========================
-   DASHBOARD BUTTONS
-========================= */
-
-.dashboard-actions{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-top:22px;
-}
-
-.dashboard-action{
+.btn{
+  height:43px;
+  padding:0 17px;
   border:0;
-  border-radius:17px;
-  padding:18px 20px;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  gap:15px;
-  text-align:left;
-  box-shadow:0 6px 25px rgba(16,24,40,.04);
-  min-height:82px;
+  border-radius:10px;
+  font-weight:700;
 }
 
-.action-icon{
-  width:46px;
-  height:46px;
-  border-radius:13px;
-  display:grid;
-  place-items:center;
-  font-size:28px;
-  font-weight:800;
+.btn-dark{
+  background:#111827;
+  color:#fff;
 }
 
-.deposit-action .action-icon{
-  background:#eaf1ff;
-  color:#2563eb;
+.btn-light{
+  background:#f3f4f6;
+  color:#111827;
 }
 
-.withdraw-action .action-icon{
-  background:#ecfdf3;
-  color:#16a34a;
-}
-
-.dashboard-action b{
-  display:block;
-  font-size:17px;
-}
-
-.dashboard-action small{
-  display:block;
-  margin-top:4px;
-  color:#697386;
-}
-
-/* =========================
-   TABLE
-========================= */
-
-.table-wrap{
-  overflow:auto;
-  background:#fff;
-  border-radius:17px;
-}
-
-.table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:700px;
-}
-
-.table th,
-.table td{
-  padding:15px 17px;
-  text-align:left;
-}
-
-.table th{
-  font-size:12px;
-  text-transform:uppercase;
-  color:#8a94a5;
-}
-
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:750;
-}
-
-.badge.green{
-  background:#dcfce7;
-  color:#15803d;
-}
-
-.badge.red{
+.btn-danger{
   background:#fee2e2;
   color:#b91c1c;
 }
 
-.badge.gray{
-  background:#eef2f7;
-  color:#667085;
+.btn-success{
+  background:#dcfce7;
+  color:#166534;
+}
+
+/* TABLE */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th,
+td{
+  padding:13px 12px;
+  border-bottom:1px solid #eef0f2;
+  text-align:left;
+  white-space:nowrap;
+  font-size:13px;
+}
+
+th{
+  color:#6b7280;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
 }
 
 .empty{
   text-align:center;
-  color:var(--muted);
-  padding:35px;
+  color:#9ca3af;
+  padding:30px;
 }
 
-/* =========================
-   ADMIN
-========================= */
+/* BADGES */
 
-.admin-head{
-  background:var(--dark);
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.badge-green{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.badge-red{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.badge-gray{
+  background:#f3f4f6;
+  color:#4b5563;
+}
+
+.badge-dark{
+  background:#111827;
   color:#fff;
-  border-radius:17px;
-  padding:20px;
-  margin-bottom:18px;
 }
 
-.admin-head h2{
-  margin:0 0 5px;
-}
+/* PROFILE */
 
-.form-grid{
+.profile-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
 }
 
-/* =========================
-   MODAL
-========================= */
+.profile-field{
+  padding:15px;
+  border:1px solid #eef0f2;
+  border-radius:12px;
+}
+
+.profile-label{
+  color:#9ca3af;
+  font-size:11px;
+  margin-bottom:5px;
+}
+
+.profile-value{
+  font-weight:700;
+  word-break:break-word;
+}
+
+/* REQUISITES */
+
+.requisite-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.qr-box{
+  width:190px;
+  height:190px;
+  border:1px dashed #d1d5db;
+  border-radius:14px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  background:#f9fafb;
+}
+
+.qr-box img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+}
+
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:11px 0;
+  border-bottom:1px solid #eef0f2;
+}
+
+.info-row:last-child{
+  border-bottom:0;
+}
+
+.info-label{
+  color:#6b7280;
+  font-size:13px;
+}
+
+.info-value{
+  font-size:13px;
+  font-weight:700;
+  text-align:right;
+  word-break:break-all;
+}
+
+/* MODAL */
 
 .modal{
-  display:none;
   position:fixed;
   inset:0;
-  background:rgba(15,23,42,.55);
-  z-index:100;
+  background:rgba(15,23,42,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   padding:20px;
-  overflow:auto;
+  z-index:100;
 }
 
-.modal.show{
-  display:grid;
-  place-items:center;
-}
-
-.modalbox{
+.modal-box{
   width:100%;
-  max-width:800px;
+  max-width:650px;
+  max-height:90vh;
+  overflow-y:auto;
   background:#fff;
-  border-radius:20px;
-  padding:24px;
-  position:relative;
-  max-height:92vh;
-  overflow:auto;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 25px 80px rgba(0,0,0,.2);
 }
 
-.close{
-  position:absolute;
-  right:15px;
-  top:13px;
-  border:0;
-  background:#eef2f7;
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.modal-title{
+  font-size:20px;
+  font-weight:800;
+}
+
+.close-btn{
   width:36px;
   height:36px;
-  border-radius:50%;
-  font-size:22px;
+  border:0;
+  border-radius:9px;
+  background:#f3f4f6;
+  font-size:18px;
 }
 
-.section-title{
-  font-size:16px;
-  font-weight:850;
-  margin:22px 0 12px;
+.modal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.modal-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-top:20px;
+}
 
-@media(max-width:900px){
+/* TOAST */
+
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:200;
+  max-width:350px;
+  padding:13px 16px;
+  border-radius:12px;
+  background:#111827;
+  color:#fff;
+  font-size:13px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  transform:translateY(20px);
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+}
+
+.toast.show{
+  transform:translateY(0);
+  opacity:1;
+}
+
+.toast.error{
+  background:#991b1b;
+}
+
+/* LOADING */
+
+.loading{
+  min-height:200px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#6b7280;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:800px){
 
   .sidebar{
     transform:translateX(-100%);
-    transition:.2s;
-    padding:25px 24px 30px;
+    transition:.25s;
   }
 
   .sidebar.open{
     transform:translateX(0);
   }
 
-  .menu-close{
-    display:block;
-    width:100%;
-    height:58px;
-    border:0;
-    border-radius:15px;
-    background:#111;
-    color:#fff;
-    font-size:20px;
-    margin-bottom:35px;
-  }
-
-  .sidebar .logo{
-    display:none;
-  }
-
   .main{
     margin-left:0;
-    padding:20px 15px;
+    width:100%;
   }
 
-  .mobile-menu{
+  .mobile-menu-btn{
     display:block;
   }
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
+  .topbar{
+    padding:0 15px;
   }
 
+  .page{
+    padding:18px 14px;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .stat-card{
+    padding:15px;
+  }
+
+  .stat-value{
+    font-size:20px;
+  }
+
+  .profile-grid,
+  .requisite-grid,
+  .modal-grid{
+    grid-template-columns:1fr;
+  }
 }
 
-@media(max-width:560px){
+@media(max-width:500px){
 
-  .grid,
-  .form-grid{
+  .login-box{
+    padding:24px 18px;
+  }
+
+  .stats-grid{
     grid-template-columns:1fr;
   }
 
-  .dashboard-actions{
-    grid-template-columns:1fr;
+  .topbar-title{
+    font-size:17px;
   }
 
-  .card{
-    padding:17px;
+  .page-title{
+    font-size:22px;
   }
 
-  .top{
-    align-items:flex-start;
+  .actions .btn{
+    width:100%;
   }
 
-  .top h1{
-    font-size:25px;
+  .qr-box{
+    width:160px;
+    height:160px;
   }
-
-  .userbox{
-    display:none;
-  }
-
-  .login-card{
-    padding:25px;
-  }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
+<!-- =========================
      LOGIN
-===================================================== -->
+========================= -->
 
-<div id="loginScreen" class="login-screen">
+<section id="loginPage">
 
-  <div class="login-card">
+  <div class="login-box">
 
-    <div class="login-logo">
-      P2SPARK
+    <div class="logo">
+      <div class="logo-mark">PS</div>
+      <div class="logo-text">P2PSPARK</div>
     </div>
 
-    <div class="login-sub">
-      PEOPLE • DEALS • OPPORTUNITIES
-    </div>
+    <h1 class="login-title">Вход в кабинет</h1>
 
-    <h2>Вход в аккаунт</h2>
+    <p class="login-subtitle">
+      Введите email и пароль для доступа к вашему личному кабинету.
+    </p>
 
-    <div class="subtitle">
-      Введите данные, выданные администратором
-    </div>
+    <form id="loginForm">
 
-    <div id="loginError" class="error"></div>
+      <div class="form-group">
+        <label>Email</label>
+        <input
+          id="loginEmail"
+          class="input"
+          type="email"
+          placeholder="Введите email"
+          autocomplete="email"
+          required
+        >
+      </div>
 
-    <div class="field">
-      <label>Email</label>
-      <input
-        id="loginEmail"
-        type="email"
-        autocomplete="username"
-        placeholder="example@gmail.com"
+      <div class="form-group">
+        <label>Пароль</label>
+        <input
+          id="loginPassword"
+          class="input"
+          type="password"
+          placeholder="Введите пароль"
+          autocomplete="current-password"
+          required
+        >
+      </div>
+
+      <button
+        id="loginButton"
+        class="primary-btn"
+        type="submit"
       >
-    </div>
+        Войти
+      </button>
 
-    <div class="field">
-      <label>Пароль</label>
-      <input
-        id="loginPassword"
-        type="password"
-        autocomplete="current-password"
-        placeholder="Введите пароль"
-      >
-    </div>
+      <div id="loginError" class="login-error"></div>
 
-    <button
-      class="btn primary"
-      onclick="login()"
-    >
-      Войти →
-    </button>
-
-    <div
-      class="small"
-      style="text-align:center;margin-top:18px"
-    >
-      Доступ к аккаунту создаёт администратор
-    </div>
+    </form>
 
   </div>
 
-</div>
+</section>
 
 
-<!-- =====================================================
-     APPLICATION
-===================================================== -->
+<!-- =========================
+     APP
+========================= -->
 
-<div id="app" class="app hidden">
+<section id="app" class="hidden">
 
   <!-- SIDEBAR -->
 
   <aside id="sidebar" class="sidebar">
 
-    <button
-      class="menu-close"
-      onclick="toggleMenu()"
-    >
-      Закрыть
-    </button>
-
-    <div class="logo">
-      P2P<span>SPARK</span>
+    <div class="sidebar-header">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-mark">PS</div>
+        <span>P2PSPARK</span>
+      </div>
     </div>
 
-    <div class="nav">
+    <div class="sidebar-menu">
 
-      <div class="nav-title">
-        Основное
-      </div>
+      <div class="menu-section">Основное</div>
 
-      <button
-        data-page="dashboard"
-        onclick="go('dashboard')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M5 25V17"/>
-            <path d="M13 25V11"/>
-            <path d="M21 25V6"/>
-            <path d="M27 25V14"/>
-          </svg>
-        </span>
+      <button class="menu-item active" data-page="dashboard">
+        <span class="menu-icon">⌂</span>
         <span>Дашборд</span>
       </button>
 
-      <button
-        data-page="finance"
-        onclick="go('finance')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <ellipse cx="11" cy="8" rx="6" ry="3"/>
-            <path d="M5 8v6c0 1.7 2.7 3 6 3s6-1.3 6-3V8"/>
-            <circle cx="23" cy="21" r="5"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="finances">
+        <span class="menu-icon">₸</span>
         <span>Финансы</span>
       </button>
 
-      <button
-        data-page="deals"
-        onclick="go('deals')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <circle cx="11" cy="16" r="6"/>
-            <path d="M6 10 3 13l3 3"/>
-            <path d="M16 22 19 19l-3-3"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="deals">
+        <span class="menu-icon">⇄</span>
         <span>Сделки</span>
       </button>
 
-      <button
-        data-page="requests"
-        onclick="go('requests')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <circle cx="16" cy="16" r="10"/>
-            <path d="M16 10v7l5 3"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="requests">
+        <span class="menu-icon">▣</span>
         <span>Заявки</span>
       </button>
 
-      <button
-        data-page="disputes"
-        onclick="go('disputes')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M8 5h13l4 4v18H8z"/>
-            <path d="M21 5v5h4"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="disputes">
+        <span class="menu-icon">!</span>
         <span>Споры</span>
       </button>
 
-      <div class="nav-title">
-        Работа
-      </div>
-
-      <button
-        data-page="requisites"
-        onclick="go('requisites')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <rect x="4" y="7" width="24" height="18" rx="2"/>
-            <path d="M4 12h24"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="requisites">
+        <span class="menu-icon">⌁</span>
         <span>Реквизиты</span>
       </button>
 
-      <button
-        data-page="devices"
-        onclick="go('devices')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <rect x="8" y="4" width="16" height="24" rx="3"/>
-            <circle cx="16" cy="23" r="1"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="devices">
+        <span class="menu-icon">▣</span>
         <span>Устройства</span>
       </button>
 
-      <button
-        data-page="messages"
-        onclick="go('messages')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M6 9a5 5 0 0 1 5-5h10a5 5 0 0 1 5 5v7a5 5 0 0 1-5 5h-5l-5 4v-4a5 5 0 0 1-5-5z"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="messages">
+        <span class="menu-icon">✉</span>
         <span>Сообщения</span>
       </button>
 
-      <button
-        data-page="turbo"
-        onclick="go('turbo')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M18 3 7 17h8l-1 12 11-15h-8z"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="turbo">
+        <span class="menu-icon">⚡</span>
         <span>Турбозалив</span>
       </button>
 
-      <button
-        data-page="counterparties"
-        onclick="go('counterparties')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <circle cx="11" cy="11" r="4"/>
-            <circle cx="22" cy="12" r="3"/>
-            <path d="M4 25c0-4 3-7 7-7s7 3 7 7"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="counterparties">
+        <span class="menu-icon">♙</span>
         <span>Контрагенты</span>
       </button>
 
-      <button
-        data-page="reports"
-        onclick="go('reports')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M7 4h13l5 5v19H7z"/>
-            <path d="M11 23v-5"/>
-            <path d="M16 23v-9"/>
-            <path d="M21 23v-3"/>
-          </svg>
-        </span>
+      <button class="menu-item" data-page="reports">
+        <span class="menu-icon">▤</span>
         <span>Отчёты</span>
       </button>
 
-      <button
-        data-page="profile"
-        onclick="go('profile')"
-      >
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <circle cx="16" cy="10" r="6"/>
-            <path d="M5 28c1.5-6 5.2-9 11-9s9.5 3 11 9"/>
-          </svg>
-        </span>
+      <div class="menu-section">Аккаунт</div>
+
+      <button class="menu-item" data-page="profile">
+        <span class="menu-icon">●</span>
         <span>Профиль</span>
       </button>
 
+      <div id="adminMenu">
 
-      <!-- ADMIN -->
+        <div class="menu-section">Администрирование</div>
 
-      <div id="adminNav" class="hidden">
-
-        <div class="nav-title">
-          Администрирование
-        </div>
-
-        <button
-          data-page="admin"
-          onclick="go('admin')"
-        >
-          <span class="nav-icon">
-            <svg viewBox="0 0 32 32">
-              <path d="M16 4l2 4 4 1-3 3 1 4-4-2-4 2 1-4-3-3 4-1z"/>
-              <path d="M8 27c1-4 4-6 8-6s7 2 8 6"/>
-            </svg>
-          </span>
-
+        <button class="menu-item" data-page="admin">
+          <span class="menu-icon">⚙</span>
           <span>Админ-панель</span>
         </button>
 
       </div>
 
+    </div>
 
-      <div class="nav-title">
-        Аккаунт
+    <div class="sidebar-footer">
+
+      <div class="user-mini">
+
+        <div id="avatar" class="avatar">U</div>
+
+        <div class="user-mini-info">
+          <div id="miniName" class="user-mini-name">
+            Пользователь
+          </div>
+
+          <div id="miniRole" class="user-mini-role">
+            USER
+          </div>
+        </div>
+
       </div>
 
-      <button onclick="logout()">
-
-        <span class="nav-icon">
-          <svg viewBox="0 0 32 32">
-            <path d="M12 5H7v22h5"/>
-            <path d="M18 10l6 6-6 6"/>
-            <path d="M24 16H11"/>
-          </svg>
-        </span>
-
+      <button id="logoutBtn" class="menu-item">
+        <span class="menu-icon">↪</span>
         <span>Выйти</span>
-
       </button>
 
     </div>
@@ -947,1093 +969,300 @@ button{
 
   <main class="main">
 
-    <div class="top">
+    <header class="topbar">
 
       <div style="display:flex;align-items:center;gap:12px">
 
         <button
-          class="mobile-menu"
-          onclick="toggleMenu()"
+          id="mobileMenuBtn"
+          class="mobile-menu-btn"
         >
           ☰
         </button>
 
-        <div>
-
-          <h1 id="pageTitle">
-            Дашборд
-          </h1>
-
-          <div class="subtitle">
-            P2PSPARK
-          </div>
-
+        <div id="topbarTitle" class="topbar-title">
+          Дашборд
         </div>
 
       </div>
 
+      <div class="topbar-right">
 
-      <div class="userbox">
-
-        <div>
-
-          <b id="topEmail"></b>
-
-          <div
-            class="small"
-            id="roleText"
-          ></div>
-
-        </div>
-
-        <div
-          class="avatar"
-          id="avatar"
-        >
-          U
-        </div>
+        <span id="topbarUser" class="badge badge-gray">
+          USER
+        </span>
 
       </div>
+
+    </header>
+
+    <div id="pageContainer" class="page">
+    </div>
+
+  </main>
+
+</section>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div id="modal" class="modal hidden">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <div id="modalTitle" class="modal-title">
+        Окно
+      </div>
+
+      <button id="closeModal" class="close-btn">
+        ×
+      </button>
 
     </div>
 
+    <div id="modalContent"></div>
 
-    <!-- DASHBOARD -->
-
-    <section
-      id="dashboard"
-      class="section active"
-    >
-
-      <div class="grid">
-
-        <div class="card">
-
-          <div class="label">
-            Баланс депозита
-          </div>
-
-          <div
-            id="dDeposit"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-          <div class="small">
-            Текущий баланс
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Активные сделки
-          </div>
-
-          <div
-            id="dDeals"
-            class="big"
-          >
-            0
-          </div>
-
-          <div class="small">
-            На текущий момент
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Оборот
-          </div>
-
-          <div
-            id="dTurnover"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-          <div class="small">
-            За текущий месяц
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Прибыль
-          </div>
-
-          <div
-            id="dProfit"
-            class="big green"
-          >
-            0 USDT
-          </div>
-
-          <div class="small">
-            За текущий месяц
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="dashboard-actions">
-
-        <button
-          class="dashboard-action deposit-action"
-          onclick="go('deposit')"
-        >
-
-          <span class="action-icon">
-            ＋
-          </span>
-
-          <span>
-            <b>Пополнить</b>
-            <small>Пополнить баланс</small>
-          </span>
-
-        </button>
-
-
-        <button
-          class="dashboard-action withdraw-action"
-          onclick="go('withdraw')"
-        >
-
-          <span class="action-icon">
-            ↑
-          </span>
-
-          <span>
-            <b>Вывести</b>
-            <small>Вывести средства</small>
-          </span>
-
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- FINANCE -->
-
-    <section
-      id="finance"
-      class="section"
-    >
-
-      <h2>Финансы</h2>
-
-      <div class="subtitle">
-        Ваши финансовые показатели
-      </div>
-
-      <div
-        class="grid"
-        style="margin-top:20px"
-      >
-
-        <div class="card">
-
-          <div class="label">
-            Депозит
-          </div>
-
-          <div
-            id="fDeposit"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Оборот
-          </div>
-
-          <div
-            id="fTurnover"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Прибыль
-          </div>
-
-          <div
-            id="fProfit"
-            class="big green"
-          >
-            0 USDT
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Комиссия
-          </div>
-
-          <div
-            id="fCommission"
-            class="big"
-          >
-            0%
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- DEALS -->
-
-    <section
-      id="deals"
-      class="section"
-    >
-
-      <h2>Сделки</h2>
-
-      <div class="subtitle">
-        История и текущие операции
-      </div>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Пока нет сделок
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- REQUESTS -->
-
-    <section
-      id="requests"
-      class="section"
-    >
-
-      <h2>Заявки</h2>
-
-      <div class="subtitle">
-        Входящие и исходящие заявки
-      </div>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Новых заявок нет
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- DISPUTES -->
-
-    <section
-      id="disputes"
-      class="section"
-    >
-
-      <h2>Споры</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Активных споров нет
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- REQUISITES -->
-
-    <section
-      id="requisites"
-      class="section"
-    >
-
-      <h2>Реквизиты</h2>
-
-      <div class="subtitle">
-        Ваши крипто-реквизиты
-      </div>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="label">
-          Сеть
-        </div>
-
-        <div
-          id="rNetwork"
-          class="big"
-          style="font-size:20px"
-        >
-          —
-        </div>
-
-
-        <div style="margin-top:20px">
-
-          <div class="label">
-            Кошелёк
-          </div>
-
-          <div
-            id="rWallet"
-            style="margin-top:7px;word-break:break-all;font-weight:700"
-          >
-            —
-          </div>
-
-        </div>
-
-
-        <img
-          id="rQr"
-          style="
-            display:none;
-            max-width:220px;
-            max-height:220px;
-            border-radius:12px;
-            margin:20px auto;
-          "
-        >
-
-      </div>
-
-    </section>
-
-
-    <!-- DEPOSIT -->
-
-    <section
-      id="deposit"
-      class="section"
-    >
-
-      <h2>Пополнение</h2>
-
-      <div class="subtitle">
-        Реквизиты для пополнения
-      </div>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <img
-          id="depositQr"
-          style="
-            display:none;
-            max-width:260px;
-            max-height:260px;
-            border-radius:12px;
-            margin:0 auto 20px;
-          "
-        >
-
-        <div class="grid">
-
-          <div>
-
-            <div class="label">
-              Сеть
-            </div>
-
-            <div
-              id="depositNetwork"
-              class="big"
-              style="font-size:20px"
-            >
-              —
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <div class="label">
-              Способ
-            </div>
-
-            <div
-              id="depositMethod"
-              class="big"
-              style="font-size:20px"
-            >
-              —
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div style="margin-top:20px">
-
-          <div class="label">
-            Кошелёк
-          </div>
-
-          <div
-            id="depositWallet"
-            style="margin-top:7px;word-break:break-all;font-weight:700"
-          >
-            —
-          </div>
-
-        </div>
-
-
-        <div
-          id="depositLinkWrap"
-          style="display:none;margin-top:20px"
-        >
-
-          <div class="label">
-            Ссылка
-          </div>
-
-          <a
-            id="depositWalletLink"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="
-              display:block;
-              margin-top:7px;
-              word-break:break-all;
-              color:var(--blue);
-              font-weight:700;
-            "
-          ></a>
-
-        </div>
-
-
-        <div class="actions" style="margin-top:20px">
-
-          <button
-            class="btn light"
-            onclick="copyWallet()"
-          >
-            Скопировать кошелёк
-          </button>
-
-          <button
-            class="btn primary"
-            onclick="openWalletLink()"
-          >
-            Открыть кошелёк
-          </button>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- WITHDRAW -->
-
-    <section
-      id="withdraw"
-      class="section"
-    >
-
-      <h2>Вывод</h2>
-
-      <div class="subtitle">
-        Создание заявки на вывод
-      </div>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="form-grid">
-
-          <div class="field">
-
-            <label>
-              Сумма USDT
-            </label>
-
-            <input
-              id="withdrawAmount"
-              type="number"
-              min="0"
-              step="any"
-              placeholder="Введите сумму"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Сеть
-            </label>
-
-            <select id="withdrawNetwork">
-              <option>TRC20</option>
-              <option>ERC20</option>
-              <option>BEP20</option>
-              <option>SOL</option>
-              <option>TON</option>
-            </select>
-
-          </div>
-
-
-          <div
-            class="field"
-            style="grid-column:1/-1"
-          >
-
-            <label>
-              Адрес кошелька
-            </label>
-
-            <input
-              id="withdrawWallet"
-              placeholder="Введите адрес кошелька"
-            >
-
-          </div>
-
-        </div>
-
-
-        <button
-          class="btn primary"
-          style="margin-top:20px"
-          onclick="submitWithdraw()"
-        >
-          Отправить заявку
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- DEVICES -->
-
-    <section
-      id="devices"
-      class="section"
-    >
-
-      <h2>Устройства</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Текущее устройство · Активно
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- MESSAGES -->
-
-    <section
-      id="messages"
-      class="section"
-    >
-
-      <h2>Сообщения</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <h3>
-          Системное сообщение
-        </h3>
-
-        <div class="subtitle">
-          Добро пожаловать в P2PSPARK.
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- TURBO -->
-
-    <section
-      id="turbo"
-      class="section"
-    >
-
-      <h2>Турбозалив</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Функция будет подключена на следующем этапе
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- COUNTERPARTIES -->
-
-    <section
-      id="counterparties"
-      class="section"
-    >
-
-      <h2>Контрагенты</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Контрагенты пока отсутствуют
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- REPORTS -->
-
-    <section
-      id="reports"
-      class="section"
-    >
-
-      <h2>Отчёты</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Отчёты будут подключены следующим этапом
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROFILE -->
-
-    <section
-      id="profile"
-      class="section"
-    >
-
-      <h2>Профиль</h2>
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="form-grid">
-
-          <div class="field">
-
-            <label>
-              Имя
-            </label>
-
-            <input
-              id="profileName"
-              disabled
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Email
-            </label>
-
-            <input
-              id="profileEmail"
-              disabled
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Роль
-            </label>
-
-            <input
-              id="profileRole"
-              disabled
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Статус
-            </label>
-
-            <input
-              id="profileStatus"
-              disabled
-            >
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ADMIN -->
-
-    <section
-      id="admin"
-      class="section"
-    >
-
-      <div class="admin-head">
-
-        <h2>
-          Админ-панель
-        </h2>
-
-        <div>
-          Управление пользователями P2PSPARK
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <h2>
-          Пользователи
-        </h2>
-
-        <div
-          class="actions"
-          style="margin:15px 0"
-        >
-
-          <button
-            class="btn primary"
-            onclick="loadUsers()"
-          >
-            Обновить
-          </button>
-
-        </div>
-
-
-        <div class="table-wrap">
-
-          <table class="table">
-
-            <thead>
-
-              <tr>
-
-                <th>
-                  Имя
-                </th>
-
-                <th>
-                  Email
-                </th>
-
-                <th>
-                  Роль
-                </th>
-
-                <th>
-                  Статус
-                </th>
-
-                <th>
-                  Депозит
-                </th>
-
-              </tr>
-
-            </thead>
-
-            <tbody id="usersTable">
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
+  </div>
 
 </div>
 
 
+<div id="toast" class="toast"></div>
+
+
 <script>
 
-/* ========================================================
-   P2PSPARK
-   NEW SUPABASE
-======================================================== */
+/* =====================================================
+   SUPABASE CONFIG
+===================================================== */
 
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
 
-const SUPABASE_PUBLISHABLE_KEY =
+const SUPABASE_KEY =
   "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
 
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    SUPABASE_KEY
   );
 
 
-/* ========================================================
-   GLOBAL STATE
-======================================================== */
+/* =====================================================
+   STATE
+===================================================== */
 
 let currentUser = null;
 let currentProfile = null;
-let currentRequisite = null;
+let currentRequisites = null;
 
 
-/* ========================================================
+/* =====================================================
    HELPERS
-======================================================== */
+===================================================== */
 
-function money(value){
-
-  const number =
-    Number(value || 0);
-
-  return number.toLocaleString("ru-RU") + " USDT";
-
-}
-
-
-function showLoginError(message){
-
-  const box =
-    document.getElementById("loginError");
-
-  box.textContent = message;
-
-  box.style.display = "block";
-
-}
-
-
-function hideLoginError(){
-
-  const box =
-    document.getElementById("loginError");
-
-  box.style.display = "none";
-
+function $(id){
+  return document.getElementById(id);
 }
 
 
 function escapeHtml(value){
 
-  return String(value ?? "")
-    .replace(/[&<>"']/g, function(char){
+  if(value === null || value === undefined){
+    return "";
+  }
 
-      return {
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
-      }[char];
-
-    });
-
+  return String(value)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
 
-/* ========================================================
-   LOGIN
-======================================================== */
+function formatMoney(value){
 
-async function login(){
+  const number =
+    Number(value || 0);
 
-  hideLoginError();
-
-  const email =
-    document
-      .getElementById("loginEmail")
-      .value
-      .trim()
-      .toLowerCase();
-
-  const password =
-    document
-      .getElementById("loginPassword")
-      .value;
-
-  if(!email){
-
-    showLoginError(
-      "Введите email"
-    );
-
-    return;
-
-  }
-
-  if(!password){
-
-    showLoginError(
-      "Введите пароль"
-    );
-
-    return;
-
-  }
+  return number.toLocaleString(
+    "ru-RU",
+    {
+      minimumFractionDigits:2,
+      maximumFractionDigits:2
+    }
+  );
+}
 
 
-  const {
-    data,
+function showToast(message,error=false){
+
+  const toast = $("toast");
+
+  toast.textContent = message;
+
+  toast.classList.toggle(
+    "error",
     error
-  } =
-    await supabaseClient.auth.signInWithPassword({
-      email,
-      password
-    });
+  );
 
+  toast.classList.add("show");
 
-  if(error){
-
-    console.error(error);
-
-    showLoginError(
-      error.message === "Invalid login credentials"
-        ? "Неверный email или пароль"
-        : error.message
-    );
-
-    return;
-
-  }
-
-
-  if(!data?.user){
-
-    showLoginError(
-      "Пользователь не найден"
-    );
-
-    return;
-
-  }
-
-
-  await start();
-
+  setTimeout(()=>{
+    toast.classList.remove("show");
+  },3500);
 }
 
 
-/* ========================================================
-   LOAD PROFILE
-======================================================== */
+function showLoginError(message){
+
+  const box = $("loginError");
+
+  box.textContent = message;
+
+  box.style.display = "block";
+}
+
+
+function clearLoginError(){
+
+  const box = $("loginError");
+
+  box.textContent = "";
+
+  box.style.display = "none";
+}
+
+
+function getInitials(name,email){
+
+  const source =
+    name ||
+    email ||
+    "U";
+
+  const parts =
+    source.trim().split(/\s+/);
+
+  if(parts.length >= 2){
+
+    return (
+      parts[0][0] +
+      parts[1][0]
+    ).toUpperCase();
+
+  }
+
+  return source
+    .slice(0,2)
+    .toUpperCase();
+}
+
+
+function roleName(role){
+
+  if(!role){
+    return "USER";
+  }
+
+  return String(role).toUpperCase();
+}
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+async function login(email,password){
+
+  clearLoginError();
+
+  const button =
+    $("loginButton");
+
+  button.disabled = true;
+  button.textContent = "Вход...";
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient.auth.signInWithPassword({
+        email:email.trim(),
+        password:password
+      });
+
+    if(error){
+      throw error;
+    }
+
+    if(!data.user){
+      throw new Error(
+        "Пользователь не найден."
+      );
+    }
+
+    currentUser =
+      data.user;
+
+    await loadProfile();
+
+    await showApplication();
+
+  }catch(error){
+
+    console.error(
+      "LOGIN ERROR:",
+      error
+    );
+
+    let message =
+      error?.message ||
+      "Не удалось выполнить вход.";
+
+    if(
+      message.toLowerCase()
+        .includes("invalid login credentials")
+    ){
+      message =
+        "Неверный email или пароль. Проверьте, что этот пользователь создан именно в текущем Supabase.";
+    }
+
+    if(
+      message.toLowerCase()
+        .includes("email not confirmed")
+    ){
+      message =
+        "Email пользователя не подтверждён в Supabase.";
+    }
+
+    showLoginError(message);
+
+  }finally{
+
+    button.disabled = false;
+    button.textContent = "Войти";
+
+  }
+
+}
+
 
 async function loadProfile(){
 
-  if(!currentUser)
-    return false;
-
+  if(!currentUser){
+    throw new Error(
+      "Не найден пользователь Supabase."
+    );
+  }
 
   const {
     data,
@@ -2043,8 +1272,7 @@ async function loadProfile(){
       .from("profiles")
       .select("*")
       .eq("id",currentUser.id)
-      .single();
-
+      .maybeSingle();
 
   if(error){
 
@@ -2053,803 +1281,95 @@ async function loadProfile(){
       error
     );
 
-    alert(
-      "Аккаунт вошёл в Supabase, но профиль не найден."
+    throw new Error(
+      "Авторизация прошла, но профиль не загрузился: " +
+      error.message
     );
-
-    return false;
 
   }
 
+  if(!data){
+
+    throw new Error(
+      "Профиль пользователя не найден в таблице profiles. " +
+      "Нужно создать профиль для этого Auth пользователя."
+    );
+
+  }
 
   currentProfile = data;
 
-
-  const {
-    data: requisite,
-    error: requisiteError
-  } =
-    await supabaseClient
-      .from("requisites")
-      .select("*")
-      .eq("user_id",currentUser.id)
-      .order("created_at",{
-        ascending:false
-      })
-      .limit(1)
-      .maybeSingle();
-
-
-  if(requisiteError){
-
-    console.warn(
-      "REQUISITE ERROR:",
-      requisiteError
-    );
-
-  }
-
-
-  currentRequisite =
-    requisite || null;
-
-
-  return true;
-
 }
 
 
-/* ========================================================
-   START APP
-======================================================== */
-
-async function start(){
-
-  const {
-    data
-  } =
-    await supabaseClient.auth.getSession();
-
-
-  currentUser =
-    data?.session?.user || null;
-
-
-  if(!currentUser){
-
-    document
-      .getElementById("loginScreen")
-      .style.display = "grid";
-
-    document
-      .getElementById("app")
-      .classList.add("hidden");
-
-    return;
-
-  }
-
-
-  const profileLoaded =
-    await loadProfile();
-
-
-  if(!profileLoaded){
-
-    await supabaseClient.auth.signOut();
-
-    return;
-
-  }
-
-
-  if(
-    currentProfile.status === "blocked"
-  ){
-
-    alert(
-      "Ваш аккаунт заблокирован администратором."
-    );
-
-    await supabaseClient.auth.signOut();
-
-    return;
-
-  }
-
-
-  document
-    .getElementById("loginScreen")
-    .style.display = "none";
-
-  document
-    .getElementById("app")
-    .classList.remove("hidden");
-
-
-  setupUserInterface();
-
-  render();
-
-}
-
-
-/* ========================================================
-   USER INTERFACE
-======================================================== */
-
-function setupUserInterface(){
-
-  const profile =
-    currentProfile;
-
-
-  const isAdmin =
-    profile.role === "ADMIN";
-
-
-  document
-    .getElementById("adminNav")
-    .classList.toggle(
-      "hidden",
-      !isAdmin
-    );
-
-
-  const email =
-    profile.email ||
-    currentUser.email ||
-    "";
-
-
-  document
-    .getElementById("topEmail")
-    .textContent =
-      email;
-
-
-  document
-    .getElementById("roleText")
-    .textContent =
-      isAdmin
-        ? "ADMIN"
-        : "USER";
-
-
-  const avatarText =
-    (
-      profile.name ||
-      email ||
-      "U"
-    ).charAt(0).toUpperCase();
-
-
-  document
-    .getElementById("avatar")
-    .textContent =
-      avatarText;
-
-
-  document
-    .getElementById("profileName")
-    .value =
-      profile.name || "";
-
-
-  document
-    .getElementById("profileEmail")
-    .value =
-      email;
-
-
-  document
-    .getElementById("profileRole")
-    .value =
-      profile.role || "USER";
-
-
-  document
-    .getElementById("profileStatus")
-    .value =
-      profile.status === "blocked"
-        ? "Заблокирован"
-        : "Активен";
-
-}
-
-
-/* ========================================================
-   RENDER
-======================================================== */
-
-function render(){
-
-  if(!currentProfile)
-    return;
-
-
-  const profile =
-    currentProfile;
-
-
-  document
-    .getElementById("dDeposit")
-    .textContent =
-      money(profile.deposit);
-
-
-  document
-    .getElementById("dDeals")
-    .textContent =
-      profile.deals || 0;
-
-
-  document
-    .getElementById("dTurnover")
-    .textContent =
-      money(profile.turnover);
-
-
-  document
-    .getElementById("dProfit")
-    .textContent =
-      money(profile.profit);
-
-
-  document
-    .getElementById("fDeposit")
-    .textContent =
-      money(profile.deposit);
-
-
-  document
-    .getElementById("fTurnover")
-    .textContent =
-      money(profile.turnover);
-
-
-  document
-    .getElementById("fProfit")
-    .textContent =
-      money(profile.profit);
-
-
-  document
-    .getElementById("fCommission")
-    .textContent =
-      (profile.commission || 0) + "%";
-
-
-  renderRequisite();
-
-
-  if(profile.role === "ADMIN"){
-
-    loadUsers();
-
-  }
-
-}
-
-
-/* ========================================================
-   REQUISITE
-======================================================== */
-
-function renderRequisite(){
-
-  const r =
-    currentRequisite || {};
-
-
-  document
-    .getElementById("rNetwork")
-    .textContent =
-      r.network || "—";
-
-
-  document
-    .getElementById("rWallet")
-    .textContent =
-      r.wallet || "Не указан";
-
-
-  const qr =
-    document.getElementById("rQr");
-
-
-  if(r.qr_url){
-
-    qr.src =
-      r.qr_url;
-
-    qr.style.display =
-      "block";
-
-  }else{
-
-    qr.style.display =
-      "none";
-
-  }
-
-
-  document
-    .getElementById("depositNetwork")
-    .textContent =
-      r.network || "—";
-
-
-  document
-    .getElementById("depositMethod")
-    .textContent =
-      r.payment_method || "—";
-
-
-  document
-    .getElementById("depositWallet")
-    .textContent =
-      r.wallet || "Не указан";
-
-
-  const depositQr =
-    document.getElementById("depositQr");
-
-
-  if(r.qr_url){
-
-    depositQr.src =
-      r.qr_url;
-
-    depositQr.style.display =
-      "block";
-
-  }else{
-
-    depositQr.style.display =
-      "none";
-
-  }
-
-
-  const linkWrap =
-    document.getElementById(
-      "depositLinkWrap"
-    );
-
-  const link =
-    document.getElementById(
-      "depositWalletLink"
-    );
-
-
-  if(r.wallet_link){
-
-    linkWrap.style.display =
-      "block";
-
-    link.href =
-      r.wallet_link;
-
-    link.textContent =
-      r.wallet_link;
-
-  }else{
-
-    linkWrap.style.display =
-      "none";
-
-    link.removeAttribute("href");
-
-    link.textContent =
-      "";
-
-  }
-
-}
-
-
-/* ========================================================
-   NAVIGATION
-======================================================== */
-
-function go(page){
-
-  if(
-    page === "admin" &&
-    currentProfile?.role !== "ADMIN"
-  ){
-
-    alert(
-      "Доступ запрещён"
-    );
-
-    return;
-
-  }
-
-
-  const section =
-    document.getElementById(page);
-
-
-  if(!section)
-    return;
-
-
-  document
-    .querySelectorAll(".section")
-    .forEach(function(item){
-
-      item.classList.remove("active");
-
-    });
-
-
-  section.classList.add("active");
-
-
-  document
-    .querySelectorAll(
-      ".nav button[data-page]"
-    )
-    .forEach(function(button){
-
-      button.classList.toggle(
-        "active",
-        button.dataset.page === page
-      );
-
-    });
-
-
-  const titles = {
-
-    dashboard:"Дашборд",
-    finance:"Финансы",
-    deals:"Сделки",
-    requests:"Заявки",
-    disputes:"Споры",
-    requisites:"Реквизиты",
-    deposit:"Пополнение",
-    withdraw:"Вывод",
-    devices:"Устройства",
-    messages:"Сообщения",
-    turbo:"Турбозалив",
-    counterparties:"Контрагенты",
-    reports:"Отчёты",
-    profile:"Профиль",
-    admin:"Админ-панель"
-
-  };
-
-
-  document
-    .getElementById("pageTitle")
-    .textContent =
-      titles[page] || page;
-
-
-  document
-    .getElementById("sidebar")
-    .classList.remove("open");
-
-}
-
-
-/* ========================================================
-   MOBILE MENU
-======================================================== */
-
-function toggleMenu(){
-
-  document
-    .getElementById("sidebar")
-    .classList.toggle("open");
-
-}
-
-
-/* ========================================================
-   LOGOUT
-======================================================== */
-
-async function logout(){
-
-  await supabaseClient.auth.signOut();
-
-  currentUser = null;
-  currentProfile = null;
-
-  location.reload();
-
-}
-
-
-/* ========================================================
-   COPY WALLET
-======================================================== */
-
-async function copyWallet(){
-
-  const wallet =
-    currentRequisite?.wallet || "";
-
-
-  if(!wallet){
-
-    alert(
-      "Кошелёк не указан"
-    );
-
-    return;
-
-  }
-
+async function checkSession(){
 
   try{
 
-    await navigator.clipboard.writeText(
-      wallet
-    );
+    const {
+      data
+    } =
+      await supabaseClient.auth.getSession();
 
-    alert(
-      "Кошелёк скопирован"
-    );
+    const session =
+      data?.session;
+
+    if(!session){
+
+      showLogin();
+
+      return;
+
+    }
+
+    currentUser =
+      session.user;
+
+    try{
+
+      await loadProfile();
+
+      await showApplication();
+
+    }catch(error){
+
+      console.error(error);
+
+      await supabaseClient.auth.signOut();
+
+      showLogin();
+
+      showLoginError(
+        error.message ||
+        "Не удалось загрузить профиль."
+      );
+
+    }
 
   }catch(error){
 
-    alert(wallet);
+    console.error(
+      "SESSION ERROR",
+      error
+    );
+
+    showLogin();
 
   }
 
 }
 
-
-/* ========================================================
-   OPEN WALLET
-======================================================== */
-
-function openWalletLink(){
-
-  const link =
-    currentRequisite?.wallet_link || "";
-
-
-  if(!link){
-
-    alert(
-      "Ссылка на кошелёк не указана"
-    );
-
-    return;
-
-  }
-
-
-  window.open(
-    link,
-    "_blank",
-    "noopener,noreferrer"
-  );
-
-}
-
-
-/* ========================================================
-   WITHDRAW
-======================================================== */
-
-function submitWithdraw(){
-
-  const amount =
-    Number(
-      document
-        .getElementById("withdrawAmount")
-        .value
-    );
-
-
-  const wallet =
-    document
-      .getElementById("withdrawWallet")
-      .value
-      .trim();
-
-
-  if(!amount || amount <= 0){
-
-    alert(
-      "Введите сумму вывода"
-    );
-
-    return;
-
-  }
-
-
-  if(!wallet){
-
-    alert(
-      "Введите адрес кошелька"
-    );
-
-    return;
-
-  }
-
-
-  alert(
-    "Заявка на вывод подготовлена."
-  );
-
-}
-
-
-/* ========================================================
-   ADMIN USERS
-======================================================== */
-
-async function loadUsers(){
-
-  if(
-    currentProfile?.role !== "ADMIN"
-  ){
-
-    return;
-
-  }
-
-
-  const tbody =
-    document.getElementById(
-      "usersTable"
-    );
-
-
-  tbody.innerHTML =
-    `
-      <tr>
-        <td colspan="5">
-          Загрузка...
-        </td>
-      </tr>
-    `;
-
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-      .from("profiles")
-      .select(
-        "id,name,email,role,status,deposit,turnover,profit"
-      )
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      );
-
-
-  if(error){
-
-    console.error(error);
-
-    tbody.innerHTML =
-      `
-        <tr>
-          <td colspan="5">
-            Ошибка загрузки пользователей:
-            ${escapeHtml(error.message)}
-          </td>
-        </tr>
-      `;
-
-    return;
-
-  }
-
-
-  if(!data?.length){
-
-    tbody.innerHTML =
-      `
-        <tr>
-          <td colspan="5">
-            Пользователей пока нет
-          </td>
-        </tr>
-      `;
-
-    return;
-
-  }
-
-
-  tbody.innerHTML =
-    "";
-
-
-  data.forEach(function(user){
-
-    const tr =
-      document.createElement("tr");
-
-
-    const status =
-      user.status === "active";
-
-
-    tr.innerHTML =
-      `
-        <td>
-          ${escapeHtml(
-            user.name || "—"
-          )}
-        </td>
-
-        <td>
-          ${escapeHtml(
-            user.email || "—"
-          )}
-        </td>
-
-        <td>
-          <span class="badge gray">
-            ${escapeHtml(
-              user.role || "USER"
-            )}
-          </span>
-        </td>
-
-        <td>
-          <span class="badge ${
-            status
-              ? "green"
-              : "red"
-          }">
-            ${
-              status
-                ? "Активен"
-                : "Заблокирован"
-            }
-          </span>
-        </td>
-
-        <td>
-          ${money(
-            user.deposit
-          )}
-        </td>
-      `;
-
-
-    tbody.appendChild(tr);
-
-  });
-
-}
-
-
-/* ========================================================
-   AUTH STATE
-======================================================== */
 
 supabaseClient.auth.onAuthStateChange(
-  function(event,session){
+  async(event,session)=>{
 
-    if(
-      session &&
-      !currentUser
-    ){
+    if(event === "SIGNED_OUT"){
 
-      setTimeout(
-        start,
-        0
-      );
+      currentUser = null;
+      currentProfile = null;
+      currentRequisites = null;
+
+      showLogin();
 
     }
 
@@ -2857,31 +1377,1927 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-/* ========================================================
-   ENTER KEY
-======================================================== */
+/* =====================================================
+   UI AUTH
+===================================================== */
+
+function showLogin(){
+
+  $("loginPage")
+    .classList.remove("hidden");
+
+  $("app")
+    .classList.add("hidden");
+
+}
+
+
+async function showApplication(){
+
+  $("loginPage")
+    .classList.add("hidden");
+
+  $("app")
+    .classList.remove("hidden");
+
+  updateUserUI();
+
+  setupAdminMenu();
+
+  await loadRequisites();
+
+  await renderPage("dashboard");
+
+}
+
+
+function updateUserUI(){
+
+  if(!currentProfile){
+    return;
+  }
+
+  const name =
+    currentProfile.name ||
+    currentProfile.full_name ||
+    currentProfile.email ||
+    currentUser?.email ||
+    "Пользователь";
+
+  $("miniName").textContent =
+    name;
+
+  $("miniRole").textContent =
+    roleName(currentProfile.role);
+
+  $("topbarUser").textContent =
+    roleName(currentProfile.role);
+
+  $("avatar").textContent =
+    getInitials(
+      name,
+      currentUser?.email
+    );
+
+}
+
+
+function setupAdminMenu(){
+
+  const role =
+    String(
+      currentProfile?.role || ""
+    ).toUpperCase();
+
+  const adminMenu =
+    $("adminMenu");
+
+  if(
+    role === "ADMIN" ||
+    role === "SUPERADMIN"
+  ){
+
+    adminMenu.style.display =
+      "block";
+
+  }else{
+
+    adminMenu.style.display =
+      "none";
+
+  }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+const pageTitles = {
+
+  dashboard:"Дашборд",
+  finances:"Финансы",
+  deals:"Сделки",
+  requests:"Заявки",
+  disputes:"Споры",
+  requisites:"Реквизиты",
+  devices:"Устройства",
+  messages:"Сообщения",
+  turbo:"Турбозалив",
+  counterparties:"Контрагенты",
+  reports:"Отчёты",
+  profile:"Профиль",
+  admin:"Админ-панель"
+
+};
+
 
 document
-  .getElementById("loginPassword")
+  .querySelectorAll(".menu-item[data-page]")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      async()=>{
+
+        const page =
+          button.dataset.page;
+
+        $("sidebar")
+          .classList.remove("open");
+
+        document
+          .querySelectorAll(
+            ".menu-item[data-page]"
+          )
+          .forEach(item=>{
+            item.classList.remove("active");
+          });
+
+        button.classList.add("active");
+
+        await renderPage(page);
+
+      }
+    );
+
+  });
+
+
+async function renderPage(page){
+
+  $("topbarTitle").textContent =
+    pageTitles[page] ||
+    "P2PSPARK";
+
+  const container =
+    $("pageContainer");
+
+  container.innerHTML =
+    `<div class="loading">Загрузка...</div>`;
+
+  try{
+
+    switch(page){
+
+      case "dashboard":
+        await renderDashboard();
+        break;
+
+      case "finances":
+        await renderFinances();
+        break;
+
+      case "deals":
+        await renderDeals();
+        break;
+
+      case "requests":
+        await renderRequests();
+        break;
+
+      case "disputes":
+        await renderDisputes();
+        break;
+
+      case "requisites":
+        await renderRequisites();
+        break;
+
+      case "devices":
+        await renderDevices();
+        break;
+
+      case "messages":
+        await renderMessages();
+        break;
+
+      case "turbo":
+        await renderTurbo();
+        break;
+
+      case "counterparties":
+        await renderCounterparties();
+        break;
+
+      case "reports":
+        await renderReports();
+        break;
+
+      case "profile":
+        await renderProfile();
+        break;
+
+      case "admin":
+        await renderAdmin();
+        break;
+
+      default:
+        await renderDashboard();
+
+    }
+
+  }catch(error){
+
+    console.error(error);
+
+    container.innerHTML = `
+      <div class="card">
+        <div class="card-title">
+          Ошибка
+        </div>
+
+        <div style="color:#b91c1c">
+          ${escapeHtml(error.message)}
+        </div>
+      </div>
+    `;
+
+  }
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+async function renderDashboard(){
+
+  const p =
+    currentProfile || {};
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Добро пожаловать,
+        ${escapeHtml(
+          p.name ||
+          p.email ||
+          currentUser?.email ||
+          "Пользователь"
+        )}
+      </h1>
+
+      <p class="page-description">
+        Управление вашим P2PSPARK кабинетом
+      </p>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Баланс депозита
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.deposit)} ₸
+        </div>
+
+        <div class="stat-small">
+          Доступный баланс
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Активные сделки
+        </div>
+
+        <div class="stat-value">
+          ${p.deals || 0}
+        </div>
+
+        <div class="stat-small">
+          Текущие операции
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Оборот
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.turnover)} ₸
+        </div>
+
+        <div class="stat-small">
+          Общий оборот
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Прибыль
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.profit)} ₸
+        </div>
+
+        <div class="stat-small">
+          Общая прибыль
+        </div>
+      </div>
+
+    </div>
+
+    <div class="content-grid">
+
+      <div class="card">
+
+        <div class="card-title">
+          Финансовые операции
+        </div>
+
+        <p style="color:#6b7280;font-size:13px;line-height:1.5">
+          Управляйте депозитом и заявками на вывод средств.
+        </p>
+
+        <div class="actions">
+
+          <button
+            class="btn btn-dark"
+            onclick="openDepositModal()"
+          >
+            Пополнить
+          </button>
+
+          <button
+            class="btn btn-light"
+            onclick="openWithdrawModal()"
+          >
+            Вывести
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-title">
+          Ваш статус
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Email
+          </span>
+
+          <span class="info-value">
+            ${escapeHtml(
+              currentUser?.email
+            )}
+          </span>
+
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Роль
+          </span>
+
+          <span class="info-value">
+            ${escapeHtml(
+              roleName(p.role)
+            )}
+          </span>
+
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Статус
+          </span>
+
+          <span>
+            <span class="badge ${
+              String(p.status).toLowerCase()
+              === "blocked"
+              ? "badge-red"
+              : "badge-green"
+            }">
+              ${escapeHtml(
+                p.status || "active"
+              )}
+            </span>
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   FINANCES
+===================================================== */
+
+async function renderFinances(){
+
+  const p =
+    currentProfile || {};
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Финансы
+      </h1>
+
+      <p class="page-description">
+        Управление депозитом, оборотом и прибылью
+      </p>
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Депозит
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.deposit)} ₸
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Оборот
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.turnover)} ₸
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Прибыль
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.profit)} ₸
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">
+          Комиссия
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.commission)} ₸
+        </div>
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-title">
+        Операции
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="btn btn-dark"
+          onclick="openDepositModal()"
+        >
+          Пополнить
+        </button>
+
+        <button
+          class="btn btn-light"
+          onclick="openWithdrawModal()"
+        >
+          Вывести
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   DEALS
+===================================================== */
+
+async function renderDeals(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Сделки
+      </h1>
+
+      <p class="page-description">
+        Ваши текущие и завершённые сделки
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Тип</th>
+              <th>Сумма</th>
+              <th>Статус</th>
+              <th>Дата</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td colspan="5" class="empty">
+                Сделок пока нет
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   REQUESTS
+===================================================== */
+
+async function renderRequests(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Заявки
+      </h1>
+
+      <p class="page-description">
+        Пополнение и вывод средств
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Тип</th>
+              <th>Сумма</th>
+              <th>Статус</th>
+              <th>Дата</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td colspan="5" class="empty">
+                Заявок пока нет
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   DISPUTES
+===================================================== */
+
+async function renderDisputes(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Споры
+      </h1>
+
+      <p class="page-description">
+        Открытые и завершённые споры
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="empty">
+        Споров пока нет
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   REQUISITES
+===================================================== */
+
+async function loadRequisites(){
+
+  if(!currentUser){
+    return;
+  }
+
+  try{
+
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("requisites")
+        .select("*")
+        .eq("user_id",currentUser.id)
+        .maybeSingle();
+
+    if(error){
+
+      console.warn(
+        "REQUISITES:",
+        error.message
+      );
+
+      currentRequisites =
+        null;
+
+      return;
+
+    }
+
+    currentRequisites =
+      data;
+
+  }catch(error){
+
+    console.warn(error);
+
+    currentRequisites =
+      null;
+
+  }
+
+}
+
+
+async function renderRequisites(){
+
+  await loadRequisites();
+
+  const r =
+    currentRequisites;
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+
+      <h1 class="page-title">
+        Реквизиты
+      </h1>
+
+      <p class="page-description">
+        Реквизиты для пополнения и вывода
+      </p>
+
+    </div>
+
+    <div class="requisite-grid">
+
+      <div class="card">
+
+        <div class="card-title">
+          QR-код
+        </div>
+
+        <div class="qr-box">
+
+          ${
+            r?.qr_url
+            ?
+            `<img
+              src="${escapeHtml(r.qr_url)}"
+              alt="QR"
+            >`
+            :
+            `<span style="color:#9ca3af">
+              QR пока не добавлен
+            </span>`
+          }
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-title">
+          Реквизиты
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Платёжная система
+          </span>
+
+          <span class="info-value">
+            ${escapeHtml(
+              r?.payment_method || "—"
+            )}
+          </span>
+
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Сеть
+          </span>
+
+          <span class="info-value">
+            ${escapeHtml(
+              r?.network || "—"
+            )}
+          </span>
+
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Кошелёк
+          </span>
+
+          <span class="info-value">
+            ${escapeHtml(
+              r?.wallet || "—"
+            )}
+          </span>
+
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+            Ссылка
+          </span>
+
+          <span class="info-value">
+
+            ${
+              r?.wallet_link
+              ?
+              `<a
+                href="${escapeHtml(r.wallet_link)}"
+                target="_blank"
+                rel="noopener"
+              >
+                Открыть
+              </a>`
+              :
+              "—"
+            }
+
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   DEVICES
+===================================================== */
+
+async function renderDevices(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Устройства
+      </h1>
+
+      <p class="page-description">
+        История устройств и входов
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="empty">
+        Информация об устройствах пока не подключена.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+async function renderMessages(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Сообщения
+      </h1>
+
+      <p class="page-description">
+        Связь с поддержкой
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="card-title">
+        Поддержка
+      </div>
+
+      <p style="color:#6b7280;line-height:1.5">
+        Здесь будет раздел сообщений и поддержки.
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   TURBO
+===================================================== */
+
+async function renderTurbo(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Турбозалив
+      </h1>
+
+      <p class="page-description">
+        Управление быстрыми операциями
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="empty">
+        Функция пока не подключена.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   COUNTERPARTIES
+===================================================== */
+
+async function renderCounterparties(){
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Контрагенты
+      </h1>
+
+      <p class="page-description">
+        Список контрагентов
+      </p>
+    </div>
+
+    <div class="card">
+
+      <div class="empty">
+        Контрагенты пока не добавлены.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   REPORTS
+===================================================== */
+
+async function renderReports(){
+
+  const p =
+    currentProfile || {};
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+      <h1 class="page-title">
+        Отчёты
+      </h1>
+
+      <p class="page-description">
+        Финансовая статистика
+      </p>
+
+    </div>
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+
+        <div class="stat-label">
+          Оборот
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.turnover)} ₸
+        </div>
+
+      </div>
+
+      <div class="stat-card">
+
+        <div class="stat-label">
+          Прибыль
+        </div>
+
+        <div class="stat-value">
+          ${formatMoney(p.profit)} ₸
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="empty">
+        Детальная аналитика будет подключена к данным сделок.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+async function renderProfile(){
+
+  const p =
+    currentProfile || {};
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+
+      <h1 class="page-title">
+        Профиль
+      </h1>
+
+      <p class="page-description">
+        Информация вашего аккаунта
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div class="profile-grid">
+
+        <div class="profile-field">
+
+          <div class="profile-label">
+            Имя
+          </div>
+
+          <div class="profile-value">
+            ${escapeHtml(
+              p.name ||
+              p.full_name ||
+              "—"
+            )}
+          </div>
+
+        </div>
+
+        <div class="profile-field">
+
+          <div class="profile-label">
+            Email
+          </div>
+
+          <div class="profile-value">
+            ${escapeHtml(
+              currentUser?.email ||
+              p.email ||
+              "—"
+            )}
+          </div>
+
+        </div>
+
+        <div class="profile-field">
+
+          <div class="profile-label">
+            Роль
+          </div>
+
+          <div class="profile-value">
+            ${escapeHtml(
+              roleName(p.role)
+            )}
+          </div>
+
+        </div>
+
+        <div class="profile-field">
+
+          <div class="profile-label">
+            Статус
+          </div>
+
+          <div class="profile-value">
+            ${escapeHtml(
+              p.status || "active"
+            )}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+async function renderAdmin(){
+
+  const role =
+    String(
+      currentProfile?.role || ""
+    ).toUpperCase();
+
+  if(
+    role !== "ADMIN" &&
+    role !== "SUPERADMIN"
+  ){
+
+    $("pageContainer").innerHTML = `
+
+      <div class="card">
+
+        <div class="card-title">
+          Доступ запрещён
+        </div>
+
+        <p>
+          У вас нет прав администратора.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+  let users = [];
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .order("created_at",{ascending:false});
+
+  if(error){
+    throw error;
+  }
+
+  users =
+    data || [];
+
+  $("pageContainer").innerHTML = `
+
+    <div class="page-header">
+
+      <h1 class="page-title">
+        Админ-панель
+      </h1>
+
+      <p class="page-description">
+        Управление пользователями и финансовыми показателями
+      </p>
+
+    </div>
+
+    <div class="card">
+
+      <div
+        style="
+          display:flex;
+          justify-content:space-between;
+          align-items:center;
+          gap:15px;
+          margin-bottom:15px;
+          flex-wrap:wrap;
+        "
+      >
+
+        <div class="card-title" style="margin:0">
+          Пользователи
+        </div>
+
+        <button
+          class="btn btn-dark"
+          onclick="openCreateUserInfo()"
+        >
+          + Создать пользователя
+        </button>
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Имя</th>
+              <th>Email</th>
+              <th>Роль</th>
+              <th>Статус</th>
+              <th>Депозит</th>
+              <th>Оборот</th>
+              <th>Прибыль</th>
+              <th></th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            ${
+              users.length
+              ?
+              users.map(user=>`
+
+                <tr>
+
+                  <td>
+                    ${escapeHtml(
+                      user.name ||
+                      user.full_name ||
+                      "—"
+                    )}
+                  </td>
+
+                  <td>
+                    ${escapeHtml(
+                      user.email ||
+                      "—"
+                    )}
+                  </td>
+
+                  <td>
+                    <span class="badge ${
+                      String(user.role).toUpperCase()
+                      === "ADMIN"
+                      ? "badge-dark"
+                      : "badge-gray"
+                    }">
+                      ${escapeHtml(
+                        roleName(user.role)
+                      )}
+                    </span>
+                  </td>
+
+                  <td>
+                    <span class="badge ${
+                      String(user.status).toLowerCase()
+                      === "blocked"
+                      ? "badge-red"
+                      : "badge-green"
+                    }">
+                      ${escapeHtml(
+                        user.status || "active"
+                      )}
+                    </span>
+                  </td>
+
+                  <td>
+                    ${formatMoney(user.deposit)} ₸
+                  </td>
+
+                  <td>
+                    ${formatMoney(user.turnover)} ₸
+                  </td>
+
+                  <td>
+                    ${formatMoney(user.profit)} ₸
+                  </td>
+
+                  <td>
+
+                    <button
+                      class="btn btn-light"
+                      onclick='openEditUser(${JSON.stringify(user)})'
+                    >
+                      Изменить
+                    </button>
+
+                  </td>
+
+                </tr>
+
+              `).join("")
+              :
+              `
+                <tr>
+                  <td colspan="8" class="empty">
+                    Пользователей нет
+                  </td>
+                </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   ADMIN USER EDIT
+===================================================== */
+
+function openEditUser(user){
+
+  $("modalTitle").textContent =
+    "Редактирование пользователя";
+
+  $("modalContent").innerHTML = `
+
+    <div class="modal-grid">
+
+      <div class="form-group">
+
+        <label>Имя</label>
+
+        <input
+          id="editName"
+          class="input"
+          value="${escapeHtml(
+            user.name || ""
+          )}"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Email</label>
+
+        <input
+          class="input"
+          value="${escapeHtml(
+            user.email || ""
+          )}"
+          disabled
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Роль</label>
+
+        <select id="editRole" class="input">
+
+          <option value="USER"
+            ${String(user.role).toUpperCase()==="USER"?"selected":""}>
+            USER
+          </option>
+
+          <option value="ADMIN"
+            ${String(user.role).toUpperCase()==="ADMIN"?"selected":""}>
+            ADMIN
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Статус</label>
+
+        <select id="editStatus" class="input">
+
+          <option value="active"
+            ${String(user.status).toLowerCase()==="active"?"selected":""}>
+            active
+          </option>
+
+          <option value="blocked"
+            ${String(user.status).toLowerCase()==="blocked"?"selected":""}>
+            blocked
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Депозит</label>
+
+        <input
+          id="editDeposit"
+          class="input"
+          type="number"
+          step="0.01"
+          value="${Number(user.deposit || 0)}"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Оборот</label>
+
+        <input
+          id="editTurnover"
+          class="input"
+          type="number"
+          step="0.01"
+          value="${Number(user.turnover || 0)}"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Прибыль</label>
+
+        <input
+          id="editProfit"
+          class="input"
+          type="number"
+          step="0.01"
+          value="${Number(user.profit || 0)}"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Комиссия</label>
+
+        <input
+          id="editCommission"
+          class="input"
+          type="number"
+          step="0.01"
+          value="${Number(user.commission || 0)}"
+        >
+
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        class="btn btn-light"
+        onclick="closeModal()"
+      >
+        Отмена
+      </button>
+
+      <button
+        class="btn btn-dark"
+        onclick="saveUser('${user.id}')"
+      >
+        Сохранить
+      </button>
+
+    </div>
+
+  `;
+
+  openModal();
+
+}
+
+
+async function saveUser(userId){
+
+  const payload = {
+
+    name:
+      $("editName").value.trim(),
+
+    role:
+      $("editRole").value,
+
+    status:
+      $("editStatus").value,
+
+    deposit:
+      Number($("editDeposit").value || 0),
+
+    turnover:
+      Number($("editTurnover").value || 0),
+
+    profit:
+      Number($("editProfit").value || 0),
+
+    commission:
+      Number($("editCommission").value || 0)
+
+  };
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("profiles")
+      .update(payload)
+      .eq("id",userId);
+
+  if(error){
+
+    showToast(
+      error.message,
+      true
+    );
+
+    return;
+
+  }
+
+  closeModal();
+
+  showToast(
+    "Пользователь обновлён"
+  );
+
+  await loadProfile();
+
+  await renderAdmin();
+
+}
+
+
+/* =====================================================
+   CREATE USER
+===================================================== */
+
+function openCreateUserInfo(){
+
+  $("modalTitle").textContent =
+    "Создание пользователя";
+
+  $("modalContent").innerHTML = `
+
+    <div
+      style="
+        background:#fff7ed;
+        border:1px solid #fed7aa;
+        color:#9a3412;
+        padding:14px;
+        border-radius:12px;
+        line-height:1.5;
+        font-size:13px;
+      "
+    >
+      Создание Auth-пользователя нельзя безопасно выполнять
+      непосредственно из браузера через publishable key.
+      Для этого нужна серверная Edge Function с service_role key.
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        class="btn btn-dark"
+        onclick="closeModal()"
+      >
+        Понятно
+      </button>
+
+    </div>
+
+  `;
+
+  openModal();
+
+}
+
+
+/* =====================================================
+   DEPOSIT
+===================================================== */
+
+function openDepositModal(){
+
+  const r =
+    currentRequisites;
+
+  $("modalTitle").textContent =
+    "Пополнение";
+
+  $("modalContent").innerHTML = `
+
+    <div class="card" style="padding:0;border:0">
+
+      <p style="color:#6b7280;font-size:13px">
+        Используйте реквизиты, которые указал администратор.
+      </p>
+
+      <div class="info-row">
+
+        <span class="info-label">
+          Сеть
+        </span>
+
+        <span class="info-value">
+          ${escapeHtml(
+            r?.network || "—"
+          )}
+        </span>
+
+      </div>
+
+      <div class="info-row">
+
+        <span class="info-label">
+          Кошелёк
+        </span>
+
+        <span class="info-value">
+          ${escapeHtml(
+            r?.wallet || "—"
+          )}
+        </span>
+
+      </div>
+
+      ${
+        r?.qr_url
+        ?
+        `
+          <div style="margin-top:15px">
+
+            <div class="qr-box">
+              <img
+                src="${escapeHtml(r.qr_url)}"
+                alt="QR"
+              >
+            </div>
+
+          </div>
+        `
+        :
+        ""
+      }
+
+      <div style="margin-top:20px">
+
+        <button
+          class="btn btn-light"
+          onclick="closeModal()"
+        >
+          Закрыть
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+  openModal();
+
+}
+
+
+/* =====================================================
+   WITHDRAW
+===================================================== */
+
+function openWithdrawModal(){
+
+  $("modalTitle").textContent =
+    "Вывод средств";
+
+  $("modalContent").innerHTML = `
+
+    <div class="form-group">
+
+      <label>Сумма</label>
+
+      <input
+        id="withdrawAmount"
+        class="input"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="Введите сумму"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Кошелёк / реквизиты</label>
+
+      <input
+        id="withdrawWallet"
+        class="input"
+        value="${escapeHtml(
+          currentRequisites?.wallet || ""
+        )}"
+        placeholder="Введите реквизиты"
+      >
+
+    </div>
+
+    <div class="modal-actions">
+
+      <button
+        class="btn btn-light"
+        onclick="closeModal()"
+      >
+        Отмена
+      </button>
+
+      <button
+        class="btn btn-dark"
+        onclick="submitWithdraw()"
+      >
+        Создать заявку
+      </button>
+
+    </div>
+
+  `;
+
+  openModal();
+
+}
+
+
+async function submitWithdraw(){
+
+  const amount =
+    Number(
+      $("withdrawAmount").value
+    );
+
+  const wallet =
+    $("withdrawWallet").value.trim();
+
+  if(!amount || amount <= 0){
+
+    showToast(
+      "Введите корректную сумму.",
+      true
+    );
+
+    return;
+
+  }
+
+  if(!wallet){
+
+    showToast(
+      "Введите реквизиты.",
+      true
+    );
+
+    return;
+
+  }
+
+  /*
+    Здесь можно подключить таблицу withdrawals,
+    когда она есть в вашем Supabase.
+  */
+
+  closeModal();
+
+  showToast(
+    "Заявка подготовлена. После подключения таблицы withdrawals она будет записываться в базу."
+  );
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(){
+
+  $("modal")
+    .classList.remove("hidden");
+
+}
+
+
+function closeModal(){
+
+  $("modal")
+    .classList.add("hidden");
+
+}
+
+
+$("closeModal")
   .addEventListener(
-    "keydown",
-    function(event){
+    "click",
+    closeModal
+  );
 
-      if(event.key === "Enter"){
 
-        login();
+$("modal")
+  .addEventListener(
+    "click",
+    event=>{
 
+      if(event.target === $("modal")){
+        closeModal();
       }
 
     }
   );
 
 
-/* ========================================================
-   START
-======================================================== */
+/* =====================================================
+   LOGIN FORM
+===================================================== */
 
-start();
+$("loginForm")
+  .addEventListener(
+    "submit",
+    async event=>{
+
+      event.preventDefault();
+
+      const email =
+        $("loginEmail")
+          .value
+          .trim();
+
+      const password =
+        $("loginPassword")
+          .value;
+
+      await login(
+        email,
+        password
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+$("logoutBtn")
+  .addEventListener(
+    "click",
+    async()=>{
+
+      await supabaseClient.auth.signOut();
+
+      currentUser = null;
+      currentProfile = null;
+      currentRequisites = null;
+
+      showLogin();
+
+    }
+  );
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+$("mobileMenuBtn")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      $("sidebar")
+        .classList.toggle("open");
+
+    }
+  );
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkSession();
 
 </script>
 
