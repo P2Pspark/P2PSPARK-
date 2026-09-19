@@ -3,35 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <title>P2PSPARK</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+}
 
 :root{
   --blue:#2864df;
-  --blue2:#1f55c9;
+  --blue-dark:#1747b1;
   --dark:#101828;
   --text:#101828;
   --muted:#667085;
   --bg:#f4f6fa;
-  --card:#fff;
+  --card:#ffffff;
   --border:#e4e7ec;
+
   --green:#12b76a;
-  --greenbg:#dcfae6;
+  --green-bg:#dcfae6;
+
   --red:#f04438;
-  --redbg:#fee4e2;
+  --red-bg:#fee4e2;
+
   --orange:#f79009;
-  --orangebg:#fef0c7;
+  --orange-bg:#fef0c7;
 }
 
-html,body{
+html,
+body{
   margin:0;
   padding:0;
   min-height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
   background:var(--bg);
   color:var(--text);
 }
@@ -40,7 +54,8 @@ body{
   min-height:100vh;
 }
 
-button,input{
+button,
+input{
   font:inherit;
 }
 
@@ -48,8 +63,9 @@ button{
   cursor:pointer;
 }
 
+
 /* =====================================================
-   AUTH
+   ЭКРАН ВХОДА
 ===================================================== */
 
 .auth-wrap{
@@ -66,8 +82,14 @@ button{
   background:#fff;
   border-radius:32px;
   padding:42px 36px;
-  box-shadow:0 20px 60px rgba(16,24,40,.10);
+  box-shadow:
+    0 20px 60px rgba(16,24,40,.10);
 }
+
+
+/* =====================================================
+   ЛОГО
+===================================================== */
 
 .logo{
   text-align:center;
@@ -91,6 +113,11 @@ button{
   font-weight:800;
   letter-spacing:6px;
 }
+
+
+/* =====================================================
+   ВХОД
+===================================================== */
 
 .auth-title{
   text-align:center;
@@ -130,7 +157,8 @@ button{
 
 .field input:focus{
   border-color:var(--blue);
-  box-shadow:0 0 0 4px rgba(40,100,223,.10);
+  box-shadow:
+    0 0 0 4px rgba(40,100,223,.10);
 }
 
 .primary-btn{
@@ -150,7 +178,7 @@ button{
 
 .error{
   display:none;
-  background:var(--redbg);
+  background:var(--red-bg);
   color:#b42318;
   padding:15px;
   border-radius:14px;
@@ -167,8 +195,9 @@ button{
   font-weight:600;
 }
 
+
 /* =====================================================
-   APP
+   ПРИЛОЖЕНИЕ
 ===================================================== */
 
 #app{
@@ -180,8 +209,9 @@ button{
   display:flex;
 }
 
+
 /* =====================================================
-   SIDEBAR
+   БОКОВОЕ МЕНЮ
 ===================================================== */
 
 .sidebar{
@@ -189,11 +219,14 @@ button{
   background:#fff;
   border-right:1px solid var(--border);
   min-height:100vh;
+
   position:fixed;
   left:0;
   top:0;
   bottom:0;
+
   z-index:50;
+
   display:flex;
   flex-direction:column;
 }
@@ -221,25 +254,36 @@ button{
 
 .nav-section{
   margin:15px 10px 8px;
+
   font-size:11px;
   text-transform:uppercase;
   letter-spacing:1.5px;
+
   font-weight:900;
   color:#98a2b3;
 }
 
 .nav-btn{
   width:100%;
+
   display:flex;
   align-items:center;
+
   gap:13px;
+
   padding:13px 14px;
+
   border:0;
   background:transparent;
+
   border-radius:13px;
+
   color:#667085;
+
   font-weight:750;
+
   text-align:left;
+
   margin-bottom:4px;
 }
 
@@ -258,6 +302,11 @@ button{
   font-size:19px;
 }
 
+
+/* =====================================================
+   ПОЛЬЗОВАТЕЛЬ В МЕНЮ
+===================================================== */
+
 .sidebar-user{
   border-top:1px solid var(--border);
   padding:17px;
@@ -266,6 +315,7 @@ button{
 .sidebar-user-email{
   font-size:13px;
   color:var(--muted);
+
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -273,35 +323,49 @@ button{
 
 .role-badge{
   display:inline-block;
+
   margin-top:7px;
+
   padding:5px 9px;
+
   border-radius:999px;
+
   background:#edf3ff;
   color:var(--blue);
+
   font-size:11px;
   font-weight:900;
 }
 
+
 /* =====================================================
-   MAIN
+   ОСНОВНАЯ ОБЛАСТЬ
 ===================================================== */
 
 .main{
   margin-left:270px;
+
   width:calc(100% - 270px);
+
   min-height:100vh;
 }
 
 .topbar{
   height:76px;
+
   background:#fff;
+
   border-bottom:1px solid var(--border);
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   padding:0 30px;
+
   position:sticky;
   top:0;
+
   z-index:30;
 }
 
@@ -324,21 +388,28 @@ button{
 
 .logout-small{
   border:0;
+
   background:#101828;
   color:#fff;
+
   border-radius:11px;
+
   padding:10px 15px;
+
   font-weight:800;
 }
 
 .content{
   padding:30px;
+
   max-width:1400px;
+
   margin:auto;
 }
 
+
 /* =====================================================
-   MOBILE HEADER
+   МОБИЛЬНАЯ ШАПКА
 ===================================================== */
 
 .mobile-header{
@@ -347,10 +418,14 @@ button{
 
 .mobile-menu-btn{
   border:0;
+
   background:#f2f4f7;
+
   border-radius:12px;
+
   width:43px;
   height:43px;
+
   font-size:22px;
 }
 
@@ -359,8 +434,9 @@ button{
   font-size:19px;
 }
 
+
 /* =====================================================
-   PAGE
+   СТРАНИЦЫ
 ===================================================== */
 
 .page{
@@ -377,91 +453,125 @@ button{
 
 .page-heading h1{
   margin:0 0 7px;
+
   font-size:32px;
+
   font-weight:900;
 }
 
 .page-heading p{
   margin:0;
+
   color:var(--muted);
 }
 
+
 /* =====================================================
-   DASHBOARD CARDS
+   СТАТИСТИКА
 ===================================================== */
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:18px;
+
   margin-bottom:24px;
 }
 
 .stat-card{
   background:#fff;
+
   border:1px solid var(--border);
+
   border-radius:20px;
+
   padding:23px;
 }
 
 .stat-label{
   color:var(--muted);
+
   font-size:14px;
+
   font-weight:700;
+
   margin-bottom:10px;
 }
 
 .stat-value{
   font-size:30px;
+
   font-weight:900;
 }
 
 .stat-icon{
   float:right;
+
   font-size:23px;
 }
 
+
 /* =====================================================
-   GENERAL CARDS
+   КАРТОЧКИ
 ===================================================== */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+    repeat(2,1fr);
+
   gap:20px;
 }
 
 .card{
   background:#fff;
+
   border:1px solid var(--border);
+
   border-radius:20px;
+
   padding:24px;
 }
 
 .card-title{
   font-size:20px;
+
   font-weight:900;
+
   margin-bottom:8px;
 }
 
 .card-sub{
   color:var(--muted);
+
   font-size:14px;
+
   line-height:1.5;
 }
 
 .action-row{
   display:flex;
+
   gap:12px;
+
   margin-top:20px;
 }
 
 .action-btn{
   border:0;
+
   border-radius:13px;
+
   padding:12px 18px;
+
   background:var(--blue);
+
   color:#fff;
+
   font-weight:800;
 }
 
@@ -471,117 +581,169 @@ button{
 
 .action-btn.light{
   background:#edf3ff;
+
   color:var(--blue);
 }
 
+
 /* =====================================================
-   BALANCE
+   БАЛАНС
 ===================================================== */
 
 .balance-card{
-  background:linear-gradient(135deg,#2864df,#1747b1);
+  background:
+    linear-gradient(
+      135deg,
+      #2864df,
+      #1747b1
+    );
+
   color:#fff;
+
   border-radius:23px;
+
   padding:28px;
+
   margin-bottom:20px;
 }
 
 .balance-label{
   opacity:.85;
+
   font-weight:700;
+
   font-size:14px;
 }
 
 .balance-value{
   font-size:42px;
+
   font-weight:900;
+
   margin:9px 0 5px;
 }
 
 .balance-note{
   opacity:.8;
+
   font-size:13px;
 }
 
+
 /* =====================================================
-   TABLE
+   ТАБЛИЦЫ
 ===================================================== */
 
 .table-wrap{
   background:#fff;
+
   border:1px solid var(--border);
+
   border-radius:20px;
+
   overflow:auto;
 }
 
 table{
   width:100%;
+
   border-collapse:collapse;
+
   min-width:650px;
 }
 
-th,td{
+th,
+td{
   padding:16px 18px;
+
   text-align:left;
-  border-bottom:1px solid #eef0f3;
+
+  border-bottom:
+    1px solid #eef0f3;
+
   font-size:14px;
 }
 
 th{
   color:#667085;
+
   font-size:12px;
+
   text-transform:uppercase;
+
   letter-spacing:.6px;
 }
 
+
+/* =====================================================
+   СТАТУСЫ
+===================================================== */
+
 .status{
   display:inline-flex;
+
   padding:6px 10px;
+
   border-radius:999px;
+
   font-size:12px;
+
   font-weight:800;
 }
 
 .status.green{
-  background:var(--greenbg);
+  background:var(--green-bg);
+
   color:#087443;
 }
 
 .status.orange{
-  background:var(--orangebg);
+  background:var(--orange-bg);
+
   color:#b54708;
 }
 
 .status.red{
-  background:var(--redbg);
+  background:var(--red-bg);
+
   color:#b42318;
 }
 
+
 /* =====================================================
-   PROFILE
+   ПРОФИЛЬ
 ===================================================== */
 
 .profile-row{
   display:flex;
+
   justify-content:space-between;
+
   gap:20px;
+
   padding:16px 0;
-  border-bottom:1px solid #eef0f3;
+
+  border-bottom:
+    1px solid #eef0f3;
 }
 
 .profile-label{
   color:var(--muted);
+
   font-weight:700;
 }
 
 .profile-value{
   font-weight:800;
+
   text-align:right;
+
   overflow-wrap:anywhere;
 }
 
+
 /* =====================================================
-   ADMIN
+   АДМИН
 ===================================================== */
 
 .admin-only{
@@ -590,42 +752,53 @@ th{
 
 .admin-box{
   border:1px solid #d6e2ff;
+
   background:#f7f9ff;
 }
 
+
 /* =====================================================
-   EMPTY
+   ПУСТЫЕ РАЗДЕЛЫ
 ===================================================== */
 
 .empty{
   padding:45px 20px;
+
   text-align:center;
+
   color:var(--muted);
 }
 
 .empty-icon{
   font-size:42px;
+
   margin-bottom:12px;
 }
 
+
 /* =====================================================
-   OVERLAY
+   МОБИЛЬНОЕ МЕНЮ
 ===================================================== */
 
 .overlay{
   display:none;
 }
 
+
 /* =====================================================
-   MOBILE
+   АДАПТАЦИЯ
 ===================================================== */
 
 @media(max-width:900px){
 
   .sidebar{
     transform:translateX(-100%);
+
     transition:.25s;
-    box-shadow:20px 0 50px rgba(16,24,40,.15);
+
+    box-shadow:
+      20px 0 50px
+      rgba(16,24,40,.15);
   }
 
   .sidebar.open{
@@ -634,8 +807,12 @@ th{
 
   .overlay{
     position:fixed;
+
     inset:0;
-    background:rgba(16,24,40,.35);
+
+    background:
+      rgba(16,24,40,.35);
+
     z-index:40;
   }
 
@@ -645,6 +822,7 @@ th{
 
   .main{
     margin-left:0;
+
     width:100%;
   }
 
@@ -654,23 +832,38 @@ th{
 
   .mobile-header{
     display:flex;
+
     height:67px;
+
     background:#fff;
-    border-bottom:1px solid var(--border);
+
+    border-bottom:
+      1px solid var(--border);
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 15px;
+
     position:sticky;
+
     top:0;
+
     z-index:30;
   }
 
   .content{
-    padding:20px 15px 100px;
+    padding:
+      20px
+      15px
+      100px;
   }
 
   .stats{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
+
     gap:12px;
   }
 
@@ -691,17 +884,22 @@ th{
   }
 }
 
+
 @media(max-width:600px){
 
   .auth-wrap{
     padding:0;
+
     align-items:stretch;
   }
 
   .auth-card{
     border-radius:0;
+
     min-height:100vh;
+
     padding:38px 30px;
+
     box-shadow:none;
   }
 
@@ -711,6 +909,7 @@ th{
 
   .logo-sub{
     font-size:10px;
+
     letter-spacing:4px;
   }
 
@@ -730,20 +929,24 @@ th{
     width:100%;
   }
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =====================================================
-     AUTH SCREEN
-====================================================== -->
+     ВХОД
+===================================================== -->
 
 <div id="authScreen" class="auth-wrap">
 
   <div class="auth-card">
 
     <div class="logo">
+
       <div class="logo-title">
         P2P<span>SPARK</span>
       </div>
@@ -751,23 +954,35 @@ th{
       <div class="logo-sub">
         PEOPLE • DEALS • OPPORTUNITIES
       </div>
+
     </div>
+
 
     <div class="auth-title">
       Вход в аккаунт
     </div>
+
 
     <div class="auth-subtitle">
       Введите данные, выданные<br>
       администратором
     </div>
 
-    <div id="authError" class="error"></div>
+
+    <div
+      id="authError"
+      class="error">
+    </div>
+
 
     <form id="loginForm">
 
       <div class="field">
-        <label>Почта</label>
+
+        <label>
+          Электронная почта
+        </label>
+
         <input
           id="email"
           type="email"
@@ -775,10 +990,16 @@ th{
           placeholder="admin@gmail.com"
           required
         >
+
       </div>
 
+
       <div class="field">
-        <label>Пароль</label>
+
+        <label>
+          Пароль
+        </label>
+
         <input
           id="password"
           type="password"
@@ -786,7 +1007,9 @@ th{
           placeholder="Введите пароль"
           required
         >
+
       </div>
+
 
       <button
         id="loginButton"
@@ -799,6 +1022,7 @@ th{
 
     </form>
 
+
     <div class="auth-footer">
       Доступ к аккаунту создаёт администратор
     </div>
@@ -809,18 +1033,28 @@ th{
 
 
 <!-- =====================================================
-     APPLICATION
-====================================================== -->
+     ПРИЛОЖЕНИЕ
+===================================================== -->
 
 <div id="app">
 
-  <div id="overlay" class="overlay"></div>
+  <div
+    id="overlay"
+    class="overlay">
+  </div>
+
 
   <div class="app-shell">
 
-    <!-- SIDEBAR -->
 
-    <aside id="sidebar" class="sidebar">
+    <!-- =================================================
+         БОКОВОЕ МЕНЮ
+    ================================================== -->
+
+    <aside
+      id="sidebar"
+      class="sidebar">
+
 
       <div class="sidebar-logo">
 
@@ -837,33 +1071,74 @@ th{
 
       <nav class="nav">
 
+
         <div class="nav-section">
           Основное
         </div>
 
-        <button class="nav-btn active" data-page="dashboard">
-          <span class="nav-icon">⌂</span>
-          Dashboard
+
+        <button
+          class="nav-btn active"
+          data-page="dashboard">
+
+          <span class="nav-icon">
+            ⌂
+          </span>
+
+          Главная
+
         </button>
 
-        <button class="nav-btn" data-page="finances">
-          <span class="nav-icon">◈</span>
-          Finances
+
+        <button
+          class="nav-btn"
+          data-page="finances">
+
+          <span class="nav-icon">
+            ◈
+          </span>
+
+          Финансы
+
         </button>
 
-        <button class="nav-btn" data-page="deals">
-          <span class="nav-icon">⇄</span>
-          Deals
+
+        <button
+          class="nav-btn"
+          data-page="deals">
+
+          <span class="nav-icon">
+            ⇄
+          </span>
+
+          Сделки
+
         </button>
 
-        <button class="nav-btn" data-page="requests">
-          <span class="nav-icon">◫</span>
-          Requests
+
+        <button
+          class="nav-btn"
+          data-page="requests">
+
+          <span class="nav-icon">
+            ◫
+          </span>
+
+          Заявки
+
         </button>
 
-        <button class="nav-btn" data-page="disputes">
-          <span class="nav-icon">!</span>
-          Disputes
+
+        <button
+          class="nav-btn"
+          data-page="disputes">
+
+          <span class="nav-icon">
+            !
+          </span>
+
+          Споры
+
         </button>
 
 
@@ -871,42 +1146,109 @@ th{
           Аккаунт
         </div>
 
-        <button class="nav-btn" data-page="requisites">
-          <span class="nav-icon">▣</span>
-          Requisites
-        </button>
 
-        <button class="nav-btn" data-page="devices">
-          <span class="nav-icon">▱</span>
-          Devices
-        </button>
+        <button
+          class="nav-btn"
+          data-page="requisites">
 
-        <button class="nav-btn" data-page="reports">
-          <span class="nav-icon">▥</span>
-          Reports
-        </button>
+          <span class="nav-icon">
+            ▣
+          </span>
 
-        <button class="nav-btn" data-page="profile">
-          <span class="nav-icon">●</span>
-          Profile
+          Реквизиты
+
         </button>
 
 
-        <div id="adminNavigation" class="admin-only">
+        <button
+          class="nav-btn"
+          data-page="devices">
+
+          <span class="nav-icon">
+            ▱
+          </span>
+
+          Устройства
+
+        </button>
+
+
+        <button
+          class="nav-btn"
+          data-page="reports">
+
+          <span class="nav-icon">
+            ▥
+          </span>
+
+          Отчёты
+
+        </button>
+
+
+        <button
+          class="nav-btn"
+          data-page="profile">
+
+          <span class="nav-icon">
+            ●
+          </span>
+
+          Профиль
+
+        </button>
+
+
+        <!-- АДМИН -->
+
+        <div
+          id="adminNavigation"
+          class="admin-only">
+
 
           <div class="nav-section">
-            Administration
+            Администрирование
           </div>
 
-          <button class="nav-btn" data-page="admin">
-            <span class="nav-icon">⚙</span>
-            Admin Panel
+
+          <button
+            class="nav-btn"
+            data-page="admin">
+
+            <span class="nav-icon">
+              ⚙
+            </span>
+
+            Админ-панель
+
           </button>
 
-          <button class="nav-btn" data-page="users">
-            <span class="nav-icon">♙</span>
-            Users
+
+          <button
+            class="nav-btn"
+            data-page="users">
+
+            <span class="nav-icon">
+              ♙
+            </span>
+
+            Пользователи
+
           </button>
+
+
+          <button
+            class="nav-btn"
+            data-page="settings">
+
+            <span class="nav-icon">
+              ⚙
+            </span>
+
+            Настройки
+
+          </button>
+
 
         </div>
 
@@ -921,10 +1263,13 @@ th{
           —
         </div>
 
+
         <div
           id="sidebarRole"
           class="role-badge">
-          USER
+
+          ПОЛЬЗОВАТЕЛЬ
+
         </div>
 
       </div>
@@ -932,53 +1277,76 @@ th{
     </aside>
 
 
-    <!-- MAIN -->
+    <!-- =================================================
+         ОСНОВНАЯ ЧАСТЬ
+    ================================================== -->
 
     <main class="main">
 
-      <!-- MOBILE HEADER -->
+
+      <!-- МОБИЛЬНАЯ ШАПКА -->
 
       <div class="mobile-header">
 
         <button
           id="menuButton"
           class="mobile-menu-btn">
+
           ☰
+
         </button>
 
-        <div id="mobileTitle" class="mobile-title">
-          Dashboard
+
+        <div
+          id="mobileTitle"
+          class="mobile-title">
+
+          Главная
+
         </div>
+
 
         <button
           id="mobileLogout"
           class="mobile-menu-btn">
+
           ⇥
+
         </button>
 
       </div>
 
 
-      <!-- DESKTOP TOPBAR -->
+      <!-- ДЕСКТОП ШАПКА -->
 
       <header class="topbar">
 
-        <div id="topbarTitle" class="topbar-title">
-          Dashboard
+        <div
+          id="topbarTitle"
+          class="topbar-title">
+
+          Главная
+
         </div>
+
 
         <div class="topbar-right">
 
           <div
             id="topbarEmail"
             class="user-mini">
+
             —
+
           </div>
+
 
           <button
             id="logoutButton"
             class="logout-small">
+
             Выйти
+
           </button>
 
         </div>
@@ -990,16 +1358,24 @@ th{
 
 
         <!-- =================================================
-             DASHBOARD
+             ГЛАВНАЯ
         ================================================== -->
 
         <section
           id="page-dashboard"
           class="page active">
 
+
           <div class="page-heading">
-            <h1>Dashboard</h1>
-            <p>Обзор вашего аккаунта</p>
+
+            <h1>
+              Главная
+            </h1>
+
+            <p>
+              Обзор вашего аккаунта
+            </p>
+
           </div>
 
 
@@ -1009,14 +1385,18 @@ th{
               Доступный баланс
             </div>
 
+
             <div
               id="dashboardBalance"
               class="balance-value">
+
               0.00
+
             </div>
 
+
             <div class="balance-note">
-              Данные отображаются из вашего аккаунта
+              Текущий баланс аккаунта
             </div>
 
           </div>
@@ -1024,42 +1404,195 @@ th{
 
           <div class="stats">
 
-            <div class="stat-card">
-              <div class="stat-icon">↓</div>
-              <div class="stat-label">Deposit</div>
-              <div id="dashboardDeposit" class="stat-value">
-                0
-              </div>
-            </div>
 
             <div class="stat-card">
-              <div class="stat-icon">⇄</div>
-              <div class="stat-label">Turnover</div>
-              <div id="dashboardTurnover" class="stat-value">
-                0
+
+              <div class="stat-icon">
+                ↓
               </div>
+
+              <div class="stat-label">
+                Пополнение
+              </div>
+
+              <div
+                id="dashboardDeposit"
+                class="stat-value">
+
+                0
+
+              </div>
+
             </div>
 
-            <div class="stat-card">
-              <div class="stat-icon">↗</div>
-              <div class="stat-label">Profit</div>
-              <div id="dashboardProfit" class="stat-value">
-                0
-              </div>
-            </div>
 
             <div class="stat-card">
-              <div class="stat-icon">◉</div>
-              <div class="stat-label">Deals</div>
-              <div id="dashboardDeals" class="stat-value">
-                0
+
+              <div class="stat-icon">
+                ⇄
               </div>
+
+              <div class="stat-label">
+                Оборот
+              </div>
+
+              <div
+                id="dashboardTurnover"
+                class="stat-value">
+
+                0
+
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-icon">
+                ↗
+              </div>
+
+              <div class="stat-label">
+                Прибыль
+              </div>
+
+              <div
+                id="dashboardProfit"
+                class="stat-value">
+
+                0
+
+              </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+              <div class="stat-icon">
+                ◉
+              </div>
+
+              <div class="stat-label">
+                Сделки
+              </div>
+
+              <div
+                id="dashboardDeals"
+                class="stat-value">
+
+                0
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="grid">
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Пополнение счёта
+              </div>
+
+              <div class="card-sub">
+                Пополните баланс с помощью
+                доступных платёжных реквизитов.
+              </div>
+
+              <div class="action-row">
+
+                <button
+                  class="action-btn"
+                  data-page-link="finances">
+
+                  Пополнить
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Вывод средств
+              </div>
+
+              <div class="card-sub">
+                Оформите заявку на вывод
+                средств со своего баланса.
+              </div>
+
+              <div class="action-row">
+
+                <button
+                  class="action-btn dark"
+                  data-page-link="finances">
+
+                  Вывести
+
+                </button>
+
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ФИНАНСЫ
+        ================================================== -->
+
+        <section
+          id="page-finances"
+          class="page">
+
+
+          <div class="page-heading">
+
+            <h1>
+              Финансы
+            </h1>
+
+            <p>
+              Баланс и финансовые операции
+            </p>
+
+          </div>
+
+
+          <div class="balance-card">
+
+            <div class="balance-label">
+              Баланс
+            </div>
+
+            <div
+              id="financeBalance"
+              class="balance-value">
+
+              0.00
+
             </div>
 
           </div>
 
 
           <div class="grid">
+
 
             <div class="card">
 
@@ -1068,99 +1601,19 @@ th{
               </div>
 
               <div class="card-sub">
-                Перейдите в раздел Finances,
-                чтобы посмотреть доступные способы
-                пополнения.
+                Пополнение баланса.
+                Здесь будут отображаться
+                сеть, QR-код и адрес кошелька.
               </div>
 
               <div class="action-row">
 
-                <button
-                  class="action-btn"
-                  data-page-link="finances">
-                  Deposit
-                </button>
-
-              </div>
-
-            </div>
-
-
-            <div class="card">
-
-              <div class="card-title">
-                Вывод
-              </div>
-
-              <div class="card-sub">
-                Управление выводом средств
-                и доступными реквизитами.
-              </div>
-
-              <div class="action-row">
-
-                <button
-                  class="action-btn dark"
-                  data-page-link="finances">
-                  Withdraw
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- =================================================
-             FINANCES
-        ================================================== -->
-
-        <section
-          id="page-finances"
-          class="page">
-
-          <div class="page-heading">
-            <h1>Finances</h1>
-            <p>Баланс и финансовые операции</p>
-          </div>
-
-
-          <div class="balance-card">
-
-            <div class="balance-label">
-              Balance
-            </div>
-
-            <div
-              id="financeBalance"
-              class="balance-value">
-              0.00
-            </div>
-
-          </div>
-
-
-          <div class="grid">
-
-            <div class="card">
-
-              <div class="card-title">
-                Deposit
-              </div>
-
-              <div class="card-sub">
-                Пополнение аккаунта.
-                После подключения реквизитов
-                здесь появятся Network, QR и TRC Wallet.
-              </div>
-
-              <div class="action-row">
                 <button class="action-btn">
-                  Пополнить
+
+                  Пополнить баланс
+
                 </button>
+
               </div>
 
             </div>
@@ -1169,19 +1622,22 @@ th{
             <div class="card">
 
               <div class="card-title">
-                Withdraw
+                Вывод средств
               </div>
 
               <div class="card-sub">
-                Вывод средств.
-                Доступные реквизиты будут
-                предоставляться администратором.
+                Вывод средств с вашего
+                баланса.
               </div>
 
               <div class="action-row">
+
                 <button class="action-btn dark">
-                  Вывести
+
+                  Создать заявку
+
                 </button>
+
               </div>
 
             </div>
@@ -1190,13 +1646,15 @@ th{
             <div class="card">
 
               <div class="card-title">
-                Turnover
+                Оборот
               </div>
 
               <div
                 id="financeTurnover"
                 class="stat-value">
+
                 0
+
               </div>
 
             </div>
@@ -1205,16 +1663,19 @@ th{
             <div class="card">
 
               <div class="card-title">
-                Profit
+                Прибыль
               </div>
 
               <div
                 id="financeProfit"
                 class="stat-value">
+
                 0
+
               </div>
 
             </div>
+
 
           </div>
 
@@ -1222,17 +1683,26 @@ th{
 
 
         <!-- =================================================
-             DEALS
+             СДЕЛКИ
         ================================================== -->
 
         <section
           id="page-deals"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Deals</h1>
-            <p>История ваших сделок</p>
+
+            <h1>
+              Сделки
+            </h1>
+
+            <p>
+              История ваших сделок
+            </p>
+
           </div>
+
 
           <div class="table-wrap">
 
@@ -1259,17 +1729,26 @@ th{
 
 
         <!-- =================================================
-             REQUESTS
+             ЗАЯВКИ
         ================================================== -->
 
         <section
           id="page-requests"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Requests</h1>
-            <p>Ваши заявки</p>
+
+            <h1>
+              Заявки
+            </h1>
+
+            <p>
+              Ваши заявки
+            </p>
+
           </div>
+
 
           <div class="card">
 
@@ -1296,17 +1775,26 @@ th{
 
 
         <!-- =================================================
-             DISPUTES
+             СПОРЫ
         ================================================== -->
 
         <section
           id="page-disputes"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Disputes</h1>
-            <p>Споры и обращения</p>
+
+            <h1>
+              Споры
+            </h1>
+
+            <p>
+              Споры и обращения
+            </p>
+
           </div>
+
 
           <div class="card">
 
@@ -1333,30 +1821,42 @@ th{
 
 
         <!-- =================================================
-             REQUISITES
+             РЕКВИЗИТЫ
         ================================================== -->
 
         <section
           id="page-requisites"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Requisites</h1>
-            <p>Платёжные реквизиты</p>
+
+            <h1>
+              Реквизиты
+            </h1>
+
+            <p>
+              Платёжные реквизиты
+            </p>
+
           </div>
 
+
           <div class="grid">
+
 
             <div class="card">
 
               <div class="card-title">
-                Network
+                Сеть
               </div>
 
               <div
                 id="requisiteNetwork"
                 class="card-sub">
+
                 Не настроено
+
               </div>
 
             </div>
@@ -1365,13 +1865,15 @@ th{
             <div class="card">
 
               <div class="card-title">
-                TRC Wallet
+                Адрес кошелька
               </div>
 
               <div
                 id="requisiteWallet"
                 class="card-sub">
+
                 Не настроено
+
               </div>
 
             </div>
@@ -1380,15 +1882,18 @@ th{
             <div class="card">
 
               <div class="card-title">
-                QR Code
+                QR-код
               </div>
 
               <div class="card-sub">
+
                 QR-код будет предоставлен
                 администратором.
+
               </div>
 
             </div>
+
 
           </div>
 
@@ -1396,41 +1901,59 @@ th{
 
 
         <!-- =================================================
-             DEVICES
+             УСТРОЙСТВА
         ================================================== -->
 
         <section
           id="page-devices"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Devices</h1>
-            <p>Устройства и активные сессии</p>
+
+            <h1>
+              Устройства
+            </h1>
+
+            <p>
+              Устройства и активные сессии
+            </p>
+
           </div>
+
 
           <div class="card">
 
+
             <div class="profile-row">
+
               <div class="profile-label">
                 Текущее устройство
               </div>
 
               <div class="profile-value">
-                iPhone / Browser
+                iPhone / Браузер
               </div>
+
             </div>
 
+
             <div class="profile-row">
+
               <div class="profile-label">
                 Сессия
               </div>
 
               <div class="profile-value">
+
                 <span class="status green">
                   Активна
                 </span>
+
               </div>
+
             </div>
+
 
           </div>
 
@@ -1438,67 +1961,97 @@ th{
 
 
         <!-- =================================================
-             REPORTS
+             ОТЧЁТЫ
         ================================================== -->
 
         <section
           id="page-reports"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Reports</h1>
-            <p>Статистика аккаунта</p>
+
+            <h1>
+              Отчёты
+            </h1>
+
+            <p>
+              Статистика аккаунта
+            </p>
+
           </div>
+
 
           <div class="stats">
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Deposit
+                Пополнение
               </div>
 
               <div
                 id="reportDeposit"
                 class="stat-value">
+
                 0
+
               </div>
+
             </div>
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Turnover
+                Оборот
               </div>
 
               <div
                 id="reportTurnover"
                 class="stat-value">
+
                 0
+
               </div>
+
             </div>
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Profit
+                Прибыль
               </div>
 
               <div
                 id="reportProfit"
                 class="stat-value">
+
                 0
+
               </div>
+
             </div>
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Deals
+                Сделки
               </div>
 
               <div
                 id="reportDeals"
                 class="stat-value">
+
                 0
+
               </div>
+
             </div>
+
 
           </div>
 
@@ -1506,30 +2059,42 @@ th{
 
 
         <!-- =================================================
-             PROFILE
+             ПРОФИЛЬ
         ================================================== -->
 
         <section
           id="page-profile"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Profile</h1>
-            <p>Информация об аккаунте</p>
+
+            <h1>
+              Профиль
+            </h1>
+
+            <p>
+              Информация о вашем аккаунте
+            </p>
+
           </div>
 
+
           <div class="card">
+
 
             <div class="profile-row">
 
               <div class="profile-label">
-                Email
+                Электронная почта
               </div>
 
               <div
                 id="profileEmail"
                 class="profile-value">
+
                 —
+
               </div>
 
             </div>
@@ -1538,13 +2103,15 @@ th{
             <div class="profile-row">
 
               <div class="profile-label">
-                User ID
+                ID пользователя
               </div>
 
               <div
                 id="profileId"
                 class="profile-value">
+
                 —
+
               </div>
 
             </div>
@@ -1553,13 +2120,15 @@ th{
             <div class="profile-row">
 
               <div class="profile-label">
-                Role
+                Роль
               </div>
 
               <div
                 id="profileRole"
                 class="profile-value">
-                USER
+
+                ПОЛЬЗОВАТЕЛЬ
+
               </div>
 
             </div>
@@ -1581,70 +2150,94 @@ th{
 
             </div>
 
+
           </div>
 
         </section>
 
 
         <!-- =================================================
-             ADMIN DASHBOARD
+             АДМИН-ПАНЕЛЬ
         ================================================== -->
 
         <section
           id="page-admin"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Admin Panel</h1>
-            <p>Управление системой P2PSPARK</p>
+
+            <h1>
+              Админ-панель
+            </h1>
+
+            <p>
+              Управление системой P2PSPARK
+            </p>
+
           </div>
+
 
           <div class="stats">
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Users
+                Пользователи
               </div>
 
               <div class="stat-value">
                 0
               </div>
+
             </div>
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Deals
+                Сделки
               </div>
 
               <div class="stat-value">
                 0
               </div>
+
             </div>
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Turnover
+                Оборот
               </div>
 
               <div class="stat-value">
                 0
               </div>
+
             </div>
 
+
             <div class="stat-card">
+
               <div class="stat-label">
-                Profit
+                Прибыль
               </div>
 
               <div class="stat-value">
                 0
               </div>
+
             </div>
+
 
           </div>
 
 
           <div class="grid">
+
 
             <div class="card admin-box">
 
@@ -1662,7 +2255,9 @@ th{
                 <button
                   class="action-btn"
                   data-page-link="users">
-                  Управление Users
+
+                  Управление пользователями
+
                 </button>
 
               </div>
@@ -1673,12 +2268,12 @@ th{
             <div class="card admin-box">
 
               <div class="card-title">
-                Реквизиты
+                Платёжные реквизиты
               </div>
 
               <div class="card-sub">
-                Управление Network, QR и
-                TRC Wallet.
+                Управление сетью, QR-кодами
+                и адресами кошельков.
               </div>
 
               <div class="action-row">
@@ -1686,12 +2281,15 @@ th{
                 <button
                   class="action-btn light"
                   data-page-link="requisites">
-                  Реквизиты
+
+                  Управление реквизитами
+
                 </button>
 
               </div>
 
             </div>
+
 
           </div>
 
@@ -1699,41 +2297,56 @@ th{
 
 
         <!-- =================================================
-             USERS
+             ПОЛЬЗОВАТЕЛИ
         ================================================== -->
 
         <section
           id="page-users"
           class="page">
 
+
           <div class="page-heading">
-            <h1>Users</h1>
-            <p>Управление пользователями</p>
+
+            <h1>
+              Пользователи
+            </h1>
+
+            <p>
+              Управление аккаунтами пользователей
+            </p>
+
           </div>
 
+
           <div class="card admin-box">
+
 
             <div class="card-title">
               Создание пользователя
             </div>
 
+
             <div class="card-sub">
-              Функция создания пользователя
-              будет подключена через защищённую
-              Edge Function.
+              Создайте новый аккаунт и передайте
+              пользователю его данные для входа.
             </div>
+
 
             <div class="action-row">
 
               <button class="action-btn">
+
                 Создать пользователя
+
               </button>
 
             </div>
 
           </div>
 
+
           <br>
+
 
           <div class="table-wrap">
 
@@ -1744,15 +2357,101 @@ th{
               </div>
 
               <strong>
-                Пользователи
+                Список пользователей
               </strong>
 
               <p>
-                После подключения таблицы profiles
-                здесь появится список пользователей.
+                После подключения таблицы пользователей
+                здесь появится список аккаунтов.
               </p>
 
             </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             НАСТРОЙКИ
+        ================================================== -->
+
+        <section
+          id="page-settings"
+          class="page">
+
+
+          <div class="page-heading">
+
+            <h1>
+              Настройки
+            </h1>
+
+            <p>
+              Настройки системы P2PSPARK
+            </p>
+
+          </div>
+
+
+          <div class="grid">
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Платёжные настройки
+              </div>
+
+              <div class="card-sub">
+                Настройка сети, QR-кодов
+                и адресов кошельков.
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Безопасность
+              </div>
+
+              <div class="card-sub">
+                Управление доступом,
+                ролями и безопасностью аккаунтов.
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Уведомления
+              </div>
+
+              <div class="card-sub">
+                Настройки уведомлений
+                системы и пользователей.
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Система
+              </div>
+
+              <div class="card-sub">
+                Основные параметры
+                платформы P2PSPARK.
+              </div>
+
+            </div>
+
 
           </div>
 
@@ -1780,6 +2479,7 @@ const SUPABASE_URL =
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
 
+
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
@@ -1795,7 +2495,7 @@ const supabaseClient =
 
 
 /* =====================================================
-   STATE
+   СОСТОЯНИЕ
 ===================================================== */
 
 let currentUser = null;
@@ -1803,7 +2503,7 @@ let currentRole = "user";
 
 
 /* =====================================================
-   ELEMENTS
+   ЭЛЕМЕНТЫ
 ===================================================== */
 
 const authScreen =
@@ -1838,7 +2538,7 @@ const logoutButton =
 
 
 /* =====================================================
-   ERROR
+   ОШИБКА
 ===================================================== */
 
 function showAuthError(message){
@@ -1864,13 +2564,14 @@ function clearAuthError(){
 
 
 /* =====================================================
-   OPEN APP
+   ОТКРЫТЬ ПРИЛОЖЕНИЕ
 ===================================================== */
 
 async function openApp(user){
 
   currentUser =
     user;
+
 
   authScreen.style.display =
     "none";
@@ -1904,13 +2605,8 @@ async function openApp(user){
 
 
   /*
-    Получаем роль.
-
-    Сначала пробуем user_metadata.
-    Затем app_metadata.
-
-    Если таблица profiles уже создана,
-    пробуем получить role из неё.
+    Сначала пробуем определить
+    роль из metadata.
   */
 
   currentRole =
@@ -1918,6 +2614,11 @@ async function openApp(user){
     user.app_metadata?.role ||
     "user";
 
+
+  /*
+    Затем пробуем получить роль
+    из таблицы profiles.
+  */
 
   try{
 
@@ -1943,53 +2644,56 @@ async function openApp(user){
   }catch(error){
 
     console.log(
-      "profiles table is not available yet"
+      "Профиль пока не подключён."
     );
 
   }
 
 
   const isAdmin =
-    String(currentRole).toLowerCase() ===
-    "admin";
+    String(currentRole).toLowerCase()
+      === "admin";
 
 
   document.getElementById(
     "sidebarRole"
   ).textContent =
-    isAdmin ? "ADMIN" : "USER";
+    isAdmin
+      ? "АДМИНИСТРАТОР"
+      : "ПОЛЬЗОВАТЕЛЬ";
 
 
   document.getElementById(
     "profileRole"
   ).textContent =
-    isAdmin ? "ADMIN" : "USER";
+    isAdmin
+      ? "АДМИНИСТРАТОР"
+      : "ПОЛЬЗОВАТЕЛЬ";
 
 
   document.getElementById(
     "adminNavigation"
   ).style.display =
-    isAdmin ? "block" : "none";
+    isAdmin
+      ? "block"
+      : "none";
 
 
   await loadUserData(user);
 
 
-  showPage("dashboard");
+  showPage(
+    "dashboard"
+  );
 
 }
 
 
 /* =====================================================
-   LOAD USER DATA
+   ЗАГРУЗКА ФИНАНСОВ
 ===================================================== */
 
 async function loadUserData(user){
-
-  /*
-    Если balances ещё нет,
-    приложение не ломается.
-  */
 
   let balance = 0;
   let deposit = 0;
@@ -2015,23 +2719,31 @@ async function loadUserData(user){
     ){
 
       balance =
-        Number(result.data.balance || 0);
+        Number(
+          result.data.balance || 0
+        );
 
       deposit =
-        Number(result.data.deposit || 0);
+        Number(
+          result.data.deposit || 0
+        );
 
       turnover =
-        Number(result.data.turnover || 0);
+        Number(
+          result.data.turnover || 0
+        );
 
       profit =
-        Number(result.data.profit || 0);
+        Number(
+          result.data.profit || 0
+        );
 
     }
 
   }catch(error){
 
     console.log(
-      "Balances table is not available yet."
+      "Финансовая таблица пока не подключена."
     );
 
   }
@@ -2056,6 +2768,7 @@ async function loadUserData(user){
     "dashboardProfit",
     formatNumber(profit)
   );
+
 
   setText(
     "dashboardDeals",
@@ -2106,7 +2819,7 @@ function formatNumber(value){
 
   return Number(value || 0)
     .toLocaleString(
-      "en-US",
+      "ru-RU",
       {
         minimumFractionDigits:2,
         maximumFractionDigits:2
@@ -2132,7 +2845,40 @@ function setText(id,value){
 
 
 /* =====================================================
-   NAVIGATION
+   НАЗВАНИЯ СТРАНИЦ
+===================================================== */
+
+const pageNames = {
+
+  dashboard:"Главная",
+
+  finances:"Финансы",
+
+  deals:"Сделки",
+
+  requests:"Заявки",
+
+  disputes:"Споры",
+
+  requisites:"Реквизиты",
+
+  devices:"Устройства",
+
+  reports:"Отчёты",
+
+  profile:"Профиль",
+
+  admin:"Админ-панель",
+
+  users:"Пользователи",
+
+  settings:"Настройки"
+
+};
+
+
+/* =====================================================
+   НАВИГАЦИЯ
 ===================================================== */
 
 const navButtons =
@@ -2141,49 +2887,38 @@ const navButtons =
   );
 
 
-const pageNames = {
-
-  dashboard:"Dashboard",
-  finances:"Finances",
-  deals:"Deals",
-  requests:"Requests",
-  disputes:"Disputes",
-  requisites:"Requisites",
-  devices:"Devices",
-  reports:"Reports",
-  profile:"Profile",
-  admin:"Admin Panel",
-  users:"Users"
-
-};
-
-
 function showPage(page){
 
   /*
-    Защита Admin страниц
+    Защищаем разделы администратора.
   */
 
   if(
-    (page === "admin" ||
-     page === "users") &&
+    (
+      page === "admin" ||
+      page === "users" ||
+      page === "settings"
+    ) &&
     currentRole !== "admin"
   ){
 
-    page = "dashboard";
+    page =
+      "dashboard";
 
   }
 
 
   document
     .querySelectorAll(".page")
-    .forEach(function(element){
+    .forEach(
+      function(element){
 
-      element.classList.remove(
-        "active"
-      );
+        element.classList.remove(
+          "active"
+        );
 
-    });
+      }
+    );
 
 
   const target =
@@ -2235,6 +2970,10 @@ function showPage(page){
 }
 
 
+/* =====================================================
+   КНОПКИ МЕНЮ
+===================================================== */
+
 navButtons.forEach(
   function(button){
 
@@ -2254,7 +2993,7 @@ navButtons.forEach(
 
 
 /* =====================================================
-   INTERNAL PAGE BUTTONS
+   ВНУТРЕННИЕ ССЫЛКИ
 ===================================================== */
 
 document
@@ -2280,7 +3019,7 @@ document
 
 
 /* =====================================================
-   MOBILE MENU
+   МОБИЛЬНОЕ МЕНЮ
 ===================================================== */
 
 function openMobileMenu(){
@@ -2322,7 +3061,7 @@ overlay.addEventListener(
 
 
 /* =====================================================
-   LOGOUT
+   ВЫХОД
 ===================================================== */
 
 async function logout(){
@@ -2333,11 +3072,10 @@ async function logout(){
 
   }catch(error){
 
-    console.error(
-      error
-    );
+    console.error(error);
 
   }
+
 
   currentUser =
     null;
@@ -2345,11 +3083,13 @@ async function logout(){
   currentRole =
     "user";
 
+
   app.style.display =
     "none";
 
   authScreen.style.display =
     "flex";
+
 
   document.getElementById(
     "password"
@@ -2372,7 +3112,7 @@ mobileLogout.addEventListener(
 
 
 /* =====================================================
-   LOGIN
+   ВХОД
 ===================================================== */
 
 loginForm.addEventListener(
@@ -2382,6 +3122,7 @@ loginForm.addEventListener(
     event.preventDefault();
 
     clearAuthError();
+
 
     loginButton.disabled =
       true;
@@ -2396,6 +3137,7 @@ loginForm.addEventListener(
         .value
         .trim();
 
+
     const password =
       document
         .getElementById("password")
@@ -2407,8 +3149,11 @@ loginForm.addEventListener(
       const result =
         await supabaseClient.auth
           .signInWithPassword({
+
             email:email,
+
             password:password
+
           });
 
 
@@ -2419,30 +3164,42 @@ loginForm.addEventListener(
           "Ошибка входа";
 
 
+        const lower =
+          message.toLowerCase();
+
+
         if(
-          message
-            .toLowerCase()
-            .includes(
-              "invalid login credentials"
-            )
+          lower.includes(
+            "invalid login credentials"
+          )
         ){
 
           message =
-            "Неверная почта или пароль.";
+            "Неверная электронная почта или пароль.";
 
         }
 
 
         if(
-          message
-            .toLowerCase()
-            .includes(
-              "invalid api key"
-            )
+          lower.includes(
+            "invalid api key"
+          )
         ){
 
           message =
-            "Неверный API key Supabase.";
+            "Неверный ключ подключения Supabase.";
+
+        }
+
+
+        if(
+          lower.includes(
+            "email not confirmed"
+          )
+        ){
+
+          message =
+            "Электронная почта аккаунта ещё не подтверждена.";
 
         }
 
@@ -2450,6 +3207,7 @@ loginForm.addEventListener(
         showAuthError(
           message
         );
+
 
         return;
 
@@ -2466,6 +3224,7 @@ loginForm.addEventListener(
         ).value =
           "";
 
+
         await openApp(
           result.data.user
         );
@@ -2479,9 +3238,11 @@ loginForm.addEventListener(
         error
       );
 
+
       showAuthError(
-        "Ошибка подключения к Supabase."
+        "Не удалось подключиться к серверу. Попробуйте ещё раз."
       );
+
 
     }finally{
 
@@ -2498,7 +3259,7 @@ loginForm.addEventListener(
 
 
 /* =====================================================
-   SESSION
+   ПРОВЕРКА СЕССИИ
 ===================================================== */
 
 async function checkSession(){
@@ -2533,7 +3294,7 @@ async function checkSession(){
   }catch(error){
 
     console.error(
-      "SESSION ERROR:",
+      "Ошибка проверки сессии:",
       error
     );
 
@@ -2543,7 +3304,7 @@ async function checkSession(){
 
 
 /* =====================================================
-   AUTH STATE
+   ИЗМЕНЕНИЕ СОСТОЯНИЯ АВТОРИЗАЦИИ
 ===================================================== */
 
 supabaseClient.auth.onAuthStateChange(
@@ -2579,7 +3340,7 @@ supabaseClient.auth.onAuthStateChange(
 
 
 /* =====================================================
-   START
+   ЗАПУСК
 ===================================================== */
 
 checkSession();
