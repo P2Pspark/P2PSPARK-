@@ -4,325 +4,770 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>P2PSPARK</title>
-<!-- Supabase JS -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{
-  box-sizing:border-box;
+*{box-sizing:border-box}
+
+:root{
+  --blue:#2864df;
+  --blue2:#1f55c9;
+  --dark:#101828;
+  --text:#101828;
+  --muted:#667085;
+  --bg:#f4f6fa;
+  --card:#fff;
+  --border:#e4e7ec;
+  --green:#12b76a;
+  --greenbg:#dcfae6;
+  --red:#f04438;
+  --redbg:#fee4e2;
+  --orange:#f79009;
+  --orangebg:#fef0c7;
 }
+
 html,body{
   margin:0;
   padding:0;
   min-height:100%;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:#f3f6fb;
-  color:#101828;
+  background:var(--bg);
+  color:var(--text);
 }
+
 body{
+  min-height:100vh;
+}
+
+button,input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+.auth-wrap{
+  min-height:100vh;
   display:flex;
+  align-items:center;
   justify-content:center;
-  min-height:100vh;
+  padding:25px;
 }
-.app{
+
+.auth-card{
   width:100%;
-  max-width:760px;
-  min-height:100vh;
-  padding:30px 16px;
-}
-.card{
-  width:100%;
+  max-width:650px;
   background:#fff;
   border-radius:32px;
-  padding:42px 36px 34px;
-  box-shadow:0 18px 55px rgba(31,45,70,.12);
+  padding:42px 36px;
+  box-shadow:0 20px 60px rgba(16,24,40,.10);
 }
-/* =========================
-   LOGO
-========================= */
+
 .logo{
   text-align:center;
-  margin-bottom:28px;
 }
+
 .logo-title{
   font-size:48px;
   line-height:1;
   font-weight:900;
   letter-spacing:-2px;
-  color:#101828;
 }
+
 .logo-title span{
-  color:#2864df;
+  color:var(--blue);
 }
-.logo-subtitle{
+
+.logo-sub{
   margin-top:14px;
-  font-size:15px;
+  color:#737d90;
+  font-size:14px;
   font-weight:800;
   letter-spacing:6px;
-  color:#737d90;
 }
-/* =========================
-   LOGIN
-========================= */
-h1{
+
+.auth-title{
   text-align:center;
   font-size:38px;
-  margin:34px 0 12px;
+  margin:38px 0 10px;
   font-weight:900;
 }
-.subtitle{
+
+.auth-subtitle{
   text-align:center;
-  color:#737d90;
-  font-size:22px;
-  line-height:1.3;
-  font-weight:600;
+  color:var(--muted);
+  font-size:20px;
+  line-height:1.4;
   margin-bottom:28px;
 }
+
 .field{
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
-label{
+
+.field label{
   display:block;
-  font-size:19px;
+  margin-bottom:9px;
   font-weight:800;
-  margin-bottom:10px;
+  font-size:17px;
 }
-input{
+
+.field input{
   width:100%;
-  height:64px;
-  border:1px solid #dfe4ec;
-  border-radius:17px;
-  padding:0 20px;
-  font-size:21px;
+  height:62px;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:0 18px;
   outline:none;
-  background:#fff;
-  color:#101828;
-  transition:.2s;
+  font-size:18px;
 }
-input:focus{
-  border-color:#2864df;
+
+.field input:focus{
+  border-color:var(--blue);
   box-shadow:0 0 0 4px rgba(40,100,223,.10);
 }
-input::placeholder{
-  color:#98a2b3;
-}
-button{
+
+.primary-btn{
   width:100%;
-  height:64px;
+  height:62px;
   border:0;
-  border-radius:17px;
-  background:#2864df;
+  border-radius:16px;
+  background:var(--blue);
   color:#fff;
-  font-size:22px;
   font-weight:900;
-  cursor:pointer;
-  transition:.15s;
+  font-size:20px;
 }
-button:active{
-  transform:scale(.99);
+
+.primary-btn:disabled{
+  opacity:.6;
 }
-button:disabled{
-  opacity:.65;
-  cursor:wait;
-}
-/* =========================
-   ERRORS
-========================= */
+
 .error{
   display:none;
-  background:#ffe1e1;
-  color:#bd2d2d;
-  border-radius:15px;
-  padding:15px 18px;
-  margin-bottom:22px;
-  font-size:16px;
-  line-height:1.4;
+  background:var(--redbg);
+  color:#b42318;
+  padding:15px;
+  border-radius:14px;
+  margin-bottom:18px;
   font-weight:700;
+  line-height:1.4;
   overflow-wrap:anywhere;
 }
-.debug{
-  display:none;
-  background:#101828;
-  color:#fff;
-  border-radius:15px;
-  padding:17px;
-  margin-bottom:22px;
-  font-family:monospace;
-  font-size:13px;
-  line-height:1.45;
-  overflow-wrap:anywhere;
-}
-.success{
-  display:none;
-  background:#dcfae6;
-  color:#087443;
-  border-radius:15px;
-  padding:15px 18px;
-  margin-bottom:22px;
-  font-size:16px;
-  line-height:1.4;
-  font-weight:700;
-}
-/* =========================
-   LOADING
-========================= */
-.loading{
-  display:none;
+
+.auth-footer{
   text-align:center;
+  color:var(--muted);
+  margin-top:25px;
+  font-weight:600;
+}
+
+/* =====================================================
+   APP
+===================================================== */
+
+#app{
+  display:none;
+}
+
+.app-shell{
+  min-height:100vh;
+  display:flex;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+  width:270px;
+  background:#fff;
+  border-right:1px solid var(--border);
+  min-height:100vh;
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
+  z-index:50;
+  display:flex;
+  flex-direction:column;
+}
+
+.sidebar-logo{
+  padding:28px 22px 25px;
+  border-bottom:1px solid var(--border);
+}
+
+.sidebar-logo .logo-title{
+  font-size:31px;
+}
+
+.sidebar-logo .logo-sub{
+  font-size:8px;
+  letter-spacing:3px;
+  margin-top:9px;
+}
+
+.nav{
+  padding:18px 13px;
+  flex:1;
+  overflow-y:auto;
+}
+
+.nav-section{
+  margin:15px 10px 8px;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-weight:900;
+  color:#98a2b3;
+}
+
+.nav-btn{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:13px 14px;
+  border:0;
+  background:transparent;
+  border-radius:13px;
   color:#667085;
-  font-size:15px;
-  margin-top:15px;
-  font-weight:600;
+  font-weight:750;
+  text-align:left;
+  margin-bottom:4px;
 }
-/* =========================
-   BOTTOM TEXT
-========================= */
-.bottom-text{
+
+.nav-btn:hover{
+  background:#f4f6fa;
+}
+
+.nav-btn.active{
+  background:#edf3ff;
+  color:var(--blue);
+}
+
+.nav-icon{
+  width:25px;
   text-align:center;
-  color:#737d90;
-  font-size:18px;
-  font-weight:600;
-  margin-top:30px;
+  font-size:19px;
 }
-/* =========================
-   DASHBOARD
-========================= */
-.dashboard{
-  display:none;
+
+.sidebar-user{
+  border-top:1px solid var(--border);
+  padding:17px;
 }
-.welcome{
-  text-align:center;
-  margin-bottom:28px;
+
+.sidebar-user-email{
+  font-size:13px;
+  color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-.welcome h2{
-  font-size:30px;
-  margin:0 0 8px;
+
+.role-badge{
+  display:inline-block;
+  margin-top:7px;
+  padding:5px 9px;
+  border-radius:999px;
+  background:#edf3ff;
+  color:var(--blue);
+  font-size:11px;
   font-weight:900;
 }
-.welcome p{
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+  margin-left:270px;
+  width:calc(100% - 270px);
+  min-height:100vh;
+}
+
+.topbar{
+  height:76px;
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  position:sticky;
+  top:0;
+  z-index:30;
+}
+
+.topbar-title{
+  font-size:24px;
+  font-weight:900;
+}
+
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.user-mini{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+}
+
+.logout-small{
+  border:0;
+  background:#101828;
+  color:#fff;
+  border-radius:11px;
+  padding:10px 15px;
+  font-weight:800;
+}
+
+.content{
+  padding:30px;
+  max-width:1400px;
+  margin:auto;
+}
+
+/* =====================================================
+   MOBILE HEADER
+===================================================== */
+
+.mobile-header{
+  display:none;
+}
+
+.mobile-menu-btn{
+  border:0;
+  background:#f2f4f7;
+  border-radius:12px;
+  width:43px;
+  height:43px;
+  font-size:22px;
+}
+
+.mobile-title{
+  font-weight:900;
+  font-size:19px;
+}
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-heading{
+  margin-bottom:25px;
+}
+
+.page-heading h1{
+  margin:0 0 7px;
+  font-size:32px;
+  font-weight:900;
+}
+
+.page-heading p{
   margin:0;
-  color:#737d90;
-  font-size:17px;
-  word-break:break-word;
+  color:var(--muted);
 }
-.panel{
-  background:#f5f7fa;
-  border-radius:22px;
+
+/* =====================================================
+   DASHBOARD CARDS
+===================================================== */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-bottom:24px;
+}
+
+.stat-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:23px;
+}
+
+.stat-label{
+  color:var(--muted);
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.stat-value{
+  font-size:30px;
+  font-weight:900;
+}
+
+.stat-icon{
+  float:right;
+  font-size:23px;
+}
+
+/* =====================================================
+   GENERAL CARDS
+===================================================== */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
   padding:24px;
-  margin-bottom:18px;
 }
-.panel-title{
+
+.card-title{
   font-size:20px;
   font-weight:900;
   margin-bottom:8px;
 }
-.panel-value{
-  font-size:17px;
-  color:#667085;
-  word-break:break-word;
-}
-.status{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  background:#dcfae6;
-  color:#087443;
-  padding:8px 13px;
-  border-radius:999px;
+
+.card-sub{
+  color:var(--muted);
   font-size:14px;
+  line-height:1.5;
+}
+
+.action-row{
+  display:flex;
+  gap:12px;
+  margin-top:20px;
+}
+
+.action-btn{
+  border:0;
+  border-radius:13px;
+  padding:12px 18px;
+  background:var(--blue);
+  color:#fff;
   font-weight:800;
 }
-.status-dot{
-  width:8px;
-  height:8px;
-  background:#12b76a;
-  border-radius:50%;
+
+.action-btn.dark{
+  background:var(--dark);
 }
-.logout{
-  margin-top:15px;
-  background:#101828;
+
+.action-btn.light{
+  background:#edf3ff;
+  color:var(--blue);
 }
-/* =========================
+
+/* =====================================================
+   BALANCE
+===================================================== */
+
+.balance-card{
+  background:linear-gradient(135deg,#2864df,#1747b1);
+  color:#fff;
+  border-radius:23px;
+  padding:28px;
+  margin-bottom:20px;
+}
+
+.balance-label{
+  opacity:.85;
+  font-weight:700;
+  font-size:14px;
+}
+
+.balance-value{
+  font-size:42px;
+  font-weight:900;
+  margin:9px 0 5px;
+}
+
+.balance-note{
+  opacity:.8;
+  font-size:13px;
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-wrap{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px;
+}
+
+th,td{
+  padding:16px 18px;
+  text-align:left;
+  border-bottom:1px solid #eef0f3;
+  font-size:14px;
+}
+
+th{
+  color:#667085;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+}
+
+.status{
+  display:inline-flex;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.status.green{
+  background:var(--greenbg);
+  color:#087443;
+}
+
+.status.orange{
+  background:var(--orangebg);
+  color:#b54708;
+}
+
+.status.red{
+  background:var(--redbg);
+  color:#b42318;
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:16px 0;
+  border-bottom:1px solid #eef0f3;
+}
+
+.profile-label{
+  color:var(--muted);
+  font-weight:700;
+}
+
+.profile-value{
+  font-weight:800;
+  text-align:right;
+  overflow-wrap:anywhere;
+}
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+.admin-only{
+  display:none;
+}
+
+.admin-box{
+  border:1px solid #d6e2ff;
+  background:#f7f9ff;
+}
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+  padding:45px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.empty-icon{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+/* =====================================================
+   OVERLAY
+===================================================== */
+
+.overlay{
+  display:none;
+}
+
+/* =====================================================
    MOBILE
-========================= */
-@media(max-width:600px){
-  .app{
-    padding:0;
+===================================================== */
+
+@media(max-width:900px){
+
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
+    box-shadow:20px 0 50px rgba(16,24,40,.15);
   }
-  .card{
-    min-height:100vh;
+
+  .sidebar.open{
+    transform:translateX(0);
+  }
+
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(16,24,40,.35);
+    z-index:40;
+  }
+
+  .overlay.show{
+    display:block;
+  }
+
+  .main{
+    margin-left:0;
+    width:100%;
+  }
+
+  .topbar{
+    display:none;
+  }
+
+  .mobile-header{
+    display:flex;
+    height:67px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    position:sticky;
+    top:0;
+    z-index:30;
+  }
+
+  .content{
+    padding:20px 15px 100px;
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .stat-card{
+    padding:18px;
+  }
+
+  .stat-value{
+    font-size:25px;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .page-heading h1{
+    font-size:27px;
+  }
+}
+
+@media(max-width:600px){
+
+  .auth-wrap{
+    padding:0;
+    align-items:stretch;
+  }
+
+  .auth-card{
     border-radius:0;
-    padding:38px 32px 30px;
+    min-height:100vh;
+    padding:38px 30px;
     box-shadow:none;
   }
+
   .logo-title{
     font-size:40px;
   }
-  .logo-subtitle{
-    font-size:12px;
-    letter-spacing:5px;
+
+  .logo-sub{
+    font-size:10px;
+    letter-spacing:4px;
   }
-  h1{
-    font-size:34px;
-    margin-top:38px;
+
+  .auth-title{
+    font-size:33px;
   }
-  .subtitle{
-    font-size:20px;
+
+  .balance-value{
+    font-size:35px;
   }
-  input{
-    height:62px;
-    font-size:20px;
+
+  .action-row{
+    flex-direction:column;
   }
-  button{
-    height:62px;
-  }
-  .welcome h2{
-    font-size:28px;
+
+  .action-btn{
+    width:100%;
   }
 }
 </style>
 </head>
+
 <body>
-<div class="app">
-  <!-- =====================================================
-       LOGIN CARD
-  ====================================================== -->
-  <div class="card" id="loginCard">
+
+<!-- =====================================================
+     AUTH SCREEN
+====================================================== -->
+
+<div id="authScreen" class="auth-wrap">
+
+  <div class="auth-card">
+
     <div class="logo">
       <div class="logo-title">
         P2P<span>SPARK</span>
       </div>
-      <div class="logo-subtitle">
+
+      <div class="logo-sub">
         PEOPLE • DEALS • OPPORTUNITIES
       </div>
     </div>
-    <h1>
+
+    <div class="auth-title">
       Вход в аккаунт
-    </h1>
-    <div class="subtitle">
+    </div>
+
+    <div class="auth-subtitle">
       Введите данные, выданные<br>
       администратором
     </div>
-    <!-- ERROR -->
-    <div
-      class="error"
-      id="errorBox">
-    </div>
-    <!-- DEBUG -->
-    <div
-      class="debug"
-      id="debugBox">
-    </div>
-    <!-- SUCCESS -->
-    <div
-      class="success"
-      id="successBox">
-    </div>
-    <!-- LOGIN FORM -->
+
+    <div id="authError" class="error"></div>
+
     <form id="loginForm">
+
       <div class="field">
-        <label for="email">
-          Почта
-        </label>
+        <label>Почта</label>
         <input
           id="email"
           type="email"
@@ -331,10 +776,9 @@ button:disabled{
           required
         >
       </div>
+
       <div class="field">
-        <label for="password">
-          Пароль
-        </label>
+        <label>Пароль</label>
         <input
           id="password"
           type="password"
@@ -343,128 +787,999 @@ button:disabled{
           required
         >
       </div>
+
       <button
         id="loginButton"
+        class="primary-btn"
         type="submit">
+
         Войти →
+
       </button>
-      <div
-        class="loading"
-        id="loading">
-        Выполняется вход...
-      </div>
+
     </form>
-    <div class="bottom-text">
+
+    <div class="auth-footer">
       Доступ к аккаунту создаёт администратор
     </div>
+
   </div>
-  <!-- =====================================================
-       DASHBOARD
-  ====================================================== -->
-  <div
-    class="card dashboard"
-    id="dashboardCard">
-    <div class="logo">
-      <div class="logo-title">
-        P2P<span>SPARK</span>
-      </div>
-      <div class="logo-subtitle">
-        PEOPLE • DEALS • OPPORTUNITIES
-      </div>
-    </div>
-    <div class="welcome">
-      <h2>
-        Добро пожаловать
-      </h2>
-      <p id="userEmail">
-        —
-      </p>
-    </div>
-    <div class="panel">
-      <div class="panel-title">
-        Статус аккаунта
-      </div>
-      <div class="panel-value">
-        <span class="status">
-          <span class="status-dot"></span>
-          Авторизован
-        </span>
-      </div>
-    </div>
-    <div class="panel">
-      <div class="panel-title">
-        ID пользователя
-      </div>
-      <div
-        class="panel-value"
-        id="userId">
-        —
-      </div>
-    </div>
-    <div class="panel">
-      <div class="panel-title">
-        Роль
-      </div>
-      <div
-        class="panel-value"
-        id="userRole">
-        Пользователь
-      </div>
-    </div>
-    <button
-      class="logout"
-      id="logoutButton">
-      Выйти
-    </button>
-  </div>
+
 </div>
+
+
+<!-- =====================================================
+     APPLICATION
+====================================================== -->
+
+<div id="app">
+
+  <div id="overlay" class="overlay"></div>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+
+    <aside id="sidebar" class="sidebar">
+
+      <div class="sidebar-logo">
+
+        <div class="logo-title">
+          P2P<span>SPARK</span>
+        </div>
+
+        <div class="logo-sub">
+          PEOPLE • DEALS • OPPORTUNITIES
+        </div>
+
+      </div>
+
+
+      <nav class="nav">
+
+        <div class="nav-section">
+          Основное
+        </div>
+
+        <button class="nav-btn active" data-page="dashboard">
+          <span class="nav-icon">⌂</span>
+          Dashboard
+        </button>
+
+        <button class="nav-btn" data-page="finances">
+          <span class="nav-icon">◈</span>
+          Finances
+        </button>
+
+        <button class="nav-btn" data-page="deals">
+          <span class="nav-icon">⇄</span>
+          Deals
+        </button>
+
+        <button class="nav-btn" data-page="requests">
+          <span class="nav-icon">◫</span>
+          Requests
+        </button>
+
+        <button class="nav-btn" data-page="disputes">
+          <span class="nav-icon">!</span>
+          Disputes
+        </button>
+
+
+        <div class="nav-section">
+          Аккаунт
+        </div>
+
+        <button class="nav-btn" data-page="requisites">
+          <span class="nav-icon">▣</span>
+          Requisites
+        </button>
+
+        <button class="nav-btn" data-page="devices">
+          <span class="nav-icon">▱</span>
+          Devices
+        </button>
+
+        <button class="nav-btn" data-page="reports">
+          <span class="nav-icon">▥</span>
+          Reports
+        </button>
+
+        <button class="nav-btn" data-page="profile">
+          <span class="nav-icon">●</span>
+          Profile
+        </button>
+
+
+        <div id="adminNavigation" class="admin-only">
+
+          <div class="nav-section">
+            Administration
+          </div>
+
+          <button class="nav-btn" data-page="admin">
+            <span class="nav-icon">⚙</span>
+            Admin Panel
+          </button>
+
+          <button class="nav-btn" data-page="users">
+            <span class="nav-icon">♙</span>
+            Users
+          </button>
+
+        </div>
+
+      </nav>
+
+
+      <div class="sidebar-user">
+
+        <div
+          id="sidebarEmail"
+          class="sidebar-user-email">
+          —
+        </div>
+
+        <div
+          id="sidebarRole"
+          class="role-badge">
+          USER
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+      <!-- MOBILE HEADER -->
+
+      <div class="mobile-header">
+
+        <button
+          id="menuButton"
+          class="mobile-menu-btn">
+          ☰
+        </button>
+
+        <div id="mobileTitle" class="mobile-title">
+          Dashboard
+        </div>
+
+        <button
+          id="mobileLogout"
+          class="mobile-menu-btn">
+          ⇥
+        </button>
+
+      </div>
+
+
+      <!-- DESKTOP TOPBAR -->
+
+      <header class="topbar">
+
+        <div id="topbarTitle" class="topbar-title">
+          Dashboard
+        </div>
+
+        <div class="topbar-right">
+
+          <div
+            id="topbarEmail"
+            class="user-mini">
+            —
+          </div>
+
+          <button
+            id="logoutButton"
+            class="logout-small">
+            Выйти
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <div class="content">
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section
+          id="page-dashboard"
+          class="page active">
+
+          <div class="page-heading">
+            <h1>Dashboard</h1>
+            <p>Обзор вашего аккаунта</p>
+          </div>
+
+
+          <div class="balance-card">
+
+            <div class="balance-label">
+              Доступный баланс
+            </div>
+
+            <div
+              id="dashboardBalance"
+              class="balance-value">
+              0.00
+            </div>
+
+            <div class="balance-note">
+              Данные отображаются из вашего аккаунта
+            </div>
+
+          </div>
+
+
+          <div class="stats">
+
+            <div class="stat-card">
+              <div class="stat-icon">↓</div>
+              <div class="stat-label">Deposit</div>
+              <div id="dashboardDeposit" class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">⇄</div>
+              <div class="stat-label">Turnover</div>
+              <div id="dashboardTurnover" class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">↗</div>
+              <div class="stat-label">Profit</div>
+              <div id="dashboardProfit" class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">◉</div>
+              <div class="stat-label">Deals</div>
+              <div id="dashboardDeals" class="stat-value">
+                0
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="card">
+
+              <div class="card-title">
+                Пополнение
+              </div>
+
+              <div class="card-sub">
+                Перейдите в раздел Finances,
+                чтобы посмотреть доступные способы
+                пополнения.
+              </div>
+
+              <div class="action-row">
+
+                <button
+                  class="action-btn"
+                  data-page-link="finances">
+                  Deposit
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Вывод
+              </div>
+
+              <div class="card-sub">
+                Управление выводом средств
+                и доступными реквизитами.
+              </div>
+
+              <div class="action-row">
+
+                <button
+                  class="action-btn dark"
+                  data-page-link="finances">
+                  Withdraw
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FINANCES
+        ================================================== -->
+
+        <section
+          id="page-finances"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Finances</h1>
+            <p>Баланс и финансовые операции</p>
+          </div>
+
+
+          <div class="balance-card">
+
+            <div class="balance-label">
+              Balance
+            </div>
+
+            <div
+              id="financeBalance"
+              class="balance-value">
+              0.00
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="card">
+
+              <div class="card-title">
+                Deposit
+              </div>
+
+              <div class="card-sub">
+                Пополнение аккаунта.
+                После подключения реквизитов
+                здесь появятся Network, QR и TRC Wallet.
+              </div>
+
+              <div class="action-row">
+                <button class="action-btn">
+                  Пополнить
+                </button>
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Withdraw
+              </div>
+
+              <div class="card-sub">
+                Вывод средств.
+                Доступные реквизиты будут
+                предоставляться администратором.
+              </div>
+
+              <div class="action-row">
+                <button class="action-btn dark">
+                  Вывести
+                </button>
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Turnover
+              </div>
+
+              <div
+                id="financeTurnover"
+                class="stat-value">
+                0
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                Profit
+              </div>
+
+              <div
+                id="financeProfit"
+                class="stat-value">
+                0
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DEALS
+        ================================================== -->
+
+        <section
+          id="page-deals"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Deals</h1>
+            <p>История ваших сделок</p>
+          </div>
+
+          <div class="table-wrap">
+
+            <div class="empty">
+
+              <div class="empty-icon">
+                ⇄
+              </div>
+
+              <strong>
+                Сделок пока нет
+              </strong>
+
+              <p>
+                Когда появятся сделки,
+                они будут отображаться здесь.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REQUESTS
+        ================================================== -->
+
+        <section
+          id="page-requests"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Requests</h1>
+            <p>Ваши заявки</p>
+          </div>
+
+          <div class="card">
+
+            <div class="empty">
+
+              <div class="empty-icon">
+                ◫
+              </div>
+
+              <strong>
+                Заявок пока нет
+              </strong>
+
+              <p>
+                Новые заявки будут отображаться
+                в этом разделе.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DISPUTES
+        ================================================== -->
+
+        <section
+          id="page-disputes"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Disputes</h1>
+            <p>Споры и обращения</p>
+          </div>
+
+          <div class="card">
+
+            <div class="empty">
+
+              <div class="empty-icon">
+                !
+              </div>
+
+              <strong>
+                Споров нет
+              </strong>
+
+              <p>
+                Здесь будут отображаться
+                открытые и закрытые споры.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REQUISITES
+        ================================================== -->
+
+        <section
+          id="page-requisites"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Requisites</h1>
+            <p>Платёжные реквизиты</p>
+          </div>
+
+          <div class="grid">
+
+            <div class="card">
+
+              <div class="card-title">
+                Network
+              </div>
+
+              <div
+                id="requisiteNetwork"
+                class="card-sub">
+                Не настроено
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                TRC Wallet
+              </div>
+
+              <div
+                id="requisiteWallet"
+                class="card-sub">
+                Не настроено
+              </div>
+
+            </div>
+
+
+            <div class="card">
+
+              <div class="card-title">
+                QR Code
+              </div>
+
+              <div class="card-sub">
+                QR-код будет предоставлен
+                администратором.
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DEVICES
+        ================================================== -->
+
+        <section
+          id="page-devices"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Devices</h1>
+            <p>Устройства и активные сессии</p>
+          </div>
+
+          <div class="card">
+
+            <div class="profile-row">
+              <div class="profile-label">
+                Текущее устройство
+              </div>
+
+              <div class="profile-value">
+                iPhone / Browser
+              </div>
+            </div>
+
+            <div class="profile-row">
+              <div class="profile-label">
+                Сессия
+              </div>
+
+              <div class="profile-value">
+                <span class="status green">
+                  Активна
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             REPORTS
+        ================================================== -->
+
+        <section
+          id="page-reports"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Reports</h1>
+            <p>Статистика аккаунта</p>
+          </div>
+
+          <div class="stats">
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Deposit
+              </div>
+
+              <div
+                id="reportDeposit"
+                class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Turnover
+              </div>
+
+              <div
+                id="reportTurnover"
+                class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Profit
+              </div>
+
+              <div
+                id="reportProfit"
+                class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Deals
+              </div>
+
+              <div
+                id="reportDeals"
+                class="stat-value">
+                0
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
+
+        <section
+          id="page-profile"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Profile</h1>
+            <p>Информация об аккаунте</p>
+          </div>
+
+          <div class="card">
+
+            <div class="profile-row">
+
+              <div class="profile-label">
+                Email
+              </div>
+
+              <div
+                id="profileEmail"
+                class="profile-value">
+                —
+              </div>
+
+            </div>
+
+
+            <div class="profile-row">
+
+              <div class="profile-label">
+                User ID
+              </div>
+
+              <div
+                id="profileId"
+                class="profile-value">
+                —
+              </div>
+
+            </div>
+
+
+            <div class="profile-row">
+
+              <div class="profile-label">
+                Role
+              </div>
+
+              <div
+                id="profileRole"
+                class="profile-value">
+                USER
+              </div>
+
+            </div>
+
+
+            <div class="profile-row">
+
+              <div class="profile-label">
+                Статус
+              </div>
+
+              <div class="profile-value">
+
+                <span class="status green">
+                  Авторизован
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ADMIN DASHBOARD
+        ================================================== -->
+
+        <section
+          id="page-admin"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Admin Panel</h1>
+            <p>Управление системой P2PSPARK</p>
+          </div>
+
+          <div class="stats">
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Users
+              </div>
+
+              <div class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Deals
+              </div>
+
+              <div class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Turnover
+              </div>
+
+              <div class="stat-value">
+                0
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-label">
+                Profit
+              </div>
+
+              <div class="stat-value">
+                0
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="grid">
+
+            <div class="card admin-box">
+
+              <div class="card-title">
+                Пользователи
+              </div>
+
+              <div class="card-sub">
+                Создание и управление аккаунтами
+                пользователей.
+              </div>
+
+              <div class="action-row">
+
+                <button
+                  class="action-btn"
+                  data-page-link="users">
+                  Управление Users
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="card admin-box">
+
+              <div class="card-title">
+                Реквизиты
+              </div>
+
+              <div class="card-sub">
+                Управление Network, QR и
+                TRC Wallet.
+              </div>
+
+              <div class="action-row">
+
+                <button
+                  class="action-btn light"
+                  data-page-link="requisites">
+                  Реквизиты
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =================================================
+             USERS
+        ================================================== -->
+
+        <section
+          id="page-users"
+          class="page">
+
+          <div class="page-heading">
+            <h1>Users</h1>
+            <p>Управление пользователями</p>
+          </div>
+
+          <div class="card admin-box">
+
+            <div class="card-title">
+              Создание пользователя
+            </div>
+
+            <div class="card-sub">
+              Функция создания пользователя
+              будет подключена через защищённую
+              Edge Function.
+            </div>
+
+            <div class="action-row">
+
+              <button class="action-btn">
+                Создать пользователя
+              </button>
+
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="table-wrap">
+
+            <div class="empty">
+
+              <div class="empty-icon">
+                ♙
+              </div>
+
+              <strong>
+                Пользователи
+              </strong>
+
+              <p>
+                После подключения таблицы profiles
+                здесь появится список пользователей.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+      </div>
+
+    </main>
+
+  </div>
+
+</div>
+
+
 <script>
-/* =========================================================
-   SUPABASE CONFIGURATION
-   ========================================================= */
-/*
-  ВАЖНО:
-  URL проекта:
-  https://kzdaiqhnjcdsinzaygao.supabase.co
-  НЕ:
-  https://kzdaiqhnjcdsinzaygao.supabase.co/rest/v1/
-*/
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
-/*
-  Твой PUBLISHABLE KEY
-*/
+
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
-/* =========================================================
-   CHECK SUPABASE LIBRARY
-   ========================================================= */
-if(
-  !window.supabase ||
-  typeof window.supabase.createClient !== "function"
-){
-  document.body.innerHTML = `
-    <div style="
-      padding:40px;
-      font-family:Arial;
-      text-align:center;
-    ">
-      <h2>Ошибка загрузки Supabase</h2>
-      <p>
-        Не удалось загрузить библиотеку Supabase.
-      </p>
-      <p>
-        Проверь подключение к интернету и обнови страницу.
-      </p>
-    </div>
-  `;
-  throw new Error(
-    "Supabase JS library not loaded"
-  );
-}
-/* =========================================================
-   CREATE SUPABASE CLIENT
-   ========================================================= */
+
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
@@ -477,384 +1792,799 @@ const supabaseClient =
       }
     }
   );
-/* =========================================================
-   DOM ELEMENTS
-   ========================================================= */
-const loginCard =
-  document.getElementById("loginCard");
-const dashboardCard =
-  document.getElementById("dashboardCard");
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let currentUser = null;
+let currentRole = "user";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const authScreen =
+  document.getElementById("authScreen");
+
+const app =
+  document.getElementById("app");
+
+const authError =
+  document.getElementById("authError");
+
 const loginForm =
   document.getElementById("loginForm");
-const emailInput =
-  document.getElementById("email");
-const passwordInput =
-  document.getElementById("password");
+
 const loginButton =
   document.getElementById("loginButton");
+
+const sidebar =
+  document.getElementById("sidebar");
+
+const overlay =
+  document.getElementById("overlay");
+
+const menuButton =
+  document.getElementById("menuButton");
+
+const mobileLogout =
+  document.getElementById("mobileLogout");
+
 const logoutButton =
   document.getElementById("logoutButton");
-const loading =
-  document.getElementById("loading");
-const errorBox =
-  document.getElementById("errorBox");
-const debugBox =
-  document.getElementById("debugBox");
-const successBox =
-  document.getElementById("successBox");
-const userEmail =
-  document.getElementById("userEmail");
-const userId =
-  document.getElementById("userId");
-const userRole =
-  document.getElementById("userRole");
-/* =========================================================
-   ERROR HANDLING
-   ========================================================= */
-function showError(
-  message,
-  debugMessage = ""
-){
-  errorBox.textContent =
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+function showAuthError(message){
+
+  authError.textContent =
     message;
-  errorBox.style.display =
+
+  authError.style.display =
     "block";
-  if(debugMessage){
-    debugBox.textContent =
-      debugMessage;
-    debugBox.style.display =
-      "block";
-  }else{
-    debugBox.textContent =
-      "";
-    debugBox.style.display =
-      "none";
-  }
+
 }
-function clearMessages(){
-  errorBox.textContent =
+
+
+function clearAuthError(){
+
+  authError.textContent =
     "";
-  errorBox.style.display =
+
+  authError.style.display =
     "none";
-  debugBox.textContent =
-    "";
-  debugBox.style.display =
-    "none";
-  successBox.textContent =
-    "";
-  successBox.style.display =
-    "none";
+
 }
-function showSuccess(message){
-  successBox.textContent =
-    message;
-  successBox.style.display =
+
+
+/* =====================================================
+   OPEN APP
+===================================================== */
+
+async function openApp(user){
+
+  currentUser =
+    user;
+
+  authScreen.style.display =
+    "none";
+
+  app.style.display =
     "block";
-}
-/* =========================================================
-   LOADING
-   ========================================================= */
-function setLoading(state){
-  loginButton.disabled =
-    state;
-  if(state){
-    loginButton.textContent =
-      "Вход...";
-    loading.style.display =
-      "block";
-  }else{
-    loginButton.textContent =
-      "Войти →";
-    loading.style.display =
-      "none";
+
+
+  document.getElementById(
+    "sidebarEmail"
+  ).textContent =
+    user.email || "—";
+
+
+  document.getElementById(
+    "topbarEmail"
+  ).textContent =
+    user.email || "—";
+
+
+  document.getElementById(
+    "profileEmail"
+  ).textContent =
+    user.email || "—";
+
+
+  document.getElementById(
+    "profileId"
+  ).textContent =
+    user.id || "—";
+
+
+  /*
+    Получаем роль.
+
+    Сначала пробуем user_metadata.
+    Затем app_metadata.
+
+    Если таблица profiles уже создана,
+    пробуем получить role из неё.
+  */
+
+  currentRole =
+    user.user_metadata?.role ||
+    user.app_metadata?.role ||
+    "user";
+
+
+  try{
+
+    const result =
+      await supabaseClient
+        .from("profiles")
+        .select("role")
+        .eq("id",user.id)
+        .maybeSingle();
+
+
+    if(
+      !result.error &&
+      result.data &&
+      result.data.role
+    ){
+
+      currentRole =
+        result.data.role;
+
+    }
+
+  }catch(error){
+
+    console.log(
+      "profiles table is not available yet"
+    );
+
   }
+
+
+  const isAdmin =
+    String(currentRole).toLowerCase() ===
+    "admin";
+
+
+  document.getElementById(
+    "sidebarRole"
+  ).textContent =
+    isAdmin ? "ADMIN" : "USER";
+
+
+  document.getElementById(
+    "profileRole"
+  ).textContent =
+    isAdmin ? "ADMIN" : "USER";
+
+
+  document.getElementById(
+    "adminNavigation"
+  ).style.display =
+    isAdmin ? "block" : "none";
+
+
+  await loadUserData(user);
+
+
+  showPage("dashboard");
+
 }
-/* =========================================================
-   SHOW DASHBOARD
-   ========================================================= */
-function showDashboard(user){
-  loginCard.style.display =
-    "none";
-  dashboardCard.style.display =
-    "block";
-  if(user){
-    userEmail.textContent =
-      user.email || "Пользователь";
-    userId.textContent =
-      user.id || "—";
-    /*
-      Если позже добавим profiles,
-      здесь будем получать настоящую
-      роль администратора.
-      Сейчас безопасно показываем
-      обычного пользователя.
-    */
-    userRole.textContent =
-      "Пользователь";
+
+
+/* =====================================================
+   LOAD USER DATA
+===================================================== */
+
+async function loadUserData(user){
+
+  /*
+    Если balances ещё нет,
+    приложение не ломается.
+  */
+
+  let balance = 0;
+  let deposit = 0;
+  let turnover = 0;
+  let profit = 0;
+
+
+  try{
+
+    const result =
+      await supabaseClient
+        .from("balances")
+        .select(
+          "balance,deposit,turnover,profit"
+        )
+        .eq("user_id",user.id)
+        .maybeSingle();
+
+
+    if(
+      !result.error &&
+      result.data
+    ){
+
+      balance =
+        Number(result.data.balance || 0);
+
+      deposit =
+        Number(result.data.deposit || 0);
+
+      turnover =
+        Number(result.data.turnover || 0);
+
+      profit =
+        Number(result.data.profit || 0);
+
+    }
+
+  }catch(error){
+
+    console.log(
+      "Balances table is not available yet."
+    );
+
   }
+
+
+  setText(
+    "dashboardBalance",
+    formatNumber(balance)
+  );
+
+  setText(
+    "dashboardDeposit",
+    formatNumber(deposit)
+  );
+
+  setText(
+    "dashboardTurnover",
+    formatNumber(turnover)
+  );
+
+  setText(
+    "dashboardProfit",
+    formatNumber(profit)
+  );
+
+  setText(
+    "dashboardDeals",
+    "0"
+  );
+
+
+  setText(
+    "financeBalance",
+    formatNumber(balance)
+  );
+
+  setText(
+    "financeTurnover",
+    formatNumber(turnover)
+  );
+
+  setText(
+    "financeProfit",
+    formatNumber(profit)
+  );
+
+
+  setText(
+    "reportDeposit",
+    formatNumber(deposit)
+  );
+
+  setText(
+    "reportTurnover",
+    formatNumber(turnover)
+  );
+
+  setText(
+    "reportProfit",
+    formatNumber(profit)
+  );
+
+  setText(
+    "reportDeals",
+    "0"
+  );
+
 }
-/* =========================================================
-   SHOW LOGIN
-   ========================================================= */
-function showLogin(){
-  dashboardCard.style.display =
+
+
+function formatNumber(value){
+
+  return Number(value || 0)
+    .toLocaleString(
+      "en-US",
+      {
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+      }
+    );
+
+}
+
+
+function setText(id,value){
+
+  const element =
+    document.getElementById(id);
+
+  if(element){
+
+    element.textContent =
+      value;
+
+  }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+const navButtons =
+  document.querySelectorAll(
+    ".nav-btn"
+  );
+
+
+const pageNames = {
+
+  dashboard:"Dashboard",
+  finances:"Finances",
+  deals:"Deals",
+  requests:"Requests",
+  disputes:"Disputes",
+  requisites:"Requisites",
+  devices:"Devices",
+  reports:"Reports",
+  profile:"Profile",
+  admin:"Admin Panel",
+  users:"Users"
+
+};
+
+
+function showPage(page){
+
+  /*
+    Защита Admin страниц
+  */
+
+  if(
+    (page === "admin" ||
+     page === "users") &&
+    currentRole !== "admin"
+  ){
+
+    page = "dashboard";
+
+  }
+
+
+  document
+    .querySelectorAll(".page")
+    .forEach(function(element){
+
+      element.classList.remove(
+        "active"
+      );
+
+    });
+
+
+  const target =
+    document.getElementById(
+      "page-" + page
+    );
+
+
+  if(target){
+
+    target.classList.add(
+      "active"
+    );
+
+  }
+
+
+  navButtons.forEach(
+    function(button){
+
+      button.classList.toggle(
+        "active",
+        button.dataset.page === page
+      );
+
+    }
+  );
+
+
+  const title =
+    pageNames[page] ||
+    "P2PSPARK";
+
+
+  document.getElementById(
+    "topbarTitle"
+  ).textContent =
+    title;
+
+
+  document.getElementById(
+    "mobileTitle"
+  ).textContent =
+    title;
+
+
+  closeMobileMenu();
+
+}
+
+
+navButtons.forEach(
+  function(button){
+
+    button.addEventListener(
+      "click",
+      function(){
+
+        showPage(
+          button.dataset.page
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   INTERNAL PAGE BUTTONS
+===================================================== */
+
+document
+  .querySelectorAll(
+    "[data-page-link]"
+  )
+  .forEach(
+    function(button){
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          showPage(
+            button.dataset.pageLink
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function openMobileMenu(){
+
+  sidebar.classList.add(
+    "open"
+  );
+
+  overlay.classList.add(
+    "show"
+  );
+
+}
+
+
+function closeMobileMenu(){
+
+  sidebar.classList.remove(
+    "open"
+  );
+
+  overlay.classList.remove(
+    "show"
+  );
+
+}
+
+
+menuButton.addEventListener(
+  "click",
+  openMobileMenu
+);
+
+
+overlay.addEventListener(
+  "click",
+  closeMobileMenu
+);
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+  try{
+
+    await supabaseClient.auth.signOut();
+
+  }catch(error){
+
+    console.error(
+      error
+    );
+
+  }
+
+  currentUser =
+    null;
+
+  currentRole =
+    "user";
+
+  app.style.display =
     "none";
-  loginCard.style.display =
-    "block";
+
+  authScreen.style.display =
+    "flex";
+
+  document.getElementById(
+    "password"
+  ).value =
+    "";
+
 }
-/* =========================================================
+
+
+logoutButton.addEventListener(
+  "click",
+  logout
+);
+
+
+mobileLogout.addEventListener(
+  "click",
+  logout
+);
+
+
+/* =====================================================
    LOGIN
-   ========================================================= */
+===================================================== */
+
 loginForm.addEventListener(
   "submit",
   async function(event){
+
     event.preventDefault();
-    clearMessages();
+
+    clearAuthError();
+
+    loginButton.disabled =
+      true;
+
+    loginButton.textContent =
+      "Вход...";
+
+
     const email =
-      emailInput.value.trim();
+      document
+        .getElementById("email")
+        .value
+        .trim();
+
     const password =
-      passwordInput.value;
-    /* -------------------------
-       VALIDATION
-    ------------------------- */
-    if(!email){
-      showError(
-        "Введите электронную почту."
-      );
-      emailInput.focus();
-      return;
-    }
-    if(!password){
-      showError(
-        "Введите пароль."
-      );
-      passwordInput.focus();
-      return;
-    }
-    setLoading(true);
+      document
+        .getElementById("password")
+        .value;
+
+
     try{
-      /*
-        Вход через Supabase Auth
-      */
+
       const result =
-        await supabaseClient.auth.signInWithPassword({
-          email:email,
-          password:password
-        });
-      const data =
-        result.data;
-      const error =
-        result.error;
-      /* -------------------------
-         SUPABASE ERROR
-      ------------------------- */
-      if(error){
-        console.error(
-          "SUPABASE AUTH ERROR:",
-          error
-        );
+        await supabaseClient.auth
+          .signInWithPassword({
+            email:email,
+            password:password
+          });
+
+
+      if(result.error){
+
         let message =
-          error.message ||
-          "Не удалось выполнить вход.";
-        /*
-          Специальные понятные
-          сообщения для основных ошибок
-        */
+          result.error.message ||
+          "Ошибка входа";
+
+
         if(
-          error.message &&
-          error.message.toLowerCase()
-            .includes("invalid api key")
+          message
+            .toLowerCase()
+            .includes(
+              "invalid login credentials"
+            )
         ){
-          message =
-            "Ошибка подключения: Supabase отклонил API key.";
-        }
-        if(
-          error.message &&
-          error.message.toLowerCase()
-            .includes("invalid login credentials")
-        ){
+
           message =
             "Неверная почта или пароль.";
+
         }
+
+
         if(
-          error.message &&
-          error.message.toLowerCase()
-            .includes("email not confirmed")
+          message
+            .toLowerCase()
+            .includes(
+              "invalid api key"
+            )
         ){
+
           message =
-            "Почта аккаунта ещё не подтверждена.";
+            "Неверный API key Supabase.";
+
         }
-        showError(
-          "Ошибка входа: " + message,
-          "AUTH ERROR\n\n" +
-          JSON.stringify(
-            {
-              name:error.name,
-              message:error.message,
-              status:error.status,
-              code:error.code
-            },
-            null,
-            2
-          )
+
+
+        showAuthError(
+          message
         );
-        setLoading(false);
+
         return;
+
       }
-      /* -------------------------
-         USER CHECK
-      ------------------------- */
+
+
       if(
-        !data ||
-        !data.user
+        result.data &&
+        result.data.user
       ){
-        showError(
-          "Supabase не вернул пользователя."
+
+        document.getElementById(
+          "password"
+        ).value =
+          "";
+
+        await openApp(
+          result.data.user
         );
-        setLoading(false);
-        return;
+
       }
-      console.log(
-        "LOGIN SUCCESS:",
-        data.user
-      );
-      /*
-        Очищаем пароль из памяти
-        формы после успешного входа.
-      */
-      passwordInput.value =
-        "";
-      showSuccess(
-        "Вход выполнен успешно."
-      );
-      /*
-        Открываем личный кабинет
-      */
-      showDashboard(
-        data.user
-      );
+
+
     }catch(error){
+
       console.error(
-        "UNEXPECTED LOGIN ERROR:",
         error
       );
-      showError(
-        "Произошла ошибка при подключении к серверу.",
-        "UNEXPECTED ERROR\n\n" +
-        String(
-          error?.message ||
-          error
-        )
+
+      showAuthError(
+        "Ошибка подключения к Supabase."
       );
+
     }finally{
-      setLoading(false);
+
+      loginButton.disabled =
+        false;
+
+      loginButton.textContent =
+        "Войти →";
+
     }
+
   }
 );
-/* =========================================================
-   LOGOUT
-   ========================================================= */
-logoutButton.addEventListener(
-  "click",
-  async function(){
-    try{
-      const {
-        error
-      } =
-        await supabaseClient.auth.signOut();
-      if(error){
-        console.error(
-          "LOGOUT ERROR:",
-          error
-        );
-      }
-    }catch(error){
-      console.error(
-        "LOGOUT EXCEPTION:",
-        error
-      );
-    }
-    passwordInput.value =
-      "";
-    clearMessages();
-    showLogin();
-  }
-);
-/* =========================================================
-   CHECK EXISTING SESSION
-   ========================================================= */
+
+
+/* =====================================================
+   SESSION
+===================================================== */
+
 async function checkSession(){
+
   try{
+
     const result =
-      await supabaseClient.auth.getSession();
-    const session =
-      result.data?.session;
-    const error =
-      result.error;
-    if(error){
-      console.error(
-        "SESSION ERROR:",
-        error
-      );
-      showLogin();
-      return;
-    }
+      await supabaseClient.auth
+        .getSession();
+
+
     if(
-      session &&
-      session.user
+      result.data &&
+      result.data.session &&
+      result.data.session.user
     ){
-      console.log(
-        "EXISTING SESSION:",
-        session.user
+
+      await openApp(
+        result.data.session.user
       );
-      showDashboard(
-        session.user
-      );
+
     }else{
-      showLogin();
+
+      authScreen.style.display =
+        "flex";
+
+      app.style.display =
+        "none";
+
     }
+
   }catch(error){
+
     console.error(
-      "SESSION CHECK ERROR:",
+      "SESSION ERROR:",
       error
     );
-    showLogin();
+
   }
+
 }
-/* =========================================================
-   AUTH STATE CHANGE
-   ========================================================= */
+
+
+/* =====================================================
+   AUTH STATE
+===================================================== */
+
 supabaseClient.auth.onAuthStateChange(
-  function(event, session){
-    console.log(
-      "AUTH STATE:",
-      event
-    );
+  async function(event,session){
+
     if(
       event === "SIGNED_IN" &&
       session &&
       session.user
     ){
-      showDashboard(
+
+      await openApp(
         session.user
       );
+
     }
+
+
     if(
       event === "SIGNED_OUT"
     ){
-      showLogin();
+
+      app.style.display =
+        "none";
+
+      authScreen.style.display =
+        "flex";
+
     }
+
   }
 );
-/* =========================================================
-   START APPLICATION
-   ========================================================= */
-document.addEventListener(
-  "DOMContentLoaded",
-  function(){
-    checkSession();
-  }
-);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkSession();
+
 </script>
+
 </body>
 </html>
