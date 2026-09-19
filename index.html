@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>P2PSPARK</title>
-
 <style>
 :root{
   --bg:#f5f7fa;
@@ -17,25 +16,20 @@
   --red:#dc2626;
   --dark:#111827;
 }
-
 *{box-sizing:border-box}
-
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   background:var(--bg);
   color:var(--text);
 }
-
 button,input,select{font:inherit}
 button{cursor:pointer}
-
 .app{
   height:100vh;
   min-height:100vh;
   overflow:hidden;
 }
-
 .sidebar{
   position:fixed;
   left:0;
@@ -49,18 +43,14 @@ button{cursor:pointer}
   overflow-y:auto;
   scrollbar-width:none;
 }
-
 .sidebar::-webkit-scrollbar{display:none}
-
 .logo{
   font-size:25px;
   font-weight:900;
   letter-spacing:.5px;
   padding:4px 14px 28px;
 }
-
 .logo span{color:var(--blue)}
-
 .nav-title{
   font-size:11px;
   text-transform:uppercase;
@@ -68,7 +58,11 @@ button{cursor:pointer}
   color:#9aa3b2;
   margin:17px 13px 7px;
 }
-
+.nav{
+  min-height:calc(100vh - 90px);
+  display:flex;
+  flex-direction:column;
+}
 .nav button{
   display:flex;
   align-items:center;
@@ -84,13 +78,11 @@ button{cursor:pointer}
   font-weight:600;
   font-size:17px;
 }
-
 .nav button:hover,
 .nav button.active{
   background:#e9eaed;
   color:#101827;
 }
-
 .nav-icon{
   width:38px;
   height:38px;
@@ -98,21 +90,17 @@ button{cursor:pointer}
   place-items:center;
   flex:0 0 38px;
 }
-
-.nav-icon svg{
-  width:29px;
-  height:29px;
-  stroke:currentColor;
-  fill:none;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
+.telegram-menu{
+  margin-top:auto !important;
+  background:#eef6ff !important;
+  color:#1683d8 !important;
 }
-
+.telegram-menu:hover{
+  background:#dceeff !important;
+}
 .menu-close{
   display:none;
 }
-
 .main{
   margin-left:245px;
   padding:30px;
@@ -120,30 +108,25 @@ button{cursor:pointer}
   height:100vh;
   overflow-y:auto;
 }
-
 .top{
   display:flex;
   justify-content:space-between;
   align-items:center;
   margin-bottom:25px;
 }
-
 .top h1{
   margin:0;
   font-size:30px;
 }
-
 .subtitle{
   color:var(--muted);
   margin-top:5px;
 }
-
 .userbox{
   display:flex;
   align-items:center;
   gap:10px;
 }
-
 .avatar{
   width:42px;
   height:42px;
@@ -154,7 +137,6 @@ button{cursor:pointer}
   place-items:center;
   font-weight:800;
 }
-
 .mobile-menu{
   display:none;
   border:1px solid var(--line);
@@ -162,21 +144,17 @@ button{cursor:pointer}
   border-radius:10px;
   padding:9px 12px;
 }
-
 .section{
   display:none;
 }
-
 .section.active{
   display:block;
 }
-
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:18px;
 }
-
 .card{
   background:var(--card);
   border-radius:17px;
@@ -184,79 +162,65 @@ button{cursor:pointer}
   box-shadow:0 6px 25px rgba(16,24,40,.04);
   margin-bottom:18px;
 }
-
 .label{
   font-size:13px;
   color:var(--muted);
   font-weight:600;
 }
-
 .big{
   font-size:28px;
   font-weight:850;
   margin-top:8px;
 }
-
 .green{color:var(--green)}
 .red{color:var(--red)}
-
 .small{
   font-size:13px;
   color:var(--muted);
 }
-
 .btn{
   border:0;
   border-radius:10px;
   padding:11px 16px;
   font-weight:750;
 }
-
 .primary{
   background:var(--blue);
   color:#fff;
 }
-
 .light{
   background:#eef2f7;
   color:#253044;
 }
-
 .danger{
   background:#fee2e2;
   color:#b91c1c;
 }
-
 .actions{
   display:flex;
   gap:10px;
   flex-wrap:wrap;
 }
-
 .table-wrap{
   overflow:auto;
   background:#fff;
   border-radius:17px;
 }
-
 .table{
   width:100%;
   border-collapse:collapse;
-  min-width:650px;
+  min-width:850px;
 }
-
 .table th,
 .table td{
   padding:15px 17px;
   text-align:left;
 }
-
 .table th{
   font-size:12px;
   text-transform:uppercase;
   color:#8a94a5;
 }
-
 .badge{
   display:inline-block;
   padding:5px 9px;
@@ -264,30 +228,25 @@ button{cursor:pointer}
   font-size:12px;
   font-weight:750;
 }
-
 .badge.green{
   background:#dcfce7;
   color:#15803d;
 }
-
 .badge.red{
   background:#fee2e2;
   color:#b91c1c;
 }
-
 .form-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:15px;
 }
-
 .field label{
   display:block;
   font-size:13px;
   font-weight:750;
   margin-bottom:7px;
 }
-
 .field input,
 .field select{
   width:100%;
@@ -298,12 +257,10 @@ button{cursor:pointer}
   outline:none;
   box-shadow:0 0 0 1px #e4e8ee;
 }
-
 .field input:focus,
 .field select:focus{
   box-shadow:0 0 0 3px rgba(37,99,235,.1);
 }
-
 .login-screen{
   min-height:100vh;
   display:grid;
@@ -311,7 +268,6 @@ button{cursor:pointer}
   padding:20px;
   background:linear-gradient(145deg,#f6f8fb,#eaf0f8);
 }
-
 .login-card{
   width:100%;
   max-width:450px;
@@ -320,14 +276,12 @@ button{cursor:pointer}
   padding:34px;
   box-shadow:0 25px 70px rgba(15,23,42,.12);
 }
-
 .login-logo{
   text-align:center;
   font-size:31px;
   font-weight:950;
   letter-spacing:1px;
 }
-
 .login-sub{
   text-align:center;
   color:var(--muted);
@@ -336,23 +290,19 @@ button{cursor:pointer}
   font-weight:750;
   margin:8px 0 30px;
 }
-
 .login-card h2{
   text-align:center;
   font-size:27px;
   margin:0 0 8px;
 }
-
 .login-card .field{
   margin-top:17px;
 }
-
 .login-card .btn{
   width:100%;
   margin-top:20px;
   height:50px;
 }
-
 .error{
   display:none;
   background:#fee2e2;
@@ -362,7 +312,6 @@ button{cursor:pointer}
   margin-top:15px;
   font-size:13px;
 }
-
 .admin-head{
   background:var(--dark);
   color:#fff;
@@ -370,17 +319,14 @@ button{cursor:pointer}
   padding:20px;
   margin-bottom:18px;
 }
-
 .admin-head h2{
   margin:0 0 5px;
 }
-
 .empty{
   text-align:center;
   color:var(--muted);
   padding:35px;
 }
-
 .dashboard-actions{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -388,7 +334,6 @@ button{cursor:pointer}
   margin-top:22px;
   margin-bottom:18px;
 }
-
 .dashboard-action{
   border:0;
   border-radius:17px;
@@ -401,7 +346,6 @@ button{cursor:pointer}
   box-shadow:0 6px 25px rgba(16,24,40,.04);
   min-height:82px;
 }
-
 .dashboard-action .action-icon{
   width:46px;
   height:46px;
@@ -411,41 +355,45 @@ button{cursor:pointer}
   font-size:28px;
   font-weight:800;
 }
-
 .deposit-action .action-icon{
   background:#eaf1ff;
   color:#2563eb;
 }
-
 .withdraw-action .action-icon{
   background:#ecfdf3;
   color:#16a34a;
 }
-
 .dashboard-action b{
   display:block;
   font-size:17px;
 }
-
 .dashboard-action small{
   display:block;
   margin-top:4px;
   color:#697386;
   font-size:13px;
 }
-
+.edit-user-box{
+  margin-top:20px;
+  padding:20px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:15px;
+}
+.edit-user-title{
+  font-size:20px;
+  font-weight:850;
+  margin-bottom:17px;
+}
 @media(max-width:900px){
-
   .sidebar{
     transform:translateX(-100%);
     transition:.2s;
     padding:25px 24px 30px;
   }
-
   .sidebar.open{
     transform:translateX(0);
   }
-
   .menu-close{
     display:block;
     width:100%;
@@ -457,77 +405,56 @@ button{cursor:pointer}
     font-size:20px;
     margin-bottom:35px;
   }
-
   .sidebar .logo{
     display:none;
   }
-
   .main{
     margin-left:0;
     padding:20px 15px;
   }
-
   .mobile-menu{
     display:block;
   }
-
   .grid{
     grid-template-columns:repeat(2,1fr);
   }
 }
-
 @media(max-width:560px){
-
   .grid,
   .form-grid{
     grid-template-columns:1fr;
   }
-
   .dashboard-actions{
     grid-template-columns:1fr;
   }
-
   .card{
     padding:17px;
   }
-
   .userbox{
     display:none;
   }
-
   .login-card{
     padding:25px;
   }
-
   .actions .btn{
     width:100%;
   }
 }
 </style>
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
-
 <div id="loginScreen" class="login-screen">
-
   <div class="login-card">
-
     <div class="login-logo">P2PSPARK</div>
-
     <div class="login-sub">
       PEOPLE • DEALS • OPPORTUNITIES
     </div>
-
     <h2>Вход в аккаунт</h2>
-
     <div class="subtitle" style="text-align:center">
       Введите данные, выданные администратором
     </div>
-
     <div id="loginError" class="error"></div>
-
     <div class="field">
       <label>Почта</label>
       <input
@@ -536,7 +463,6 @@ button{cursor:pointer}
         autocomplete="username"
         placeholder="example@gmail.com">
     </div>
-
     <div class="field">
       <label>Пароль</label>
       <input
@@ -545,484 +471,268 @@ button{cursor:pointer}
         autocomplete="current-password"
         placeholder="Введите пароль">
     </div>
-
     <button
       id="loginButton"
       class="btn primary"
       onclick="login()">
       Войти →
     </button>
-
     <div
       class="small"
       style="text-align:center;margin-top:18px">
       Доступ к аккаунту создаёт администратор
     </div>
-
   </div>
 </div>
-
-
 <div id="app" class="app" style="display:none">
-
   <aside id="sidebar" class="sidebar">
-
     <button
       class="menu-close"
       onclick="toggleMenu()">
       Закрыть
     </button>
-
     <div class="logo">
       P2P<span>SPARK</span>
     </div>
-
     <div class="nav">
-
       <div class="nav-title">Основное</div>
-
-      <button
-        data-page="dashboard"
-        onclick="go('dashboard')">
+      <button data-page="dashboard" onclick="go('dashboard')">
         📊 <span>Дашборд</span>
       </button>
-
-      <button
-        data-page="finance"
-        onclick="go('finance')">
+      <button data-page="finance" onclick="go('finance')">
         💰 <span>Финансы</span>
       </button>
-
-      <button
-        data-page="deals"
-        onclick="go('deals')">
+      <button data-page="deals" onclick="go('deals')">
         🔄 <span>Сделки</span>
       </button>
-
-      <button
-        data-page="requests"
-        onclick="go('requests')">
+      <button data-page="requests" onclick="go('requests')">
         🕐 <span>Заявки</span>
       </button>
-
-      <button
-        data-page="disputes"
-        onclick="go('disputes')">
+      <button data-page="disputes" onclick="go('disputes')">
         ⚠️ <span>Споры</span>
       </button>
-
       <div class="nav-title">Работа</div>
-
-      <button
-        data-page="requisites"
-        onclick="go('requisites')">
+      <button data-page="requisites" onclick="go('requisites')">
         💳 <span>Реквизиты</span>
       </button>
-
-      <button
-        data-page="devices"
-        onclick="go('devices')">
+      <button data-page="devices" onclick="go('devices')">
         📱 <span>Устройства</span>
       </button>
-
-      <button
-        data-page="messages"
-        onclick="go('messages')">
+      <button data-page="messages" onclick="go('messages')">
         💬 <span>Сообщения</span>
       </button>
-
-      <button
-        data-page="turbo"
-        onclick="go('turbo')">
+      <button data-page="turbo" onclick="go('turbo')">
         ⚡ <span>Турбозалив</span>
       </button>
-
-      <button
-        data-page="counterparties"
-        onclick="go('counterparties')">
+      <button data-page="counterparties" onclick="go('counterparties')">
         👥 <span>Контрагенты</span>
       </button>
-
-      <button
-        data-page="reports"
-        onclick="go('reports')">
+      <button data-page="reports" onclick="go('reports')">
         📄 <span>Отчёты</span>
       </button>
-
-      <button
-        data-page="profile"
-        onclick="go('profile')">
+      <button data-page="profile" onclick="go('profile')">
         👤 <span>Профиль</span>
       </button>
-
-
       <div id="adminNav" style="display:none">
-
         <div class="nav-title">
           Администрирование
         </div>
-
-        <button
-          data-page="admin"
-          onclick="go('admin')">
+        <button data-page="admin" onclick="go('admin')">
           ⚙️ <span>Админ-панель</span>
         </button>
-
       </div>
-
-
       <div class="nav-title">Аккаунт</div>
-
       <button onclick="logout()">
         🚪 <span>Выйти</span>
       </button>
-
+      <!-- TELEGRAM В САМОМ НИЗУ -->
+      <button
+        class="telegram-menu"
+        onclick="openTelegram()">
+        🤖 <span>Telegram Бот</span>
+      </button>
     </div>
-
   </aside>
-
-
   <main class="main">
-
     <div class="top">
-
       <div style="display:flex;align-items:center;gap:12px">
-
         <button
           class="mobile-menu"
           onclick="toggleMenu()">
           ☰
         </button>
-
         <div>
-
           <h1 id="pageTitle">
             Дашборд
           </h1>
-
           <div class="subtitle">
             P2PSPARK
           </div>
-
         </div>
-
       </div>
-
-
       <div class="userbox">
-
         <div>
-
           <b id="topEmail"></b>
-
-          <div
-            class="small"
-            id="roleText">
-          </div>
-
+          <div class="small" id="roleText"></div>
         </div>
-
-        <div
-          class="avatar"
-          id="avatar">
+        <div class="avatar" id="avatar">
           U
         </div>
-
       </div>
-
     </div>
-
-
-    <section
-      id="dashboard"
-      class="section active">
-
+    <section id="dashboard" class="section active">
       <div class="grid">
-
         <div class="card">
-          <div class="label">
-            Баланс депозита
-          </div>
-
-          <div
-            id="dDeposit"
-            class="big">
+          <div class="label">Баланс депозита</div>
+          <div id="dDeposit" class="big">
             0 USDT
           </div>
-
           <div class="small">
             Текущий баланс
           </div>
         </div>
-
-
         <div class="card">
-
           <div class="label">
             Активные сделки
           </div>
-
-          <div
-            id="dDeals"
-            class="big">
+          <div id="dDeals" class="big">
             0
           </div>
-
           <div class="small">
             На текущий момент
           </div>
-
         </div>
-
-
         <div class="card">
-
           <div class="label">
             Оборот
           </div>
-
-          <div
-            id="dTurnover"
-            class="big">
+          <div id="dTurnover" class="big">
             0 USDT
           </div>
-
           <div class="small">
             За текущий месяц
           </div>
-
         </div>
-
-
         <div class="card">
-
           <div class="label">
             Прибыль
           </div>
-
-          <div
-            id="dProfit"
-            class="big green">
+          <div id="dProfit" class="big green">
             0 USDT
           </div>
-
           <div class="small">
             За текущий месяц
           </div>
-
         </div>
-
       </div>
-
-
       <div class="dashboard-actions">
-
         <button
           class="dashboard-action deposit-action"
           onclick="go('deposit')">
-
           <span class="action-icon">
             ＋
           </span>
-
           <span>
-
             <b>Пополнить</b>
-
             <small>
               Пополнить баланс
             </small>
-
           </span>
-
         </button>
-
-
         <button
           class="dashboard-action withdraw-action"
           onclick="go('withdraw')">
-
           <span class="action-icon">
             ↑
           </span>
-
           <span>
-
             <b>Вывести</b>
-
             <small>
               Вывести средства
             </small>
-
           </span>
-
         </button>
-
       </div>
-
     </section>
-
-
-    <section
-      id="finance"
-      class="section">
-
+    <section id="finance" class="section">
       <h2>Финансы</h2>
-
       <div class="subtitle">
         Ваши финансовые показатели
       </div>
-
-      <div
-        class="grid"
-        style="margin-top:20px">
-
+      <div class="grid" style="margin-top:20px">
         <div class="card">
-
           <div class="label">
             Депозит
           </div>
-
-          <div
-            id="fDeposit"
-            class="big">
+          <div id="fDeposit" class="big">
             0 USDT
           </div>
-
         </div>
-
-
         <div class="card">
-
           <div class="label">
             Оборот
           </div>
-
-          <div
-            id="fTurnover"
-            class="big">
+          <div id="fTurnover" class="big">
             0 USDT
           </div>
-
         </div>
-
-
         <div class="card">
-
           <div class="label">
             Прибыль
           </div>
-
-          <div
-            id="fProfit"
-            class="big green">
+          <div id="fProfit" class="big green">
             0 USDT
           </div>
-
         </div>
-
-
         <div class="card">
-
           <div class="label">
             Комиссия
           </div>
-
-          <div
-            id="fCommission"
-            class="big">
+          <div id="fCommission" class="big">
             0%
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="deals"
-      class="section">
-
+    <section id="deals" class="section">
       <h2>Сделки</h2>
-
       <div class="card">
-
         <div class="empty">
           Пока нет сделок
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="requests"
-      class="section">
-
+    <section id="requests" class="section">
       <h2>Заявки</h2>
-
       <div class="card">
-
         <div class="empty">
           Новых заявок нет
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="disputes"
-      class="section">
-
+    <section id="disputes" class="section">
       <h2>Споры</h2>
-
       <div class="card">
-
         <div class="empty">
           Активных споров нет
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="requisites"
-      class="section">
-
+    <section id="requisites" class="section">
       <h2>Реквизиты</h2>
-
       <div class="card">
-
         <div id="reqContent" class="empty">
           Реквизиты пока не добавлены
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="deposit"
-      class="section">
-
+    <section id="deposit" class="section">
       <h2>Пополнение</h2>
-
       <div class="subtitle">
         Реквизиты для пополнения
       </div>
-
       <div class="card">
-
         <div style="text-align:center">
-
           <img
             id="depositQr"
             style="
@@ -1032,36 +742,23 @@ button{cursor:pointer}
               margin:auto;
               border-radius:12px;
             ">
-
         </div>
-
-
-        <div
-          class="form-grid"
-          style="margin-top:20px">
-
+        <div class="form-grid" style="margin-top:20px">
           <div>
-
             <div class="label">
               Сеть
             </div>
-
             <div
               id="depositNetwork"
               class="big"
               style="font-size:20px">
               —
             </div>
-
           </div>
-
-
           <div style="grid-column:1/-1">
-
             <div class="label">
               Кошелёк
             </div>
-
             <div
               id="depositWallet"
               style="
@@ -1071,512 +768,412 @@ button{cursor:pointer}
               ">
               —
             </div>
-
           </div>
-
         </div>
-
-
-        <div
-          class="actions"
-          style="margin-top:18px">
-
+        <div class="actions" style="margin-top:18px">
           <button
             class="btn light"
             onclick="copyDepositWallet()">
-
             Скопировать кошелёк
-
           </button>
-
         </div>
-
-
         <div
           id="depositEmpty"
           class="empty"
           style="display:none">
-
           Реквизиты для пополнения ещё не добавлены.
-
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="withdraw"
-      class="section">
-
+    <section id="withdraw" class="section">
       <h2>Вывод</h2>
-
       <div class="card">
-
         <div class="form-grid">
-
           <div class="field">
-
             <label>
               Сумма USDT
             </label>
-
             <input
               id="withdrawAmount"
               type="number"
               min="0"
               step="any"
               placeholder="Введите сумму">
-
           </div>
-
-
           <div class="field">
-
             <label>
               Сеть
             </label>
-
             <select id="withdrawNetwork">
-
               <option>TRC20</option>
               <option>ERC20</option>
               <option>BEP20</option>
               <option>SOL</option>
               <option>TON</option>
-
             </select>
-
           </div>
-
-
           <div
             class="field"
             style="grid-column:1/-1">
-
             <label>
               Адрес кошелька
             </label>
-
             <input
               id="withdrawWallet"
               placeholder="Введите адрес кошелька">
-
           </div>
-
         </div>
-
-
         <button
           class="btn primary"
           style="margin-top:20px"
           onclick="submitWithdraw()">
-
           Отправить заявку
-
         </button>
-
       </div>
-
     </section>
-
-
-    <section
-      id="devices"
-      class="section">
-
+    <section id="devices" class="section">
       <h2>Устройства</h2>
-
       <div class="card">
-
         <div class="empty">
           Текущее устройство · Активно
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="messages"
-      class="section">
-
+    <section id="messages" class="section">
       <h2>Сообщения</h2>
-
       <div class="card">
-
         <div class="empty">
           Добро пожаловать в P2PSPARK.
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="turbo"
-      class="section">
-
+    <section id="turbo" class="section">
       <h2>Турбозалив</h2>
-
       <div class="card">
-
         <div class="empty">
           Функция будет подключена позже.
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="counterparties"
-      class="section">
-
+    <section id="counterparties" class="section">
       <h2>Контрагенты</h2>
-
       <div class="card">
-
         <div class="empty">
           Контрагенты пока отсутствуют.
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="reports"
-      class="section">
-
+    <section id="reports" class="section">
       <h2>Отчёты</h2>
-
       <div class="card">
-
         <div class="empty">
           Отчёты будут подключены позже.
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="profile"
-      class="section">
-
+    <section id="profile" class="section">
       <h2>Профиль</h2>
-
       <div class="card">
-
         <div class="form-grid">
-
           <div class="field">
-
             <label>Email</label>
-
             <input
               id="profileEmail"
               disabled>
-
           </div>
-
-
           <div class="field">
-
             <label>Роль</label>
-
             <input
               id="profileRole"
               disabled>
-
           </div>
-
-
           <div class="field">
-
             <label>Статус</label>
-
             <input
               id="profileStatus"
               disabled>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
-
-
-    <section
-      id="admin"
-      class="section">
-
+    <section id="admin" class="section">
       <div class="admin-head">
-
         <h2>
           Админ-панель
         </h2>
-
         <div>
           Управление пользователями P2PSPARK
         </div>
-
       </div>
-
-
+      <!-- СОЗДАНИЕ USER -->
       <div class="card">
-
         <h2>
           Создать USER
         </h2>
-
         <div class="form-grid">
-
           <div class="field">
-
             <label>
               Имя пользователя
             </label>
-
             <input
               id="newName"
               placeholder="Имя">
-
           </div>
-
-
           <div class="field">
-
             <label>
               Email
             </label>
-
             <input
               id="newEmail"
               type="email"
               placeholder="user@gmail.com">
-
           </div>
-
-
           <div class="field">
-
             <label>
               Пароль
             </label>
-
             <input
               id="newPassword"
               type="password"
               placeholder="Минимум 6 символов">
-
           </div>
-
         </div>
-
-
         <button
           class="btn primary"
           style="margin-top:18px"
           onclick="createUser()">
-
           Создать USER
-
         </button>
-
       </div>
-
-
+      <!-- РЕДАКТИРОВАНИЕ USER -->
+      <div
+        id="editUserBox"
+        class="edit-user-box"
+        style="display:none">
+        <div class="edit-user-title">
+          ✏️ Редактирование пользователя
+        </div>
+        <input
+          type="hidden"
+          id="editUserId">
+        <div class="form-grid">
+          <div class="field">
+            <label>
+              Имя
+            </label>
+            <input
+              id="editName"
+              placeholder="Имя">
+          </div>
+          <div class="field">
+            <label>
+              Email
+            </label>
+            <input
+              id="editEmail"
+              type="email"
+              placeholder="Email">
+          </div>
+          <div class="field">
+            <label>
+              Deposit
+            </label>
+            <input
+              id="editDeposit"
+              type="number"
+              step="any"
+              placeholder="0">
+          </div>
+          <div class="field">
+            <label>
+              Deals
+            </label>
+            <input
+              id="editDeals"
+              type="number"
+              step="1"
+              placeholder="0">
+          </div>
+          <div class="field">
+            <label>
+              Turnover
+            </label>
+            <input
+              id="editTurnover"
+              type="number"
+              step="any"
+              placeholder="0">
+          </div>
+          <div class="field">
+            <label>
+              Profit
+            </label>
+            <input
+              id="editProfit"
+              type="number"
+              step="any"
+              placeholder="0">
+          </div>
+          <div class="field">
+            <label>
+              Commission %
+            </label>
+            <input
+              id="editCommission"
+              type="number"
+              step="any"
+              placeholder="0">
+          </div>
+          <div class="field">
+            <label>
+              Роль
+            </label>
+            <select id="editRole">
+              <option value="USER">
+                USER
+              </option>
+              <option value="ADMIN">
+                ADMIN
+              </option>
+            </select>
+          </div>
+          <div class="field">
+            <label>
+              Статус
+            </label>
+            <select id="editStatus">
+              <option value="active">
+                Активен
+              </option>
+              <option value="blocked">
+                Заблокирован
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="actions" style="margin-top:18px">
+          <button
+            class="btn primary"
+            onclick="saveUser()">
+            💾 Сохранить изменения
+          </button>
+          <button
+            class="btn light"
+            onclick="closeEditUser()">
+            Отмена
+          </button>
+        </div>
+      </div>
+      <!-- СПИСОК USERS -->
       <div class="card">
-
         <h2>
           Пользователи
         </h2>
-
         <div
           class="table-wrap"
           style="margin-top:15px">
-
           <table class="table">
-
             <thead>
-
               <tr>
-
                 <th>Имя</th>
                 <th>Email</th>
                 <th>Роль</th>
                 <th>Статус</th>
-
+                <th>Действие</th>
               </tr>
-
             </thead>
-
             <tbody id="usersTable"></tbody>
-
           </table>
-
         </div>
-
       </div>
-
     </section>
-
   </main>
-
 </div>
-
-
 <script>
-
 /* =====================================================
-   SUPABASE CONFIG
+   SUPABASE
    ===================================================== */
-
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
-
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
-
-
 const supabaseClient =
   window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
-
-
 /* =====================================================
    GLOBAL
    ===================================================== */
-
 let currentUser = null;
 let currentProfile = null;
 let currentRequisite = null;
-
-
 /* =====================================================
    HELPERS
    ===================================================== */
-
 function money(value){
-
   return Number(value || 0)
     .toLocaleString("ru-RU") +
     " USDT";
-
 }
-
-
 function escapeHtml(value){
-
   return String(value ?? "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;")
     .replaceAll("'","&#039;");
-
 }
-
-
 function showLoginError(message){
-
   const error =
-    document.getElementById(
-      "loginError"
-    );
-
-  error.textContent =
-    message;
-
-  error.style.display =
-    "block";
-
+    document.getElementById("loginError");
+  error.textContent = message;
+  error.style.display = "block";
 }
-
-
 function hideLoginError(){
-
   document.getElementById(
     "loginError"
-  ).style.display =
-    "none";
-
+  ).style.display = "none";
 }
-
-
+/* =====================================================
+   TELEGRAM
+   ===================================================== */
+function openTelegram(){
+  window.open(
+    "https://t.me/P2PSparkSupportBot",
+    "_blank"
+  );
+}
 /* =====================================================
    LOGIN
    ===================================================== */
-
 async function login(){
-
   hideLoginError();
-
   const email =
-    document.getElementById(
-      "loginEmail"
-    )
-    .value
-    .trim()
-    .toLowerCase();
-
-
+    document.getElementById("loginEmail")
+      .value
+      .trim()
+      .toLowerCase();
   const password =
-    document.getElementById(
-      "loginPassword"
-    )
-    .value;
-
-
+    document.getElementById("loginPassword")
+      .value;
   if(!email){
-
     showLoginError(
       "Введите email."
     );
-
     return;
-
   }
-
-
   if(!password){
-
     showLoginError(
       "Введите пароль."
     );
-
     return;
-
   }
-
-
   const button =
-    document.getElementById(
-      "loginButton"
-    );
-
-
-  button.disabled =
-    true;
-
-  button.textContent =
-    "Вход...";
-
-
+    document.getElementById("loginButton");
+  button.disabled = true;
+  button.textContent = "Вход...";
   try{
-
     const {
       data,
       error
@@ -1586,78 +1183,46 @@ async function login(){
           email,
           password
         });
-
-
     if(error){
-
       console.error(
         "Supabase login error:",
         error
       );
-
       showLoginError(
         error.message ||
         "Неверный email или пароль."
       );
-
       return;
-
     }
-
-
     if(!data?.user){
-
       showLoginError(
         "Supabase не вернул пользователя."
       );
-
       return;
-
     }
-
-
     currentUser =
       data.user;
-
-
     await start();
-
-
   }catch(error){
-
     console.error(
       "Login error:",
       error
     );
-
     showLoginError(
       "Ошибка подключения: " +
       error.message
     );
-
   }finally{
-
-    button.disabled =
-      false;
-
-    button.textContent =
-      "Войти →";
-
+    button.disabled = false;
+    button.textContent = "Войти →";
   }
-
 }
-
-
 /* =====================================================
    LOAD PROFILE
    ===================================================== */
-
 async function loadProfile(){
-
   if(!currentUser)
     return false;
-
-
   const {
     data,
     error
@@ -1667,40 +1232,24 @@ async function loadProfile(){
       .select("*")
       .eq("id",currentUser.id)
       .maybeSingle();
-
-
   if(error){
-
     console.error(
       "Profile error:",
       error
     );
-
     alert(
       "Ошибка загрузки профиля: " +
       error.message
     );
-
     return false;
-
   }
-
-
   if(!data){
-
     alert(
       "Профиль этого пользователя не найден."
     );
-
     return false;
-
   }
-
-
-  currentProfile =
-    data;
-
-
+  currentProfile = data;
   const {
     data:req,
     error:reqError
@@ -1710,147 +1259,89 @@ async function loadProfile(){
       .select("*")
       .eq("user_id",currentUser.id)
       .maybeSingle();
-
-
   if(reqError){
-
     console.error(
       "Requisites error:",
       reqError
     );
-
   }
-
-
   currentRequisite =
     req || null;
-
-
   return true;
-
 }
-
-
 /* =====================================================
    START
    ===================================================== */
-
 async function start(){
-
   try{
-
     const {
       data,
       error
     } =
       await supabaseClient.auth
         .getSession();
-
-
     if(error){
-
       showLoginError(
         error.message
       );
-
       return;
-
     }
-
-
     currentUser =
       data.session?.user ||
       null;
-
-
     if(!currentUser){
-
-      document
-        .getElementById("loginScreen")
-        .style.display =
-        "grid";
-
-      document
-        .getElementById("app")
-        .style.display =
-        "none";
-
+      document.getElementById(
+        "loginScreen"
+      ).style.display = "grid";
+      document.getElementById(
+        "app"
+      ).style.display = "none";
       return;
-
     }
-
-
     const profileLoaded =
       await loadProfile();
-
-
     if(!profileLoaded){
-
-      await supabaseClient.auth
-        .signOut();
-
+      await supabaseClient.auth.signOut();
       return;
-
     }
-
-
     if(
       currentProfile.status ===
       "blocked"
     ){
-
       alert(
         "Ваш аккаунт заблокирован."
       );
-
       await supabaseClient.auth
         .signOut();
-
       location.reload();
-
       return;
-
     }
-
-
-    document
-      .getElementById("loginScreen")
-      .style.display =
-      "none";
-
-
-    document
-      .getElementById("app")
-      .style.display =
-      "block";
-
-
-    document
-      .getElementById("adminNav")
-      .style.display =
+    document.getElementById(
+      "loginScreen"
+    ).style.display = "none";
+    document.getElementById(
+      "app"
+    ).style.display = "block";
+    document.getElementById(
+      "adminNav"
+    ).style.display =
       currentProfile.role === "ADMIN"
         ? "block"
         : "none";
-
-
-    document
-      .getElementById("topEmail")
-      .textContent =
+    document.getElementById(
+      "topEmail"
+    ).textContent =
       currentProfile.email ||
       currentUser.email ||
       "";
-
-
-    document
-      .getElementById("roleText")
-      .textContent =
+    document.getElementById(
+      "roleText"
+    ).textContent =
       currentProfile.role ||
       "USER";
-
-
-    document
-      .getElementById("avatar")
-      .textContent =
+    document.getElementById(
+      "avatar"
+    ).textContent =
       (
         currentProfile.name ||
         currentProfile.email ||
@@ -1858,469 +1349,501 @@ async function start(){
       )
       .charAt(0)
       .toUpperCase();
-
-
-    document
-      .getElementById("profileEmail")
-      .value =
+    document.getElementById(
+      "profileEmail"
+    ).value =
       currentProfile.email ||
       currentUser.email ||
       "";
-
-
-    document
-      .getElementById("profileRole")
-      .value =
+    document.getElementById(
+      "profileRole"
+    ).value =
       currentProfile.role ||
       "USER";
-
-
-    document
-      .getElementById("profileStatus")
-      .value =
+    document.getElementById(
+      "profileStatus"
+    ).value =
       currentProfile.status ||
       "active";
-
-
     render();
-
-
   }catch(error){
-
     console.error(
       "Start error:",
       error
     );
-
     showLoginError(
       "Ошибка запуска: " +
       error.message
     );
-
   }
-
 }
-
-
 /* =====================================================
    RENDER
    ===================================================== */
-
 function render(){
-
   if(!currentProfile)
     return;
-
-
   const p =
     currentProfile;
-
-
-  document
-    .getElementById("dDeposit")
-    .textContent =
+  document.getElementById(
+    "dDeposit"
+  ).textContent =
     money(p.deposit);
-
-
-  document
-    .getElementById("dDeals")
-    .textContent =
+  document.getElementById(
+    "dDeals"
+  ).textContent =
     p.deals || 0;
-
-
-  document
-    .getElementById("dTurnover")
-    .textContent =
+  document.getElementById(
+    "dTurnover"
+  ).textContent =
     money(p.turnover);
-
-
-  document
-    .getElementById("dProfit")
-    .textContent =
+  document.getElementById(
+    "dProfit"
+  ).textContent =
     money(p.profit);
-
-
-  document
-    .getElementById("fDeposit")
-    .textContent =
+  document.getElementById(
+    "fDeposit"
+  ).textContent =
     money(p.deposit);
-
-
-  document
-    .getElementById("fTurnover")
-    .textContent =
+  document.getElementById(
+    "fTurnover"
+  ).textContent =
     money(p.turnover);
-
-
-  document
-    .getElementById("fProfit")
-    .textContent =
+  document.getElementById(
+    "fProfit"
+  ).textContent =
     money(p.profit);
-
-
-  document
-    .getElementById("fCommission")
-    .textContent =
-    (p.commission || 0) +
-    "%";
-
-
+  document.getElementById(
+    "fCommission"
+  ).textContent =
+    (p.commission || 0) + "%";
   renderPayment();
-
-
   if(p.role === "ADMIN"){
-
     renderAdmin();
-
   }
-
 }
-
-
 /* =====================================================
    PAYMENT
    ===================================================== */
-
 function renderPayment(){
-
   const p =
     currentRequisite;
-
-
   const network =
     document.getElementById(
       "depositNetwork"
     );
-
-
   const wallet =
     document.getElementById(
       "depositWallet"
     );
-
-
   const qr =
     document.getElementById(
       "depositQr"
     );
-
-
   const empty =
     document.getElementById(
       "depositEmpty"
     );
-
-
   if(!p){
-
-    network.textContent =
-      "—";
-
-    wallet.textContent =
-      "—";
-
-    qr.style.display =
-      "none";
-
-    empty.style.display =
-      "block";
-
-
+    network.textContent = "—";
+    wallet.textContent = "—";
+    qr.style.display = "none";
+    empty.style.display = "block";
     document.getElementById(
       "reqContent"
     ).textContent =
       "Реквизиты пока не добавлены.";
-
     return;
-
   }
-
-
   network.textContent =
     p.network || "—";
-
-
   wallet.textContent =
     p.wallet || "—";
-
-
   if(p.qr_url){
-
     qr.src =
       p.qr_url;
-
     qr.style.display =
       "block";
-
   }else{
-
     qr.style.display =
       "none";
-
   }
-
-
   empty.style.display =
     "none";
-
-
   document.getElementById(
     "reqContent"
   ).innerHTML = `
-
     <div style="text-align:left">
-
       <b>Сеть:</b>
       ${escapeHtml(p.network || "—")}
-
       <br><br>
-
       <b>Кошелёк:</b>
-
-      <div
-        style="word-break:break-all">
+      <div style="word-break:break-all">
         ${escapeHtml(p.wallet || "—")}
       </div>
-
     </div>
-
   `;
-
 }
-
-
 /* =====================================================
    COPY WALLET
    ===================================================== */
-
 async function copyDepositWallet(){
-
   const wallet =
     currentRequisite?.wallet;
-
-
   if(!wallet){
-
     alert(
       "Кошелёк не указан."
     );
-
     return;
-
   }
-
-
   try{
-
     await navigator.clipboard.writeText(
       wallet
     );
-
     alert(
       "Кошелёк скопирован."
     );
-
   }catch(error){
-
     alert(wallet);
-
   }
-
 }
-
-
 /* =====================================================
    ADMIN USERS
    ===================================================== */
-
 async function renderAdmin(){
-
   if(
     currentProfile?.role !==
     "ADMIN"
   )
     return;
-
-
   const {
     data,
     error
   } =
     await supabaseClient
       .from("profiles")
-      .select(
-        "id,name,email,role,status"
-      )
+      .select("*")
       .order(
         "created_at",
         {ascending:false}
       );
-
-
   const table =
     document.getElementById(
       "usersTable"
     );
-
-
   if(error){
-
     console.error(error);
-
     table.innerHTML = `
       <tr>
-        <td colspan="4">
+        <td colspan="5">
           Ошибка загрузки:
           ${escapeHtml(error.message)}
         </td>
       </tr>
     `;
-
     return;
-
   }
-
-
-  table.innerHTML =
-    "";
-
-
+  table.innerHTML = "";
   (data || []).forEach(user=>{
-
     const tr =
-      document.createElement(
-        "tr"
-      );
-
-
+      document.createElement("tr");
     tr.innerHTML = `
-
       <td>
         ${escapeHtml(
           user.name || "—"
         )}
       </td>
-
       <td>
         ${escapeHtml(
           user.email || "—"
         )}
       </td>
-
       <td>
         ${escapeHtml(
           user.role || "USER"
         )}
       </td>
-
       <td>
-
         <span class="badge ${
           user.status === "active"
             ? "green"
             : "red"
         }">
-
           ${
             user.status === "active"
               ? "Активен"
               : "Заблокирован"
           }
-
         </span>
-
       </td>
-
+      <td>
+        <button
+          class="btn light"
+          onclick='editUser(${JSON.stringify(user).replace(/'/g,"&#39;")})'>
+          ✏️ Изменить
+        </button>
+      </td>
     `;
-
-
     table.appendChild(tr);
-
   });
-
 }
-
-
 /* =====================================================
-   CREATE USER
+   EDIT USER
    ===================================================== */
-
-async function createUser(){
-
+function editUser(user){
   if(
     currentProfile?.role !==
     "ADMIN"
   ){
-
     alert(
       "Доступ запрещён."
     );
-
     return;
-
   }
-
-
+  document.getElementById(
+    "editUserId"
+  ).value =
+    user.id || "";
+  document.getElementById(
+    "editName"
+  ).value =
+    user.name || "";
+  document.getElementById(
+    "editEmail"
+  ).value =
+    user.email || "";
+  document.getElementById(
+    "editDeposit"
+  ).value =
+    user.deposit ?? 0;
+  document.getElementById(
+    "editDeals"
+  ).value =
+    user.deals ?? 0;
+  document.getElementById(
+    "editTurnover"
+  ).value =
+    user.turnover ?? 0;
+  document.getElementById(
+    "editProfit"
+  ).value =
+    user.profit ?? 0;
+  document.getElementById(
+    "editCommission"
+  ).value =
+    user.commission ?? 0;
+  document.getElementById(
+    "editRole"
+  ).value =
+    user.role || "USER";
+  document.getElementById(
+    "editStatus"
+  ).value =
+    user.status || "active";
+  document.getElementById(
+    "editUserBox"
+  ).style.display =
+    "block";
+  document.getElementById(
+    "editUserBox"
+  ).scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+/* =====================================================
+   CLOSE EDIT
+   ===================================================== */
+function closeEditUser(){
+  document.getElementById(
+    "editUserBox"
+  ).style.display =
+    "none";
+}
+/* =====================================================
+   SAVE USER
+   ===================================================== */
+async function saveUser(){
+  if(
+    currentProfile?.role !==
+    "ADMIN"
+  ){
+    alert(
+      "Доступ запрещён."
+    );
+    return;
+  }
+  const id =
+    document.getElementById(
+      "editUserId"
+    ).value;
+  if(!id){
+    alert(
+      "Пользователь не выбран."
+    );
+    return;
+  }
+  const name =
+    document.getElementById(
+      "editName"
+    ).value.trim();
+  const email =
+    document.getElementById(
+      "editEmail"
+    ).value.trim()
+    .toLowerCase();
+  const deposit =
+    Number(
+      document.getElementById(
+        "editDeposit"
+      ).value
+    ) || 0;
+  const deals =
+    Number(
+      document.getElementById(
+        "editDeals"
+      ).value
+    ) || 0;
+  const turnover =
+    Number(
+      document.getElementById(
+        "editTurnover"
+      ).value
+    ) || 0;
+  const profit =
+    Number(
+      document.getElementById(
+        "editProfit"
+      ).value
+    ) || 0;
+  const commission =
+    Number(
+      document.getElementById(
+        "editCommission"
+      ).value
+    ) || 0;
+  const role =
+    document.getElementById(
+      "editRole"
+    ).value;
+  const status =
+    document.getElementById(
+      "editStatus"
+    ).value;
+  if(!name){
+    alert(
+      "Введите имя."
+    );
+    return;
+  }
+  if(
+    !/^\S+@\S+\.\S+$/.test(email)
+  ){
+    alert(
+      "Введите корректный email."
+    );
+    return;
+  }
+  try{
+    const {
+      error
+    } =
+      await supabaseClient
+        .from("profiles")
+        .update({
+          name,
+          email,
+          deposit,
+          deals,
+          turnover,
+          profit,
+          commission,
+          role,
+          status
+        })
+        .eq("id",id);
+    if(error){
+      console.error(
+        "Update user error:",
+        error
+      );
+      alert(
+        "Ошибка сохранения: " +
+        error.message
+      );
+      return;
+    }
+    alert(
+      "Данные пользователя сохранены."
+    );
+    closeEditUser();
+    await renderAdmin();
+    if(
+      currentUser &&
+      id === currentUser.id
+    ){
+      await loadProfile();
+      render();
+    }
+  }catch(error){
+    console.error(error);
+    alert(
+      "Ошибка сохранения: " +
+      error.message
+    );
+  }
+}
+/* =====================================================
+   CREATE USER
+   ===================================================== */
+async function createUser(){
+  if(
+    currentProfile?.role !==
+    "ADMIN"
+  ){
+    alert(
+      "Доступ запрещён."
+    );
+    return;
+  }
   const name =
     document.getElementById(
       "newName"
     ).value.trim();
-
-
   const email =
     document.getElementById(
       "newEmail"
     ).value.trim()
     .toLowerCase();
-
-
   const password =
     document.getElementById(
       "newPassword"
     ).value;
-
-
   if(
     !name ||
     !email ||
     !password
   ){
-
     alert(
       "Заполните все поля."
     );
-
     return;
-
   }
-
-
   if(
     !/^\S+@\S+\.\S+$/.test(email)
   ){
-
     alert(
       "Введите корректный email."
     );
-
     return;
-
   }
-
-
   if(password.length < 6){
-
     alert(
       "Пароль минимум 6 символов."
     );
-
     return;
-
   }
-
-
   try{
-
     const {
       data,
       error
@@ -2336,24 +1859,15 @@ async function createUser(){
             }
           }
         );
-
-
     if(error){
-
       console.error(error);
-
       alert(
         "Ошибка создания USER: " +
         error.message
       );
-
       return;
-
     }
-
-
     if(!data?.ok){
-
       alert(
         "Ошибка создания USER: " +
         (
@@ -2361,70 +1875,43 @@ async function createUser(){
           "Неизвестная ошибка"
         )
       );
-
       return;
-
     }
-
-
     document.getElementById(
       "newName"
     ).value = "";
-
-
     document.getElementById(
       "newEmail"
     ).value = "";
-
-
     document.getElementById(
       "newPassword"
     ).value = "";
-
-
     await renderAdmin();
-
-
     alert(
       "USER успешно создан."
     );
-
-
   }catch(error){
-
     console.error(error);
-
     alert(
       "Ошибка Edge Function: " +
       error.message
     );
-
   }
-
 }
-
-
 /* =====================================================
    NAVIGATION
    ===================================================== */
-
 function go(page){
-
   if(
     page === "admin" &&
     currentProfile?.role !==
     "ADMIN"
   ){
-
     alert(
       "Доступ запрещён."
     );
-
     return;
-
   }
-
-
   document
     .querySelectorAll(".section")
     .forEach(section=>{
@@ -2432,25 +1919,14 @@ function go(page){
         "active"
       );
     });
-
-
   const target =
-    document.getElementById(
-      page
-    );
-
-
+    document.getElementById(page);
   if(target){
-
     target.classList.add(
       "active"
     );
-
   }
-
-
   const titles = {
-
     dashboard:"Дашборд",
     finance:"Финансы",
     deals:"Сделки",
@@ -2466,146 +1942,87 @@ function go(page){
     reports:"Отчёты",
     profile:"Профиль",
     admin:"Админ-панель"
-
   };
-
-
-  document
-    .getElementById(
-      "pageTitle"
-    )
-    .textContent =
+  document.getElementById(
+    "pageTitle"
+  ).textContent =
     titles[page] ||
     page;
-
-
-  document
-    .getElementById(
-      "sidebar"
-    )
-    .classList.remove(
-      "open"
-    );
-
+  document.getElementById(
+    "sidebar"
+  ).classList.remove(
+    "open"
+  );
 }
-
-
 /* =====================================================
    WITHDRAW
    ===================================================== */
-
 function submitWithdraw(){
-
   const amount =
     Number(
       document.getElementById(
         "withdrawAmount"
       ).value
     ) || 0;
-
-
   const wallet =
     document.getElementById(
       "withdrawWallet"
     ).value.trim();
-
-
   if(amount <= 0){
-
     alert(
       "Введите сумму вывода."
     );
-
     return;
-
   }
-
-
   if(!wallet){
-
     alert(
       "Введите адрес кошелька."
     );
-
     return;
-
   }
-
-
   alert(
     "Заявка на вывод подготовлена."
   );
-
 }
-
-
 /* =====================================================
    MENU
    ===================================================== */
-
 function toggleMenu(){
-
-  document
-    .getElementById(
-      "sidebar"
-    )
-    .classList.toggle(
-      "open"
-    );
-
+  document.getElementById(
+    "sidebar"
+  ).classList.toggle(
+    "open"
+  );
 }
-
-
 /* =====================================================
    LOGOUT
    ===================================================== */
-
 async function logout(){
-
   await supabaseClient.auth
     .signOut();
-
-  currentUser =
-    null;
-
-  currentProfile =
-    null;
-
+  currentUser = null;
+  currentProfile = null;
   location.reload();
-
 }
-
-
 /* =====================================================
    AUTH STATE
    ===================================================== */
-
 supabaseClient.auth.onAuthStateChange(
   async (event,session)=>{
-
     if(
       session &&
       !currentUser
     ){
-
       currentUser =
         session.user;
-
       await start();
-
     }
-
   }
 );
-
-
 /* =====================================================
    START APPLICATION
    ===================================================== */
-
 start();
-
 </script>
-
 </body>
 </html>
