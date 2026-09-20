@@ -28,6 +28,9 @@
 
   --dark:#111827;
   --purple:#7c3aed;
+
+  --telegram:#229ED9;
+  --telegram-dark:#168ac0;
 }
 
 *{
@@ -133,8 +136,7 @@ button{
 
   letter-spacing:.5px;
 
-  padding:
-    25px 14px;
+  padding:25px 14px;
 
   white-space:nowrap;
 }
@@ -145,7 +147,7 @@ button{
 
 
 /* =========================================================
-   MENU — ОТДЕЛЬНЫЙ СКРОЛЛ
+   MENU
 ========================================================= */
 
 .nav{
@@ -168,7 +170,7 @@ button{
 
   padding-bottom:
     calc(
-      150px +
+      35px +
       env(safe-area-inset-bottom)
     );
 }
@@ -243,7 +245,155 @@ button{
 
 
 /* =========================================================
-   MAIN — ОТДЕЛЬНЫЙ СКРОЛЛ
+   TELEGRAM SUPPORT
+========================================================= */
+
+.support-box{
+  flex:none;
+
+  margin:
+    14px 2px
+    calc(
+      10px +
+      env(safe-area-inset-bottom)
+    );
+
+  padding:14px;
+
+  border:
+    1px solid #dfe8f2;
+
+  border-radius:16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f7fbff,
+      #edf7ff
+    );
+
+  box-shadow:
+    0 6px 20px
+    rgba(34,158,217,.07);
+}
+
+.support-head{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  margin-bottom:10px;
+}
+
+.support-icon{
+  width:38px;
+  height:38px;
+
+  border-radius:12px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:var(--telegram);
+
+  color:#fff;
+
+  font-size:20px;
+
+  flex:none;
+
+  box-shadow:
+    0 5px 12px
+    rgba(34,158,217,.2);
+}
+
+.support-title{
+  font-size:14px;
+
+  font-weight:850;
+
+  color:#172033;
+}
+
+.support-subtitle{
+  font-size:11px;
+
+  color:#7b8798;
+
+  margin-top:2px;
+}
+
+.support-link{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:8px;
+
+  width:100%;
+
+  text-decoration:none;
+
+  background:#fff;
+
+  border:
+    1px solid #dce6ef;
+
+  color:#172033;
+
+  border-radius:11px;
+
+  padding:
+    10px 11px;
+
+  transition:
+    transform .15s ease,
+    border-color .15s ease,
+    background .15s ease;
+}
+
+.support-link:active{
+  transform:scale(.98);
+}
+
+.support-link:hover{
+  border-color:
+    var(--telegram);
+
+  background:#fafdff;
+}
+
+.support-name{
+  font-size:12px;
+
+  font-weight:800;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
+}
+
+.support-arrow{
+  color:var(--telegram);
+
+  font-size:16px;
+
+  font-weight:900;
+
+  flex:none;
+}
+
+
+/* =========================================================
+   MAIN
 ========================================================= */
 
 .main{
@@ -1112,6 +1262,11 @@ button{
     width:250px;
     height:250px;
   }
+
+  .support-box{
+    margin-left:2px;
+    margin-right:2px;
+  }
 }
 
 </style>
@@ -1355,6 +1510,53 @@ button{
     >
       ↪ &nbsp; Выйти
     </button>
+
+
+    <!-- =====================================================
+         TELEGRAM SUPPORT
+    ====================================================== -->
+
+    <div class="support-box">
+
+      <div class="support-head">
+
+        <div class="support-icon">
+          ✈
+        </div>
+
+        <div>
+
+          <div class="support-title">
+            Поддержка
+          </div>
+
+          <div class="support-subtitle">
+            Мы на связи в Telegram
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <a
+        class="support-link"
+        href="https://t.me/P2PSparkSupportBot"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <span class="support-name">
+          @P2PSparkSupportBot
+        </span>
+
+        <span class="support-arrow">
+          →
+        </span>
+
+      </a>
+
+    </div>
 
   </div>
 
@@ -1804,7 +2006,6 @@ button{
 
 <!-- =========================================================
      REQUISITES
-     ПУСТАЯ СТРАНИЦА
 ========================================================= -->
 
 <section
@@ -2087,8 +2288,6 @@ button{
   </div>
 
 
-  <!-- CREATE USER -->
-
   <div class="card">
 
     <h2>
@@ -2162,8 +2361,6 @@ button{
   </div>
 
 
-
-  <!-- USERS -->
 
   <div class="card">
 
@@ -2448,6 +2645,7 @@ button{
     <div class="section-title">
       Данные для Пополнить / Вывод
     </div>
+
 
     <div class="subtitle">
       Эти данные ADMIN назначает отдельно выбранному пользователю.
@@ -2992,7 +3190,6 @@ function showApplication(){
 
   /*
     USER не видит роль.
-    Роль показываем только ADMIN.
   */
 
   document
@@ -3025,12 +3222,6 @@ function showApplication(){
 
   go("dashboard");
 
-
-  /*
-    ВАЖНО:
-    Для ADMIN список пользователей
-    запускаем после загрузки интерфейса.
-  */
 
   if(isAdmin){
 
@@ -3343,7 +3534,7 @@ function go(page){
 
 
 /* =========================================================
-   RENDER DASHBOARD
+   RENDER
 ========================================================= */
 
 function render(){
@@ -3519,7 +3710,7 @@ function renderProfile(){
 
 
 /* =========================================================
-   CRYPTO PAGE
+   CRYPTO
 ========================================================= */
 
 function renderCryptoPage(type){
@@ -3736,7 +3927,7 @@ function renderDeals(){
 
 
 /* =========================================================
-   ADMIN — ИСПРАВЛЕННЫЙ ВАРИАНТ
+   ADMIN USERS
 ========================================================= */
 
 async function renderAdmin(){
@@ -3777,12 +3968,6 @@ async function renderAdmin(){
 
 
   try{
-
-    /*
-      СНАЧАЛА получаем актуальную сессию.
-      Это исправляет ACCESS_DENIED
-      при первом открытии.
-    */
 
     const {
       data:sessionData,
@@ -3833,11 +4018,6 @@ async function renderAdmin(){
       sessionData?.session;
 
 
-    /*
-      Если сессия ещё не восстановилась,
-      ждём и пробуем снова.
-    */
-
     if(!session?.user){
 
       body.innerHTML = `
@@ -3869,10 +4049,6 @@ async function renderAdmin(){
     currentUser =
       session.user;
 
-
-    /*
-      Проверяем профиль именно текущего ADMIN.
-    */
 
     const {
       data:adminProfile,
@@ -3934,11 +4110,6 @@ async function renderAdmin(){
         "active"
     ){
 
-      console.error(
-        "ADMIN ACCESS CHECK FAILED:",
-        adminProfile
-      );
-
       body.innerHTML = `
 
         <tr>
@@ -3967,10 +4138,6 @@ async function renderAdmin(){
     };
 
 
-    /*
-      Теперь вызываем защищённый RPC.
-    */
-
     const {
       data,
       error
@@ -3991,11 +4158,6 @@ async function renderAdmin(){
       error
     );
 
-
-    /*
-      Если ACCESS_DENIED возник из-за
-      задержки авторизации — повторяем.
-    */
 
     if(error){
 
@@ -4132,12 +4294,10 @@ async function renderAdmin(){
 
 
           <td>
-
             ${esc(
               user.email ||
               "—"
             )}
-
           </td>
 
 
@@ -4429,11 +4589,6 @@ async function createUser(){
       .value = "";
 
 
-    /*
-      Небольшая задержка,
-      чтобы trigger profiles успел завершиться.
-    */
-
     setTimeout(
       () => renderAdmin(),
       300
@@ -4466,7 +4621,7 @@ async function createUser(){
 
 
 /* =========================================================
-   OPEN MANAGE USER
+   OPEN MANAGE
 ========================================================= */
 
 async function openManage(id){
@@ -4720,7 +4875,7 @@ async function openManage(id){
 
 
 /* =========================================================
-   QR PREVIEW
+   QR
 ========================================================= */
 
 function showQrPreview(url){
@@ -4757,10 +4912,6 @@ function showQrPreview(url){
 
 }
 
-
-/* =========================================================
-   QR FILE
-========================================================= */
 
 function previewQr(event){
 
@@ -4843,10 +4994,6 @@ async function saveManagedUser(){
 
 
   try{
-
-    /*
-      PROFILE
-    */
 
     const profileUpdate = {
 
@@ -4952,10 +5099,6 @@ async function saveManagedUser(){
       );
     }
 
-
-    /*
-      CRYPTO
-    */
 
     const network =
       document
@@ -5259,7 +5402,7 @@ async function toggleManagedStatus(){
 
 
 /* =========================================================
-   ESCAPE CLOSE MODAL
+   ESCAPE
 ========================================================= */
 
 document.addEventListener(
