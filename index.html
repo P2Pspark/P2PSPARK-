@@ -10,15 +10,15 @@
   --bg:#f4f6fa;
   --card:#fff;
   --text:#111827;
-  --muted:#737b8c;
-  --line:#e3e6eb;
+  --muted:#747d8d;
+  --line:#e1e4e9;
   --blue:#2864e8;
   --danger:#df4141;
-  --danger-bg:#ffe7e7;
+  --danger-bg:#ffe6e6;
   --success:#16804c;
-  --success-bg:#e6f7ee;
-  --icon:#727b8c;
+  --success-bg:#e7f7ee;
   --active:#e8eaee;
+  --icon:#727b8c;
 }
 *{
   box-sizing:border-box;
@@ -32,10 +32,12 @@ body{
 }
 html{
   overflow:hidden;
-  background:#f4f6fa;
+  background:var(--bg);
 }
 body{
   overflow:hidden;
+  background:var(--bg);
+  color:var(--text);
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -44,8 +46,6 @@ body{
     "Segoe UI",
     Arial,
     sans-serif;
-  color:var(--text);
-  background:var(--bg);
 }
 button,
 input,
@@ -58,44 +58,44 @@ button{
 .hidden{
   display:none!important;
 }
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 #loginScreen{
   position:fixed;
   inset:0;
   width:100%;
   height:100dvh;
-  min-height:100svh;
   overflow-y:auto;
   -webkit-overflow-scrolling:touch;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:
-    max(28px,env(safe-area-inset-top))
+    max(25px,env(safe-area-inset-top))
     18px
-    max(28px,env(safe-area-inset-bottom))
+    max(25px,env(safe-area-inset-bottom))
     18px;
   background:
     radial-gradient(
       circle at 50% 30%,
       #fff 0,
-      #f5f7fb 48%,
+      #f5f7fb 50%,
       #edf1f7 100%
     );
 }
 .login-card{
   width:min(640px,100%);
-  background:#fff;
+  padding:46px 40px 40px;
   border:1px solid #e1e4e9;
-  border-radius:34px;
-  box-shadow:0 25px 70px rgba(31,52,90,.10);
-  padding:48px 40px 42px;
+  border-radius:32px;
+  background:#fff;
+  box-shadow:
+    0 25px 70px rgba(31,52,90,.10);
 }
 .brand{
+  margin-bottom:40px;
   text-align:center;
-  margin-bottom:42px;
 }
 .brand-name{
   font-size:42px;
@@ -107,36 +107,35 @@ button{
   color:#2864e8;
 }
 .brand-sub{
-  margin-top:20px;
+  margin-top:18px;
   color:#737b8c;
-  font-size:18px;
+  font-size:17px;
   font-weight:800;
-  letter-spacing:6px;
+  letter-spacing:5px;
 }
 .login-title{
   margin:0;
   text-align:center;
-  font-size:39px;
+  font-size:38px;
   line-height:1.1;
   font-weight:850;
-  letter-spacing:-1.2px;
+  letter-spacing:-1px;
 }
 .login-subtitle{
-  margin:18px auto 28px;
+  margin:16px auto 27px;
   text-align:center;
-  color:#727b8c;
-  font-size:24px;
+  color:#737b8c;
+  font-size:23px;
   line-height:1.25;
   font-weight:650;
 }
 .login-error{
-  margin-bottom:25px;
-  padding:15px 18px;
-  border-radius:15px;
+  margin-bottom:22px;
+  padding:14px 17px;
+  border-radius:14px;
   background:var(--danger-bg);
   color:#b52d2d;
-  font-size:18px;
-  line-height:1.3;
+  font-size:17px;
   font-weight:700;
 }
 .login-error.success{
@@ -144,30 +143,30 @@ button{
   color:var(--success);
 }
 .form-group{
-  margin-bottom:25px;
+  margin-bottom:22px;
 }
 .form-label{
   display:block;
-  margin-bottom:10px;
-  font-size:19px;
+  margin-bottom:9px;
+  font-size:18px;
   font-weight:800;
 }
 .form-input{
   width:100%;
-  height:74px;
-  padding:0 20px;
+  height:70px;
+  padding:0 19px;
   border:2px solid #dfe2e7;
-  border-radius:17px;
+  border-radius:16px;
   outline:none;
   background:#fff;
   color:#111827;
-  font-size:22px;
+  font-size:21px;
   font-weight:600;
-  transition:.18s ease;
 }
 .form-input:focus{
   border-color:#2864e8;
-  box-shadow:0 0 0 4px rgba(40,100,232,.10);
+  box-shadow:
+    0 0 0 4px rgba(40,100,232,.10);
 }
 .form-input.input-error{
   border-color:#df4141;
@@ -175,29 +174,28 @@ button{
 }
 .login-button{
   width:100%;
-  height:82px;
-  margin-top:5px;
+  height:78px;
+  margin-top:4px;
   border:0;
-  border-radius:18px;
-  background:linear-gradient(180deg,#2e69ea,#2460df);
+  border-radius:17px;
+  background:#2864e8;
   color:#fff;
-  font-size:25px;
+  font-size:24px;
   font-weight:850;
-  box-shadow:0 12px 25px rgba(40,100,232,.20);
+  box-shadow:
+    0 12px 25px rgba(40,100,232,.20);
 }
 .login-button:disabled{
   opacity:.65;
-  cursor:not-allowed;
 }
-/* =========================================================
-   APP — ВАЖНО ДЛЯ IPHONE
-========================================================= */
+/* =====================================================
+   APP
+===================================================== */
 #app{
   position:fixed;
   inset:0;
   width:100%;
   height:100dvh;
-  min-height:100svh;
   overflow:hidden;
   display:none;
   background:var(--bg);
@@ -209,18 +207,18 @@ button{
   display:flex;
   overflow:hidden;
 }
-/* =========================================================
+/* =====================================================
    SIDEBAR
-========================================================= */
+===================================================== */
 .sidebar{
   width:280px;
   min-width:280px;
   height:100%;
   min-height:0;
-  background:#fff;
-  border-right:1px solid #e5e7eb;
   display:flex;
   flex-direction:column;
+  background:#fff;
+  border-right:1px solid #e5e7eb;
   z-index:100;
 }
 .sidebar-top{
@@ -239,7 +237,7 @@ button{
 }
 .sidebar-brand{
   flex:none;
-  padding:26px 25px 18px;
+  padding:25px;
   border-bottom:1px solid #f0f1f3;
 }
 .sidebar-brand-name{
@@ -252,23 +250,25 @@ button{
 }
 .sidebar-user{
   margin-top:6px;
+  overflow:hidden;
   color:#8a91a0;
   font-size:13px;
   white-space:nowrap;
-  overflow:hidden;
   text-overflow:ellipsis;
 }
 .nav{
   flex:1 1 auto;
-  min-height:0;
   height:0;
+  min-height:0;
   overflow-y:auto;
   overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior-y:contain;
-  touch-action:pan-y;
-  padding:14px 14px
+  padding:
+    14px
+    14px
     calc(25px + env(safe-area-inset-bottom));
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+  overscroll-behavior-y:contain;
 }
 .nav::-webkit-scrollbar{
   width:5px;
@@ -279,23 +279,19 @@ button{
 }
 .nav-item{
   width:100%;
-  min-height:68px;
+  min-height:65px;
   margin-bottom:4px;
   padding:0 20px;
   display:flex;
   align-items:center;
-  gap:20px;
+  gap:19px;
   border:0;
-  border-radius:16px;
+  border-radius:15px;
   background:transparent;
   color:#192235;
   text-align:left;
-  font-size:20px;
+  font-size:19px;
   font-weight:650;
-  transition:.15s ease;
-}
-.nav-item:hover{
-  background:#f4f5f7;
 }
 .nav-item.active{
   background:#e8eaee;
@@ -326,12 +322,13 @@ button{
   background:#eceef1;
 }
 .nav-admin-title{
-  padding:8px 20px 9px;
+  padding:
+    8px 20px 9px;
   color:#9aa1ad;
   font-size:12px;
   font-weight:850;
-  text-transform:uppercase;
   letter-spacing:1.4px;
+  text-transform:uppercase;
 }
 .support-box{
   margin:14px 6px 8px;
@@ -347,11 +344,11 @@ button{
 .support-icon{
   width:39px;
   height:39px;
-  border-radius:12px;
-  background:#e7e9ed;
   display:flex;
   align-items:center;
   justify-content:center;
+  border-radius:12px;
+  background:#e7e9ed;
   font-size:20px;
 }
 .support-title{
@@ -382,9 +379,9 @@ button{
   color:#2864e8;
   font-size:18px;
 }
-/* =========================================================
-   MAIN SCROLL — ГЛАВНОЕ ИСПРАВЛЕНИЕ
-========================================================= */
+/* =====================================================
+   MAIN
+===================================================== */
 .main{
   flex:1 1 auto;
   width:0;
@@ -393,15 +390,14 @@ button{
   min-height:0;
   overflow-y:auto;
   overflow-x:hidden;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior-y:auto;
-  touch-action:pan-y;
   padding:
     34px
     34px
     calc(100px + env(safe-area-inset-bottom))
     34px;
-  scroll-behavior:auto;
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+  overscroll-behavior-y:auto;
 }
 .main::-webkit-scrollbar{
   width:7px;
@@ -417,14 +413,15 @@ button{
 }
 .page-header{
   display:flex;
-  justify-content:space-between;
   align-items:flex-start;
+  justify-content:space-between;
   gap:20px;
   margin-bottom:28px;
 }
 .page-title{
   margin:0;
   font-size:34px;
+  line-height:1.05;
   font-weight:850;
   letter-spacing:-.8px;
 }
@@ -433,27 +430,30 @@ button{
   color:#737b89;
   font-size:15px;
 }
-/* =========================================================
-   MOBILE TOP
-========================================================= */
+/* =====================================================
+   MOBILE HEADER — НЕ ИСПОЛЬЗУЕМ
+   Это убирает дублирование "Дашборд"
+===================================================== */
 .mobile-top{
-  display:none;
+  display:none!important;
 }
-/* =========================================================
+/* =====================================================
    CARDS
-========================================================= */
+===================================================== */
 .grid{
   display:grid;
   gap:18px;
 }
 .stats-grid{
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:
+    repeat(4,1fr);
 }
 .card{
   background:#fff;
   border:1px solid #e5e7eb;
   border-radius:20px;
-  box-shadow:0 8px 30px rgba(30,45,75,.04);
+  box-shadow:
+    0 8px 30px rgba(30,45,75,.04);
 }
 .stat-card{
   min-height:150px;
@@ -476,7 +476,8 @@ button{
 }
 .dashboard-actions{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
   gap:18px;
   margin-top:20px;
 }
@@ -494,6 +495,9 @@ button{
   background:#2864e8;
   color:#fff;
 }
+/* =====================================================
+   INFO
+===================================================== */
 .empty{
   min-height:250px;
   display:flex;
@@ -525,9 +529,9 @@ button{
   text-align:right;
   word-break:break-word;
 }
-/* =========================================================
+/* =====================================================
    OPERATION
-========================================================= */
+===================================================== */
 .operation-card{
   max-width:720px;
   padding:28px;
@@ -584,9 +588,9 @@ button{
   text-decoration:none;
   word-break:break-all;
 }
-/* =========================================================
+/* =====================================================
    TABLE
-========================================================= */
+===================================================== */
 .table-wrap{
   overflow:auto;
   -webkit-overflow-scrolling:touch;
@@ -635,9 +639,9 @@ button{
   background:#f0f1f4;
   color:#626b7a;
 }
-/* =========================================================
+/* =====================================================
    ADMIN
-========================================================= */
+===================================================== */
 .admin-toolbar{
   display:flex;
   flex-wrap:wrap;
@@ -675,9 +679,9 @@ button{
   background:#2864e8;
   color:#fff;
 }
-/* =========================================================
-   MODAL
-========================================================= */
+/* =====================================================
+   MODALS
+===================================================== */
 .modal-overlay{
   position:fixed;
   inset:0;
@@ -696,11 +700,12 @@ button{
   width:min(720px,100%);
   max-height:92dvh;
   overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
   padding:27px;
   border-radius:24px;
   background:#fff;
-  box-shadow:0 30px 80px rgba(0,0,0,.22);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.22);
+  -webkit-overflow-scrolling:touch;
 }
 .modal-title{
   margin:0 0 20px;
@@ -709,7 +714,8 @@ button{
 }
 .modal-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:
+    1fr 1fr;
   gap:15px;
 }
 .modal-field{
@@ -738,7 +744,8 @@ button{
 .modal-field input:focus,
 .modal-field select:focus{
   border-color:#2864e8;
-  box-shadow:0 0 0 3px rgba(40,100,232,.10);
+  box-shadow:
+    0 0 0 3px rgba(40,100,232,.10);
 }
 .modal-actions{
   display:flex;
@@ -769,9 +776,9 @@ button{
   background:#e54545;
   color:#fff;
 }
-/* =========================================================
+/* =====================================================
    OVERLAY
-========================================================= */
+===================================================== */
 .overlay{
   display:none;
   position:fixed;
@@ -782,16 +789,17 @@ button{
 .overlay.show{
   display:block;
 }
-/* =========================================================
+/* =====================================================
    TOAST
-========================================================= */
+===================================================== */
 .toast{
   position:fixed;
   left:50%;
   bottom:
     calc(25px + env(safe-area-inset-bottom));
   z-index:1000;
-  max-width:calc(100% - 30px);
+  max-width:
+    calc(100% - 30px);
   padding:14px 19px;
   border-radius:14px;
   background:#111827;
@@ -801,143 +809,144 @@ button{
   text-align:center;
   opacity:0;
   pointer-events:none;
-  transform:translate(-50%,20px);
+  transform:
+    translate(-50%,20px);
   transition:.2s ease;
 }
 .toast.show{
   opacity:1;
-  transform:translate(-50%,0);
+  transform:
+    translate(-50%,0);
 }
-/* =========================================================
+/* =====================================================
    TABLET
-========================================================= */
+===================================================== */
 @media(max-width:1000px){
   .stats-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
+/* =====================================================
+   IPHONE / MOBILE
+===================================================== */
 @media(max-width:760px){
+  /* -------------------------
+     SIDEBAR
+  ------------------------- */
   .sidebar{
     position:fixed;
     left:0;
     top:0;
     bottom:0;
-    width:315px;
-    min-width:315px;
-    transform:translateX(-102%);
-    transition:transform .22s ease;
-    box-shadow:20px 0 60px rgba(0,0,0,.12);
+    width:300px;
+    min-width:300px;
+    transform:
+      translateX(-102%);
+    transition:
+      transform .22s ease;
+    box-shadow:
+      20px 0 60px rgba(0,0,0,.12);
   }
   .sidebar.open{
-    transform:translateX(0);
+    transform:
+      translateX(0);
   }
+  /* -------------------------
+     MAIN
+  ------------------------- */
   .main{
     width:100%;
     height:100%;
     min-height:0;
-    padding:
-      12px
-      16px
-      calc(110px + env(safe-area-inset-bottom))
-      16px;
-    /*
-      Критически важно для iPhone:
-      именно MAIN скроллится,
-      body не скроллится.
-    */
     overflow-y:scroll;
+    padding:
+      max(14px,env(safe-area-inset-top))
+      15px
+      calc(95px + env(safe-area-inset-bottom))
+      15px;
     -webkit-overflow-scrolling:touch;
     touch-action:pan-y;
     overscroll-behavior-y:auto;
   }
-  .mobile-top{
-    height:62px;
-    flex:none;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-    margin-bottom:18px;
-  }
-  .mobile-menu-button{
-    width:48px;
-    height:48px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border:1px solid #dfe3e8;
-    border-radius:14px;
-    background:#fff;
-  }
-  .mobile-menu-button svg{
-    width:24px;
-    height:24px;
-  }
-  .mobile-page-title{
-    flex:1;
-    font-size:21px;
-    font-weight:850;
-  }
+  /* -------------------------
+     PAGE HEADER
+  ------------------------- */
   .page-header{
-    margin-bottom:20px;
+    margin-bottom:15px;
   }
   .page-title{
-    font-size:40px;
+    font-size:27px;
     line-height:1.05;
+    letter-spacing:-.6px;
   }
   .page-subtitle{
-    font-size:19px;
+    margin-top:6px;
+    font-size:14px;
     line-height:1.25;
   }
+  /* -------------------------
+     DASHBOARD CARDS
+     Размер как на втором фото
+  ------------------------- */
   .stats-grid{
     grid-template-columns:1fr;
-    gap:18px;
+    gap:14px;
   }
   .stat-card{
-    min-height:282px;
-    padding:45px 45px;
-    border-radius:28px;
+    min-height:112px;
+    padding:
+      17px 22px;
+    border-radius:20px;
   }
   .stat-title{
-    font-size:24px;
+    font-size:13px;
+    line-height:1.15;
   }
   .stat-value{
-    margin-top:43px;
-    font-size:56px;
+    margin-top:14px;
+    font-size:27px;
     line-height:1;
   }
   .stat-note{
-    margin-top:28px;
-    font-size:22px;
+    margin-top:8px;
+    font-size:12px;
+    line-height:1.1;
   }
+  /* -------------------------
+     BUTTONS
+  ------------------------- */
   .dashboard-actions{
-    grid-template-columns:1fr;
-    gap:14px;
-    margin-top:18px;
+    grid-template-columns:
+      1fr 1fr;
+    gap:10px;
+    margin-top:14px;
   }
   .action-button{
-    height:70px;
-    font-size:20px;
+    height:52px;
+    border-radius:13px;
+    font-size:14px;
   }
+  /* -------------------------
+     LOGIN
+  ------------------------- */
   .login-card{
-    padding:36px 20px 28px;
-    border-radius:28px;
+    padding:
+      34px 20px 28px;
+    border-radius:27px;
   }
   .brand{
-    margin-bottom:34px;
+    margin-bottom:32px;
   }
   .brand-name{
-    font-size:35px;
+    font-size:34px;
   }
   .brand-sub{
-    font-size:13px;
-    letter-spacing:4px;
+    font-size:12px;
+    letter-spacing:3.5px;
   }
   .login-title{
-    font-size:31px;
+    font-size:30px;
   }
   .login-subtitle{
     font-size:18px;
@@ -946,22 +955,16 @@ button{
     font-size:15px;
   }
   .form-input{
-    height:64px;
+    height:63px;
     font-size:18px;
   }
   .login-button{
-    height:70px;
+    height:69px;
     font-size:21px;
   }
-  .dashboard-bottom-space{
-    height:50px;
-  }
-  .modal-grid{
-    grid-template-columns:1fr;
-  }
-  .modal-field.full{
-    grid-column:auto;
-  }
+  /* -------------------------
+     OTHER SECTIONS
+  ------------------------- */
   .operation-card{
     padding:20px;
   }
@@ -969,43 +972,46 @@ button{
     width:220px;
     height:220px;
   }
-}
-/* =========================================================
-   SMALL IPHONE
-========================================================= */
-@media(max-width:420px){
-  .sidebar{
-    width:300px;
-    min-width:300px;
+  .modal-grid{
+    grid-template-columns:1fr;
   }
-  .nav-item{
-    min-height:63px;
-    font-size:18px;
+  .modal-field.full{
+    grid-column:auto;
+  }
+}
+/* =====================================================
+   VERY SMALL IPHONE
+===================================================== */
+@media(max-width:390px){
+  .main{
+    padding-left:13px;
+    padding-right:13px;
   }
   .page-title{
-    font-size:36px;
+    font-size:26px;
   }
   .stat-card{
-    min-height:260px;
-    padding:35px;
+    min-height:108px;
+    padding:
+      16px 19px;
   }
   .stat-title{
-    font-size:21px;
+    font-size:12px;
   }
   .stat-value{
-    font-size:52px;
-    margin-top:36px;
+    font-size:25px;
+    margin-top:13px;
   }
   .stat-note{
-    font-size:20px;
+    font-size:11px;
   }
 }
 </style>
 </head>
 <body>
-<!-- =======================================================
+<!-- =====================================================
      LOGIN
-======================================================= -->
+===================================================== -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="brand">
@@ -1063,9 +1069,9 @@ button{
     </form>
   </div>
 </div>
-<!-- =======================================================
+<!-- =====================================================
      APP
-======================================================= -->
+===================================================== -->
 <div id="app">
   <div class="app-shell">
     <!-- SIDEBAR -->
@@ -1158,8 +1164,8 @@ button{
               <path d="M11 11h8"></path>
               <path d="M11 16h7"></path>
               <path d="M11 21h4"></path>
-              <path d="M24 21l3 3"></path>
               <circle cx="25" cy="18" r="3"></circle>
+              <path d="M24 21l3 3"></path>
             </svg>
           </span>
           <span>Споры</span>
@@ -1323,32 +1329,12 @@ button{
       class="overlay"
       onclick="closeSidebar()">
     </div>
-    <!-- MAIN -->
+    <!-- =================================================
+         MAIN
+    ================================================= -->
     <main
       id="mainScroll"
       class="main">
-      <div class="mobile-top">
-        <button
-          class="mobile-menu-button"
-          onclick="openSidebar()">
-          <svg
-            viewBox="0 0 32 32"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round">
-            <path d="M5 8h22"></path>
-            <path d="M5 16h22"></path>
-            <path d="M5 24h22"></path>
-          </svg>
-        </button>
-        <div
-          id="mobilePageTitle"
-          class="mobile-page-title">
-          Дашборд
-        </div>
-        <div style="width:48px"></div>
-      </div>
       <div class="page">
         <!-- DASHBOARD -->
         <section
@@ -1430,21 +1416,6 @@ button{
               ↓ Вывод
             </button>
           </div>
-          <div
-            class="card"
-            style="margin-top:20px;padding:25px">
-            <h3
-              style="
-                margin:0 0 10px;
-                font-size:19px;
-              ">
-              Последние сделки
-            </h3>
-            <div class="empty">
-              Пока нет сделок
-            </div>
-          </div>
-          <div class="dashboard-bottom-space"></div>
         </section>
         <!-- FINANCES -->
         <section
@@ -1508,14 +1479,9 @@ button{
           id="deals"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Сделки
-              </h1>
-              <p class="page-subtitle">
-                История сделок
-              </p>
-            </div>
+            <h1 class="page-title">
+              Сделки
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1528,11 +1494,9 @@ button{
           id="requests"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Заявки
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Заявки
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1545,11 +1509,9 @@ button{
           id="disputes"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Споры
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Споры
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1562,11 +1524,9 @@ button{
           id="requisites"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Реквизиты
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Реквизиты
+            </h1>
           </div>
           <div class="card">
             <div
@@ -1580,11 +1540,9 @@ button{
           id="devices"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Устройства
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Устройства
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1597,11 +1555,9 @@ button{
           id="messages"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Сообщения
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Сообщения
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1614,11 +1570,9 @@ button{
           id="turbo"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Турбозалив
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Турбозалив
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1631,11 +1585,9 @@ button{
           id="counterparties"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Контрагенты
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Контрагенты
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1648,11 +1600,9 @@ button{
           id="reports"
           class="section hidden">
           <div class="page-header">
-            <div>
-              <h1 class="page-title">
-                Отчёты
-              </h1>
-            </div>
+            <h1 class="page-title">
+              Отчёты
+            </h1>
           </div>
           <div class="card">
             <div class="empty">
@@ -1882,15 +1832,14 @@ button{
     </main>
   </div>
 </div>
-<!-- =======================================================
-     MANAGE MODAL
-======================================================= -->
+<!-- =====================================================
+     MANAGE USER MODAL
+===================================================== -->
 <div
   id="modalOverlay"
   class="modal-overlay">
   <div class="modal">
     <h2
-      id="modalTitle"
       class="modal-title">
       Управление пользователем
     </h2>
@@ -2047,9 +1996,9 @@ button{
     </div>
   </div>
 </div>
-<!-- =======================================================
-     CREATE USER
-======================================================= -->
+<!-- =====================================================
+     CREATE USER MODAL
+===================================================== -->
 <div
   id="createOverlay"
   class="modal-overlay">
@@ -2102,9 +2051,9 @@ button{
   class="toast">
 </div>
 <script>
-/* =========================================================
+/* =====================================================
    SUPABASE
-========================================================= */
+===================================================== */
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY =
@@ -2114,9 +2063,9 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
-/* =========================================================
+/* =====================================================
    STATE
-========================================================= */
+===================================================== */
 let currentUser = null;
 let currentProfile = null;
 let currentRequisite = null;
@@ -2124,9 +2073,9 @@ let managedUserId = null;
 let managedUserProfile = null;
 let managedQR = "";
 let restoringSession = false;
-/* =========================================================
+/* =====================================================
    HELPERS
-========================================================= */
+===================================================== */
 function $(id){
   return document.getElementById(id);
 }
@@ -2168,9 +2117,11 @@ function showToast(message){
     window.__toastTimer
   );
   window.__toastTimer =
-    setTimeout(() => {
-      toast.classList.remove("show");
-    },2600);
+    setTimeout(
+      () =>
+        toast.classList.remove("show"),
+      2600
+    );
 }
 function setLoginError(
   message,
@@ -2186,9 +2137,7 @@ function setLoginError(
   }
   el.textContent =
     message;
-  el.classList.remove(
-    "hidden"
-  );
+  el.classList.remove("hidden");
   el.classList.toggle(
     "success",
     success
@@ -2202,9 +2151,9 @@ function clearLoginInputErrors(){
     .classList
     .remove("input-error");
 }
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 $("loginForm")
   .addEventListener(
     "submit",
@@ -2221,7 +2170,8 @@ async function login(){
       .trim()
       .toLowerCase();
   const password =
-    $("loginPassword").value;
+    $("loginPassword")
+      .value;
   if(!email){
     $("loginEmail")
       .classList
@@ -2264,10 +2214,6 @@ async function login(){
         "SUPABASE LOGIN ERROR:",
         error
       );
-      /*
-       * Не показываем пользователю
-       * техническую ошибку Supabase.
-       */
       const message =
         String(
           error.message || ""
@@ -2309,9 +2255,9 @@ async function login(){
     }
     currentUser =
       data.user;
-    const profileLoaded =
+    const ok =
       await loadProfile();
-    if(!profileLoaded){
+    if(!ok){
       await supabaseClient
         .auth
         .signOut();
@@ -2351,9 +2297,9 @@ async function login(){
       "Войти →";
   }
 }
-/* =========================================================
+/* =====================================================
    PROFILE
-========================================================= */
+===================================================== */
 async function loadProfile(){
   if(!currentUser?.id){
     return false;
@@ -2381,9 +2327,9 @@ async function loadProfile(){
     data;
   return true;
 }
-/* =========================================================
+/* =====================================================
    REQUISITES
-========================================================= */
+===================================================== */
 async function loadRequisite(){
   if(!currentUser?.id){
     currentRequisite =
@@ -2411,9 +2357,9 @@ async function loadRequisite(){
   currentRequisite =
     data || null;
 }
-/* =========================================================
-   SHOW APPLICATION
-========================================================= */
+/* =====================================================
+   APPLICATION
+===================================================== */
 function showApplication(){
   $("loginScreen")
     .style
@@ -2429,10 +2375,10 @@ function showApplication(){
   renderDashboard();
   renderProfile();
   renderOperations();
-  const admin =
+  if(
     currentProfile?.role === "ADMIN" &&
-    currentProfile?.status === "active";
-  if(admin){
+    currentProfile?.status === "active"
+  ){
     $("adminNav")
       .classList
       .remove("hidden");
@@ -2446,26 +2392,9 @@ function showApplication(){
     false
   );
 }
-/* =========================================================
-   SECTION NAVIGATION
-========================================================= */
-const sectionTitles = {
-  dashboard:"Дашборд",
-  finances:"Финансы",
-  deals:"Сделки",
-  requests:"Заявки",
-  disputes:"Споры",
-  requisites:"Реквизиты",
-  devices:"Устройства",
-  messages:"Сообщения",
-  turbo:"Турбозалив",
-  counterparties:"Контрагенты",
-  reports:"Отчёты",
-  profile:"Профиль",
-  deposit:"Пополнение",
-  withdraw:"Вывод",
-  admin:"Администрирование"
-};
+/* =====================================================
+   NAVIGATION
+===================================================== */
 function showSection(
   section,
   closeMenu=true
@@ -2473,8 +2402,8 @@ function showSection(
   document
     .querySelectorAll(".section")
     .forEach(
-      el =>
-        el.classList.add("hidden")
+      element =>
+        element.classList.add("hidden")
     );
   const target =
     $(section);
@@ -2493,15 +2422,6 @@ function showSection(
         item.dataset.section === section
       );
     });
-  $("mobilePageTitle")
-    .textContent =
-      sectionTitles[section] ||
-      "P2PSPARK";
-  /*
-   * Ключевое исправление:
-   * каждый новый раздел начинается
-   * с самого верха основного scroll-контейнера.
-   */
   const main =
     $("mainScroll");
   if(main){
@@ -2514,9 +2434,9 @@ function showSection(
     closeSidebar();
   }
 }
-/* =========================================================
+/* =====================================================
    SIDEBAR
-========================================================= */
+===================================================== */
 function openSidebar(){
   $("sidebar")
     .classList
@@ -2533,9 +2453,9 @@ function closeSidebar(){
     .classList
     .remove("show");
 }
-/* =========================================================
+/* =====================================================
    DASHBOARD
-========================================================= */
+===================================================== */
 function renderDashboard(){
   const profile =
     currentProfile || {};
@@ -2580,9 +2500,9 @@ function renderDashboard(){
         profile.commission
       );
 }
-/* =========================================================
+/* =====================================================
    PROFILE RENDER
-========================================================= */
+===================================================== */
 function renderProfile(){
   if(!currentProfile){
     return;
@@ -2596,18 +2516,15 @@ function renderProfile(){
       currentProfile.email ||
       currentUser?.email ||
       "—";
-  const status =
-    currentProfile.status ||
-    "active";
   $("profileStatus")
     .innerHTML =
-      status === "blocked"
+      currentProfile.status === "blocked"
         ? '<span class="badge blocked">Заблокирован</span>'
         : '<span class="badge active">Активен</span>';
 }
-/* =========================================================
+/* =====================================================
    OPERATIONS
-========================================================= */
+===================================================== */
 function renderOperations(){
   const req =
     currentRequisite || {};
@@ -2649,9 +2566,7 @@ function renderOperation(
     empty.classList
       .add("hidden");
   }else{
-    image.removeAttribute(
-      "src"
-    );
+    image.removeAttribute("src");
     image.classList
       .add("hidden");
     empty.classList
@@ -2659,31 +2574,25 @@ function renderOperation(
   }
   const networkBox =
     $(prefix + "NetworkBox");
-  const networkEl =
-    $(prefix + "Network");
   if(network){
-    networkEl.textContent =
-      network;
+    $(prefix + "Network")
+      .textContent =
+        network;
     networkBox.classList
       .remove("hidden");
   }else{
-    networkEl.textContent =
-      "";
     networkBox.classList
       .add("hidden");
   }
   const walletBox =
     $(prefix + "WalletBox");
-  const walletEl =
-    $(prefix + "Wallet");
   if(wallet){
-    walletEl.textContent =
-      wallet;
+    $(prefix + "Wallet")
+      .textContent =
+        wallet;
     walletBox.classList
       .remove("hidden");
   }else{
-    walletEl.textContent =
-      "";
     walletBox.classList
       .add("hidden");
   }
@@ -2701,9 +2610,9 @@ function renderOperation(
       .add("hidden");
   }
 }
-/* =========================================================
+/* =====================================================
    LOGOUT
-========================================================= */
+===================================================== */
 async function logout(){
   try{
     await supabaseClient
@@ -2730,9 +2639,9 @@ async function logout(){
   setLoginError("");
   closeSidebar();
 }
-/* =========================================================
+/* =====================================================
    ADMIN
-========================================================= */
+===================================================== */
 function isCurrentAdmin(){
   return (
     currentProfile?.role === "ADMIN" &&
@@ -2799,19 +2708,9 @@ async function renderAdmin(){
     body.innerHTML =
       data.map(user => {
         const status =
-          user.status ||
-          "active";
+          user.status || "active";
         const role =
-          user.role ||
-          "USER";
-        const statusBadge =
-          status === "blocked"
-            ? '<span class="badge blocked">Заблокирован</span>'
-            : '<span class="badge active">Активен</span>';
-        const roleBadge =
-          role === "ADMIN"
-            ? '<span class="badge admin">ADMIN</span>'
-            : '<span class="badge user">USER</span>';
+          user.role || "USER";
         return `
           <tr>
             <td>
@@ -2825,10 +2724,18 @@ async function renderAdmin(){
               )}
             </td>
             <td>
-              ${roleBadge}
+              ${
+                role === "ADMIN"
+                ? '<span class="badge admin">ADMIN</span>'
+                : '<span class="badge user">USER</span>'
+              }
             </td>
             <td>
-              ${statusBadge}
+              ${
+                status === "blocked"
+                ? '<span class="badge blocked">Заблокирован</span>'
+                : '<span class="badge active">Активен</span>'
+              }
             </td>
             <td>
               <button
@@ -2854,9 +2761,9 @@ async function renderAdmin(){
     `;
   }
 }
-/* =========================================================
+/* =====================================================
    CREATE USER
-========================================================= */
+===================================================== */
 function openCreateUser(){
   if(!isCurrentAdmin()){
     showToast(
@@ -2952,7 +2859,9 @@ async function createUser(){
     const result =
       await response
         .json()
-        .catch(() => ({}));
+        .catch(
+          () => ({})
+        );
     if(!response.ok){
       console.error(
         "CREATE USER ERROR:",
@@ -2980,9 +2889,9 @@ async function createUser(){
     );
   }
 }
-/* =========================================================
+/* =====================================================
    MANAGE USER
-========================================================= */
+===================================================== */
 async function openManage(
   userId
 ){
@@ -3025,20 +2934,13 @@ async function openManage(
     managedUserProfile =
       profile;
     const {
-      data:requisite,
-      error:requisiteError
+      data:requisite
     } =
       await supabaseClient
         .from("requisites")
         .select("*")
         .eq("user_id",userId)
         .maybeSingle();
-    if(requisiteError){
-      console.error(
-        "MANAGE REQUISITE ERROR:",
-        requisiteError
-      );
-    }
     const req =
       requisite || {};
     $("manageName").value =
@@ -3099,9 +3001,9 @@ async function openManage(
     );
   }
 }
-/* =========================================================
+/* =====================================================
    QR
-========================================================= */
+===================================================== */
 function previewQR(event){
   const file =
     event.target.files?.[0];
@@ -3109,9 +3011,7 @@ function previewQR(event){
     return;
   }
   if(
-    !file.type.startsWith(
-      "image/"
-    )
+    !file.type.startsWith("image/")
   ){
     showToast(
       "Выберите изображение"
@@ -3126,18 +3026,17 @@ function previewQR(event){
     function(){
       managedQR =
         reader.result;
-      $("manageQRPreview")
-        .src =
-          managedQR;
+      $("manageQRPreview").src =
+        managedQR;
       $("manageQRPreview")
         .classList
         .remove("hidden");
     };
   reader.readAsDataURL(file);
 }
-/* =========================================================
-   SAVE USER
-========================================================= */
+/* =====================================================
+   SAVE MANAGED USER
+===================================================== */
 async function saveManagedUser(){
   if(!isCurrentAdmin()){
     showToast(
@@ -3175,28 +3074,23 @@ async function saveManagedUser(){
           status,
           deposit:
             Number(
-              $("manageDeposit")
-                .value || 0
+              $("manageDeposit").value || 0
             ),
           turnover:
             Number(
-              $("manageTurnover")
-                .value || 0
+              $("manageTurnover").value || 0
             ),
           profit:
             Number(
-              $("manageProfit")
-                .value || 0
+              $("manageProfit").value || 0
             ),
           commission:
             Number(
-              $("manageCommission")
-                .value || 0
+              $("manageCommission").value || 0
             ),
           deals:
             Number(
-              $("manageDeals")
-                .value || 0
+              $("manageDeals").value || 0
             )
         })
         .eq(
@@ -3213,31 +3107,30 @@ async function saveManagedUser(){
       );
       return;
     }
-    const requisiteData = {
-      user_id:
-        managedUserId,
-      network:
-        $("manageNetwork")
-          .value
-          .trim(),
-      wallet:
-        $("manageWallet")
-          .value
-          .trim(),
-      wallet_link:
-        $("manageWalletLink")
-          .value
-          .trim(),
-      qr_url:
-        managedQR || null
-    };
     const {
       error:requisiteError
     } =
       await supabaseClient
         .from("requisites")
         .upsert(
-          requisiteData,
+          {
+            user_id:
+              managedUserId,
+            network:
+              $("manageNetwork")
+                .value
+                .trim(),
+            wallet:
+              $("manageWallet")
+                .value
+                .trim(),
+            wallet_link:
+              $("manageWalletLink")
+                .value
+                .trim(),
+            qr_url:
+              managedQR || null
+          },
           {
             onConflict:
               "user_id"
@@ -3249,7 +3142,7 @@ async function saveManagedUser(){
         requisiteError
       );
       showToast(
-        "Профиль сохранён, но данные операции сохранить не удалось"
+        "Профиль сохранён, но реквизиты сохранить не удалось"
       );
       await renderAdmin();
       return;
@@ -3279,9 +3172,9 @@ async function saveManagedUser(){
     );
   }
 }
-/* =========================================================
+/* =====================================================
    BLOCK
-========================================================= */
+===================================================== */
 function updateBlockButton(){
   const button =
     $("blockButton");
@@ -3300,16 +3193,10 @@ function updateBlockButton(){
   }
   button.classList
     .remove("hidden");
-  if(
-    $("manageStatus").value ===
-    "blocked"
-  ){
-    button.textContent =
-      "Разблокировать";
-  }else{
-    button.textContent =
-      "Заблокировать";
-  }
+  button.textContent =
+    $("manageStatus").value === "blocked"
+      ? "Разблокировать"
+      : "Заблокировать";
 }
 $("manageStatus")
   .addEventListener(
@@ -3330,18 +3217,16 @@ async function toggleManagedUserStatus(){
     return;
   }
   const current =
-    $("manageStatus")
-      .value;
-  $("manageStatus")
-    .value =
-      current === "blocked"
-        ? "active"
-        : "blocked";
+    $("manageStatus").value;
+  $("manageStatus").value =
+    current === "blocked"
+      ? "active"
+      : "blocked";
   updateBlockButton();
 }
-/* =========================================================
+/* =====================================================
    CLOSE MODALS
-========================================================= */
+===================================================== */
 function closeModal(){
   $("modalOverlay")
     .classList
@@ -3349,6 +3234,11 @@ function closeModal(){
   managedUserId = null;
   managedUserProfile = null;
   managedQR = "";
+}
+function closeCreateUser(){
+  $("createOverlay")
+    .classList
+    .remove("show");
 }
 $("modalOverlay")
   .addEventListener(
@@ -3374,12 +3264,15 @@ $("createOverlay")
       }
     }
   );
-/* =========================================================
+/* =====================================================
    AUTH STATE
-========================================================= */
+===================================================== */
 supabaseClient.auth
   .onAuthStateChange(
-    async (event,session) => {
+    async (
+      event,
+      session
+    ) => {
       console.log(
         "AUTH EVENT:",
         event
@@ -3435,9 +3328,9 @@ supabaseClient.auth
       }
     }
   );
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 async function start(){
   try{
     const {
