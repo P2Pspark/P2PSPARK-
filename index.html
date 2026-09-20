@@ -2,13 +2,18 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>P2PSPARK</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
+/* =========================================================
+   ROOT
+========================================================= */
 :root{
   --bg:#f4f6fa;
-  --card:#fff;
+  --card:#ffffff;
   --text:#111827;
   --muted:#747d8d;
   --line:#e1e4e9;
@@ -20,6 +25,9 @@
   --active:#e8eaee;
   --icon:#727b8c;
 }
+/* =========================================================
+   RESET
+========================================================= */
 *{
   box-sizing:border-box;
 }
@@ -58,9 +66,9 @@ button{
 .hidden{
   display:none!important;
 }
-/* =====================================================
+/* =========================================================
    LOGIN
-===================================================== */
+========================================================= */
 #loginScreen{
   position:fixed;
   inset:0;
@@ -79,7 +87,7 @@ button{
   background:
     radial-gradient(
       circle at 50% 30%,
-      #fff 0,
+      #ffffff 0,
       #f5f7fb 50%,
       #edf1f7 100%
     );
@@ -188,9 +196,9 @@ button{
 .login-button:disabled{
   opacity:.65;
 }
-/* =====================================================
+/* =========================================================
    APP
-===================================================== */
+========================================================= */
 #app{
   position:fixed;
   inset:0;
@@ -207,9 +215,9 @@ button{
   display:flex;
   overflow:hidden;
 }
-/* =====================================================
+/* =========================================================
    SIDEBAR
-===================================================== */
+========================================================= */
 .sidebar{
   width:280px;
   min-width:280px;
@@ -330,6 +338,9 @@ button{
   letter-spacing:1.4px;
   text-transform:uppercase;
 }
+/* =========================================================
+   TELEGRAM SUPPORT
+========================================================= */
 .support-box{
   margin:14px 6px 8px;
   padding:17px;
@@ -379,9 +390,9 @@ button{
   color:#2864e8;
   font-size:18px;
 }
-/* =====================================================
+/* =========================================================
    MAIN
-===================================================== */
+========================================================= */
 .main{
   flex:1 1 auto;
   width:0;
@@ -411,6 +422,45 @@ button{
   max-width:1250px;
   margin:0 auto;
 }
+/* =========================================================
+   MOBILE TOP MENU
+========================================================= */
+.mobile-header{
+  display:none;
+}
+.mobile-menu-button{
+  width:58px;
+  height:58px;
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #dfe3e8;
+  border-radius:17px;
+  background:#fff;
+  color:#2864e8;
+  box-shadow:
+    0 5px 20px rgba(30,45,75,.04);
+}
+.mobile-menu-button svg{
+  width:29px;
+  height:29px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+}
+.mobile-current-title{
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  color:#172033;
+  font-size:20px;
+  font-weight:800;
+}
+/* =========================================================
+   PAGE HEADER
+========================================================= */
 .page-header{
   display:flex;
   align-items:flex-start;
@@ -430,16 +480,9 @@ button{
   color:#737b89;
   font-size:15px;
 }
-/* =====================================================
-   MOBILE HEADER — НЕ ИСПОЛЬЗУЕМ
-   Это убирает дублирование "Дашборд"
-===================================================== */
-.mobile-top{
-  display:none!important;
-}
-/* =====================================================
+/* =========================================================
    CARDS
-===================================================== */
+========================================================= */
 .grid{
   display:grid;
   gap:18px;
@@ -495,9 +538,9 @@ button{
   background:#2864e8;
   color:#fff;
 }
-/* =====================================================
+/* =========================================================
    INFO
-===================================================== */
+========================================================= */
 .empty{
   min-height:250px;
   display:flex;
@@ -529,9 +572,9 @@ button{
   text-align:right;
   word-break:break-word;
 }
-/* =====================================================
+/* =========================================================
    OPERATION
-===================================================== */
+========================================================= */
 .operation-card{
   max-width:720px;
   padding:28px;
@@ -588,9 +631,9 @@ button{
   text-decoration:none;
   word-break:break-all;
 }
-/* =====================================================
+/* =========================================================
    TABLE
-===================================================== */
+========================================================= */
 .table-wrap{
   overflow:auto;
   -webkit-overflow-scrolling:touch;
@@ -639,9 +682,9 @@ button{
   background:#f0f1f4;
   color:#626b7a;
 }
-/* =====================================================
+/* =========================================================
    ADMIN
-===================================================== */
+========================================================= */
 .admin-toolbar{
   display:flex;
   flex-wrap:wrap;
@@ -679,9 +722,9 @@ button{
   background:#2864e8;
   color:#fff;
 }
-/* =====================================================
+/* =========================================================
    MODALS
-===================================================== */
+========================================================= */
 .modal-overlay{
   position:fixed;
   inset:0;
@@ -776,9 +819,9 @@ button{
   background:#e54545;
   color:#fff;
 }
-/* =====================================================
+/* =========================================================
    OVERLAY
-===================================================== */
+========================================================= */
 .overlay{
   display:none;
   position:fixed;
@@ -789,9 +832,9 @@ button{
 .overlay.show{
   display:block;
 }
-/* =====================================================
+/* =========================================================
    TOAST
-===================================================== */
+========================================================= */
 .toast{
   position:fixed;
   left:50%;
@@ -818,22 +861,20 @@ button{
   transform:
     translate(-50%,0);
 }
-/* =====================================================
+/* =========================================================
    TABLET
-===================================================== */
+========================================================= */
 @media(max-width:1000px){
   .stats-grid{
     grid-template-columns:
       repeat(2,1fr);
   }
 }
-/* =====================================================
-   IPHONE / MOBILE
-===================================================== */
+/* =========================================================
+   MOBILE
+========================================================= */
 @media(max-width:760px){
-  /* -------------------------
-     SIDEBAR
-  ------------------------- */
+  /* SIDEBAR */
   .sidebar{
     position:fixed;
     left:0;
@@ -852,16 +893,14 @@ button{
     transform:
       translateX(0);
   }
-  /* -------------------------
-     MAIN
-  ------------------------- */
+  /* MAIN */
   .main{
     width:100%;
     height:100%;
     min-height:0;
     overflow-y:scroll;
     padding:
-      max(14px,env(safe-area-inset-top))
+      0
       15px
       calc(95px + env(safe-area-inset-bottom))
       15px;
@@ -869,26 +908,55 @@ button{
     touch-action:pan-y;
     overscroll-behavior-y:auto;
   }
-  /* -------------------------
-     PAGE HEADER
-  ------------------------- */
+  /* ================================================
+     MOBILE TOP HEADER
+     КНОПКА МЕНЮ
+  ================================================ */
+  .mobile-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    width:100%;
+    min-height:78px;
+    padding:
+      max(10px,env(safe-area-inset-top))
+      0
+      10px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:
+      rgba(244,246,250,.94);
+    backdrop-filter:
+      blur(14px);
+    -webkit-backdrop-filter:
+      blur(14px);
+  }
+  .mobile-menu-button{
+    width:58px;
+    height:58px;
+    border-radius:17px;
+  }
+  /* PAGE */
+  .page{
+    width:100%;
+  }
+  /* HEADER */
   .page-header{
-    margin-bottom:15px;
+    margin-top:13px;
+    margin-bottom:18px;
   }
   .page-title{
-    font-size:27px;
-    line-height:1.05;
-    letter-spacing:-.6px;
+    font-size:36px;
+    line-height:1.02;
+    letter-spacing:-1px;
   }
   .page-subtitle{
-    margin-top:6px;
-    font-size:14px;
+    margin-top:7px;
+    font-size:15px;
     line-height:1.25;
   }
-  /* -------------------------
-     DASHBOARD CARDS
-     Размер как на втором фото
-  ------------------------- */
+  /* CARDS */
   .stats-grid{
     grid-template-columns:1fr;
     gap:14px;
@@ -913,9 +981,7 @@ button{
     font-size:12px;
     line-height:1.1;
   }
-  /* -------------------------
-     BUTTONS
-  ------------------------- */
+  /* BUTTONS */
   .dashboard-actions{
     grid-template-columns:
       1fr 1fr;
@@ -927,9 +993,7 @@ button{
     border-radius:13px;
     font-size:14px;
   }
-  /* -------------------------
-     LOGIN
-  ------------------------- */
+  /* LOGIN */
   .login-card{
     padding:
       34px 20px 28px;
@@ -962,9 +1026,7 @@ button{
     height:69px;
     font-size:21px;
   }
-  /* -------------------------
-     OTHER SECTIONS
-  ------------------------- */
+  /* OPERATIONS */
   .operation-card{
     padding:20px;
   }
@@ -972,6 +1034,7 @@ button{
     width:220px;
     height:220px;
   }
+  /* MODAL */
   .modal-grid{
     grid-template-columns:1fr;
   }
@@ -979,16 +1042,23 @@ button{
     grid-column:auto;
   }
 }
-/* =====================================================
+/* =========================================================
    VERY SMALL IPHONE
-===================================================== */
+========================================================= */
 @media(max-width:390px){
   .main{
     padding-left:13px;
     padding-right:13px;
   }
+  .mobile-header{
+    min-height:74px;
+  }
+  .mobile-menu-button{
+    width:54px;
+    height:54px;
+  }
   .page-title{
-    font-size:26px;
+    font-size:33px;
   }
   .stat-card{
     min-height:108px;
@@ -1009,9 +1079,9 @@ button{
 </style>
 </head>
 <body>
-<!-- =====================================================
+<!-- =========================================================
      LOGIN
-===================================================== -->
+========================================================= -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="brand">
@@ -1069,9 +1139,9 @@ button{
     </form>
   </div>
 </div>
-<!-- =====================================================
+<!-- =========================================================
      APP
-===================================================== -->
+========================================================= -->
 <div id="app">
   <div class="app-shell">
     <!-- SIDEBAR -->
@@ -1098,6 +1168,7 @@ button{
       <nav
         id="nav"
         class="nav">
+        <!-- DASHBOARD -->
         <button
           class="nav-item active"
           data-section="dashboard"
@@ -1109,8 +1180,11 @@ button{
               <path d="M26 25V11"></path>
             </svg>
           </span>
-          <span>Дашборд</span>
+          <span>
+            Дашборд
+          </span>
         </button>
+        <!-- FINANCES -->
         <button
           class="nav-item"
           data-section="finances"
@@ -1124,8 +1198,11 @@ button{
               <path d="M28 22v-8c0-2.2-3.1-4-7-4"></path>
             </svg>
           </span>
-          <span>Финансы</span>
+          <span>
+            Финансы
+          </span>
         </button>
+        <!-- DEALS -->
         <button
           class="nav-item"
           data-section="deals"
@@ -1140,8 +1217,11 @@ button{
               <path d="M22 22l-3-3"></path>
             </svg>
           </span>
-          <span>Сделки</span>
+          <span>
+            Сделки
+          </span>
         </button>
+        <!-- REQUESTS -->
         <button
           class="nav-item"
           data-section="requests"
@@ -1152,8 +1232,11 @@ button{
               <path d="M16 10v7l4 2"></path>
             </svg>
           </span>
-          <span>Заявки</span>
+          <span>
+            Заявки
+          </span>
         </button>
+        <!-- DISPUTES -->
         <button
           class="nav-item"
           data-section="disputes"
@@ -1168,8 +1251,11 @@ button{
               <path d="M24 21l3 3"></path>
             </svg>
           </span>
-          <span>Споры</span>
+          <span>
+            Споры
+          </span>
         </button>
+        <!-- REQUISITES -->
         <button
           class="nav-item"
           data-section="requisites"
@@ -1180,8 +1266,11 @@ button{
               <path d="M5 14h22"></path>
             </svg>
           </span>
-          <span>Реквизиты</span>
+          <span>
+            Реквизиты
+          </span>
         </button>
+        <!-- DEVICES -->
         <button
           class="nav-item"
           data-section="devices"
@@ -1192,8 +1281,11 @@ button{
               <path d="M14 24h4"></path>
             </svg>
           </span>
-          <span>Устройства</span>
+          <span>
+            Устройства
+          </span>
         </button>
+        <!-- MESSAGES -->
         <button
           class="nav-item"
           data-section="messages"
@@ -1206,8 +1298,11 @@ button{
               <path d="M21 18l4 3"></path>
             </svg>
           </span>
-          <span>Сообщения</span>
+          <span>
+            Сообщения
+          </span>
         </button>
+        <!-- TURBO -->
         <button
           class="nav-item"
           data-section="turbo"
@@ -1217,8 +1312,11 @@ button{
               <path d="M18 3L7 18h8l-1 11 11-16h-8z"></path>
             </svg>
           </span>
-          <span>Турбозалив</span>
+          <span>
+            Турбозалив
+          </span>
         </button>
+        <!-- COUNTERPARTIES -->
         <button
           class="nav-item"
           data-section="counterparties"
@@ -1231,8 +1329,11 @@ button{
               <path d="M14 26c0-4 3-7 7-7s7 3 7 7"></path>
             </svg>
           </span>
-          <span>Контрагенты</span>
+          <span>
+            Контрагенты
+          </span>
         </button>
+        <!-- REPORTS -->
         <button
           class="nav-item"
           data-section="reports"
@@ -1246,8 +1347,11 @@ button{
               <path d="M21 23v-3"></path>
             </svg>
           </span>
-          <span>Отчёты</span>
+          <span>
+            Отчёты
+          </span>
         </button>
+        <!-- PROFILE -->
         <button
           class="nav-item"
           data-section="profile"
@@ -1258,8 +1362,11 @@ button{
               <path d="M6 28c1-6 4.5-9 10-9s9 3 10 9"></path>
             </svg>
           </span>
-          <span>Профиль</span>
+          <span>
+            Профиль
+          </span>
         </button>
+        <!-- ADMIN -->
         <div
           id="adminNav"
           class="hidden">
@@ -1279,10 +1386,13 @@ button{
                 <path d="M22 9h6"></path>
               </svg>
             </span>
-            <span>Администратор</span>
+            <span>
+              Администратор
+            </span>
           </button>
         </div>
         <div class="nav-separator"></div>
+        <!-- LOGOUT -->
         <button
           class="nav-item"
           onclick="logout()">
@@ -1293,8 +1403,11 @@ button{
               <path d="M10 16h13"></path>
             </svg>
           </span>
-          <span>Выйти</span>
+          <span>
+            Выйти
+          </span>
         </button>
+        <!-- TELEGRAM -->
         <div class="support-box">
           <div class="support-head">
             <div class="support-icon">
@@ -1324,19 +1437,42 @@ button{
         </div>
       </nav>
     </aside>
+    <!-- MOBILE OVERLAY -->
     <div
       id="overlay"
       class="overlay"
       onclick="closeSidebar()">
     </div>
-    <!-- =================================================
+    <!-- =====================================================
          MAIN
-    ================================================= -->
+    ===================================================== -->
     <main
       id="mainScroll"
       class="main">
+      <!-- MOBILE MENU BUTTON -->
+      <div
+        id="mobileHeader"
+        class="mobile-header">
+        <button
+          class="mobile-menu-button"
+          onclick="openSidebar()"
+          aria-label="Открыть меню">
+          <svg viewBox="0 0 32 32">
+            <path d="M5 9h22"></path>
+            <path d="M5 16h22"></path>
+            <path d="M5 23h22"></path>
+          </svg>
+        </button>
+        <div
+          id="mobileCurrentTitle"
+          class="mobile-current-title">
+          Дашборд
+        </div>
+      </div>
       <div class="page">
-        <!-- DASHBOARD -->
+        <!-- =================================================
+             DASHBOARD
+        ================================================= -->
         <section
           id="dashboard"
           class="section">
@@ -1351,6 +1487,7 @@ button{
             </div>
           </div>
           <div class="grid stats-grid">
+            <!-- DEPOSIT -->
             <div class="card stat-card">
               <div class="stat-title">
                 Баланс депозита
@@ -1364,6 +1501,7 @@ button{
                 Текущий депозит
               </div>
             </div>
+            <!-- DEALS -->
             <div class="card stat-card">
               <div class="stat-title">
                 Активные сделки
@@ -1377,6 +1515,7 @@ button{
                 Количество сделок
               </div>
             </div>
+            <!-- TURNOVER -->
             <div class="card stat-card">
               <div class="stat-title">
                 Оборот
@@ -1390,6 +1529,7 @@ button{
                 Общий оборот
               </div>
             </div>
+            <!-- PROFIT -->
             <div class="card stat-card">
               <div class="stat-title">
                 Прибыль
@@ -1404,6 +1544,7 @@ button{
               </div>
             </div>
           </div>
+          <!-- ACTION BUTTONS -->
           <div class="dashboard-actions">
             <button
               class="action-button primary"
@@ -1417,7 +1558,9 @@ button{
             </button>
           </div>
         </section>
-        <!-- FINANCES -->
+        <!-- =================================================
+             FINANCES
+        ================================================= -->
         <section
           id="finances"
           class="section hidden">
@@ -1474,7 +1617,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- DEALS -->
+        <!-- =================================================
+             DEALS
+        ================================================= -->
         <section
           id="deals"
           class="section hidden">
@@ -1489,7 +1634,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- REQUESTS -->
+        <!-- =================================================
+             REQUESTS
+        ================================================= -->
         <section
           id="requests"
           class="section hidden">
@@ -1504,7 +1651,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- DISPUTES -->
+        <!-- =================================================
+             DISPUTES
+        ================================================= -->
         <section
           id="disputes"
           class="section hidden">
@@ -1519,7 +1668,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- REQUISITES -->
+        <!-- =================================================
+             REQUISITES
+        ================================================= -->
         <section
           id="requisites"
           class="section hidden">
@@ -1535,7 +1686,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- DEVICES -->
+        <!-- =================================================
+             DEVICES
+        ================================================= -->
         <section
           id="devices"
           class="section hidden">
@@ -1550,7 +1703,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- MESSAGES -->
+        <!-- =================================================
+             MESSAGES
+        ================================================= -->
         <section
           id="messages"
           class="section hidden">
@@ -1565,7 +1720,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- TURBO -->
+        <!-- =================================================
+             TURBO
+        ================================================= -->
         <section
           id="turbo"
           class="section hidden">
@@ -1580,7 +1737,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- COUNTERPARTIES -->
+        <!-- =================================================
+             COUNTERPARTIES
+        ================================================= -->
         <section
           id="counterparties"
           class="section hidden">
@@ -1595,7 +1754,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- REPORTS -->
+        <!-- =================================================
+             REPORTS
+        ================================================= -->
         <section
           id="reports"
           class="section hidden">
@@ -1610,7 +1771,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- PROFILE -->
+        <!-- =================================================
+             PROFILE
+        ================================================= -->
         <section
           id="profile"
           class="section hidden">
@@ -1657,7 +1820,9 @@ button{
             </div>
           </div>
         </section>
-        <!-- DEPOSIT -->
+        <!-- =================================================
+             DEPOSIT
+        ================================================= -->
         <section
           id="deposit"
           class="section hidden">
@@ -1718,7 +1883,9 @@ button{
             </a>
           </div>
         </section>
-        <!-- WITHDRAW -->
+        <!-- =================================================
+             WITHDRAW
+        ================================================= -->
         <section
           id="withdraw"
           class="section hidden">
@@ -1779,7 +1946,9 @@ button{
             </a>
           </div>
         </section>
-        <!-- ADMIN -->
+        <!-- =================================================
+             ADMIN
+        ================================================= -->
         <section
           id="admin"
           class="section hidden">
@@ -1810,11 +1979,21 @@ button{
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Имя</th>
-                    <th>Email</th>
-                    <th>Роль</th>
-                    <th>Статус</th>
-                    <th>Действие</th>
+                    <th>
+                      Имя
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                      Роль
+                    </th>
+                    <th>
+                      Статус
+                    </th>
+                    <th>
+                      Действие
+                    </th>
                   </tr>
                 </thead>
                 <tbody id="adminUsersBody">
@@ -1832,15 +2011,14 @@ button{
     </main>
   </div>
 </div>
-<!-- =====================================================
+<!-- =========================================================
      MANAGE USER MODAL
-===================================================== -->
+========================================================= -->
 <div
   id="modalOverlay"
   class="modal-overlay">
   <div class="modal">
-    <h2
-      class="modal-title">
+    <h2 class="modal-title">
       Управление пользователем
     </h2>
     <div class="modal-grid">
@@ -1996,9 +2174,9 @@ button{
     </div>
   </div>
 </div>
-<!-- =====================================================
+<!-- =========================================================
      CREATE USER MODAL
-===================================================== -->
+========================================================= -->
 <div
   id="createOverlay"
   class="modal-overlay">
@@ -2046,14 +2224,15 @@ button{
     </div>
   </div>
 </div>
+<!-- TOAST -->
 <div
   id="toast"
   class="toast">
 </div>
 <script>
-/* =====================================================
+/* =========================================================
    SUPABASE
-===================================================== */
+========================================================= */
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY =
@@ -2063,9 +2242,9 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
-/* =====================================================
+/* =========================================================
    STATE
-===================================================== */
+========================================================= */
 let currentUser = null;
 let currentProfile = null;
 let currentRequisite = null;
@@ -2073,9 +2252,9 @@ let managedUserId = null;
 let managedUserProfile = null;
 let managedQR = "";
 let restoringSession = false;
-/* =====================================================
+/* =========================================================
    HELPERS
-===================================================== */
+========================================================= */
 function $(id){
   return document.getElementById(id);
 }
@@ -2112,14 +2291,16 @@ function showToast(message){
     $("toast");
   toast.textContent =
     message;
-  toast.classList.add("show");
+  toast.classList
+    .add("show");
   clearTimeout(
     window.__toastTimer
   );
   window.__toastTimer =
     setTimeout(
       () =>
-        toast.classList.remove("show"),
+        toast.classList
+          .remove("show"),
       2600
     );
 }
@@ -2131,17 +2312,21 @@ function setLoginError(
     $("loginError");
   if(!message){
     el.textContent = "";
-    el.classList.add("hidden");
-    el.classList.remove("success");
+    el.classList
+      .add("hidden");
+    el.classList
+      .remove("success");
     return;
   }
   el.textContent =
     message;
-  el.classList.remove("hidden");
-  el.classList.toggle(
-    "success",
-    success
-  );
+  el.classList
+    .remove("hidden");
+  el.classList
+    .toggle(
+      "success",
+      success
+    );
 }
 function clearLoginInputErrors(){
   $("loginEmail")
@@ -2151,9 +2336,9 @@ function clearLoginInputErrors(){
     .classList
     .remove("input-error");
 }
-/* =====================================================
+/* =========================================================
    LOGIN
-===================================================== */
+========================================================= */
 $("loginForm")
   .addEventListener(
     "submit",
@@ -2179,7 +2364,8 @@ async function login(){
     setLoginError(
       "Введите почту"
     );
-    $("loginEmail").focus();
+    $("loginEmail")
+      .focus();
     return;
   }
   if(!password){
@@ -2189,12 +2375,14 @@ async function login(){
     setLoginError(
       "Введите пароль"
     );
-    $("loginPassword").focus();
+    $("loginPassword")
+      .focus();
     return;
   }
   const button =
     $("loginButton");
-  button.disabled = true;
+  button.disabled =
+    true;
   button.textContent =
     "Выполняется вход...";
   setLoginError("");
@@ -2226,9 +2414,6 @@ async function login(){
         ) ||
         message.includes(
           "invalid credentials"
-        ) ||
-        message.includes(
-          "email or password"
         );
       if(credentialsError){
         $("loginEmail")
@@ -2292,14 +2477,15 @@ async function login(){
       "Ошибка подключения. Проверьте интернет и попробуйте ещё раз."
     );
   }finally{
-    button.disabled = false;
+    button.disabled =
+      false;
     button.textContent =
       "Войти →";
   }
 }
-/* =====================================================
-   PROFILE
-===================================================== */
+/* =========================================================
+   PROFILE LOAD
+========================================================= */
 async function loadProfile(){
   if(!currentUser?.id){
     return false;
@@ -2327,9 +2513,9 @@ async function loadProfile(){
     data;
   return true;
 }
-/* =====================================================
-   REQUISITES
-===================================================== */
+/* =========================================================
+   REQUISITES LOAD
+========================================================= */
 async function loadRequisite(){
   if(!currentUser?.id){
     currentRequisite =
@@ -2357,9 +2543,9 @@ async function loadRequisite(){
   currentRequisite =
     data || null;
 }
-/* =====================================================
+/* =========================================================
    APPLICATION
-===================================================== */
+========================================================= */
 function showApplication(){
   $("loginScreen")
     .style
@@ -2392,9 +2578,42 @@ function showApplication(){
     false
   );
 }
-/* =====================================================
+/* =========================================================
+   MOBILE HEADER TITLE
+========================================================= */
+const sectionTitles = {
+  dashboard:"Дашборд",
+  finances:"Финансы",
+  deals:"Сделки",
+  requests:"Заявки",
+  disputes:"Споры",
+  requisites:"Реквизиты",
+  devices:"Устройства",
+  messages:"Сообщения",
+  turbo:"Турбозалив",
+  counterparties:"Контрагенты",
+  reports:"Отчёты",
+  profile:"Профиль",
+  deposit:"Пополнение",
+  withdraw:"Вывод",
+  admin:"Администрирование"
+};
+function updateMobileHeader(
+  section
+){
+  const title =
+    sectionTitles[section] ||
+    "P2PSPARK";
+  const element =
+    $("mobileCurrentTitle");
+  if(element){
+    element.textContent =
+      title;
+  }
+}
+/* =========================================================
    NAVIGATION
-===================================================== */
+========================================================= */
 function showSection(
   section,
   closeMenu=true
@@ -2403,7 +2622,8 @@ function showSection(
     .querySelectorAll(".section")
     .forEach(
       element =>
-        element.classList.add("hidden")
+        element.classList
+          .add("hidden")
     );
   const target =
     $(section);
@@ -2422,6 +2642,9 @@ function showSection(
         item.dataset.section === section
       );
     });
+  updateMobileHeader(
+    section
+  );
   const main =
     $("mainScroll");
   if(main){
@@ -2434,9 +2657,9 @@ function showSection(
     closeSidebar();
   }
 }
-/* =====================================================
+/* =========================================================
    SIDEBAR
-===================================================== */
+========================================================= */
 function openSidebar(){
   $("sidebar")
     .classList
@@ -2444,6 +2667,12 @@ function openSidebar(){
   $("overlay")
     .classList
     .add("show");
+  /*
+    Запрещаем прокрутку страницы
+    пока открыто меню.
+  */
+  document.body.style.overflow =
+    "hidden";
 }
 function closeSidebar(){
   $("sidebar")
@@ -2452,10 +2681,12 @@ function closeSidebar(){
   $("overlay")
     .classList
     .remove("show");
+  document.body.style.overflow =
+    "hidden";
 }
-/* =====================================================
+/* =========================================================
    DASHBOARD
-===================================================== */
+========================================================= */
 function renderDashboard(){
   const profile =
     currentProfile || {};
@@ -2500,9 +2731,9 @@ function renderDashboard(){
         profile.commission
       );
 }
-/* =====================================================
-   PROFILE RENDER
-===================================================== */
+/* =========================================================
+   PROFILE
+========================================================= */
 function renderProfile(){
   if(!currentProfile){
     return;
@@ -2519,12 +2750,12 @@ function renderProfile(){
   $("profileStatus")
     .innerHTML =
       currentProfile.status === "blocked"
-        ? '<span class="badge blocked">Заблокирован</span>'
-        : '<span class="badge active">Активен</span>';
+      ? '<span class="badge blocked">Заблокирован</span>'
+      : '<span class="badge active">Активен</span>';
 }
-/* =====================================================
+/* =========================================================
    OPERATIONS
-===================================================== */
+========================================================= */
 function renderOperations(){
   const req =
     currentRequisite || {};
@@ -2566,7 +2797,9 @@ function renderOperation(
     empty.classList
       .add("hidden");
   }else{
-    image.removeAttribute("src");
+    image.removeAttribute(
+      "src"
+    );
     image.classList
       .add("hidden");
     empty.classList
@@ -2577,7 +2810,7 @@ function renderOperation(
   if(network){
     $(prefix + "Network")
       .textContent =
-        network;
+      network;
     networkBox.classList
       .remove("hidden");
   }else{
@@ -2589,7 +2822,7 @@ function renderOperation(
   if(wallet){
     $(prefix + "Wallet")
       .textContent =
-        wallet;
+      wallet;
     walletBox.classList
       .remove("hidden");
   }else{
@@ -2610,9 +2843,9 @@ function renderOperation(
       .add("hidden");
   }
 }
-/* =====================================================
+/* =========================================================
    LOGOUT
-===================================================== */
+========================================================= */
 async function logout(){
   try{
     await supabaseClient
@@ -2639,15 +2872,18 @@ async function logout(){
   setLoginError("");
   closeSidebar();
 }
-/* =====================================================
-   ADMIN
-===================================================== */
+/* =========================================================
+   ADMIN CHECK
+========================================================= */
 function isCurrentAdmin(){
   return (
     currentProfile?.role === "ADMIN" &&
     currentProfile?.status === "active"
   );
 }
+/* =========================================================
+   ADMIN USERS
+========================================================= */
 async function renderAdmin(){
   const body =
     $("adminUsersBody");
@@ -2708,9 +2944,11 @@ async function renderAdmin(){
     body.innerHTML =
       data.map(user => {
         const status =
-          user.status || "active";
+          user.status ||
+          "active";
         const role =
-          user.role || "USER";
+          user.role ||
+          "USER";
         return `
           <tr>
             <td>
@@ -2761,9 +2999,9 @@ async function renderAdmin(){
     `;
   }
 }
-/* =====================================================
+/* =========================================================
    CREATE USER
-===================================================== */
+========================================================= */
 function openCreateUser(){
   if(!isCurrentAdmin()){
     showToast(
@@ -2889,9 +3127,9 @@ async function createUser(){
     );
   }
 }
-/* =====================================================
+/* =========================================================
    MANAGE USER
-===================================================== */
+========================================================= */
 async function openManage(
   userId
 ){
@@ -3001,9 +3239,9 @@ async function openManage(
     );
   }
 }
-/* =====================================================
+/* =========================================================
    QR
-===================================================== */
+========================================================= */
 function previewQR(event){
   const file =
     event.target.files?.[0];
@@ -3034,9 +3272,9 @@ function previewQR(event){
     };
   reader.readAsDataURL(file);
 }
-/* =====================================================
-   SAVE MANAGED USER
-===================================================== */
+/* =========================================================
+   SAVE USER
+========================================================= */
 async function saveManagedUser(){
   if(!isCurrentAdmin()){
     showToast(
@@ -3074,23 +3312,28 @@ async function saveManagedUser(){
           status,
           deposit:
             Number(
-              $("manageDeposit").value || 0
+              $("manageDeposit")
+                .value || 0
             ),
           turnover:
             Number(
-              $("manageTurnover").value || 0
+              $("manageTurnover")
+                .value || 0
             ),
           profit:
             Number(
-              $("manageProfit").value || 0
+              $("manageProfit")
+                .value || 0
             ),
           commission:
             Number(
-              $("manageCommission").value || 0
+              $("manageCommission")
+                .value || 0
             ),
           deals:
             Number(
-              $("manageDeals").value || 0
+              $("manageDeals")
+                .value || 0
             )
         })
         .eq(
@@ -3129,7 +3372,8 @@ async function saveManagedUser(){
                 .value
                 .trim(),
             qr_url:
-              managedQR || null
+              managedQR ||
+              null
           },
           {
             onConflict:
@@ -3172,9 +3416,9 @@ async function saveManagedUser(){
     );
   }
 }
-/* =====================================================
-   BLOCK
-===================================================== */
+/* =========================================================
+   BLOCK USER
+========================================================= */
 function updateBlockButton(){
   const button =
     $("blockButton");
@@ -3195,8 +3439,8 @@ function updateBlockButton(){
     .remove("hidden");
   button.textContent =
     $("manageStatus").value === "blocked"
-      ? "Разблокировать"
-      : "Заблокировать";
+    ? "Разблокировать"
+    : "Заблокировать";
 }
 $("manageStatus")
   .addEventListener(
@@ -3220,13 +3464,13 @@ async function toggleManagedUserStatus(){
     $("manageStatus").value;
   $("manageStatus").value =
     current === "blocked"
-      ? "active"
-      : "blocked";
+    ? "active"
+    : "blocked";
   updateBlockButton();
 }
-/* =====================================================
-   CLOSE MODALS
-===================================================== */
+/* =========================================================
+   MODALS
+========================================================= */
 function closeModal(){
   $("modalOverlay")
     .classList
@@ -3234,11 +3478,6 @@ function closeModal(){
   managedUserId = null;
   managedUserProfile = null;
   managedQR = "";
-}
-function closeCreateUser(){
-  $("createOverlay")
-    .classList
-    .remove("show");
 }
 $("modalOverlay")
   .addEventListener(
@@ -3264,9 +3503,9 @@ $("createOverlay")
       }
     }
   );
-/* =====================================================
+/* =========================================================
    AUTH STATE
-===================================================== */
+========================================================= */
 supabaseClient.auth
   .onAuthStateChange(
     async (
@@ -3328,9 +3567,9 @@ supabaseClient.auth
       }
     }
   );
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
 async function start(){
   try{
     const {
@@ -3384,6 +3623,11 @@ async function start(){
       .display = "none";
   }
 }
+/* =========================================================
+   INITIAL BODY SCROLL LOCK
+========================================================= */
+document.body.style.overflow =
+  "hidden";
 start();
 </script>
 </body>
