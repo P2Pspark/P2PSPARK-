@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
@@ -23,10 +24,13 @@
   --text:#101827;
   --muted:#697386;
   --line:#e4e8ee;
+
   --blue:#2563eb;
   --blue2:#eaf1ff;
+
   --green:#16a34a;
   --red:#dc2626;
+
   --dark:#111827;
 }
 
@@ -67,11 +71,6 @@ body{
   -webkit-text-size-adjust:100%;
 }
 
-
-/* =========================================================
-   BUTTONS / INPUTS
-========================================================= */
-
 button,
 input,
 select{
@@ -103,9 +102,6 @@ button{
 
 /* =========================================================
    SIDEBAR
-   ВАЖНО:
-   Логотип отдельно.
-   НИЖЕ — ОДИН ОБЩИЙ SCROLL.
 ========================================================= */
 
 .sidebar{
@@ -144,7 +140,6 @@ button{
 
 /* =========================================================
    LOGO
-   Логотип не прокручивается
 ========================================================= */
 
 .logo{
@@ -173,7 +168,6 @@ button{
 
 /* =========================================================
    MENU SCROLL
-   ЭТО ЕДИНСТВЕННЫЙ SCROLL МЕНЮ
 ========================================================= */
 
 .nav{
@@ -197,7 +191,6 @@ button{
   scrollbar-width:thin;
 
   padding:
-
     0
     2px
     calc(
@@ -207,9 +200,6 @@ button{
     0;
 
 }
-
-
-/* iPhone / Safari */
 
 .nav::-webkit-scrollbar{
   width:5px;
@@ -226,7 +216,7 @@ button{
 
 
 /* =========================================================
-   MENU TITLES
+   MENU
 ========================================================= */
 
 .nav-title{
@@ -247,12 +237,6 @@ button{
   white-space:nowrap;
 
 }
-
-
-/* =========================================================
-   MENU BUTTONS
-   НЕТ overflow / scroll у отдельных кнопок
-========================================================= */
 
 .nav button{
 
@@ -307,8 +291,7 @@ button{
 
 
 /* =========================================================
-   MAIN CONTENT
-   СВОЙ ОТДЕЛЬНЫЙ SCROLL
+   MAIN
 ========================================================= */
 
 .main{
@@ -327,8 +310,7 @@ button{
 
   min-height:100dvh;
 
-  padding:
-    30px;
+  padding:30px;
 
   overflow-y:auto;
 
@@ -421,16 +403,13 @@ button{
 
   display:none;
 
-  border:
-    1px solid var(--line);
+  border:1px solid var(--line);
 
   background:#fff;
 
   border-radius:10px;
 
-  padding:
-    9px
-    12px;
+  padding:9px 12px;
 
 }
 
@@ -532,11 +511,11 @@ button{
 
   border:0;
 
-  border-radius:10px;
+  border-radius:12px;
 
   padding:
-    11px
-    16px;
+    12px
+    17px;
 
   font-weight:750;
 
@@ -581,6 +560,71 @@ button{
   gap:10px;
 
   flex-wrap:wrap;
+
+}
+
+
+/* =========================================================
+   DASHBOARD ACTIONS
+========================================================= */
+
+.dashboard-actions{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:18px;
+
+  margin-top:20px;
+
+}
+
+.dashboard-action{
+
+  min-height:82px;
+
+  border:0;
+
+  border-radius:17px;
+
+  font-size:18px;
+
+  font-weight:850;
+
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
+
+}
+
+.dashboard-action:active{
+
+  transform:scale(.98);
+
+}
+
+.dashboard-action.deposit{
+
+  background:var(--blue);
+
+  color:#fff;
+
+  box-shadow:
+    0 12px 30px
+    rgba(37,99,235,.18);
+
+}
+
+.dashboard-action.withdraw{
+
+  background:#fff;
+
+  color:var(--text);
+
+  border:
+    1px solid var(--line);
 
 }
 
@@ -639,9 +683,7 @@ button{
 }
 
 .table tr:last-child td{
-
   border-bottom:0;
-
 }
 
 
@@ -740,8 +782,7 @@ button{
 .field input:focus,
 .field select:focus{
 
-  border-color:
-    var(--blue);
+  border-color:var(--blue);
 
   box-shadow:
     0 0 0 3px
@@ -831,9 +872,7 @@ button{
   font-weight:750;
 
   margin:
-    8px
-    0
-    30px;
+    8px 0 30px;
 
 }
 
@@ -844,9 +883,7 @@ button{
   font-size:27px;
 
   margin:
-    0
-    0
-    8px;
+    0 0 8px;
 
 }
 
@@ -936,8 +973,7 @@ button{
 
   max-height:
     calc(
-      100dvh -
-      30px
+      100dvh - 30px
     );
 
   overflow:auto;
@@ -979,26 +1015,7 @@ button{
   font-weight:850;
 
   margin:
-    22px
-    0
-    12px;
-
-}
-
-.preview{
-
-  max-width:180px;
-
-  max-height:180px;
-
-  border-radius:12px;
-
-  border:
-    1px solid var(--line);
-
-  display:none;
-
-  margin-top:10px;
+    22px 0 12px;
 
 }
 
@@ -1019,9 +1036,7 @@ button{
 .admin-head h2{
 
   margin:
-    0
-    0
-    5px;
+    0 0 5px;
 
 }
 
@@ -1054,11 +1069,7 @@ button{
       env(safe-area-inset-top);
 
     transform:
-      translate3d(
-        -100%,
-        0,
-        0
-      );
+      translate3d(-100%,0,0);
 
     transition:
       transform .22s ease;
@@ -1069,18 +1080,12 @@ button{
 
   }
 
-
   .sidebar.open{
 
     transform:
-      translate3d(
-        0,
-        0,
-        0
-      );
+      translate3d(0,0,0);
 
   }
-
 
   .main{
 
@@ -1102,33 +1107,21 @@ button{
 
   }
 
-
   .mobile-menu{
-
     display:block;
-
   }
-
 
   .top{
-
     gap:10px;
-
   }
-
 
   .top h1{
-
     font-size:25px;
-
   }
 
-
   .grid{
-
     grid-template-columns:
       repeat(2,1fr);
-
   }
 
 }
@@ -1138,68 +1131,48 @@ button{
 
   .grid,
   .form-grid{
-
-    grid-template-columns:
-      1fr;
-
+    grid-template-columns:1fr;
   }
-
 
   .card{
-
     padding:17px;
-
   }
-
 
   .top{
-
     align-items:flex-start;
-
   }
-
 
   .userbox{
-
     display:none;
-
   }
-
 
   .login-card{
-
     padding:25px;
-
   }
-
 
   .actions .btn{
-
     width:100%;
-
   }
-
 
   .modal{
-
-    padding:
-      10px;
-
+    padding:10px;
   }
-
 
   .modalbox{
 
     max-height:
       calc(
-        100dvh -
-        20px
+        100dvh - 20px
       );
 
     border-radius:17px;
 
     padding:20px;
 
+  }
+
+  .dashboard-actions{
+    grid-template-columns:1fr;
   }
 
 }
@@ -1247,7 +1220,6 @@ button{
       Введите данные, выданные администратором
     </div>
 
-
     <div
       id="loginError"
       class="error"
@@ -1257,7 +1229,7 @@ button{
     <div class="field">
 
       <label>
-        Почта (Gmail)
+        Почта
       </label>
 
       <input
@@ -1318,1093 +1290,1129 @@ button{
 >
 
 
-  <!-- =======================================================
-       SIDEBAR
-  ======================================================== -->
+<!-- =======================================================
+     SIDEBAR
+======================================================== -->
 
-  <aside
-    id="sidebar"
-    class="sidebar"
+<aside
+  id="sidebar"
+  class="sidebar"
+>
+
+  <div class="logo">
+    P2P<span>SPARK</span>
+  </div>
+
+
+  <div
+    id="navScroll"
+    class="nav"
   >
 
 
-    <!-- НЕ ПРОКРУЧИВАЕТСЯ -->
-
-    <div class="logo">
-      P2P<span>SPARK</span>
+    <div class="nav-title">
+      Основное
     </div>
 
 
-    <!-- ВЕСЬ СПИСОК ПРОКРУЧИВАЕТСЯ ЦЕЛИКОМ -->
+    <button
+      data-page="dashboard"
+      onclick="go('dashboard')"
+    >
+      ▣ &nbsp; Дашборд
+    </button>
+
+
+    <button
+      data-page="finance"
+      onclick="go('finance')"
+    >
+      ◈ &nbsp; Финансы
+    </button>
+
+
+    <button
+      data-page="deals"
+      onclick="go('deals')"
+    >
+      ↔ &nbsp; Сделки
+    </button>
+
+
+    <button
+      data-page="requests"
+      onclick="go('requests')"
+    >
+      ◌ &nbsp; Заявки
+    </button>
+
+
+    <button
+      data-page="disputes"
+      onclick="go('disputes')"
+    >
+      ⚠ &nbsp; Споры
+    </button>
+
+
+    <div class="nav-title">
+      Работа
+    </div>
+
+
+    <!-- РЕКВИЗИТЫ УБРАНЫ -->
+
+
+    <button
+      data-page="devices"
+      onclick="go('devices')"
+    >
+      ▣ &nbsp; Устройства
+    </button>
+
+
+    <button
+      data-page="messages"
+      onclick="go('messages')"
+    >
+      ✉ &nbsp; Сообщения
+    </button>
+
+
+    <button
+      data-page="turbo"
+      onclick="go('turbo')"
+    >
+      ⚡ &nbsp; Турбозалив
+    </button>
+
+
+    <button
+      data-page="counterparties"
+      onclick="go('counterparties')"
+    >
+      ♙ &nbsp; Контрагенты
+    </button>
+
+
+    <button
+      data-page="reports"
+      onclick="go('reports')"
+    >
+      ▥ &nbsp; Отчёты
+    </button>
+
+
+    <button
+      data-page="profile"
+      onclick="go('profile')"
+    >
+      ◉ &nbsp; Профиль
+    </button>
+
+
+    <!-- ADMIN -->
 
     <div
-      id="navScroll"
-      class="nav"
+      id="adminNav"
+      style="display:none"
     >
 
-
       <div class="nav-title">
-        Основное
+        Администрирование
       </div>
 
-
       <button
-        data-page="dashboard"
-        onclick="go('dashboard')"
+        class="admin"
+        data-page="admin"
+        onclick="go('admin')"
       >
-        ▣ &nbsp; Дашборд
+        ♛ &nbsp; Админ-панель
       </button>
-
-
-      <button
-        data-page="finance"
-        onclick="go('finance')"
-      >
-        ◈ &nbsp; Финансы
-      </button>
-
-
-      <button
-        data-page="deals"
-        onclick="go('deals')"
-      >
-        ↔ &nbsp; Сделки
-      </button>
-
-
-      <button
-        data-page="requests"
-        onclick="go('requests')"
-      >
-        ◌ &nbsp; Заявки
-      </button>
-
-
-      <button
-        data-page="disputes"
-        onclick="go('disputes')"
-      >
-        ⚠ &nbsp; Споры
-      </button>
-
-
-      <div class="nav-title">
-        Работа
-      </div>
-
-
-      <button
-        data-page="requisites"
-        onclick="go('requisites')"
-      >
-        ▤ &nbsp; Реквизиты
-      </button>
-
-
-      <button
-        data-page="devices"
-        onclick="go('devices')"
-      >
-        ▣ &nbsp; Устройства
-      </button>
-
-
-      <button
-        data-page="messages"
-        onclick="go('messages')"
-      >
-        ✉ &nbsp; Сообщения
-      </button>
-
-
-      <button
-        data-page="turbo"
-        onclick="go('turbo')"
-      >
-        ⚡ &nbsp; Турбозалив
-      </button>
-
-
-      <button
-        data-page="counterparties"
-        onclick="go('counterparties')"
-      >
-        ♙ &nbsp; Контрагенты
-      </button>
-
-
-      <button
-        data-page="reports"
-        onclick="go('reports')"
-      >
-        ▥ &nbsp; Отчёты
-      </button>
-
-
-      <button
-        data-page="profile"
-        onclick="go('profile')"
-      >
-        ◉ &nbsp; Профиль
-      </button>
-
-
-      <!-- ADMIN -->
-
-      <div
-        id="adminNav"
-        style="display:none"
-      >
-
-        <div class="nav-title">
-          Администрирование
-        </div>
-
-
-        <button
-          class="admin"
-          data-page="admin"
-          onclick="go('admin')"
-        >
-          ♛ &nbsp; Админ-панель
-        </button>
-
-      </div>
-
-
-      <!-- ACCOUNT ВНУТРИ ТОГО ЖЕ SCROLL -->
-
-      <div class="nav-title">
-        Аккаунт
-      </div>
-
-
-      <button
-        type="button"
-        onclick="logout()"
-      >
-        ↪ &nbsp; Выйти
-      </button>
-
 
     </div>
 
-  </aside>
+
+    <div class="nav-title">
+      Аккаунт
+    </div>
+
+
+    <button
+      type="button"
+      onclick="logout()"
+    >
+      ↪ &nbsp; Выйти
+    </button>
+
+
+  </div>
+
+</aside>
 
 
 
-  <!-- =======================================================
-       MAIN
-  ======================================================== -->
+<!-- =======================================================
+     MAIN
+======================================================== -->
 
-  <main
-    id="mainScroll"
-    class="main"
+<main
+  id="mainScroll"
+  class="main"
+>
+
+
+  <div class="top">
+
+    <div
+      style="
+        display:flex;
+        align-items:center;
+        gap:12px
+      "
+    >
+
+      <button
+        class="mobile-menu"
+        onclick="toggleMenu()"
+      >
+        ☰
+      </button>
+
+
+      <div>
+
+        <h1 id="pageTitle">
+          Дашборд
+        </h1>
+
+        <div class="subtitle">
+          P2PSPARK
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="userbox">
+
+      <div>
+
+        <b id="topEmail"></b>
+
+        <div
+          class="small"
+          id="roleText"
+        ></div>
+
+      </div>
+
+
+      <div
+        class="avatar"
+        id="avatar"
+      >
+        U
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section
+  id="dashboard"
+  class="section active"
+>
+
+  <div class="grid">
+
+
+    <div class="card">
+
+      <div class="label">
+        Баланс депозита
+      </div>
+
+      <div
+        id="dDeposit"
+        class="big"
+      >
+        0 USDT
+      </div>
+
+      <div class="small">
+        Текущий баланс
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="label">
+        Активные сделки
+      </div>
+
+      <div
+        id="dDeals"
+        class="big"
+      >
+        0
+      </div>
+
+      <div class="small">
+        На текущий момент
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="label">
+        Оборот
+      </div>
+
+      <div
+        id="dTurnover"
+        class="big"
+      >
+        0 USDT
+      </div>
+
+      <div class="small">
+        За текущий месяц
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="label">
+        Прибыль
+      </div>
+
+      <div
+        id="dProfit"
+        class="big green"
+      >
+        0 USDT
+      </div>
+
+      <div class="small">
+        За текущий месяц
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ПОСЛЕДНИЕ СДЕЛКИ -->
+
+  <div class="card">
+
+    <h2>
+      Последние сделки
+    </h2>
+
+    <div
+      id="dashDeals"
+      class="empty"
+    >
+      Пока нет сделок
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       ПОПОЛНИТЬ / ВЫВОД
+  ====================================================== -->
+
+  <div class="dashboard-actions">
+
+
+    <button
+      class="dashboard-action deposit"
+      onclick="go('deposit')"
+    >
+      ＋ Пополнить
+    </button>
+
+
+    <button
+      class="dashboard-action withdraw"
+      onclick="go('withdraw')"
+    >
+      ↓ Вывод
+    </button>
+
+
+  </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     DEPOSIT
+========================================================= -->
+
+<section
+  id="deposit"
+  class="section"
+>
+
+  <h2>
+    Пополнение
+  </h2>
+
+  <div class="subtitle">
+    Раздел пополнения
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Раздел пополнения будет подключён следующим этапом.
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     WITHDRAW
+========================================================= -->
+
+<section
+  id="withdraw"
+  class="section"
+>
+
+  <h2>
+    Вывод
+  </h2>
+
+  <div class="subtitle">
+    Раздел вывода средств
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Раздел вывода будет подключён следующим этапом.
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FINANCE
+========================================================= -->
+
+<section
+  id="finance"
+  class="section"
+>
+
+  <h2>
+    Финансы
+  </h2>
+
+  <div class="subtitle">
+    Ваши финансовые показатели
+  </div>
+
+
+  <div
+    class="grid"
+    style="margin-top:20px"
+  >
+
+    <div class="card">
+
+      <div class="label">
+        Депозит
+      </div>
+
+      <div
+        id="fDeposit"
+        class="big"
+      >
+        0 USDT
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="label">
+        Оборот
+      </div>
+
+      <div
+        id="fTurnover"
+        class="big"
+      >
+        0 USDT
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="label">
+        Прибыль
+      </div>
+
+      <div
+        id="fProfit"
+        class="big green"
+      >
+        0 USDT
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="label">
+        Комиссия
+      </div>
+
+      <div
+        id="fCommission"
+        class="big"
+      >
+        0%
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DEALS
+========================================================= -->
+
+<section
+  id="deals"
+  class="section"
+>
+
+  <h2>
+    Сделки
+  </h2>
+
+  <div class="subtitle">
+    История и текущие операции
+  </div>
+
+
+  <div
+    class="table-wrap"
+    style="margin-top:20px"
+  >
+
+    <table class="table">
+
+      <thead>
+
+        <tr>
+
+          <th>ID</th>
+
+          <th>Направление</th>
+
+          <th>Сумма</th>
+
+          <th>Статус</th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody
+        id="dealsTable"
+      ></tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     REQUESTS
+========================================================= -->
+
+<section
+  id="requests"
+  class="section"
+>
+
+  <h2>
+    Заявки
+  </h2>
+
+  <div class="subtitle">
+    Входящие и исходящие заявки
+  </div>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Новых заявок нет
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DISPUTES
+========================================================= -->
+
+<section
+  id="disputes"
+  class="section"
+>
+
+  <h2>
+    Споры
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Активных споров нет
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     DEVICES
+========================================================= -->
+
+<section
+  id="devices"
+  class="section"
+>
+
+  <h2>
+    Устройства
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Текущее устройство · Активно
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     MESSAGES
+========================================================= -->
+
+<section
+  id="messages"
+  class="section"
+>
+
+  <h2>
+    Сообщения
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <h3>
+      Системное сообщение
+    </h3>
+
+    <div class="subtitle">
+      Добро пожаловать в P2PSPARK.
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     TURBO
+========================================================= -->
+
+<section
+  id="turbo"
+  class="section"
+>
+
+  <h2>
+    Турбозалив
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Функция будет подключена следующим этапом
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     COUNTERPARTIES
+========================================================= -->
+
+<section
+  id="counterparties"
+  class="section"
+>
+
+  <h2>
+    Контрагенты
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <div class="empty">
+      Контрагенты пока отсутствуют
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     REPORTS
+========================================================= -->
+
+<section
+  id="reports"
+  class="section"
+>
+
+  <h2>
+    Отчёты
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
+  >
+
+    <button
+      class="btn primary"
+      onclick="
+        alert(
+          'Раздел отчётов будет подключён следующим этапом'
+        )
+      "
+    >
+      Сформировать отчёт
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROFILE
+========================================================= -->
+
+<section
+  id="profile"
+  class="section"
+>
+
+  <h2>
+    Профиль
+  </h2>
+
+
+  <div
+    class="card"
+    style="margin-top:20px"
   >
 
 
-    <div class="top">
+    <!-- СТАТУС -->
 
-      <div
-        style="
-          display:flex;
-          align-items:center;
-          gap:12px
-        "
-      >
+    <div
+      style="
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:15px;
+        padding-bottom:20px;
+        border-bottom:1px solid var(--line)
+      "
+    >
 
-        <button
-          class="mobile-menu"
-          onclick="toggleMenu()"
+      <div>
+
+        <div class="label">
+          Статус аккаунта
+        </div>
+
+        <div
+          id="profileStatusText"
+          style="
+            margin-top:6px;
+            font-size:20px;
+            font-weight:850;
+            color:var(--green)
+          "
         >
-          ☰
-        </button>
-
-
-        <div>
-
-          <h1 id="pageTitle">
-            Дашборд
-          </h1>
-
-          <div class="subtitle">
-            P2PSPARK
-          </div>
-
+          Активен
         </div>
 
       </div>
 
 
-      <div class="userbox">
+      <span
+        id="profileStatusBadge"
+        class="badge green"
+      >
+        Активен
+      </span>
 
-        <div>
-
-          <b id="topEmail"></b>
-
-          <div
-            class="small"
-            id="roleText"
-          ></div>
-
-        </div>
+    </div>
 
 
-        <div
-          class="avatar"
-          id="avatar"
-        >
-          U
-        </div>
+    <!-- ИМЯ -->
 
+    <div
+      style="
+        margin-top:22px
+      "
+    >
+
+      <div class="label">
+        Имя пользователя
+      </div>
+
+      <div
+        id="profileName"
+        style="
+          margin-top:7px;
+          font-size:21px;
+          font-weight:800
+        "
+      >
+        —
       </div>
 
     </div>
 
 
+    <!-- EMAIL -->
 
-    <!-- =====================================================
-         DASHBOARD
-    ====================================================== -->
-
-    <section
-      id="dashboard"
-      class="section active"
+    <div
+      style="
+        margin-top:22px
+      "
     >
 
-      <div class="grid">
-
-
-        <div class="card">
-
-          <div class="label">
-            Баланс депозита
-          </div>
-
-          <div
-            id="dDeposit"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-          <div class="small">
-            Текущий баланс
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Активные сделки
-          </div>
-
-          <div
-            id="dDeals"
-            class="big"
-          >
-            0
-          </div>
-
-          <div class="small">
-            На текущий момент
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Оборот
-          </div>
-
-          <div
-            id="dTurnover"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-          <div class="small">
-            За текущий месяц
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Прибыль
-          </div>
-
-          <div
-            id="dProfit"
-            class="big green"
-          >
-            0 USDT
-          </div>
-
-          <div class="small">
-            За текущий месяц
-          </div>
-
-        </div>
-
-
+      <div class="label">
+        Email
       </div>
-
-
-      <div class="card">
-
-        <h2>
-          Последние сделки
-        </h2>
-
-        <div
-          id="dashDeals"
-          class="empty"
-        >
-          Пока нет сделок
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         FINANCE
-    ====================================================== -->
-
-    <section
-      id="finance"
-      class="section"
-    >
-
-      <h2>
-        Финансы
-      </h2>
-
-      <div class="subtitle">
-        Ваши финансовые показатели
-      </div>
-
 
       <div
-        class="grid"
-        style="margin-top:20px"
+        id="profileEmailText"
+        style="
+          margin-top:7px;
+          font-size:17px;
+          font-weight:700;
+          word-break:break-all
+        "
       >
-
-        <div class="card">
-
-          <div class="label">
-            Депозит
-          </div>
-
-          <div
-            id="fDeposit"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Оборот
-          </div>
-
-          <div
-            id="fTurnover"
-            class="big"
-          >
-            0 USDT
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Прибыль
-          </div>
-
-          <div
-            id="fProfit"
-            class="big green"
-          >
-            0 USDT
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="label">
-            Комиссия
-          </div>
-
-          <div
-            id="fCommission"
-            class="big"
-          >
-            0%
-          </div>
-
-        </div>
-
+        —
       </div>
 
-    </section>
+    </div>
+
+
+  </div>
+
+</section>
 
 
 
-    <!-- =====================================================
-         DEALS
-    ====================================================== -->
+<!-- =========================================================
+     ADMIN
+========================================================= -->
 
-    <section
-      id="deals"
-      class="section"
+<section
+  id="admin"
+  class="section"
+>
+
+
+  <div class="admin-head">
+
+    <h2>
+      Админ-панель
+    </h2>
+
+    <div>
+      Управление пользователями P2PSPARK
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       CREATE USER
+  ====================================================== -->
+
+  <div class="card">
+
+    <h2>
+      Создать новый ЛК
+    </h2>
+
+    <div class="subtitle">
+      ADMIN задаёт имя пользователя, email и пароль.
+    </div>
+
+
+    <div
+      class="form-grid"
+      style="margin-top:18px"
     >
 
-      <h2>
-        Сделки
-      </h2>
 
-      <div class="subtitle">
-        История и текущие операции
-      </div>
+      <div class="field">
 
+        <label>
+          Имя пользователя
+        </label>
 
-      <div
-        class="table-wrap"
-        style="margin-top:20px"
-      >
-
-        <table class="table">
-
-          <thead>
-
-            <tr>
-
-              <th>ID</th>
-
-              <th>Направление</th>
-
-              <th>Сумма</th>
-
-              <th>Статус</th>
-
-            </tr>
-
-          </thead>
-
-
-          <tbody id="dealsTable"></tbody>
-
-        </table>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         REQUESTS
-    ====================================================== -->
-
-    <section
-      id="requests"
-      class="section"
-    >
-
-      <h2>
-        Заявки
-      </h2>
-
-      <div class="subtitle">
-        Входящие и исходящие заявки
-      </div>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Новых заявок нет
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         DISPUTES
-    ====================================================== -->
-
-    <section
-      id="disputes"
-      class="section"
-    >
-
-      <h2>
-        Споры
-      </h2>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Активных споров нет
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         REQUISITES
-    ====================================================== -->
-
-    <section
-      id="requisites"
-      class="section"
-    >
-
-      <h2>
-        Реквизиты
-      </h2>
-
-      <div class="subtitle">
-        Реквизиты назначаются администратором
-      </div>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="form-grid">
-
-
-          <div>
-
-            <div class="label">
-              Сеть
-            </div>
-
-            <div
-              id="pNetwork"
-              class="big"
-              style="font-size:20px"
-            >
-              —
-            </div>
-
-          </div>
-
-
-          <div>
-
-            <div class="label">
-              Кошелёк / реквизит
-            </div>
-
-            <div
-              id="pWallet"
-              style="
-                margin-top:7px;
-                word-break:break-all;
-                font-weight:700
-              "
-            >
-              —
-            </div>
-
-          </div>
-
-
-          <div
-            id="pWalletLinkWrap"
-            style="
-              grid-column:1/-1;
-              display:none
-            "
-          >
-
-            <div class="label">
-              Ссылка на крипто-кошелёк
-            </div>
-
-            <a
-              id="pWalletLink"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              style="
-                display:block;
-                margin-top:7px;
-                word-break:break-all;
-                font-weight:700;
-                color:var(--blue);
-                text-decoration:none
-              "
-            ></a>
-
-          </div>
-
-
-        </div>
-
-
-        <img
-          id="pQr"
-          class="preview"
-          alt="QR"
+        <input
+          id="newName"
+          placeholder="Например: Alex"
         >
 
+      </div>
 
-        <button
-          class="btn light"
-          style="margin-top:15px"
-          onclick="copyWallet()"
+
+      <div class="field">
+
+        <label>
+          Email
+        </label>
+
+        <input
+          id="newEmail"
+          type="email"
+          placeholder="user@gmail.com"
         >
-          Скопировать реквизит
-        </button>
 
       </div>
 
-    </section>
 
+      <div class="field">
 
+        <label>
+          Пароль
+        </label>
 
-    <!-- =====================================================
-         DEVICES
-    ====================================================== -->
-
-    <section
-      id="devices"
-      class="section"
-    >
-
-      <h2>
-        Устройства
-      </h2>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Текущее устройство · Активно
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         MESSAGES
-    ====================================================== -->
-
-    <section
-      id="messages"
-      class="section"
-    >
-
-      <h2>
-        Сообщения
-      </h2>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <h3>
-          Системное сообщение
-        </h3>
-
-        <div class="subtitle">
-          Добро пожаловать в P2PSPARK.
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         TURBO
-    ====================================================== -->
-
-    <section
-      id="turbo"
-      class="section"
-    >
-
-      <h2>
-        Турбозалив
-      </h2>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Функция будет подключена следующим этапом
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         COUNTERPARTIES
-    ====================================================== -->
-
-    <section
-      id="counterparties"
-      class="section"
-    >
-
-      <h2>
-        Контрагенты
-      </h2>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <div class="empty">
-          Контрагенты пока отсутствуют
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         REPORTS
-    ====================================================== -->
-
-    <section
-      id="reports"
-      class="section"
-    >
-
-      <h2>
-        Отчёты
-      </h2>
-
-
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
-
-        <button
-          class="btn primary"
-          onclick="
-            alert(
-              'Раздел отчётов будет подключён следующим этапом'
-            )
-          "
+        <input
+          id="newPassword"
+          type="password"
+          placeholder="Минимум 6 символов"
         >
-          Сформировать отчёт
-        </button>
 
       </div>
 
-    </section>
+
+    </div>
+
+
+    <button
+      class="btn primary"
+      style="margin-top:18px"
+      onclick="createUser()"
+    >
+      Создать USER
+    </button>
+
+  </div>
 
 
 
-    <!-- =====================================================
-         PROFILE
-         БЕЗ ROLE
-    ====================================================== -->
+  <!-- =====================================================
+       USERS
+  ====================================================== -->
 
-    <section
-      id="profile"
-      class="section"
+  <div class="card">
+
+    <h2>
+      Пользователи
+    </h2>
+
+
+    <div
+      class="table-wrap"
+      style="margin-top:15px"
     >
 
-      <h2>
-        Профиль
-      </h2>
+      <table class="table">
 
+        <thead>
 
-      <div
-        class="card"
-        style="margin-top:20px"
-      >
+          <tr>
 
-        <div class="form-grid">
+            <th>
+              Имя
+            </th>
 
-
-          <div class="field">
-
-            <label>
+            <th>
               Email
-            </label>
+            </th>
 
-            <input
-              id="profileEmail"
-              disabled
-            >
+            <th>
+              Роль
+            </th>
 
-          </div>
-
-
-          <div class="field">
-
-            <label>
+            <th>
               Статус
-            </label>
+            </th>
 
-            <input
-              id="profileStatus"
-              disabled
+            <th>
+              Действие
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody
+          id="usersTable"
+        >
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="empty"
             >
+              Загрузка...
+            </td>
 
-          </div>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
 
 
-        </div>
 
-      </div>
+  <div class="card">
 
-    </section>
+    <h2>
+      Журнал действий
+    </h2>
 
-
-
-    <!-- =====================================================
-         ADMIN
-    ====================================================== -->
-
-    <section
-      id="admin"
-      class="section"
+    <div
+      id="auditLog"
+      class="small"
     >
+      Пока нет действий
+    </div>
 
+  </div>
 
-      <div class="admin-head">
 
-        <h2>
-          Админ-панель
-        </h2>
+</section>
 
-        <div>
-          Полное управление пользователями P2PSPARK
-        </div>
 
-      </div>
-
-
-
-      <!-- CREATE USER -->
-
-      <div class="card">
-
-        <h2>
-          Создать новый ЛК
-        </h2>
-
-        <div class="subtitle">
-          Новый USER получает отдельный профиль.
-        </div>
-
-
-        <div
-          class="form-grid"
-          style="margin-top:18px"
-        >
-
-          <div class="field">
-
-            <label>
-              Имя пользователя
-            </label>
-
-            <input
-              id="newName"
-              placeholder="Имя"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Email
-            </label>
-
-            <input
-              id="newEmail"
-              type="email"
-              placeholder="user@gmail.com"
-            >
-
-          </div>
-
-
-          <div class="field">
-
-            <label>
-              Пароль
-            </label>
-
-            <input
-              id="newPassword"
-              type="password"
-              placeholder="Минимум 6 символов"
-            >
-
-          </div>
-
-
-        </div>
-
-
-        <button
-          class="btn primary"
-          style="margin-top:18px"
-          onclick="createUser()"
-        >
-          Создать USER
-        </button>
-
-      </div>
-
-
-
-      <!-- USERS -->
-
-      <div class="card">
-
-        <h2>
-          Пользователи
-        </h2>
-
-
-        <div
-          class="table-wrap"
-          style="margin-top:15px"
-        >
-
-          <table class="table">
-
-            <thead>
-
-              <tr>
-
-                <th>
-                  Имя
-                </th>
-
-                <th>
-                  Email
-                </th>
-
-                <th>
-                  Роль
-                </th>
-
-                <th>
-                  Статус
-                </th>
-
-                <th>
-                  Действие
-                </th>
-
-              </tr>
-
-            </thead>
-
-
-            <tbody
-              id="usersTable"
-            >
-
-              <tr>
-
-                <td
-                  colspan="5"
-                  class="empty"
-                >
-                  Загрузка...
-                </td>
-
-              </tr>
-
-            </tbody>
-
-          </table>
-
-        </div>
-
-      </div>
-
-
-      <div class="card">
-
-        <h2>
-          Журнал действий
-        </h2>
-
-        <div
-          id="auditLog"
-          class="small"
-        >
-          Пока нет действий
-        </div>
-
-      </div>
-
-
-    </section>
-
-
-  </main>
+</main>
 
 </div>
 
@@ -2441,6 +2449,8 @@ button{
     ></div>
 
 
+    <!-- ACCOUNT -->
+
     <div class="section-title">
       1. Аккаунт
     </div>
@@ -2452,11 +2462,12 @@ button{
       <div class="field">
 
         <label>
-          Имя
+          Имя пользователя
         </label>
 
         <input
           id="mName"
+          placeholder="Имя пользователя"
         >
 
       </div>
@@ -2470,7 +2481,7 @@ button{
 
         <input
           id="mEmail"
-          type="email"
+          disabled
         >
 
       </div>
@@ -2485,7 +2496,7 @@ button{
         <input
           id="mPassword"
           type="password"
-          placeholder="Оставьте пустым, чтобы не менять"
+          placeholder="Оставьте пустым"
         >
 
       </div>
@@ -2515,6 +2526,8 @@ button{
     </div>
 
 
+
+    <!-- FINANCE -->
 
     <div class="section-title">
       2. Финансы
@@ -2602,128 +2615,6 @@ button{
     </div>
 
 
-
-    <div class="section-title">
-      3. Реквизиты
-    </div>
-
-
-    <div class="form-grid">
-
-
-      <div class="field">
-
-        <label>
-          Сеть
-        </label>
-
-        <select id="mNetwork">
-
-          <option value="">
-            Не выбрана
-          </option>
-
-          <option value="TRC20">
-            TRC20
-          </option>
-
-          <option value="ERC20">
-            ERC20
-          </option>
-
-          <option value="BEP20">
-            BEP20
-          </option>
-
-          <option value="SOL">
-            SOL
-          </option>
-
-          <option value="TON">
-            TON
-          </option>
-
-        </select>
-
-      </div>
-
-
-      <div
-        class="field"
-        style="grid-column:1/-1"
-      >
-
-        <label>
-          Кошелёк / реквизит
-        </label>
-
-        <input
-          id="mWallet"
-          placeholder="Например: T..."
-        >
-
-      </div>
-
-
-      <div
-        class="field"
-        style="grid-column:1/-1"
-      >
-
-        <label>
-          Ссылка на крипто-кошелёк
-        </label>
-
-        <input
-          id="mWalletLink"
-          type="url"
-          placeholder="https://..."
-        >
-
-      </div>
-
-
-      <div
-        class="field"
-        style="grid-column:1/-1"
-      >
-
-        <label>
-          QR-код пользователя
-        </label>
-
-        <input
-          id="mQrFile"
-          type="file"
-          accept="image/png,image/jpeg,image/webp"
-          onchange="previewQr(event)"
-          style="
-            padding:10px;
-            background:#eef2f7;
-            border-radius:10px
-          "
-        >
-
-        <div
-          class="small"
-          style="margin-top:7px"
-        >
-          QR сохраняется для выбранного пользователя.
-        </div>
-
-      </div>
-
-
-    </div>
-
-
-    <img
-      id="mQrPreview"
-      class="preview"
-      alt="QR"
-    >
-
-
     <div
       class="actions"
       style="margin-top:22px"
@@ -2733,15 +2624,7 @@ button{
         class="btn primary"
         onclick="saveManagedUser()"
       >
-        Сохранить всё
-      </button>
-
-
-      <button
-        class="btn light"
-        onclick="clearQr()"
-      >
-        Удалить QR
+        Сохранить
       </button>
 
 
@@ -2789,11 +2672,7 @@ let currentUser = null;
 
 let currentProfile = null;
 
-let currentRequisite = null;
-
 let managedId = null;
-
-let qrData = "";
 
 
 /* =========================================================
@@ -2944,7 +2823,7 @@ async function login(){
     if(!ok){
 
       return setLoginError(
-        "Вход выполнен, но профиль пользователя не найден"
+        "Профиль пользователя не найден"
       );
 
     }
@@ -2960,9 +2839,12 @@ async function login(){
         .signOut();
 
 
-      currentUser = null;
+      currentUser =
+        null;
 
-      currentProfile = null;
+
+      currentProfile =
+        null;
 
 
       return setLoginError(
@@ -3036,48 +2918,13 @@ async function loadProfile(){
     data;
 
 
-  const {
-    data:req,
-    error:reqError
-  } =
-    await supabaseClient
-      .from("requisites")
-      .select("*")
-      .eq(
-        "user_id",
-        currentUser.id
-      )
-      .order(
-        "created_at",
-        {
-          ascending:false
-        }
-      )
-      .limit(1)
-      .maybeSingle();
-
-
-  if(reqError){
-
-    console.warn(
-      "REQUISITES ERROR:",
-      reqError
-    );
-
-  }
-
-
-  currentRequisite =
-    req || null;
-
-
   return true;
 
 }
 
 
 /* =========================================================
-   SHOW APP
+   SHOW APPLICATION
 ========================================================= */
 
 function showApplication(){
@@ -3123,15 +2970,6 @@ function showApplication(){
       "";
 
 
-  /*
-    USER:
-    роль нигде в профиле не показывается.
-
-    ADMIN:
-    сверху можно видеть только
-    служебную отметку.
-  */
-
   document
     .getElementById(
       "roleText"
@@ -3156,25 +2994,7 @@ function showApplication(){
       .toUpperCase();
 
 
-  document
-    .getElementById(
-      "profileEmail"
-    )
-    .value =
-      currentProfile?.email ||
-      currentUser?.email ||
-      "";
-
-
-  document
-    .getElementById(
-      "profileStatus"
-    )
-    .value =
-      currentProfile?.status ===
-      "blocked"
-        ? "Заблокирован"
-        : "Активен";
+  renderProfile();
 
 
   render();
@@ -3309,9 +3129,6 @@ async function logout(){
 
   currentProfile = null;
 
-  currentRequisite = null;
-
-
   location.reload();
 
 }
@@ -3323,13 +3140,10 @@ async function logout(){
 
 function toggleMenu(){
 
-  const sidebar =
-    document.getElementById(
+  document
+    .getElementById(
       "sidebar"
-    );
-
-
-  sidebar
+    )
     .classList
     .toggle("open");
 
@@ -3357,18 +3171,6 @@ function go(page){
   }
 
 
-  document
-    .querySelectorAll(
-      ".section"
-    )
-    .forEach(
-      x =>
-        x.classList.remove(
-          "active"
-        )
-    );
-
-
   const section =
     document.getElementById(
       page
@@ -3385,6 +3187,18 @@ function go(page){
     return;
 
   }
+
+
+  document
+    .querySelectorAll(
+      ".section"
+    )
+    .forEach(
+      x =>
+        x.classList.remove(
+          "active"
+        )
+    );
 
 
   section
@@ -3409,17 +3223,31 @@ function go(page){
   const titles = {
 
     dashboard:"Дашборд",
+
     finance:"Финансы",
+
     deals:"Сделки",
+
     requests:"Заявки",
+
     disputes:"Споры",
-    requisites:"Реквизиты",
+
+    deposit:"Пополнение",
+
+    withdraw:"Вывод",
+
     devices:"Устройства",
+
     messages:"Сообщения",
+
     turbo:"Турбозалив",
+
     counterparties:"Контрагенты",
+
     reports:"Отчёты",
+
     profile:"Профиль",
+
     admin:"Админ-панель"
 
   };
@@ -3434,11 +3262,6 @@ function go(page){
       "P2PSPARK";
 
 
-  /*
-    На телефоне закрываем боковое меню
-    после выбора раздела.
-  */
-
   if(
     window.innerWidth <= 900
   ){
@@ -3452,11 +3275,6 @@ function go(page){
 
   }
 
-
-  /*
-    Основная страница всегда
-    возвращается в начало.
-  */
 
   const main =
     document.getElementById(
@@ -3559,16 +3377,12 @@ function render(){
       "%";
 
 
-  renderPayment(
-    currentRequisite
-  );
-
-
   renderDeals();
 
 
   if(
-    f.role === "ADMIN"
+    f.role ===
+    "ADMIN"
   ){
 
     renderAdmin();
@@ -3579,8 +3393,98 @@ function render(){
 
 
 /* =========================================================
+   PROFILE
+========================================================= */
+
+function renderProfile(){
+
+  if(!currentProfile)
+    return;
+
+
+  const status =
+    currentProfile.status ===
+    "blocked"
+      ? "Заблокирован"
+      : "Активен";
+
+
+  const statusText =
+    document.getElementById(
+      "profileStatusText"
+    );
+
+
+  const statusBadge =
+    document.getElementById(
+      "profileStatusBadge"
+    );
+
+
+  const name =
+    document.getElementById(
+      "profileName"
+    );
+
+
+  const email =
+    document.getElementById(
+      "profileEmailText"
+    );
+
+
+  if(statusText){
+
+    statusText.textContent =
+      status;
+
+    statusText.style.color =
+      status === "Активен"
+        ? "var(--green)"
+        : "var(--red)";
+
+  }
+
+
+  if(statusBadge){
+
+    statusBadge.textContent =
+      status;
+
+    statusBadge.className =
+      "badge " +
+      (
+        status === "Активен"
+          ? "green"
+          : "red"
+      );
+
+  }
+
+
+  if(name){
+
+    name.textContent =
+      currentProfile.name ||
+      "Не указано";
+
+  }
+
+
+  if(email){
+
+    email.textContent =
+      currentProfile.email ||
+      currentUser?.email ||
+      "Не указано";
+
+  }
+
+}
+
+
+/* =========================================================
    DEALS
-   НИКАКИХ ТЕСТОВЫХ СДЕЛОК
 ========================================================= */
 
 function renderDeals(){
@@ -3622,159 +3526,7 @@ function renderDeals(){
 
 
 /* =========================================================
-   PAYMENT / REQUISITES
-========================================================= */
-
-function renderPayment(p){
-
-  p =
-    p || {};
-
-
-  document
-    .getElementById(
-      "pNetwork"
-    )
-    .textContent =
-      p.network ||
-      "—";
-
-
-  document
-    .getElementById(
-      "pWallet"
-    )
-    .textContent =
-      p.wallet ||
-      "Не указан";
-
-
-  const wrap =
-    document.getElementById(
-      "pWalletLinkWrap"
-    );
-
-
-  const link =
-    document.getElementById(
-      "pWalletLink"
-    );
-
-
-  const walletLink =
-    (
-      p.wallet_link ||
-      ""
-    )
-    .trim();
-
-
-  if(walletLink){
-
-    wrap.style.display =
-      "block";
-
-
-    link.href =
-      walletLink;
-
-
-    link.textContent =
-      walletLink;
-
-  }else{
-
-    wrap.style.display =
-      "none";
-
-
-    link.removeAttribute(
-      "href"
-    );
-
-
-    link.textContent =
-      "";
-
-  }
-
-
-  const img =
-    document.getElementById(
-      "pQr"
-    );
-
-
-  if(p.qr_url){
-
-    img.style.display =
-      "block";
-
-
-    img.src =
-      p.qr_url;
-
-  }else{
-
-    img.style.display =
-      "none";
-
-
-    img.removeAttribute(
-      "src"
-    );
-
-  }
-
-}
-
-
-/* =========================================================
-   COPY WALLET
-========================================================= */
-
-async function copyWallet(){
-
-  const wallet =
-    currentRequisite?.wallet ||
-    "";
-
-
-  if(!wallet){
-
-    return alert(
-      "Реквизит не указан"
-    );
-
-  }
-
-
-  try{
-
-    await navigator
-      .clipboard
-      .writeText(
-        wallet
-      );
-
-
-    alert(
-      "Реквизит скопирован"
-    );
-
-
-  }catch(error){
-
-    alert(wallet);
-
-  }
-
-}
-
-
-/* =========================================================
    ADMIN USERS
-   ИСПОЛЬЗУЕМ RPC admin_get_users()
 ========================================================= */
 
 async function renderAdmin(){
@@ -3841,12 +3593,6 @@ async function renderAdmin(){
 
     if(error){
 
-      console.error(
-        "admin_get_users:",
-        error
-      );
-
-
       body.innerHTML = `
 
         <tr>
@@ -3857,7 +3603,7 @@ async function renderAdmin(){
             style="color:#dc2626"
           >
 
-            Ошибка загрузки пользователей:
+            Ошибка загрузки:
 
             <br>
 
@@ -3871,7 +3617,6 @@ async function renderAdmin(){
         </tr>
 
       `;
-
 
       return;
 
@@ -3901,7 +3646,6 @@ async function renderAdmin(){
         </tr>
 
       `;
-
 
       return;
 
@@ -4015,7 +3759,7 @@ async function renderAdmin(){
   }catch(error){
 
     console.error(
-      "ADMIN RENDER ERROR:",
+      "ADMIN ERROR:",
       error
     );
 
@@ -4181,11 +3925,13 @@ async function createUser(){
               email,
               password
             },
+
             headers:{
               Authorization:
                 "Bearer " +
                 session.access_token
             }
+
           }
         );
 
@@ -4193,7 +3939,7 @@ async function createUser(){
     if(error){
 
       console.error(
-        "create-user error:",
+        "CREATE USER ERROR:",
         error
       );
 
@@ -4253,7 +3999,9 @@ async function createUser(){
 
     alert(
       "USER успешно создан!\n\n" +
-      "Email: " +
+      "Имя: " +
+      name +
+      "\nEmail: " +
       email
     );
 
@@ -4261,7 +4009,6 @@ async function createUser(){
   }catch(error){
 
     console.error(
-      "CREATE USER ERROR:",
       error
     );
 
@@ -4320,12 +4067,6 @@ async function openManage(id){
       !user
     ){
 
-      console.error(
-        "MANAGE USER ERROR:",
-        error
-      );
-
-
       return alert(
         "Пользователь не найден"
       );
@@ -4333,49 +4074,14 @@ async function openManage(id){
     }
 
 
-    const {
-      data:req,
-      error:reqError
-    } =
-      await supabaseClient
-        .from("requisites")
-        .select("*")
-        .eq(
-          "user_id",
-          id
-        )
-        .order(
-          "created_at",
-          {
-            ascending:false
-          }
-        )
-        .limit(1)
-        .maybeSingle();
-
-
-    if(reqError){
-
-      console.warn(
-        "MANAGE REQUISITES ERROR:",
-        reqError
-      );
-
-    }
-
-
-    const r =
-      req || {};
-
-
     document
       .getElementById(
         "manageEmail"
       )
       .textContent =
-        "Редактирование: " +
+        "ЛК: " +
         (
-          user.email ||
+          user.name ||
           ""
         );
 
@@ -4462,41 +4168,6 @@ async function openManage(id){
 
     document
       .getElementById(
-        "mNetwork"
-      )
-      .value =
-        r.network ||
-        "";
-
-
-    document
-      .getElementById(
-        "mWallet"
-      )
-      .value =
-        r.wallet ||
-        "";
-
-
-    document
-      .getElementById(
-        "mWalletLink"
-      )
-      .value =
-        r.wallet_link ||
-        "";
-
-
-    qrData =
-      r.qr_url ||
-      "";
-
-
-    showQrPreview();
-
-
-    document
-      .getElementById(
         "manageModal"
       )
       .classList
@@ -4541,43 +4212,17 @@ function closeManage(){
   managedId =
     null;
 
-
-  qrData =
-    "";
-
 }
 
 
 /* =========================================================
-   SAVE USER
+   SAVE MANAGED USER
 ========================================================= */
 
 async function saveManagedUser(){
 
   if(!managedId)
     return;
-
-
-  const walletLink =
-    document
-      .getElementById(
-        "mWalletLink"
-      )
-      .value
-      .trim();
-
-
-  if(
-    walletLink &&
-    !/^https?:\/\//i
-      .test(walletLink)
-  ){
-
-    return alert(
-      "Ссылка должна начинаться с http:// или https://"
-    );
-
-  }
 
 
   try{
@@ -4660,7 +4305,7 @@ async function saveManagedUser(){
 
 
     const {
-      error:e1
+      error
     } =
       await supabaseClient
         .from("profiles")
@@ -4673,114 +4318,11 @@ async function saveManagedUser(){
         );
 
 
-    if(e1){
+    if(error){
 
       return alert(
-        "Ошибка сохранения профиля: " +
-        e1.message
-      );
-
-    }
-
-
-    const req = {
-
-      user_id:
-        managedId,
-
-
-      network:
-        document
-          .getElementById(
-            "mNetwork"
-          )
-          .value,
-
-
-      wallet:
-        document
-          .getElementById(
-            "mWallet"
-          )
-          .value
-          .trim(),
-
-
-      wallet_link:
-        walletLink,
-
-
-      qr_url:
-        qrData ||
-        null,
-
-
-      updated_at:
-        new Date()
-          .toISOString()
-
-    };
-
-
-    const {
-      data:existing,
-      error:existingError
-    } =
-      await supabaseClient
-        .from("requisites")
-        .select("id")
-        .eq(
-          "user_id",
-          managedId
-        )
-        .limit(1)
-        .maybeSingle();
-
-
-    if(existingError){
-
-      return alert(
-        "Ошибка проверки реквизитов: " +
-        existingError.message
-      );
-
-    }
-
-
-    let reqError =
-      null;
-
-
-    if(existing){
-
-      reqError =
-        (
-          await supabaseClient
-            .from("requisites")
-            .update(req)
-            .eq(
-              "id",
-              existing.id
-            )
-        ).error;
-
-    }else{
-
-      reqError =
-        (
-          await supabaseClient
-            .from("requisites")
-            .insert(req)
-        ).error;
-
-    }
-
-
-    if(reqError){
-
-      return alert(
-        "Профиль сохранён, но реквизиты не сохранились: " +
-        reqError.message
+        "Ошибка сохранения: " +
+        error.message
       );
 
     }
@@ -4799,6 +4341,8 @@ async function saveManagedUser(){
     ){
 
       await loadProfile();
+
+      renderProfile();
 
     }
 
@@ -4901,6 +4445,7 @@ async function toggleManagedStatus(){
         .from("profiles")
         .update({
           status:next,
+
           updated_at:
             new Date()
               .toISOString()
@@ -4950,141 +4495,7 @@ async function toggleManagedStatus(){
 
 
 /* =========================================================
-   QR
-========================================================= */
-
-function previewQr(event){
-
-  const file =
-    event
-      .target
-      .files?.[0];
-
-
-  if(!file)
-    return;
-
-
-  const allowed = [
-    "image/png",
-    "image/jpeg",
-    "image/webp"
-  ];
-
-
-  if(
-    !allowed.includes(
-      file.type
-    )
-  ){
-
-    return alert(
-      "Выберите PNG, JPG или WEBP"
-    );
-
-  }
-
-
-  if(
-    file.size >
-    2 * 1024 * 1024
-  ){
-
-    return alert(
-      "QR должен быть не больше 2 МБ"
-    );
-
-  }
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload = () => {
-
-    qrData =
-      reader.result;
-
-
-    showQrPreview();
-
-  };
-
-
-  reader.onerror = () => {
-
-    alert(
-      "Не удалось прочитать QR"
-    );
-
-  };
-
-
-  reader.readAsDataURL(
-    file
-  );
-
-}
-
-
-function showQrPreview(){
-
-  const img =
-    document.getElementById(
-      "mQrPreview"
-    );
-
-
-  if(qrData){
-
-    img.style.display =
-      "block";
-
-    img.src =
-      qrData;
-
-  }else{
-
-    img.style.display =
-      "none";
-
-    img.removeAttribute(
-      "src"
-    );
-
-  }
-
-}
-
-
-function clearQr(){
-
-  qrData =
-    "";
-
-
-  const file =
-    document.getElementById(
-      "mQrFile"
-    );
-
-
-  if(file){
-
-    file.value =
-      "";
-
-  }
-
-
-  showQrPreview();
-
-}
-
-
-/* =========================================================
-   ESCAPE MODAL
+   ESC
 ========================================================= */
 
 document.addEventListener(
