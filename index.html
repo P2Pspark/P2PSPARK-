@@ -8,12 +8,9 @@
 <title>P2PSPARK</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-/* =========================================================
-   ROOT
-========================================================= */
 :root{
   --bg:#f4f6fa;
-  --card:#ffffff;
+  --card:#fff;
   --text:#111827;
   --muted:#747d8d;
   --line:#e1e4e9;
@@ -25,9 +22,6 @@
   --active:#e8eaee;
   --icon:#727b8c;
 }
-/* =========================================================
-   RESET
-========================================================= */
 *{
   box-sizing:border-box;
 }
@@ -66,9 +60,9 @@ button{
 .hidden{
   display:none!important;
 }
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 #loginScreen{
   position:fixed;
   inset:0;
@@ -87,7 +81,7 @@ button{
   background:
     radial-gradient(
       circle at 50% 30%,
-      #ffffff 0,
+      #fff 0,
       #f5f7fb 50%,
       #edf1f7 100%
     );
@@ -98,8 +92,7 @@ button{
   border:1px solid #e1e4e9;
   border-radius:32px;
   background:#fff;
-  box-shadow:
-    0 25px 70px rgba(31,52,90,.10);
+  box-shadow:0 25px 70px rgba(31,52,90,.10);
 }
 .brand{
   margin-bottom:40px;
@@ -173,8 +166,7 @@ button{
 }
 .form-input:focus{
   border-color:#2864e8;
-  box-shadow:
-    0 0 0 4px rgba(40,100,232,.10);
+  box-shadow:0 0 0 4px rgba(40,100,232,.10);
 }
 .form-input.input-error{
   border-color:#df4141;
@@ -190,15 +182,14 @@ button{
   color:#fff;
   font-size:24px;
   font-weight:850;
-  box-shadow:
-    0 12px 25px rgba(40,100,232,.20);
+  box-shadow:0 12px 25px rgba(40,100,232,.20);
 }
 .login-button:disabled{
   opacity:.65;
 }
-/* =========================================================
+/* =====================================================
    APP
-========================================================= */
+===================================================== */
 #app{
   position:fixed;
   inset:0;
@@ -215,9 +206,9 @@ button{
   display:flex;
   overflow:hidden;
 }
-/* =========================================================
+/* =====================================================
    SIDEBAR
-========================================================= */
+===================================================== */
 .sidebar{
   width:280px;
   min-width:280px;
@@ -330,17 +321,16 @@ button{
   background:#eceef1;
 }
 .nav-admin-title{
-  padding:
-    8px 20px 9px;
+  padding:8px 20px 9px;
   color:#9aa1ad;
   font-size:12px;
   font-weight:850;
   letter-spacing:1.4px;
   text-transform:uppercase;
 }
-/* =========================================================
-   TELEGRAM SUPPORT
-========================================================= */
+/* =====================================================
+   SUPPORT
+===================================================== */
 .support-box{
   margin:14px 6px 8px;
   padding:17px;
@@ -390,9 +380,9 @@ button{
   color:#2864e8;
   font-size:18px;
 }
-/* =========================================================
+/* =====================================================
    MAIN
-========================================================= */
+===================================================== */
 .main{
   flex:1 1 auto;
   width:0;
@@ -422,9 +412,9 @@ button{
   max-width:1250px;
   margin:0 auto;
 }
-/* =========================================================
-   MOBILE TOP MENU
-========================================================= */
+/* =====================================================
+   MOBILE HEADER
+===================================================== */
 .mobile-header{
   display:none;
 }
@@ -439,8 +429,7 @@ button{
   border-radius:17px;
   background:#fff;
   color:#2864e8;
-  box-shadow:
-    0 5px 20px rgba(30,45,75,.04);
+  box-shadow:0 5px 20px rgba(30,45,75,.04);
 }
 .mobile-menu-button svg{
   width:29px;
@@ -458,9 +447,9 @@ button{
   font-size:20px;
   font-weight:800;
 }
-/* =========================================================
+/* =====================================================
    PAGE HEADER
-========================================================= */
+===================================================== */
 .page-header{
   display:flex;
   align-items:flex-start;
@@ -480,23 +469,21 @@ button{
   color:#737b89;
   font-size:15px;
 }
-/* =========================================================
-   CARDS
-========================================================= */
+/* =====================================================
+   DASHBOARD
+===================================================== */
 .grid{
   display:grid;
   gap:18px;
 }
 .stats-grid{
-  grid-template-columns:
-    repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
 }
 .card{
   background:#fff;
   border:1px solid #e5e7eb;
   border-radius:20px;
-  box-shadow:
-    0 8px 30px rgba(30,45,75,.04);
+  box-shadow:0 8px 30px rgba(30,45,75,.04);
 }
 .stat-card{
   min-height:150px;
@@ -519,8 +506,7 @@ button{
 }
 .dashboard-actions{
   display:grid;
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:18px;
   margin-top:20px;
 }
@@ -538,9 +524,147 @@ button{
   background:#2864e8;
   color:#fff;
 }
-/* =========================================================
+/* =====================================================
+   COMMON FULL-WIDTH OPERATION CARD
+===================================================== */
+.operation-card{
+  width:100%;
+  padding:30px;
+}
+.operation-title{
+  margin-bottom:24px;
+  font-size:24px;
+  font-weight:850;
+}
+.operation-content{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.qr-wrap{
+  width:250px;
+  height:250px;
+  margin-bottom:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid #e1e4e9;
+  border-radius:18px;
+  background:#fff;
+}
+.qr-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.qr-empty{
+  padding:20px;
+  color:#9aa1ad;
+  font-size:14px;
+  text-align:center;
+}
+.wallet-box{
+  width:100%;
+  margin-top:14px;
+  padding:17px;
+  border-radius:15px;
+  background:#f6f7f9;
+}
+.wallet-label{
+  margin-bottom:7px;
+  color:#7d8592;
+  font-size:13px;
+}
+.wallet-value{
+  font-size:16px;
+  font-weight:800;
+  word-break:break-all;
+}
+.wallet-link{
+  display:inline-block;
+  margin-top:14px;
+  color:#2864e8;
+  font-weight:750;
+  text-decoration:none;
+  word-break:break-all;
+}
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+.bottom-back{
+  width:100%;
+  height:62px;
+  margin-top:18px;
+  border:1px solid #dfe3e9;
+  border-radius:16px;
+  background:#fff;
+  color:#172033;
+  font-size:17px;
+  font-weight:800;
+  box-shadow:
+    0 8px 25px rgba(30,45,75,.04);
+}
+.bottom-back:active{
+  transform:scale(.99);
+}
+/* =====================================================
+   WITHDRAW TELEGRAM
+===================================================== */
+.telegram-withdraw{
+  width:100%;
+  padding:28px;
+  border:1px solid #e5e7eb;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:
+    0 8px 30px rgba(30,45,75,.04);
+}
+.telegram-withdraw-icon{
+  width:64px;
+  height:64px;
+  margin-bottom:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:18px;
+  background:#eaf0ff;
+  color:#2864e8;
+  font-size:30px;
+}
+.telegram-withdraw-title{
+  margin:0;
+  font-size:25px;
+  font-weight:850;
+}
+.telegram-withdraw-text{
+  max-width:760px;
+  margin:12px 0 24px;
+  color:#737b89;
+  font-size:16px;
+  line-height:1.5;
+}
+.telegram-button{
+  width:100%;
+  max-width:500px;
+  height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:16px;
+  background:#2864e8;
+  color:#fff;
+  text-decoration:none;
+  font-size:17px;
+  font-weight:850;
+  box-shadow:
+    0 10px 25px rgba(40,100,232,.18);
+}
+/* =====================================================
    INFO
-========================================================= */
+===================================================== */
 .empty{
   min-height:250px;
   display:flex;
@@ -572,68 +696,9 @@ button{
   text-align:right;
   word-break:break-word;
 }
-/* =========================================================
-   OPERATION
-========================================================= */
-.operation-card{
-  max-width:720px;
-  padding:28px;
-}
-.operation-title{
-  margin-bottom:22px;
-  font-size:24px;
-  font-weight:850;
-}
-.qr-wrap{
-  width:250px;
-  height:250px;
-  margin-bottom:24px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border:1px solid #e1e4e9;
-  border-radius:18px;
-  background:#fff;
-}
-.qr-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-.qr-empty{
-  padding:20px;
-  color:#9aa1ad;
-  font-size:14px;
-  text-align:center;
-}
-.wallet-box{
-  margin-top:14px;
-  padding:17px;
-  border-radius:15px;
-  background:#f6f7f9;
-}
-.wallet-label{
-  margin-bottom:7px;
-  color:#7d8592;
-  font-size:13px;
-}
-.wallet-value{
-  font-size:16px;
-  font-weight:800;
-  word-break:break-all;
-}
-.wallet-link{
-  display:inline-block;
-  margin-top:14px;
-  color:#2864e8;
-  font-weight:750;
-  text-decoration:none;
-  word-break:break-all;
-}
-/* =========================================================
+/* =====================================================
    TABLE
-========================================================= */
+===================================================== */
 .table-wrap{
   overflow:auto;
   -webkit-overflow-scrolling:touch;
@@ -682,9 +747,9 @@ button{
   background:#f0f1f4;
   color:#626b7a;
 }
-/* =========================================================
+/* =====================================================
    ADMIN
-========================================================= */
+===================================================== */
 .admin-toolbar{
   display:flex;
   flex-wrap:wrap;
@@ -722,9 +787,9 @@ button{
   background:#2864e8;
   color:#fff;
 }
-/* =========================================================
+/* =====================================================
    MODALS
-========================================================= */
+===================================================== */
 .modal-overlay{
   position:fixed;
   inset:0;
@@ -746,8 +811,7 @@ button{
   padding:27px;
   border-radius:24px;
   background:#fff;
-  box-shadow:
-    0 30px 80px rgba(0,0,0,.22);
+  box-shadow:0 30px 80px rgba(0,0,0,.22);
   -webkit-overflow-scrolling:touch;
 }
 .modal-title{
@@ -757,8 +821,7 @@ button{
 }
 .modal-grid{
   display:grid;
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
   gap:15px;
 }
 .modal-field{
@@ -787,8 +850,7 @@ button{
 .modal-field input:focus,
 .modal-field select:focus{
   border-color:#2864e8;
-  box-shadow:
-    0 0 0 3px rgba(40,100,232,.10);
+  box-shadow:0 0 0 3px rgba(40,100,232,.10);
 }
 .modal-actions{
   display:flex;
@@ -819,9 +881,9 @@ button{
   background:#e54545;
   color:#fff;
 }
-/* =========================================================
+/* =====================================================
    OVERLAY
-========================================================= */
+===================================================== */
 .overlay{
   display:none;
   position:fixed;
@@ -832,17 +894,15 @@ button{
 .overlay.show{
   display:block;
 }
-/* =========================================================
+/* =====================================================
    TOAST
-========================================================= */
+===================================================== */
 .toast{
   position:fixed;
   left:50%;
-  bottom:
-    calc(25px + env(safe-area-inset-bottom));
+  bottom:calc(25px + env(safe-area-inset-bottom));
   z-index:1000;
-  max-width:
-    calc(100% - 30px);
+  max-width:calc(100% - 30px);
   padding:14px 19px;
   border-radius:14px;
   background:#111827;
@@ -852,29 +912,25 @@ button{
   text-align:center;
   opacity:0;
   pointer-events:none;
-  transform:
-    translate(-50%,20px);
+  transform:translate(-50%,20px);
   transition:.2s ease;
 }
 .toast.show{
   opacity:1;
-  transform:
-    translate(-50%,0);
+  transform:translate(-50%,0);
 }
-/* =========================================================
+/* =====================================================
    TABLET
-========================================================= */
+===================================================== */
 @media(max-width:1000px){
   .stats-grid{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 }
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 @media(max-width:760px){
-  /* SIDEBAR */
   .sidebar{
     position:fixed;
     left:0;
@@ -882,18 +938,13 @@ button{
     bottom:0;
     width:300px;
     min-width:300px;
-    transform:
-      translateX(-102%);
-    transition:
-      transform .22s ease;
-    box-shadow:
-      20px 0 60px rgba(0,0,0,.12);
+    transform:translateX(-102%);
+    transition:transform .22s ease;
+    box-shadow:20px 0 60px rgba(0,0,0,.12);
   }
   .sidebar.open{
-    transform:
-      translateX(0);
+    transform:translateX(0);
   }
-  /* MAIN */
   .main{
     width:100%;
     height:100%;
@@ -908,10 +959,6 @@ button{
     touch-action:pan-y;
     overscroll-behavior-y:auto;
   }
-  /* ================================================
-     MOBILE TOP HEADER
-     КНОПКА МЕНЮ
-  ================================================ */
   .mobile-header{
     position:sticky;
     top:0;
@@ -925,23 +972,18 @@ button{
     display:flex;
     align-items:center;
     gap:16px;
-    background:
-      rgba(244,246,250,.94);
-    backdrop-filter:
-      blur(14px);
-    -webkit-backdrop-filter:
-      blur(14px);
+    background:rgba(244,246,250,.94);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
   }
   .mobile-menu-button{
     width:58px;
     height:58px;
     border-radius:17px;
   }
-  /* PAGE */
   .page{
     width:100%;
   }
-  /* HEADER */
   .page-header{
     margin-top:13px;
     margin-bottom:18px;
@@ -956,15 +998,13 @@ button{
     font-size:15px;
     line-height:1.25;
   }
-  /* CARDS */
   .stats-grid{
     grid-template-columns:1fr;
     gap:14px;
   }
   .stat-card{
     min-height:112px;
-    padding:
-      17px 22px;
+    padding:17px 22px;
     border-radius:20px;
   }
   .stat-title{
@@ -981,10 +1021,8 @@ button{
     font-size:12px;
     line-height:1.1;
   }
-  /* BUTTONS */
   .dashboard-actions{
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns:1fr 1fr;
     gap:10px;
     margin-top:14px;
   }
@@ -993,10 +1031,64 @@ button{
     border-radius:13px;
     font-size:14px;
   }
-  /* LOGIN */
+  /* ОПЕРАЦИИ РАЗМЕРОМ КАК DASHBOARD */
+  .operation-card{
+    width:100%;
+    padding:22px;
+    border-radius:20px;
+  }
+  .operation-title{
+    font-size:21px;
+    margin-bottom:20px;
+  }
+  .qr-wrap{
+    width:100%;
+    height:auto;
+    aspect-ratio:1/1;
+    max-width:300px;
+    border-radius:17px;
+  }
+  .wallet-box{
+    padding:15px;
+    border-radius:14px;
+  }
+  .wallet-value{
+    font-size:14px;
+  }
+  .bottom-back{
+    height:52px;
+    margin-top:14px;
+    border-radius:13px;
+    font-size:14px;
+  }
+  .telegram-withdraw{
+    width:100%;
+    padding:22px;
+    border-radius:20px;
+  }
+  .telegram-withdraw-icon{
+    width:55px;
+    height:55px;
+    margin-bottom:17px;
+    border-radius:16px;
+    font-size:26px;
+  }
+  .telegram-withdraw-title{
+    font-size:21px;
+  }
+  .telegram-withdraw-text{
+    font-size:14px;
+    line-height:1.45;
+    margin:10px 0 20px;
+  }
+  .telegram-button{
+    width:100%;
+    height:52px;
+    border-radius:13px;
+    font-size:14px;
+  }
   .login-card{
-    padding:
-      34px 20px 28px;
+    padding:34px 20px 28px;
     border-radius:27px;
   }
   .brand{
@@ -1026,15 +1118,6 @@ button{
     height:69px;
     font-size:21px;
   }
-  /* OPERATIONS */
-  .operation-card{
-    padding:20px;
-  }
-  .qr-wrap{
-    width:220px;
-    height:220px;
-  }
-  /* MODAL */
   .modal-grid{
     grid-template-columns:1fr;
   }
@@ -1042,9 +1125,9 @@ button{
     grid-column:auto;
   }
 }
-/* =========================================================
+/* =====================================================
    VERY SMALL IPHONE
-========================================================= */
+===================================================== */
 @media(max-width:390px){
   .main{
     padding-left:13px;
@@ -1062,8 +1145,7 @@ button{
   }
   .stat-card{
     min-height:108px;
-    padding:
-      16px 19px;
+    padding:16px 19px;
   }
   .stat-title{
     font-size:12px;
@@ -1079,9 +1161,9 @@ button{
 </style>
 </head>
 <body>
-<!-- =========================================================
+<!-- =====================================================
      LOGIN
-========================================================= -->
+===================================================== -->
 <div id="loginScreen">
   <div class="login-card">
     <div class="brand">
@@ -1139,9 +1221,9 @@ button{
     </form>
   </div>
 </div>
-<!-- =========================================================
+<!-- =====================================================
      APP
-========================================================= -->
+===================================================== -->
 <div id="app">
   <div class="app-shell">
     <!-- SIDEBAR -->
@@ -1165,10 +1247,7 @@ button{
           Аккаунт
         </div>
       </div>
-      <nav
-        id="nav"
-        class="nav">
-        <!-- DASHBOARD -->
+      <nav class="nav">
         <button
           class="nav-item active"
           data-section="dashboard"
@@ -1180,11 +1259,8 @@ button{
               <path d="M26 25V11"></path>
             </svg>
           </span>
-          <span>
-            Дашборд
-          </span>
+          <span>Дашборд</span>
         </button>
-        <!-- FINANCES -->
         <button
           class="nav-item"
           data-section="finances"
@@ -1198,11 +1274,8 @@ button{
               <path d="M28 22v-8c0-2.2-3.1-4-7-4"></path>
             </svg>
           </span>
-          <span>
-            Финансы
-          </span>
+          <span>Финансы</span>
         </button>
-        <!-- DEALS -->
         <button
           class="nav-item"
           data-section="deals"
@@ -1217,11 +1290,8 @@ button{
               <path d="M22 22l-3-3"></path>
             </svg>
           </span>
-          <span>
-            Сделки
-          </span>
+          <span>Сделки</span>
         </button>
-        <!-- REQUESTS -->
         <button
           class="nav-item"
           data-section="requests"
@@ -1232,11 +1302,8 @@ button{
               <path d="M16 10v7l4 2"></path>
             </svg>
           </span>
-          <span>
-            Заявки
-          </span>
+          <span>Заявки</span>
         </button>
-        <!-- DISPUTES -->
         <button
           class="nav-item"
           data-section="disputes"
@@ -1251,11 +1318,8 @@ button{
               <path d="M24 21l3 3"></path>
             </svg>
           </span>
-          <span>
-            Споры
-          </span>
+          <span>Споры</span>
         </button>
-        <!-- REQUISITES -->
         <button
           class="nav-item"
           data-section="requisites"
@@ -1266,11 +1330,8 @@ button{
               <path d="M5 14h22"></path>
             </svg>
           </span>
-          <span>
-            Реквизиты
-          </span>
+          <span>Реквизиты</span>
         </button>
-        <!-- DEVICES -->
         <button
           class="nav-item"
           data-section="devices"
@@ -1281,11 +1342,8 @@ button{
               <path d="M14 24h4"></path>
             </svg>
           </span>
-          <span>
-            Устройства
-          </span>
+          <span>Устройства</span>
         </button>
-        <!-- MESSAGES -->
         <button
           class="nav-item"
           data-section="messages"
@@ -1298,11 +1356,8 @@ button{
               <path d="M21 18l4 3"></path>
             </svg>
           </span>
-          <span>
-            Сообщения
-          </span>
+          <span>Сообщения</span>
         </button>
-        <!-- TURBO -->
         <button
           class="nav-item"
           data-section="turbo"
@@ -1312,11 +1367,8 @@ button{
               <path d="M18 3L7 18h8l-1 11 11-16h-8z"></path>
             </svg>
           </span>
-          <span>
-            Турбозалив
-          </span>
+          <span>Турбозалив</span>
         </button>
-        <!-- COUNTERPARTIES -->
         <button
           class="nav-item"
           data-section="counterparties"
@@ -1329,11 +1381,8 @@ button{
               <path d="M14 26c0-4 3-7 7-7s7 3 7 7"></path>
             </svg>
           </span>
-          <span>
-            Контрагенты
-          </span>
+          <span>Контрагенты</span>
         </button>
-        <!-- REPORTS -->
         <button
           class="nav-item"
           data-section="reports"
@@ -1347,11 +1396,8 @@ button{
               <path d="M21 23v-3"></path>
             </svg>
           </span>
-          <span>
-            Отчёты
-          </span>
+          <span>Отчёты</span>
         </button>
-        <!-- PROFILE -->
         <button
           class="nav-item"
           data-section="profile"
@@ -1362,14 +1408,10 @@ button{
               <path d="M6 28c1-6 4.5-9 10-9s9 3 10 9"></path>
             </svg>
           </span>
-          <span>
-            Профиль
-          </span>
+          <span>Профиль</span>
         </button>
         <!-- ADMIN -->
-        <div
-          id="adminNav"
-          class="hidden">
+        <div id="adminNav" class="hidden">
           <div class="nav-separator"></div>
           <div class="nav-admin-title">
             Администрирование
@@ -1386,13 +1428,10 @@ button{
                 <path d="M22 9h6"></path>
               </svg>
             </span>
-            <span>
-              Администратор
-            </span>
+            <span>Администратор</span>
           </button>
         </div>
         <div class="nav-separator"></div>
-        <!-- LOGOUT -->
         <button
           class="nav-item"
           onclick="logout()">
@@ -1403,11 +1442,8 @@ button{
               <path d="M10 16h13"></path>
             </svg>
           </span>
-          <span>
-            Выйти
-          </span>
+          <span>Выйти</span>
         </button>
-        <!-- TELEGRAM -->
         <div class="support-box">
           <div class="support-head">
             <div class="support-icon">
@@ -1437,21 +1473,18 @@ button{
         </div>
       </nav>
     </aside>
-    <!-- MOBILE OVERLAY -->
     <div
       id="overlay"
       class="overlay"
       onclick="closeSidebar()">
     </div>
-    <!-- =====================================================
+    <!-- ===================================================
          MAIN
-    ===================================================== -->
+    =================================================== -->
     <main
       id="mainScroll"
       class="main">
-      <!-- MOBILE MENU BUTTON -->
       <div
-        id="mobileHeader"
         class="mobile-header">
         <button
           class="mobile-menu-button"
@@ -1487,7 +1520,6 @@ button{
             </div>
           </div>
           <div class="grid stats-grid">
-            <!-- DEPOSIT -->
             <div class="card stat-card">
               <div class="stat-title">
                 Баланс депозита
@@ -1501,7 +1533,6 @@ button{
                 Текущий депозит
               </div>
             </div>
-            <!-- DEALS -->
             <div class="card stat-card">
               <div class="stat-title">
                 Активные сделки
@@ -1515,7 +1546,6 @@ button{
                 Количество сделок
               </div>
             </div>
-            <!-- TURNOVER -->
             <div class="card stat-card">
               <div class="stat-title">
                 Оборот
@@ -1529,7 +1559,6 @@ button{
                 Общий оборот
               </div>
             </div>
-            <!-- PROFIT -->
             <div class="card stat-card">
               <div class="stat-title">
                 Прибыль
@@ -1544,7 +1573,6 @@ button{
               </div>
             </div>
           </div>
-          <!-- ACTION BUTTONS -->
           <div class="dashboard-actions">
             <button
               class="action-button primary"
@@ -1634,9 +1662,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             REQUESTS
-        ================================================= -->
+        <!-- REQUESTS -->
         <section
           id="requests"
           class="section hidden">
@@ -1651,9 +1677,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             DISPUTES
-        ================================================= -->
+        <!-- DISPUTES -->
         <section
           id="disputes"
           class="section hidden">
@@ -1668,9 +1692,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             REQUISITES
-        ================================================= -->
+        <!-- REQUISITES -->
         <section
           id="requisites"
           class="section hidden">
@@ -1686,9 +1708,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             DEVICES
-        ================================================= -->
+        <!-- DEVICES -->
         <section
           id="devices"
           class="section hidden">
@@ -1703,9 +1723,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             MESSAGES
-        ================================================= -->
+        <!-- MESSAGES -->
         <section
           id="messages"
           class="section hidden">
@@ -1720,9 +1738,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             TURBO
-        ================================================= -->
+        <!-- TURBO -->
         <section
           id="turbo"
           class="section hidden">
@@ -1737,9 +1753,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             COUNTERPARTIES
-        ================================================= -->
+        <!-- COUNTERPARTIES -->
         <section
           id="counterparties"
           class="section hidden">
@@ -1754,9 +1768,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             REPORTS
-        ================================================= -->
+        <!-- REPORTS -->
         <section
           id="reports"
           class="section hidden">
@@ -1771,9 +1783,7 @@ button{
             </div>
           </div>
         </section>
-        <!-- =================================================
-             PROFILE
-        ================================================= -->
+        <!-- PROFILE -->
         <section
           id="profile"
           class="section hidden">
@@ -1840,48 +1850,60 @@ button{
             <div class="operation-title">
               Данные для операции
             </div>
-            <div class="qr-wrap">
-              <img
-                id="depositQR"
-                class="hidden"
-                alt="QR">
+            <div class="operation-content">
+              <!-- QR -->
+              <div class="qr-wrap">
+                <img
+                  id="depositQR"
+                  class="hidden"
+                  alt="QR">
+                <div
+                  id="depositQREmpty"
+                  class="qr-empty">
+                  QR-код пока не добавлен
+                </div>
+              </div>
+              <!-- NETWORK -->
               <div
-                id="depositQREmpty"
-                class="qr-empty">
-                QR-код пока не добавлен
+                id="depositNetworkBox"
+                class="wallet-box hidden">
+                <div class="wallet-label">
+                  Сеть
+                </div>
+                <div
+                  id="depositNetwork"
+                  class="wallet-value">
+                </div>
               </div>
-            </div>
-            <div
-              id="depositNetworkBox"
-              class="wallet-box hidden">
-              <div class="wallet-label">
-                Сеть
-              </div>
+              <!-- WALLET -->
               <div
-                id="depositNetwork"
-                class="wallet-value">
+                id="depositWalletBox"
+                class="wallet-box hidden">
+                <div class="wallet-label">
+                  Кошелёк
+                </div>
+                <div
+                  id="depositWallet"
+                  class="wallet-value">
+                </div>
               </div>
+              <!-- WALLET LINK -->
+              <a
+                id="depositWalletLink"
+                class="wallet-link hidden"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer">
+                Открыть криптокошелёк →
+              </a>
             </div>
-            <div
-              id="depositWalletBox"
-              class="wallet-box hidden">
-              <div class="wallet-label">
-                Кошелёк
-              </div>
-              <div
-                id="depositWallet"
-                class="wallet-value">
-              </div>
-            </div>
-            <a
-              id="depositWalletLink"
-              class="wallet-link hidden"
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer">
-              Открыть криптокошелёк →
-            </a>
           </div>
+          <!-- BACK -->
+          <button
+            class="bottom-back"
+            onclick="showSection('dashboard')">
+            ← Назад
+          </button>
         </section>
         <!-- =================================================
              WITHDRAW
@@ -1895,56 +1917,38 @@ button{
                 Вывод
               </h1>
               <p class="page-subtitle">
-                Данные для операции
+                Заявка на вывод средств
               </p>
             </div>
           </div>
-          <div class="card operation-card">
-            <div class="operation-title">
-              Данные для операции
+          <div class="telegram-withdraw">
+            <div class="telegram-withdraw-icon">
+              ✈
             </div>
-            <div class="qr-wrap">
-              <img
-                id="withdrawQR"
-                class="hidden"
-                alt="QR">
-              <div
-                id="withdrawQREmpty"
-                class="qr-empty">
-                QR-код пока не добавлен
-              </div>
-            </div>
-            <div
-              id="withdrawNetworkBox"
-              class="wallet-box hidden">
-              <div class="wallet-label">
-                Сеть
-              </div>
-              <div
-                id="withdrawNetwork"
-                class="wallet-value">
-              </div>
-            </div>
-            <div
-              id="withdrawWalletBox"
-              class="wallet-box hidden">
-              <div class="wallet-label">
-                Кошелёк
-              </div>
-              <div
-                id="withdrawWallet"
-                class="wallet-value">
-              </div>
-            </div>
+            <h2 class="telegram-withdraw-title">
+              Вывод через Telegram Support Bot
+            </h2>
+            <p class="telegram-withdraw-text">
+              Для оформления вывода средств свяжитесь
+              с поддержкой через официальный
+              Telegram Support Bot.
+              Специалист поддержки поможет оформить
+              заявку на вывод.
+            </p>
             <a
-              id="withdrawWalletLink"
-              class="wallet-link hidden"
-              href="#"
+              class="telegram-button"
+              href="https://t.me/P2PSparkSupportBot"
               target="_blank"
               rel="noopener noreferrer">
-              Открыть криптокошелёк →
+              Открыть Telegram Support Bot →
             </a>
           </div>
+          <!-- BACK -->
+          <button
+            class="bottom-back"
+            onclick="showSection('dashboard')">
+            ← Назад
+          </button>
         </section>
         <!-- =================================================
              ADMIN
@@ -1979,21 +1983,11 @@ button{
               <table class="table">
                 <thead>
                   <tr>
-                    <th>
-                      Имя
-                    </th>
-                    <th>
-                      Email
-                    </th>
-                    <th>
-                      Роль
-                    </th>
-                    <th>
-                      Статус
-                    </th>
-                    <th>
-                      Действие
-                    </th>
+                    <th>Имя</th>
+                    <th>Email</th>
+                    <th>Роль</th>
+                    <th>Статус</th>
+                    <th>Действие</th>
                   </tr>
                 </thead>
                 <tbody id="adminUsersBody">
@@ -2011,9 +2005,9 @@ button{
     </main>
   </div>
 </div>
-<!-- =========================================================
+<!-- =====================================================
      MANAGE USER MODAL
-========================================================= -->
+===================================================== -->
 <div
   id="modalOverlay"
   class="modal-overlay">
@@ -2023,26 +2017,15 @@ button{
     </h2>
     <div class="modal-grid">
       <div class="modal-field">
-        <label>
-          Имя
-        </label>
-        <input
-          id="manageName"
-          type="text">
+        <label>Имя</label>
+        <input id="manageName" type="text">
       </div>
       <div class="modal-field">
-        <label>
-          Email
-        </label>
-        <input
-          id="manageEmail"
-          type="email"
-          disabled>
+        <label>Email</label>
+        <input id="manageEmail" type="email" disabled>
       </div>
       <div class="modal-field">
-        <label>
-          Статус
-        </label>
+        <label>Статус</label>
         <select id="manageStatus">
           <option value="active">
             active
@@ -2053,83 +2036,40 @@ button{
         </select>
       </div>
       <div class="modal-field">
-        <label>
-          Роль
-        </label>
-        <input
-          id="manageRole"
-          type="text"
-          disabled>
+        <label>Роль</label>
+        <input id="manageRole" type="text" disabled>
       </div>
       <div class="modal-field">
-        <label>
-          Депозит
-        </label>
-        <input
-          id="manageDeposit"
-          type="number"
-          step="0.01">
+        <label>Депозит</label>
+        <input id="manageDeposit" type="number" step="0.01">
       </div>
       <div class="modal-field">
-        <label>
-          Оборот
-        </label>
-        <input
-          id="manageTurnover"
-          type="number"
-          step="0.01">
+        <label>Оборот</label>
+        <input id="manageTurnover" type="number" step="0.01">
       </div>
       <div class="modal-field">
-        <label>
-          Прибыль
-        </label>
-        <input
-          id="manageProfit"
-          type="number"
-          step="0.01">
+        <label>Прибыль</label>
+        <input id="manageProfit" type="number" step="0.01">
       </div>
       <div class="modal-field">
-        <label>
-          Комиссия
-        </label>
-        <input
-          id="manageCommission"
-          type="number"
-          step="0.01">
+        <label>Комиссия</label>
+        <input id="manageCommission" type="number" step="0.01">
       </div>
       <div class="modal-field">
-        <label>
-          Сделки
-        </label>
-        <input
-          id="manageDeals"
-          type="number"
-          step="1">
+        <label>Сделки</label>
+        <input id="manageDeals" type="number" step="1">
       </div>
       <div class="modal-field">
-        <label>
-          Сеть
-        </label>
-        <input
-          id="manageNetwork"
-          type="text"
-          placeholder="TRC20">
+        <label>Сеть</label>
+        <input id="manageNetwork" type="text" placeholder="TRC20">
       </div>
       <div class="modal-field full">
-        <label>
-          Кошелёк
-        </label>
-        <input
-          id="manageWallet"
-          type="text">
+        <label>Кошелёк</label>
+        <input id="manageWallet" type="text">
       </div>
       <div class="modal-field full">
-        <label>
-          Ссылка на криптокошелёк
-        </label>
-        <input
-          id="manageWalletLink"
-          type="url">
+        <label>Ссылка на криптокошелёк</label>
+        <input id="manageWalletLink" type="url">
       </div>
       <div class="modal-field full">
         <label>
@@ -2174,9 +2114,9 @@ button{
     </div>
   </div>
 </div>
-<!-- =========================================================
-     CREATE USER MODAL
-========================================================= -->
+<!-- =====================================================
+     CREATE USER
+===================================================== -->
 <div
   id="createOverlay"
   class="modal-overlay">
@@ -2224,15 +2164,11 @@ button{
     </div>
   </div>
 </div>
-<!-- TOAST -->
-<div
-  id="toast"
-  class="toast">
-</div>
+<div id="toast" class="toast"></div>
 <script>
-/* =========================================================
+/* =====================================================
    SUPABASE
-========================================================= */
+===================================================== */
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY =
@@ -2242,9 +2178,9 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
-/* =========================================================
+/* =====================================================
    STATE
-========================================================= */
+===================================================== */
 let currentUser = null;
 let currentProfile = null;
 let currentRequisite = null;
@@ -2252,9 +2188,9 @@ let managedUserId = null;
 let managedUserProfile = null;
 let managedQR = "";
 let restoringSession = false;
-/* =========================================================
+/* =====================================================
    HELPERS
-========================================================= */
+===================================================== */
 function $(id){
   return document.getElementById(id);
 }
@@ -2274,8 +2210,7 @@ function formatNumber(value){
   ){
     return "0";
   }
-  const number =
-    Number(value);
+  const number = Number(value);
   if(Number.isNaN(number)){
     return escapeHtml(value);
   }
@@ -2287,20 +2222,14 @@ function formatNumber(value){
   );
 }
 function showToast(message){
-  const toast =
-    $("toast");
-  toast.textContent =
-    message;
-  toast.classList
-    .add("show");
-  clearTimeout(
-    window.__toastTimer
-  );
+  const toast = $("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
   window.__toastTimer =
     setTimeout(
       () =>
-        toast.classList
-          .remove("show"),
+        toast.classList.remove("show"),
       2600
     );
 }
@@ -2308,25 +2237,19 @@ function setLoginError(
   message,
   success=false
 ){
-  const el =
-    $("loginError");
+  const el = $("loginError");
   if(!message){
     el.textContent = "";
-    el.classList
-      .add("hidden");
-    el.classList
-      .remove("success");
+    el.classList.add("hidden");
+    el.classList.remove("success");
     return;
   }
-  el.textContent =
-    message;
-  el.classList
-    .remove("hidden");
-  el.classList
-    .toggle(
-      "success",
-      success
-    );
+  el.textContent = message;
+  el.classList.remove("hidden");
+  el.classList.toggle(
+    "success",
+    success
+  );
 }
 function clearLoginInputErrors(){
   $("loginEmail")
@@ -2336,9 +2259,9 @@ function clearLoginInputErrors(){
     .classList
     .remove("input-error");
 }
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 $("loginForm")
   .addEventListener(
     "submit",
@@ -2364,8 +2287,7 @@ async function login(){
     setLoginError(
       "Введите почту"
     );
-    $("loginEmail")
-      .focus();
+    $("loginEmail").focus();
     return;
   }
   if(!password){
@@ -2375,14 +2297,12 @@ async function login(){
     setLoginError(
       "Введите пароль"
     );
-    $("loginPassword")
-      .focus();
+    $("loginPassword").focus();
     return;
   }
   const button =
     $("loginButton");
-  button.disabled =
-    true;
+  button.disabled = true;
   button.textContent =
     "Выполняется вход...";
   setLoginError("");
@@ -2477,15 +2397,14 @@ async function login(){
       "Ошибка подключения. Проверьте интернет и попробуйте ещё раз."
     );
   }finally{
-    button.disabled =
-      false;
+    button.disabled = false;
     button.textContent =
       "Войти →";
   }
 }
-/* =========================================================
-   PROFILE LOAD
-========================================================= */
+/* =====================================================
+   PROFILE
+===================================================== */
 async function loadProfile(){
   if(!currentUser?.id){
     return false;
@@ -2509,17 +2428,15 @@ async function loadProfile(){
   if(!data){
     return false;
   }
-  currentProfile =
-    data;
+  currentProfile = data;
   return true;
 }
-/* =========================================================
-   REQUISITES LOAD
-========================================================= */
+/* =====================================================
+   REQUISITES
+===================================================== */
 async function loadRequisite(){
   if(!currentUser?.id){
-    currentRequisite =
-      null;
+    currentRequisite = null;
     return;
   }
   const {
@@ -2536,16 +2453,15 @@ async function loadRequisite(){
       "REQUISITE LOAD ERROR:",
       error
     );
-    currentRequisite =
-      null;
+    currentRequisite = null;
     return;
   }
   currentRequisite =
     data || null;
 }
-/* =========================================================
-   APPLICATION
-========================================================= */
+/* =====================================================
+   SHOW APPLICATION
+===================================================== */
 function showApplication(){
   $("loginScreen")
     .style
@@ -2578,9 +2494,9 @@ function showApplication(){
     false
   );
 }
-/* =========================================================
-   MOBILE HEADER TITLE
-========================================================= */
+/* =====================================================
+   MOBILE TITLES
+===================================================== */
 const sectionTitles = {
   dashboard:"Дашборд",
   finances:"Финансы",
@@ -2598,22 +2514,17 @@ const sectionTitles = {
   withdraw:"Вывод",
   admin:"Администрирование"
 };
-function updateMobileHeader(
-  section
-){
+function updateMobileHeader(section){
   const title =
     sectionTitles[section] ||
     "P2PSPARK";
-  const element =
-    $("mobileCurrentTitle");
-  if(element){
-    element.textContent =
+  $("mobileCurrentTitle")
+    .textContent =
       title;
-  }
 }
-/* =========================================================
+/* =====================================================
    NAVIGATION
-========================================================= */
+===================================================== */
 function showSection(
   section,
   closeMenu=true
@@ -2622,8 +2533,7 @@ function showSection(
     .querySelectorAll(".section")
     .forEach(
       element =>
-        element.classList
-          .add("hidden")
+        element.classList.add("hidden")
     );
   const target =
     $(section);
@@ -2642,9 +2552,7 @@ function showSection(
         item.dataset.section === section
       );
     });
-  updateMobileHeader(
-    section
-  );
+  updateMobileHeader(section);
   const main =
     $("mainScroll");
   if(main){
@@ -2657,9 +2565,9 @@ function showSection(
     closeSidebar();
   }
 }
-/* =========================================================
+/* =====================================================
    SIDEBAR
-========================================================= */
+===================================================== */
 function openSidebar(){
   $("sidebar")
     .classList
@@ -2667,10 +2575,6 @@ function openSidebar(){
   $("overlay")
     .classList
     .add("show");
-  /*
-    Запрещаем прокрутку страницы
-    пока открыто меню.
-  */
   document.body.style.overflow =
     "hidden";
 }
@@ -2684,9 +2588,9 @@ function closeSidebar(){
   document.body.style.overflow =
     "hidden";
 }
-/* =========================================================
+/* =====================================================
    DASHBOARD
-========================================================= */
+===================================================== */
 function renderDashboard(){
   const profile =
     currentProfile || {};
@@ -2731,9 +2635,9 @@ function renderDashboard(){
         profile.commission
       );
 }
-/* =========================================================
+/* =====================================================
    PROFILE
-========================================================= */
+===================================================== */
 function renderProfile(){
   if(!currentProfile){
     return;
@@ -2753,18 +2657,14 @@ function renderProfile(){
       ? '<span class="badge blocked">Заблокирован</span>'
       : '<span class="badge active">Активен</span>';
 }
-/* =========================================================
+/* =====================================================
    OPERATIONS
-========================================================= */
+===================================================== */
 function renderOperations(){
   const req =
     currentRequisite || {};
   renderOperation(
     "deposit",
-    req
-  );
-  renderOperation(
-    "withdraw",
     req
   );
 }
@@ -2790,16 +2690,13 @@ function renderOperation(
   const empty =
     $(prefix + "QREmpty");
   if(qr){
-    image.src =
-      qr;
+    image.src = qr;
     image.classList
       .remove("hidden");
     empty.classList
       .add("hidden");
   }else{
-    image.removeAttribute(
-      "src"
-    );
+    image.removeAttribute("src");
     image.classList
       .add("hidden");
     empty.classList
@@ -2810,7 +2707,7 @@ function renderOperation(
   if(network){
     $(prefix + "Network")
       .textContent =
-      network;
+        network;
     networkBox.classList
       .remove("hidden");
   }else{
@@ -2822,7 +2719,7 @@ function renderOperation(
   if(wallet){
     $(prefix + "Wallet")
       .textContent =
-      wallet;
+        wallet;
     walletBox.classList
       .remove("hidden");
   }else{
@@ -2837,15 +2734,14 @@ function renderOperation(
     link.classList
       .remove("hidden");
   }else{
-    link.href =
-      "#";
+    link.href = "#";
     link.classList
       .add("hidden");
   }
 }
-/* =========================================================
+/* =====================================================
    LOGOUT
-========================================================= */
+===================================================== */
 async function logout(){
   try{
     await supabaseClient
@@ -2872,18 +2768,15 @@ async function logout(){
   setLoginError("");
   closeSidebar();
 }
-/* =========================================================
-   ADMIN CHECK
-========================================================= */
+/* =====================================================
+   ADMIN
+===================================================== */
 function isCurrentAdmin(){
   return (
     currentProfile?.role === "ADMIN" &&
     currentProfile?.status === "active"
   );
 }
-/* =========================================================
-   ADMIN USERS
-========================================================= */
 async function renderAdmin(){
   const body =
     $("adminUsersBody");
@@ -2944,11 +2837,9 @@ async function renderAdmin(){
     body.innerHTML =
       data.map(user => {
         const status =
-          user.status ||
-          "active";
+          user.status || "active";
         const role =
-          user.role ||
-          "USER";
+          user.role || "USER";
         return `
           <tr>
             <td>
@@ -2999,9 +2890,9 @@ async function renderAdmin(){
     `;
   }
 }
-/* =========================================================
+/* =====================================================
    CREATE USER
-========================================================= */
+===================================================== */
 function openCreateUser(){
   if(!isCurrentAdmin()){
     showToast(
@@ -3127,12 +3018,10 @@ async function createUser(){
     );
   }
 }
-/* =========================================================
+/* =====================================================
    MANAGE USER
-========================================================= */
-async function openManage(
-  userId
-){
+===================================================== */
+async function openManage(userId){
   if(!isCurrentAdmin()){
     showToast(
       "Доступ запрещён"
@@ -3141,8 +3030,7 @@ async function openManage(
   }
   managedUserId =
     userId;
-  managedQR =
-    "";
+  managedQR = "";
   try{
     const {
       data:profile,
@@ -3223,8 +3111,7 @@ async function openManage(
       preview.classList
         .add("hidden");
     }
-    $("manageQRFile").value =
-      "";
+    $("manageQRFile").value = "";
     updateBlockButton();
     $("modalOverlay")
       .classList
@@ -3239,9 +3126,9 @@ async function openManage(
     );
   }
 }
-/* =========================================================
-   QR
-========================================================= */
+/* =====================================================
+   QR PREVIEW
+===================================================== */
 function previewQR(event){
   const file =
     event.target.files?.[0];
@@ -3254,8 +3141,7 @@ function previewQR(event){
     showToast(
       "Выберите изображение"
     );
-    event.target.value =
-      "";
+    event.target.value = "";
     return;
   }
   const reader =
@@ -3272,9 +3158,9 @@ function previewQR(event){
     };
   reader.readAsDataURL(file);
 }
-/* =========================================================
+/* =====================================================
    SAVE USER
-========================================================= */
+===================================================== */
 async function saveManagedUser(){
   if(!isCurrentAdmin()){
     showToast(
@@ -3416,9 +3302,9 @@ async function saveManagedUser(){
     );
   }
 }
-/* =========================================================
-   BLOCK USER
-========================================================= */
+/* =====================================================
+   BLOCK
+===================================================== */
 function updateBlockButton(){
   const button =
     $("blockButton");
@@ -3468,9 +3354,9 @@ async function toggleManagedUserStatus(){
     : "blocked";
   updateBlockButton();
 }
-/* =========================================================
+/* =====================================================
    MODALS
-========================================================= */
+===================================================== */
 function closeModal(){
   $("modalOverlay")
     .classList
@@ -3503,9 +3389,9 @@ $("createOverlay")
       }
     }
   );
-/* =========================================================
+/* =====================================================
    AUTH STATE
-========================================================= */
+===================================================== */
 supabaseClient.auth
   .onAuthStateChange(
     async (
@@ -3517,8 +3403,7 @@ supabaseClient.auth
         event
       );
       if(
-        event ===
-        "SIGNED_OUT"
+        event === "SIGNED_OUT"
       ){
         currentUser = null;
         currentProfile = null;
@@ -3539,8 +3424,7 @@ supabaseClient.auth
         session?.user &&
         !restoringSession
       ){
-        restoringSession =
-          true;
+        restoringSession = true;
         try{
           currentUser =
             session.user;
@@ -3567,9 +3451,9 @@ supabaseClient.auth
       }
     }
   );
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 async function start(){
   try{
     const {
@@ -3623,9 +3507,6 @@ async function start(){
       .display = "none";
   }
 }
-/* =========================================================
-   INITIAL BODY SCROLL LOCK
-========================================================= */
 document.body.style.overflow =
   "hidden";
 start();
