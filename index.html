@@ -64,8 +64,13 @@ body{
 
   overflow:hidden;
 
-  -webkit-overflow-scrolling:touch;
+  -webkit-text-size-adjust:100%;
 }
+
+
+/* =========================================================
+   BUTTONS / INPUTS
+========================================================= */
 
 button,
 input,
@@ -83,54 +88,82 @@ button{
 ========================================================= */
 
 .app{
+  position:fixed;
+
+  inset:0;
+
   width:100%;
-  height:100vh;
-  min-height:100vh;
+  height:100dvh;
+
+  min-height:100dvh;
+
   overflow:hidden;
 }
 
 
 /* =========================================================
    SIDEBAR
-   ОТДЕЛЬНЫЙ СКРОЛЛ
+   ВАЖНО:
+   Логотип отдельно.
+   НИЖЕ — ОДИН ОБЩИЙ SCROLL.
 ========================================================= */
 
 .sidebar{
+
   position:fixed;
 
   left:0;
   top:0;
-  bottom:0;
 
   width:245px;
-  height:100vh;
+
+  height:100dvh;
+
+  min-height:100dvh;
 
   background:#fff;
 
   border-right:1px solid var(--line);
 
-  padding:25px 15px;
-
-  z-index:100;
+  z-index:1000;
 
   display:flex;
+
   flex-direction:column;
 
   overflow:hidden;
+
+  padding:
+    env(safe-area-inset-top)
+    15px
+    0
+    15px;
+
 }
 
 
-/* Логотип НЕ участвует в скролле */
+/* =========================================================
+   LOGO
+   Логотип не прокручивается
+========================================================= */
 
 .logo{
+
   flex:0 0 auto;
 
   font-size:25px;
+
   font-weight:900;
 
   letter-spacing:.5px;
 
-  padding:4px 14px 25px;
+  padding:
+    25px
+    14px
+    25px;
+
+  white-space:nowrap;
+
 }
 
 .logo span{
@@ -140,10 +173,11 @@ button{
 
 /* =========================================================
    MENU SCROLL
-   ВСЕ КНОПКИ ВНУТРИ ОДНОГО СКРОЛЛА
+   ЭТО ЕДИНСТВЕННЫЙ SCROLL МЕНЮ
 ========================================================= */
 
 .nav{
+
   flex:1 1 auto;
 
   min-height:0;
@@ -151,17 +185,31 @@ button{
   width:100%;
 
   overflow-y:auto;
-  overflow-x:hidden;
 
-  overscroll-behavior:contain;
+  overflow-x:hidden;
 
   -webkit-overflow-scrolling:touch;
 
-  padding-right:3px;
+  overscroll-behavior-y:contain;
+
+  touch-action:pan-y;
+
+  scrollbar-width:thin;
+
+  padding:
+
+    0
+    2px
+    calc(
+      140px +
+      env(safe-area-inset-bottom)
+    )
+    0;
+
 }
 
 
-/* Стилизация только самого общего скролла меню */
+/* iPhone / Safari */
 
 .nav::-webkit-scrollbar{
   width:5px;
@@ -172,52 +220,17 @@ button{
 }
 
 .nav::-webkit-scrollbar-thumb{
-  background:#d5dae2;
+  background:#d4d9e1;
   border-radius:20px;
 }
 
 
-/* НИКАКИХ overflow у кнопок */
-
-.nav button{
-  display:block;
-
-  width:100%;
-
-  border:0;
-
-  background:transparent;
-
-  text-align:left;
-
-  padding:12px 13px;
-
-  border-radius:11px;
-
-  color:#657083;
-
-  margin:3px 0;
-
-  font-weight:600;
-
-  white-space:nowrap;
-
-  overflow:visible;
-
-  flex:none;
-}
-
-.nav button:hover,
-.nav button.active{
-  background:var(--blue2);
-  color:var(--blue);
-}
-
-.nav button.admin{
-  color:#7c3aed;
-}
+/* =========================================================
+   MENU TITLES
+========================================================= */
 
 .nav-title{
+
   font-size:11px;
 
   text-transform:uppercase;
@@ -226,43 +239,108 @@ button{
 
   color:#9aa3b2;
 
-  margin:17px 13px 7px;
+  margin:
+    18px
+    13px
+    7px;
 
   white-space:nowrap;
 
-  overflow:visible;
 }
 
 
 /* =========================================================
-   MAIN
-   ОТДЕЛЬНЫЙ СКРОЛЛ
+   MENU BUTTONS
+   НЕТ overflow / scroll у отдельных кнопок
+========================================================= */
+
+.nav button{
+
+  display:block;
+
+  width:100%;
+
+  min-height:48px;
+
+  border:0;
+
+  background:transparent;
+
+  text-align:left;
+
+  padding:
+    12px
+    13px;
+
+  border-radius:11px;
+
+  color:#657083;
+
+  margin:
+    3px
+    0;
+
+  font-weight:600;
+
+  white-space:nowrap;
+
+  overflow:visible;
+
+  flex:none;
+
+  -webkit-tap-highlight-color:transparent;
+
+}
+
+.nav button:hover,
+.nav button.active{
+
+  background:var(--blue2);
+
+  color:var(--blue);
+
+}
+
+.nav button.admin{
+  color:#7c3aed;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   СВОЙ ОТДЕЛЬНЫЙ SCROLL
 ========================================================= */
 
 .main{
+
   position:fixed;
 
   left:245px;
   right:0;
+
   top:0;
   bottom:0;
 
-  height:100vh;
+  width:auto;
 
-  padding:30px;
+  height:100dvh;
 
-  max-width:none;
+  min-height:100dvh;
+
+  padding:
+    30px;
 
   overflow-y:auto;
+
   overflow-x:hidden;
 
-  overscroll-behavior:contain;
-
   -webkit-overflow-scrolling:touch;
+
+  overscroll-behavior-y:contain;
+
+  scrollbar-width:thin;
+
 }
-
-
-/* основной скролл */
 
 .main::-webkit-scrollbar{
   width:7px;
@@ -273,7 +351,7 @@ button{
 }
 
 .main::-webkit-scrollbar-thumb{
-  background:#d5dae2;
+  background:#d4d9e1;
   border-radius:20px;
 }
 
@@ -283,6 +361,7 @@ button{
 ========================================================= */
 
 .top{
+
   display:flex;
 
   justify-content:space-between;
@@ -290,25 +369,37 @@ button{
   align-items:center;
 
   margin-bottom:25px;
+
 }
 
 .top h1{
+
   margin:0;
+
   font-size:30px;
+
 }
 
 .subtitle{
+
   color:var(--muted);
+
   margin-top:5px;
+
 }
 
 .userbox{
+
   display:flex;
+
   align-items:center;
+
   gap:10px;
+
 }
 
 .avatar{
+
   width:42px;
   height:42px;
 
@@ -319,21 +410,28 @@ button{
   color:#fff;
 
   display:grid;
+
   place-items:center;
 
   font-weight:800;
+
 }
 
 .mobile-menu{
+
   display:none;
 
-  border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
   background:#fff;
 
   border-radius:10px;
 
-  padding:9px 12px;
+  padding:
+    9px
+    12px;
+
 }
 
 
@@ -355,12 +453,14 @@ button{
 ========================================================= */
 
 .grid{
+
   display:grid;
 
   grid-template-columns:
     repeat(4,1fr);
 
   gap:18px;
+
 }
 
 
@@ -369,34 +469,42 @@ button{
 ========================================================= */
 
 .card{
+
   background:var(--card);
 
-  border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
   border-radius:17px;
 
   padding:21px;
 
   box-shadow:
-    0 6px 25px rgba(16,24,40,.04);
+    0 6px 25px
+    rgba(16,24,40,.04);
 
   margin-bottom:18px;
+
 }
 
 .label{
+
   font-size:13px;
 
   color:var(--muted);
 
   font-weight:600;
+
 }
 
 .big{
+
   font-size:28px;
 
   font-weight:850;
 
   margin-top:8px;
+
 }
 
 .green{
@@ -408,8 +516,11 @@ button{
 }
 
 .small{
+
   font-size:13px;
+
   color:var(--muted);
+
 }
 
 
@@ -418,41 +529,59 @@ button{
 ========================================================= */
 
 .btn{
+
   border:0;
 
   border-radius:10px;
 
-  padding:11px 16px;
+  padding:
+    11px
+    16px;
 
   font-weight:750;
+
 }
 
 .primary{
+
   background:var(--blue);
+
   color:#fff;
+
 }
 
 .light{
+
   background:#eef2f7;
+
   color:#253044;
+
 }
 
 .danger{
+
   background:#fee2e2;
+
   color:#b91c1c;
+
 }
 
 .success{
+
   background:#dcfce7;
+
   color:#15803d;
+
 }
 
 .actions{
+
   display:flex;
 
   gap:10px;
 
   flex-wrap:wrap;
+
 }
 
 
@@ -461,45 +590,58 @@ button{
 ========================================================= */
 
 .table-wrap{
+
   overflow:auto;
 
   background:#fff;
 
-  border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
   border-radius:17px;
 
   -webkit-overflow-scrolling:touch;
+
 }
 
 .table{
+
   width:100%;
 
   border-collapse:collapse;
 
   min-width:650px;
+
 }
 
 .table th,
 .table td{
-  padding:15px 17px;
+
+  padding:
+    15px
+    17px;
 
   border-bottom:
     1px solid var(--line);
 
   text-align:left;
+
 }
 
 .table th{
+
   font-size:12px;
 
   text-transform:uppercase;
 
   color:#8a94a5;
+
 }
 
 .table tr:last-child td{
+
   border-bottom:0;
+
 }
 
 
@@ -508,30 +650,43 @@ button{
 ========================================================= */
 
 .badge{
+
   display:inline-block;
 
-  padding:5px 9px;
+  padding:
+    5px
+    9px;
 
   border-radius:999px;
 
   font-size:12px;
 
   font-weight:750;
+
 }
 
 .badge.green{
+
   background:#dcfce7;
+
   color:#15803d;
+
 }
 
 .badge.red{
+
   background:#fee2e2;
+
   color:#b91c1c;
+
 }
 
 .badge.gray{
+
   background:#eef2f7;
+
   color:#667085;
+
 }
 
 
@@ -540,15 +695,18 @@ button{
 ========================================================= */
 
 .form-grid{
+
   display:grid;
 
   grid-template-columns:
     repeat(2,1fr);
 
   gap:15px;
+
 }
 
 .field label{
+
   display:block;
 
   font-size:13px;
@@ -556,10 +714,12 @@ button{
   font-weight:750;
 
   margin-bottom:7px;
+
 }
 
 .field input,
 .field select{
+
   width:100%;
 
   border:
@@ -569,18 +729,24 @@ button{
 
   border-radius:11px;
 
-  padding:12px 13px;
+  padding:
+    12px
+    13px;
 
   outline:none;
+
 }
 
 .field input:focus,
 .field select:focus{
-  border-color:var(--blue);
+
+  border-color:
+    var(--blue);
 
   box-shadow:
     0 0 0 3px
     rgba(37,99,235,.1);
+
 }
 
 
@@ -589,11 +755,16 @@ button{
 ========================================================= */
 
 .login-screen{
+
   position:fixed;
 
   inset:0;
 
-  min-height:100vh;
+  width:100%;
+
+  height:100dvh;
+
+  min-height:100dvh;
 
   display:grid;
 
@@ -610,10 +781,12 @@ button{
 
   overflow:auto;
 
-  z-index:1000;
+  z-index:2000;
+
 }
 
 .login-card{
+
   width:100%;
 
   max-width:450px;
@@ -630,9 +803,11 @@ button{
   box-shadow:
     0 25px 70px
     rgba(15,23,42,.12);
+
 }
 
 .login-logo{
+
   text-align:center;
 
   font-size:31px;
@@ -640,9 +815,11 @@ button{
   font-weight:950;
 
   letter-spacing:1px;
+
 }
 
 .login-sub{
+
   text-align:center;
 
   color:var(--muted);
@@ -653,30 +830,44 @@ button{
 
   font-weight:750;
 
-  margin:8px 0 30px;
+  margin:
+    8px
+    0
+    30px;
+
 }
 
 .login-card h2{
+
   text-align:center;
 
   font-size:27px;
 
-  margin:0 0 8px;
+  margin:
+    0
+    0
+    8px;
+
 }
 
 .login-card .field{
+
   margin-top:17px;
+
 }
 
 .login-card .btn{
+
   width:100%;
 
   margin-top:20px;
 
   height:50px;
+
 }
 
 .error{
+
   display:none;
 
   background:#fee2e2;
@@ -685,11 +876,14 @@ button{
 
   border-radius:10px;
 
-  padding:10px 12px;
+  padding:
+    10px
+    12px;
 
   margin-top:15px;
 
   font-size:13px;
+
 }
 
 
@@ -698,6 +892,7 @@ button{
 ========================================================= */
 
 .modal{
+
   display:none;
 
   position:fixed;
@@ -707,20 +902,26 @@ button{
   background:
     rgba(15,23,42,.55);
 
-  z-index:500;
+  z-index:3000;
 
   padding:20px;
 
   overflow:auto;
+
+  -webkit-overflow-scrolling:touch;
+
 }
 
 .modal.show{
+
   display:grid;
 
   place-items:center;
+
 }
 
 .modalbox{
+
   width:100%;
 
   max-width:800px;
@@ -733,17 +934,24 @@ button{
 
   position:relative;
 
-  max-height:92vh;
+  max-height:
+    calc(
+      100dvh -
+      30px
+    );
 
   overflow:auto;
 
   -webkit-overflow-scrolling:touch;
+
 }
 
 .close{
+
   position:absolute;
 
   right:15px;
+
   top:13px;
 
   border:0;
@@ -751,11 +959,13 @@ button{
   background:#eef2f7;
 
   width:36px;
+
   height:36px;
 
   border-radius:50%;
 
   font-size:22px;
+
 }
 
 .modalbox h2{
@@ -763,28 +973,37 @@ button{
 }
 
 .section-title{
+
   font-size:16px;
 
   font-weight:850;
 
-  margin:22px 0 12px;
+  margin:
+    22px
+    0
+    12px;
+
 }
 
 .preview{
+
   max-width:180px;
 
   max-height:180px;
 
   border-radius:12px;
 
-  border:1px solid var(--line);
+  border:
+    1px solid var(--line);
 
   display:none;
 
   margin-top:10px;
+
 }
 
 .admin-head{
+
   background:var(--dark);
 
   color:#fff;
@@ -794,18 +1013,26 @@ button{
   padding:20px;
 
   margin-bottom:18px;
+
 }
 
 .admin-head h2{
-  margin:0 0 5px;
+
+  margin:
+    0
+    0
+    5px;
+
 }
 
 .empty{
+
   text-align:center;
 
   color:var(--muted);
 
   padding:35px;
+
 }
 
 
@@ -816,49 +1043,92 @@ button{
 @media(max-width:900px){
 
   .sidebar{
-    width:280px;
+
+    width:285px;
+
+    height:100dvh;
+
+    min-height:100dvh;
+
+    padding-top:
+      env(safe-area-inset-top);
 
     transform:
-      translateX(-100%);
+      translate3d(
+        -100%,
+        0,
+        0
+      );
 
     transition:
       transform .22s ease;
+
+    box-shadow:
+      10px 0 35px
+      rgba(15,23,42,.08);
+
   }
 
+
   .sidebar.open{
+
     transform:
-      translateX(0);
+      translate3d(
+        0,
+        0,
+        0
+      );
+
   }
 
 
   .main{
+
     left:0;
 
-    padding:
-      20px 15px;
-
     width:100%;
+
+    height:100dvh;
+
+    min-height:100dvh;
+
+    padding:
+      20px
+      15px
+      calc(
+        30px +
+        env(safe-area-inset-bottom)
+      );
+
   }
 
 
   .mobile-menu{
+
     display:block;
+
   }
 
 
   .top{
+
     gap:10px;
+
   }
 
 
   .top h1{
+
     font-size:25px;
+
   }
 
 
   .grid{
+
     grid-template-columns:
       repeat(2,1fr);
+
   }
 
 }
@@ -868,46 +1138,68 @@ button{
 
   .grid,
   .form-grid{
-    grid-template-columns:1fr;
+
+    grid-template-columns:
+      1fr;
+
   }
 
 
   .card{
+
     padding:17px;
+
   }
 
 
   .top{
+
     align-items:flex-start;
+
   }
 
 
   .userbox{
+
     display:none;
+
   }
 
 
   .login-card{
+
     padding:25px;
+
   }
 
 
   .actions .btn{
+
     width:100%;
+
   }
 
 
   .modal{
-    padding:10px;
+
+    padding:
+      10px;
+
   }
 
 
   .modalbox{
-    max-height:95vh;
+
+    max-height:
+      calc(
+        100dvh -
+        20px
+      );
 
     border-radius:17px;
 
     padding:20px;
+
   }
 
 }
@@ -915,7 +1207,9 @@ button{
 </style>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
 </head>
 
@@ -957,9 +1251,7 @@ button{
     <div
       id="loginError"
       class="error"
-    >
-      Ошибка входа
-    </div>
+    ></div>
 
 
     <div class="field">
@@ -1016,7 +1308,7 @@ button{
 
 
 <!-- =========================================================
-     APPLICATION
+     APP
 ========================================================= -->
 
 <div
@@ -1035,16 +1327,20 @@ button{
     class="sidebar"
   >
 
-    <!-- LOGO FIXED -->
+
+    <!-- НЕ ПРОКРУЧИВАЕТСЯ -->
 
     <div class="logo">
       P2P<span>SPARK</span>
     </div>
 
 
-    <!-- ONLY THIS ELEMENT SCROLLS -->
+    <!-- ВЕСЬ СПИСОК ПРОКРУЧИВАЕТСЯ ЦЕЛИКОМ -->
 
-    <div class="nav">
+    <div
+      id="navScroll"
+      class="nav"
+    >
 
 
       <div class="nav-title">
@@ -1090,7 +1386,6 @@ button{
       >
         ⚠ &nbsp; Споры
       </button>
-
 
 
       <div class="nav-title">
@@ -1154,7 +1449,6 @@ button{
       </button>
 
 
-
       <!-- ADMIN -->
 
       <div
@@ -1178,6 +1472,7 @@ button{
       </div>
 
 
+      <!-- ACCOUNT ВНУТРИ ТОГО ЖЕ SCROLL -->
 
       <div class="nav-title">
         Аккаунт
@@ -1185,6 +1480,7 @@ button{
 
 
       <button
+        type="button"
         onclick="logout()"
       >
         ↪ &nbsp; Выйти
@@ -1201,10 +1497,11 @@ button{
        MAIN
   ======================================================== -->
 
-  <main class="main">
+  <main
+    id="mainScroll"
+    class="main"
+  >
 
-
-    <!-- TOP -->
 
     <div class="top">
 
@@ -1403,7 +1700,6 @@ button{
         style="margin-top:20px"
       >
 
-
         <div class="card">
 
           <div class="label">
@@ -1467,7 +1763,6 @@ button{
 
         </div>
 
-
       </div>
 
     </section>
@@ -1503,30 +1798,20 @@ button{
 
             <tr>
 
-              <th>
-                ID
-              </th>
+              <th>ID</th>
 
-              <th>
-                Направление
-              </th>
+              <th>Направление</th>
 
-              <th>
-                Сумма
-              </th>
+              <th>Сумма</th>
 
-              <th>
-                Статус
-              </th>
+              <th>Статус</th>
 
             </tr>
 
           </thead>
 
 
-          <tbody
-            id="dealsTable"
-          ></tbody>
+          <tbody id="dealsTable"></tbody>
 
         </table>
 
@@ -1702,7 +1987,6 @@ button{
 
 
         <button
-          id="copyWalletBtn"
           class="btn light"
           style="margin-top:15px"
           onclick="copyWallet()"
@@ -1798,7 +2082,7 @@ button{
       >
 
         <div class="empty">
-          Функция будет подключена на следующем этапе
+          Функция будет подключена следующим этапом
         </div>
 
       </div>
@@ -1874,7 +2158,7 @@ button{
 
     <!-- =====================================================
          PROFILE
-         ROLE REMOVED
+         БЕЗ ROLE
     ====================================================== -->
 
     <section
@@ -1964,7 +2248,7 @@ button{
         </h2>
 
         <div class="subtitle">
-          Каждому новому USER автоматически создаётся профиль.
+          Новый USER получает отдельный профиль.
         </div>
 
 
@@ -1972,7 +2256,6 @@ button{
           class="form-grid"
           style="margin-top:18px"
         >
-
 
           <div class="field">
 
@@ -2102,7 +2385,6 @@ button{
       </div>
 
 
-
       <div class="card">
 
         <h2>
@@ -2158,9 +2440,6 @@ button{
       id="manageEmail"
     ></div>
 
-
-
-    <!-- ACCOUNT -->
 
     <div class="section-title">
       1. Аккаунт
@@ -2218,9 +2497,7 @@ button{
           Статус
         </label>
 
-        <select
-          id="mStatus"
-        >
+        <select id="mStatus">
 
           <option value="active">
             Активен
@@ -2238,8 +2515,6 @@ button{
     </div>
 
 
-
-    <!-- FINANCE -->
 
     <div class="section-title">
       2. Финансы
@@ -2328,8 +2603,6 @@ button{
 
 
 
-    <!-- REQUISITES -->
-
     <div class="section-title">
       3. Реквизиты
     </div>
@@ -2344,9 +2617,7 @@ button{
           Сеть
         </label>
 
-        <select
-          id="mNetwork"
-        >
+        <select id="mNetwork">
 
           <option value="">
             Не выбрана
@@ -2418,7 +2689,7 @@ button{
       >
 
         <label>
-          Личный QR-код пользователя
+          QR-код пользователя
         </label>
 
         <input
@@ -2437,7 +2708,7 @@ button{
           class="small"
           style="margin-top:7px"
         >
-          QR сохраняется только для выбранного пользователя.
+          QR сохраняется для выбранного пользователя.
         </div>
 
       </div>
@@ -2449,7 +2720,7 @@ button{
     <img
       id="mQrPreview"
       class="preview"
-      alt="QR preview"
+      alt="QR"
     >
 
 
@@ -2457,7 +2728,6 @@ button{
       class="actions"
       style="margin-top:22px"
     >
-
 
       <button
         class="btn primary"
@@ -2482,9 +2752,7 @@ button{
         Заблокировать / разблокировать
       </button>
 
-
     </div>
-
 
   </div>
 
@@ -2495,7 +2763,7 @@ button{
 <script>
 
 /* =========================================================
-   SUPABASE CONFIG
+   SUPABASE
 ========================================================= */
 
 const SUPABASE_URL =
@@ -2574,10 +2842,8 @@ function setLoginError(text){
       "loginError"
     );
 
-
   el.textContent =
     text || "Ошибка входа";
-
 
   el.style.display =
     "block";
@@ -2593,7 +2859,9 @@ async function login(){
 
   const email =
     document
-      .getElementById("loginEmail")
+      .getElementById(
+        "loginEmail"
+      )
       .value
       .trim()
       .toLowerCase();
@@ -2601,7 +2869,9 @@ async function login(){
 
   const password =
     document
-      .getElementById("loginPassword")
+      .getElementById(
+        "loginPassword"
+      )
       .value;
 
 
@@ -2643,7 +2913,6 @@ async function login(){
         error
       );
 
-
       return setLoginError(
         "Supabase: " +
         (
@@ -2664,7 +2933,46 @@ async function login(){
     }
 
 
-    await start();
+    currentUser =
+      data.user;
+
+
+    const ok =
+      await loadProfile();
+
+
+    if(!ok){
+
+      return setLoginError(
+        "Вход выполнен, но профиль пользователя не найден"
+      );
+
+    }
+
+
+    if(
+      currentProfile?.status ===
+      "blocked"
+    ){
+
+      await supabaseClient
+        .auth
+        .signOut();
+
+
+      currentUser = null;
+
+      currentProfile = null;
+
+
+      return setLoginError(
+        "Этот аккаунт заблокирован администратором"
+      );
+
+    }
+
+
+    showApplication();
 
 
   }catch(error){
@@ -2705,7 +3013,10 @@ async function loadProfile(){
     await supabaseClient
       .from("profiles")
       .select("*")
-      .eq("id",currentUser.id)
+      .eq(
+        "id",
+        currentUser.id
+      )
       .single();
 
 
@@ -2715,16 +3026,6 @@ async function loadProfile(){
       "PROFILES ERROR:",
       error
     );
-
-
-    setLoginError(
-      "Auth работает, но профиль недоступен: " +
-      (
-        error.message ||
-        "неизвестная ошибка"
-      )
-    );
-
 
     return false;
 
@@ -2742,7 +3043,10 @@ async function loadProfile(){
     await supabaseClient
       .from("requisites")
       .select("*")
-      .eq("user_id",currentUser.id)
+      .eq(
+        "user_id",
+        currentUser.id
+      )
       .order(
         "created_at",
         {
@@ -2773,6 +3077,115 @@ async function loadProfile(){
 
 
 /* =========================================================
+   SHOW APP
+========================================================= */
+
+function showApplication(){
+
+  document
+    .getElementById(
+      "loginScreen"
+    )
+    .style.display =
+      "none";
+
+
+  document
+    .getElementById(
+      "app"
+    )
+    .style.display =
+      "block";
+
+
+  const isAdmin =
+    currentProfile?.role ===
+    "ADMIN";
+
+
+  document
+    .getElementById(
+      "adminNav"
+    )
+    .style.display =
+      isAdmin
+        ? "block"
+        : "none";
+
+
+  document
+    .getElementById(
+      "topEmail"
+    )
+    .textContent =
+      currentProfile?.email ||
+      currentUser?.email ||
+      "";
+
+
+  /*
+    USER:
+    роль нигде в профиле не показывается.
+
+    ADMIN:
+    сверху можно видеть только
+    служебную отметку.
+  */
+
+  document
+    .getElementById(
+      "roleText"
+    )
+    .textContent =
+      isAdmin
+        ? "Администратор"
+        : "";
+
+
+  document
+    .getElementById(
+      "avatar"
+    )
+    .textContent =
+      (
+        currentProfile?.name ||
+        currentProfile?.email ||
+        "U"
+      )
+      .charAt(0)
+      .toUpperCase();
+
+
+  document
+    .getElementById(
+      "profileEmail"
+    )
+    .value =
+      currentProfile?.email ||
+      currentUser?.email ||
+      "";
+
+
+  document
+    .getElementById(
+      "profileStatus"
+    )
+    .value =
+      currentProfile?.status ===
+      "blocked"
+        ? "Заблокирован"
+        : "Активен";
+
+
+  render();
+
+
+  go("dashboard");
+
+}
+
+
+/* =========================================================
    START
 ========================================================= */
 
@@ -2796,6 +3209,8 @@ async function start(){
         error
       );
 
+      return;
+
     }
 
 
@@ -2807,13 +3222,19 @@ async function start(){
     if(!currentUser){
 
       document
-        .getElementById("loginScreen")
-        .style.display="grid";
+        .getElementById(
+          "loginScreen"
+        )
+        .style.display =
+          "grid";
 
 
       document
-        .getElementById("app")
-        .style.display="none";
+        .getElementById(
+          "app"
+        )
+        .style.display =
+          "none";
 
 
       return;
@@ -2832,20 +3253,19 @@ async function start(){
         .signOut();
 
 
+      currentUser =
+        null;
+
+
       return;
 
     }
 
 
     if(
-      currentProfile.status ===
+      currentProfile?.status ===
       "blocked"
     ){
-
-      alert(
-        "Ваш аккаунт заблокирован администратором"
-      );
-
 
       await supabaseClient
         .auth
@@ -2854,92 +3274,12 @@ async function start(){
 
       location.reload();
 
-
       return;
 
     }
 
 
-    document
-      .getElementById("loginScreen")
-      .style.display="none";
-
-
-    document
-      .getElementById("app")
-      .style.display="block";
-
-
-    const isAdmin =
-      currentProfile.role ===
-      "ADMIN";
-
-
-    document
-      .getElementById("adminNav")
-      .style.display =
-        isAdmin
-          ? "block"
-          : "none";
-
-
-    document
-      .getElementById("topEmail")
-      .textContent =
-        currentProfile.email ||
-        currentUser.email ||
-        "";
-
-
-    /*
-      Для USER роль не показываем.
-      ADMIN может видеть отметку
-      администратора в верхней части.
-    */
-
-    document
-      .getElementById("roleText")
-      .textContent =
-        isAdmin
-          ? "Администратор"
-          : "";
-
-
-    document
-      .getElementById("avatar")
-      .textContent =
-        (
-          currentProfile.name ||
-          currentProfile.email ||
-          "U"
-        )
-        .charAt(0)
-        .toUpperCase();
-
-
-    /*
-      Профиль:
-      только Email + Статус.
-    */
-
-    document
-      .getElementById("profileEmail")
-      .value =
-        currentProfile.email ||
-        currentUser.email ||
-        "";
-
-
-    document
-      .getElementById("profileStatus")
-      .value =
-        currentProfile.status ===
-        "blocked"
-          ? "Заблокирован"
-          : "Активен";
-
-
-    render();
+    showApplication();
 
 
   }catch(error){
@@ -2947,15 +3287,6 @@ async function start(){
     console.error(
       "START ERROR:",
       error
-    );
-
-
-    setLoginError(
-      "Ошибка запуска: " +
-      (
-        error?.message ||
-        "неизвестная ошибка"
-      )
     );
 
   }
@@ -2972,6 +3303,13 @@ async function logout(){
   await supabaseClient
     .auth
     .signOut();
+
+
+  currentUser = null;
+
+  currentProfile = null;
+
+  currentRequisite = null;
 
 
   location.reload();
@@ -3014,7 +3352,6 @@ function go(page){
       "Доступ запрещён"
     );
 
-
     return;
 
   }
@@ -3044,7 +3381,6 @@ function go(page){
       "SECTION NOT FOUND:",
       page
     );
-
 
     return;
 
@@ -3099,26 +3435,32 @@ function go(page){
 
 
   /*
-    На телефоне после выбора пункта
-    закрываем меню.
+    На телефоне закрываем боковое меню
+    после выбора раздела.
   */
 
-  document
-    .getElementById(
-      "sidebar"
-    )
-    .classList
-    .remove("open");
+  if(
+    window.innerWidth <= 900
+  ){
+
+    document
+      .getElementById(
+        "sidebar"
+      )
+      .classList
+      .remove("open");
+
+  }
 
 
   /*
-    Возвращаем основную страницу
-    в начало.
+    Основная страница всегда
+    возвращается в начало.
   */
 
   const main =
-    document.querySelector(
-      ".main"
+    document.getElementById(
+      "mainScroll"
     );
 
 
@@ -3126,6 +3468,7 @@ function go(page){
 
     main.scrollTo({
       top:0,
+      left:0,
       behavior:"smooth"
     });
 
@@ -3237,6 +3580,7 @@ function render(){
 
 /* =========================================================
    DEALS
+   НИКАКИХ ТЕСТОВЫХ СДЕЛОК
 ========================================================= */
 
 function renderDeals(){
@@ -3278,7 +3622,7 @@ function renderDeals(){
 
 
 /* =========================================================
-   PAYMENT
+   PAYMENT / REQUISITES
 ========================================================= */
 
 function renderPayment(p){
@@ -3421,14 +3765,7 @@ async function copyWallet(){
 
   }catch(error){
 
-    console.error(
-      error
-    );
-
-
-    alert(
-      wallet
-    );
+    alert(wallet);
 
   }
 
@@ -3437,7 +3774,7 @@ async function copyWallet(){
 
 /* =========================================================
    ADMIN USERS
-   RPC
+   ИСПОЛЬЗУЕМ RPC admin_get_users()
 ========================================================= */
 
 async function renderAdmin(){
@@ -3505,7 +3842,7 @@ async function renderAdmin(){
     if(error){
 
       console.error(
-        "admin_get_users error:",
+        "admin_get_users:",
         error
       );
 
@@ -3572,7 +3909,7 @@ async function renderAdmin(){
 
 
     data.forEach(
-      u => {
+      user => {
 
         const tr =
           document.createElement(
@@ -3580,33 +3917,26 @@ async function renderAdmin(){
           );
 
 
-        const role =
-          u.role ||
-          "USER";
-
-
         const status =
-          u.status ||
+          user.status ||
           "active";
 
 
         tr.innerHTML = `
 
           <td>
-
             <b>
               ${esc(
-                u.name ||
+                user.name ||
                 "—"
               )}
             </b>
-
           </td>
 
 
           <td>
             ${esc(
-              u.email ||
+              user.email ||
               "—"
             )}
           </td>
@@ -3614,12 +3944,13 @@ async function renderAdmin(){
 
           <td>
 
-            <span
-              class="badge gray"
-            >
+            <span class="badge gray">
+
               ${esc(
-                role
+                user.role ||
+                "USER"
               )}
+
             </span>
 
           </td>
@@ -3629,16 +3960,14 @@ async function renderAdmin(){
 
             <span
               class="badge ${
-                status ===
-                "active"
+                status === "active"
                   ? "green"
                   : "red"
               }"
             >
 
               ${
-                status ===
-                "active"
+                status === "active"
                   ? "Активен"
                   : "Заблокирован"
               }
@@ -3654,7 +3983,7 @@ async function renderAdmin(){
               class="btn light"
               onclick="
                 openManage(
-                  '${escAttr(u.id)}'
+                  '${escAttr(user.id)}'
                 )
               "
             >
@@ -3686,7 +4015,7 @@ async function renderAdmin(){
   }catch(error){
 
     console.error(
-      "RENDER ADMIN ERROR:",
+      "ADMIN RENDER ERROR:",
       error
     );
 
@@ -3925,9 +4254,7 @@ async function createUser(){
     alert(
       "USER успешно создан!\n\n" +
       "Email: " +
-      email +
-      "\nПароль: " +
-      password
+      email
     );
 
 
@@ -3975,23 +4302,26 @@ async function openManage(id){
   try{
 
     const {
-      data:u,
+      data:user,
       error
     } =
       await supabaseClient
         .from("profiles")
         .select("*")
-        .eq("id",id)
+        .eq(
+          "id",
+          id
+        )
         .single();
 
 
     if(
       error ||
-      !u
+      !user
     ){
 
       console.error(
-        "OPEN MANAGE ERROR:",
+        "MANAGE USER ERROR:",
         error
       );
 
@@ -4004,13 +4334,16 @@ async function openManage(id){
 
 
     const {
-      data:p,
+      data:req,
       error:reqError
     } =
       await supabaseClient
         .from("requisites")
         .select("*")
-        .eq("user_id",id)
+        .eq(
+          "user_id",
+          id
+        )
         .order(
           "created_at",
           {
@@ -4024,7 +4357,7 @@ async function openManage(id){
     if(reqError){
 
       console.warn(
-        "REQUISITES ERROR:",
+        "MANAGE REQUISITES ERROR:",
         reqError
       );
 
@@ -4032,7 +4365,7 @@ async function openManage(id){
 
 
     const r =
-      p || {};
+      req || {};
 
 
     document
@@ -4042,7 +4375,7 @@ async function openManage(id){
       .textContent =
         "Редактирование: " +
         (
-          u.email ||
+          user.email ||
           ""
         );
 
@@ -4052,7 +4385,7 @@ async function openManage(id){
         "mName"
       )
       .value =
-        u.name ||
+        user.name ||
         "";
 
 
@@ -4061,7 +4394,7 @@ async function openManage(id){
         "mEmail"
       )
       .value =
-        u.email ||
+        user.email ||
         "";
 
 
@@ -4078,7 +4411,7 @@ async function openManage(id){
         "mStatus"
       )
       .value =
-        u.status ||
+        user.status ||
         "active";
 
 
@@ -4087,7 +4420,7 @@ async function openManage(id){
         "mDeposit"
       )
       .value =
-        u.deposit ||
+        user.deposit ||
         0;
 
 
@@ -4096,7 +4429,7 @@ async function openManage(id){
         "mTurnover"
       )
       .value =
-        u.turnover ||
+        user.turnover ||
         0;
 
 
@@ -4105,7 +4438,7 @@ async function openManage(id){
         "mProfit"
       )
       .value =
-        u.profit ||
+        user.profit ||
         0;
 
 
@@ -4114,7 +4447,7 @@ async function openManage(id){
         "mCommission"
       )
       .value =
-        u.commission ||
+        user.commission ||
         0;
 
 
@@ -4123,7 +4456,7 @@ async function openManage(id){
         "mDeals"
       )
       .value =
-        u.deals ||
+        user.deals ||
         0;
 
 
@@ -4173,7 +4506,7 @@ async function openManage(id){
   }catch(error){
 
     console.error(
-      "OPEN MANAGE EXCEPTION:",
+      "OPEN MANAGE ERROR:",
       error
     );
 
@@ -4216,23 +4549,13 @@ function closeManage(){
 
 
 /* =========================================================
-   SAVE MANAGED USER
+   SAVE USER
 ========================================================= */
 
 async function saveManagedUser(){
 
   if(!managedId)
     return;
-
-
-  const newEmail =
-    document
-      .getElementById(
-        "mEmail"
-      )
-      .value
-      .trim()
-      .toLowerCase();
 
 
   const walletLink =
@@ -4242,15 +4565,6 @@ async function saveManagedUser(){
       )
       .value
       .trim();
-
-
-  if(!newEmail){
-
-    return alert(
-      "Email обязателен"
-    );
-
-  }
 
 
   if(
@@ -4433,13 +4747,13 @@ async function saveManagedUser(){
     }
 
 
-    let e2 =
+    let reqError =
       null;
 
 
     if(existing){
 
-      e2 =
+      reqError =
         (
           await supabaseClient
             .from("requisites")
@@ -4452,7 +4766,7 @@ async function saveManagedUser(){
 
     }else{
 
-      e2 =
+      reqError =
         (
           await supabaseClient
             .from("requisites")
@@ -4462,11 +4776,11 @@ async function saveManagedUser(){
     }
 
 
-    if(e2){
+    if(reqError){
 
       return alert(
         "Профиль сохранён, но реквизиты не сохранились: " +
-        e2.message
+        reqError.message
       );
 
     }
@@ -4486,12 +4800,13 @@ async function saveManagedUser(){
 
       await loadProfile();
 
-      render();
-
     }
 
 
     await renderAdmin();
+
+
+    render();
 
 
     alert(
@@ -4533,7 +4848,7 @@ async function toggleManagedStatus(){
   try{
 
     const {
-      data:u,
+      data:user,
       error
     } =
       await supabaseClient
@@ -4550,7 +4865,7 @@ async function toggleManagedStatus(){
 
     if(
       error ||
-      !u
+      !user
     ){
 
       return alert(
@@ -4561,7 +4876,7 @@ async function toggleManagedStatus(){
 
 
     if(
-      u.role ===
+      user.role ===
       "ADMIN"
     ){
 
@@ -4573,7 +4888,7 @@ async function toggleManagedStatus(){
 
 
     const next =
-      u.status ===
+      user.status ===
       "active"
         ? "blocked"
         : "active";
@@ -4585,13 +4900,10 @@ async function toggleManagedStatus(){
       await supabaseClient
         .from("profiles")
         .update({
-
           status:next,
-
           updated_at:
             new Date()
               .toISOString()
-
         })
         .eq(
           "id",
@@ -4608,12 +4920,12 @@ async function toggleManagedStatus(){
     }
 
 
+    await renderAdmin();
+
+
     await openManage(
       managedId
     );
-
-
-    await renderAdmin();
 
 
   }catch(error){
@@ -4703,7 +5015,7 @@ function previewQr(event){
   reader.onerror = () => {
 
     alert(
-      "Не удалось прочитать изображение"
+      "Не удалось прочитать QR"
     );
 
   };
@@ -4729,7 +5041,6 @@ function showQrPreview(){
     img.style.display =
       "block";
 
-
     img.src =
       qrData;
 
@@ -4737,7 +5048,6 @@ function showQrPreview(){
 
     img.style.display =
       "none";
-
 
     img.removeAttribute(
       "src"
@@ -4774,7 +5084,7 @@ function clearQr(){
 
 
 /* =========================================================
-   ESC
+   ESCAPE MODAL
 ========================================================= */
 
 document.addEventListener(
@@ -4820,7 +5130,7 @@ supabaseClient
 
 
 /* =========================================================
-   START APP
+   START
 ========================================================= */
 
 start();
