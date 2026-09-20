@@ -1,14 +1,25 @@
 <!doctype html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+
 <title>P2PSPARK</title>
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
   --bg:#f5f7fa;
-  --card:#fff;
+  --card:#ffffff;
   --text:#101827;
   --muted:#697386;
   --line:#e4e8ee;
@@ -16,552 +27,910 @@
   --blue2:#eaf1ff;
   --green:#16a34a;
   --red:#dc2626;
-  --dark:#111827
+  --dark:#111827;
 }
 
-*{box-sizing:border-box}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+html{
+  overflow:hidden;
+}
 
 body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
   background:var(--bg);
-  color:var(--text)
+  color:var(--text);
+
+  overflow:hidden;
+
+  -webkit-overflow-scrolling:touch;
 }
 
-button,input,select{
-  font:inherit
+button,
+input,
+select{
+  font:inherit;
 }
 
 button{
-  cursor:pointer
+  cursor:pointer;
 }
+
+
+/* =========================================================
+   APP
+========================================================= */
 
 .app{
-  min-height:100vh
+  width:100%;
+  height:100vh;
+  min-height:100vh;
+  overflow:hidden;
 }
 
-/* =========================
+
+/* =========================================================
    SIDEBAR
-========================= */
+   ОТДЕЛЬНЫЙ СКРОЛЛ
+========================================================= */
 
 .sidebar{
   position:fixed;
+
   left:0;
   top:0;
   bottom:0;
+
   width:245px;
+  height:100vh;
+
   background:#fff;
+
   border-right:1px solid var(--line);
+
   padding:25px 15px;
-  z-index:20;
-  overflow:hidden
+
+  z-index:100;
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
 }
 
+
+/* Логотип НЕ участвует в скролле */
+
 .logo{
+  flex:0 0 auto;
+
   font-size:25px;
   font-weight:900;
+
   letter-spacing:.5px;
-  padding:4px 14px 28px
+
+  padding:4px 14px 25px;
 }
 
 .logo span{
-  color:var(--blue)
+  color:var(--blue);
 }
+
+
+/* =========================================================
+   MENU SCROLL
+   ВСЕ КНОПКИ ВНУТРИ ОДНОГО СКРОЛЛА
+========================================================= */
 
 .nav{
-  height:calc(100vh - 80px);
-  overflow-y:auto
+  flex:1 1 auto;
+
+  min-height:0;
+
+  width:100%;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  overscroll-behavior:contain;
+
+  -webkit-overflow-scrolling:touch;
+
+  padding-right:3px;
 }
 
-.nav-title{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:1.2px;
-  color:#9aa3b2;
-  margin:17px 13px 7px
+
+/* Стилизация только самого общего скролла меню */
+
+.nav::-webkit-scrollbar{
+  width:5px;
 }
+
+.nav::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.nav::-webkit-scrollbar-thumb{
+  background:#d5dae2;
+  border-radius:20px;
+}
+
+
+/* НИКАКИХ overflow у кнопок */
 
 .nav button{
   display:block;
+
   width:100%;
+
   border:0;
+
   background:transparent;
+
   text-align:left;
+
   padding:12px 13px;
+
   border-radius:11px;
+
   color:#657083;
+
   margin:3px 0;
-  font-weight:600
+
+  font-weight:600;
+
+  white-space:nowrap;
+
+  overflow:visible;
+
+  flex:none;
 }
 
 .nav button:hover,
 .nav button.active{
   background:var(--blue2);
-  color:var(--blue)
+  color:var(--blue);
 }
 
 .nav button.admin{
-  color:#7c3aed
+  color:#7c3aed;
 }
 
-/* =========================
+.nav-title{
+  font-size:11px;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.2px;
+
+  color:#9aa3b2;
+
+  margin:17px 13px 7px;
+
+  white-space:nowrap;
+
+  overflow:visible;
+}
+
+
+/* =========================================================
    MAIN
-========================= */
+   ОТДЕЛЬНЫЙ СКРОЛЛ
+========================================================= */
 
 .main{
-  margin-left:245px;
+  position:fixed;
+
+  left:245px;
+  right:0;
+  top:0;
+  bottom:0;
+
+  height:100vh;
+
   padding:30px;
-  max-width:1500px
+
+  max-width:none;
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  overscroll-behavior:contain;
+
+  -webkit-overflow-scrolling:touch;
 }
+
+
+/* основной скролл */
+
+.main::-webkit-scrollbar{
+  width:7px;
+}
+
+.main::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+.main::-webkit-scrollbar-thumb{
+  background:#d5dae2;
+  border-radius:20px;
+}
+
+
+/* =========================================================
+   TOP
+========================================================= */
 
 .top{
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
-  margin-bottom:25px
+
+  margin-bottom:25px;
 }
 
 .top h1{
   margin:0;
-  font-size:30px
+  font-size:30px;
 }
 
 .subtitle{
   color:var(--muted);
-  margin-top:5px
+  margin-top:5px;
 }
 
 .userbox{
   display:flex;
   align-items:center;
-  gap:10px
+  gap:10px;
 }
 
 .avatar{
   width:42px;
   height:42px;
+
   border-radius:50%;
+
   background:var(--dark);
+
   color:#fff;
+
   display:grid;
   place-items:center;
-  font-weight:800
+
+  font-weight:800;
 }
 
 .mobile-menu{
   display:none;
+
   border:1px solid var(--line);
+
   background:#fff;
+
   border-radius:10px;
-  padding:9px 12px
+
+  padding:9px 12px;
 }
 
-/* =========================
+
+/* =========================================================
    SECTIONS
-========================= */
+========================================================= */
 
 .section{
-  display:none
+  display:none;
 }
 
 .section.active{
-  display:block
+  display:block;
 }
 
-/* =========================
-   CARDS
-========================= */
+
+/* =========================================================
+   GRID
+========================================================= */
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
 }
+
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .card{
   background:var(--card);
+
   border:1px solid var(--line);
+
   border-radius:17px;
+
   padding:21px;
-  box-shadow:0 6px 25px rgba(16,24,40,.04);
-  margin-bottom:18px
+
+  box-shadow:
+    0 6px 25px rgba(16,24,40,.04);
+
+  margin-bottom:18px;
 }
 
 .label{
   font-size:13px;
+
   color:var(--muted);
-  font-weight:600
+
+  font-weight:600;
 }
 
 .big{
   font-size:28px;
+
   font-weight:850;
-  margin-top:8px
+
+  margin-top:8px;
 }
 
 .green{
-  color:var(--green)
+  color:var(--green);
 }
 
 .red{
-  color:var(--red)
+  color:var(--red);
 }
 
 .small{
   font-size:13px;
-  color:var(--muted)
+  color:var(--muted);
 }
 
-/* =========================
+
+/* =========================================================
    BUTTONS
-========================= */
+========================================================= */
 
 .btn{
   border:0;
+
   border-radius:10px;
+
   padding:11px 16px;
-  font-weight:750
+
+  font-weight:750;
 }
 
 .primary{
   background:var(--blue);
-  color:#fff
+  color:#fff;
 }
 
 .light{
   background:#eef2f7;
-  color:#253044
+  color:#253044;
 }
 
 .danger{
   background:#fee2e2;
-  color:#b91c1c
+  color:#b91c1c;
 }
 
 .success{
   background:#dcfce7;
-  color:#15803d
+  color:#15803d;
 }
 
 .actions{
   display:flex;
+
   gap:10px;
-  flex-wrap:wrap
+
+  flex-wrap:wrap;
 }
 
-/* =========================
+
+/* =========================================================
    TABLE
-========================= */
+========================================================= */
 
 .table-wrap{
   overflow:auto;
+
   background:#fff;
+
   border:1px solid var(--line);
-  border-radius:17px
+
+  border-radius:17px;
+
+  -webkit-overflow-scrolling:touch;
 }
 
 .table{
   width:100%;
+
   border-collapse:collapse;
-  min-width:650px
+
+  min-width:650px;
 }
 
 .table th,
 .table td{
   padding:15px 17px;
-  border-bottom:1px solid var(--line);
-  text-align:left
+
+  border-bottom:
+    1px solid var(--line);
+
+  text-align:left;
 }
 
 .table th{
   font-size:12px;
+
   text-transform:uppercase;
-  color:#8a94a5
+
+  color:#8a94a5;
 }
 
 .table tr:last-child td{
-  border-bottom:0
+  border-bottom:0;
 }
 
-/* =========================
+
+/* =========================================================
    BADGES
-========================= */
+========================================================= */
 
 .badge{
   display:inline-block;
+
   padding:5px 9px;
+
   border-radius:999px;
+
   font-size:12px;
-  font-weight:750
+
+  font-weight:750;
 }
 
 .badge.green{
   background:#dcfce7;
-  color:#15803d
+  color:#15803d;
 }
 
 .badge.red{
   background:#fee2e2;
-  color:#b91c1c
+  color:#b91c1c;
 }
 
 .badge.gray{
   background:#eef2f7;
-  color:#667085
+  color:#667085;
 }
 
-/* =========================
+
+/* =========================================================
    FORMS
-========================= */
+========================================================= */
 
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:15px;
 }
 
 .field label{
   display:block;
+
   font-size:13px;
+
   font-weight:750;
-  margin-bottom:7px
+
+  margin-bottom:7px;
 }
 
 .field input,
 .field select{
   width:100%;
-  border:1px solid #d8dee8;
+
+  border:
+    1px solid #d8dee8;
+
   background:#fff;
+
   border-radius:11px;
+
   padding:12px 13px;
-  outline:none
+
+  outline:none;
 }
 
 .field input:focus,
 .field select:focus{
   border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(37,99,235,.1)
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37,99,235,.1);
 }
 
-/* =========================
+
+/* =========================================================
    LOGIN
-========================= */
+========================================================= */
 
 .login-screen{
+  position:fixed;
+
+  inset:0;
+
   min-height:100vh;
+
   display:grid;
+
   place-items:center;
+
   padding:20px;
-  background:linear-gradient(145deg,#f6f8fb,#eaf0f8)
+
+  background:
+    linear-gradient(
+      145deg,
+      #f6f8fb,
+      #eaf0f8
+    );
+
+  overflow:auto;
+
+  z-index:1000;
 }
 
 .login-card{
   width:100%;
+
   max-width:450px;
+
   background:#fff;
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   border-radius:25px;
+
   padding:34px;
-  box-shadow:0 25px 70px rgba(15,23,42,.12)
+
+  box-shadow:
+    0 25px 70px
+    rgba(15,23,42,.12);
 }
 
 .login-logo{
   text-align:center;
+
   font-size:31px;
+
   font-weight:950;
-  letter-spacing:1px
+
+  letter-spacing:1px;
 }
 
 .login-sub{
   text-align:center;
+
   color:var(--muted);
+
   letter-spacing:4px;
+
   font-size:11px;
+
   font-weight:750;
-  margin:8px 0 30px
+
+  margin:8px 0 30px;
 }
 
 .login-card h2{
   text-align:center;
+
   font-size:27px;
-  margin:0 0 8px
+
+  margin:0 0 8px;
 }
 
 .login-card .field{
-  margin-top:17px
+  margin-top:17px;
 }
 
 .login-card .btn{
   width:100%;
+
   margin-top:20px;
-  height:50px
+
+  height:50px;
 }
 
 .error{
   display:none;
+
   background:#fee2e2;
+
   color:#b91c1c;
+
   border-radius:10px;
+
   padding:10px 12px;
+
   margin-top:15px;
-  font-size:13px
+
+  font-size:13px;
 }
 
-/* =========================
+
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
 .modal{
   display:none;
+
   position:fixed;
+
   inset:0;
-  background:rgba(15,23,42,.55);
-  z-index:100;
+
+  background:
+    rgba(15,23,42,.55);
+
+  z-index:500;
+
   padding:20px;
-  overflow:auto
+
+  overflow:auto;
 }
 
 .modal.show{
   display:grid;
-  place-items:center
+
+  place-items:center;
 }
 
 .modalbox{
   width:100%;
+
   max-width:800px;
+
   background:#fff;
+
   border-radius:20px;
+
   padding:24px;
+
   position:relative;
+
   max-height:92vh;
-  overflow:auto
+
+  overflow:auto;
+
+  -webkit-overflow-scrolling:touch;
 }
 
 .close{
   position:absolute;
+
   right:15px;
   top:13px;
+
   border:0;
+
   background:#eef2f7;
+
   width:36px;
   height:36px;
+
   border-radius:50%;
-  font-size:22px
+
+  font-size:22px;
 }
 
 .modalbox h2{
-  margin-top:0
+  margin-top:0;
 }
 
 .section-title{
   font-size:16px;
+
   font-weight:850;
-  margin:22px 0 12px
+
+  margin:22px 0 12px;
 }
 
 .preview{
   max-width:180px;
+
   max-height:180px;
+
   border-radius:12px;
+
   border:1px solid var(--line);
+
   display:none;
-  margin-top:10px
+
+  margin-top:10px;
 }
 
 .admin-head{
   background:var(--dark);
+
   color:#fff;
+
   border-radius:17px;
+
   padding:20px;
-  margin-bottom:18px
+
+  margin-bottom:18px;
 }
 
 .admin-head h2{
-  margin:0 0 5px
+  margin:0 0 5px;
 }
 
 .empty{
   text-align:center;
+
   color:var(--muted);
-  padding:35px
+
+  padding:35px;
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:900px){
 
   .sidebar{
-    transform:translateX(-100%);
-    transition:.2s
+    width:280px;
+
+    transform:
+      translateX(-100%);
+
+    transition:
+      transform .22s ease;
   }
 
   .sidebar.open{
-    transform:translateX(0)
+    transform:
+      translateX(0);
   }
+
 
   .main{
-    margin-left:0;
-    padding:20px 15px
+    left:0;
+
+    padding:
+      20px 15px;
+
+    width:100%;
   }
+
 
   .mobile-menu{
-    display:block
+    display:block;
   }
+
 
   .top{
-    gap:10px
+    gap:10px;
   }
+
 
   .top h1{
-    font-size:25px
+    font-size:25px;
   }
 
+
   .grid{
-    grid-template-columns:repeat(2,1fr)
+    grid-template-columns:
+      repeat(2,1fr);
   }
+
 }
+
 
 @media(max-width:560px){
 
   .grid,
   .form-grid{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
+
 
   .card{
-    padding:17px
+    padding:17px;
   }
+
 
   .top{
-    align-items:flex-start
+    align-items:flex-start;
   }
+
 
   .userbox{
-    display:none
+    display:none;
   }
+
 
   .login-card{
-    padding:25px
+    padding:25px;
   }
+
 
   .actions .btn{
-    width:100%
+    width:100%;
   }
+
+
+  .modal{
+    padding:10px;
+  }
+
+
+  .modalbox{
+    max-height:95vh;
+
+    border-radius:17px;
+
+    padding:20px;
+  }
+
 }
+
 </style>
 
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
+
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
 
-<div id="loginScreen" class="login-screen">
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<div
+  id="loginScreen"
+  class="login-screen"
+>
 
   <div class="login-card">
 
@@ -577,37 +946,61 @@ button{
       Вход в аккаунт
     </h2>
 
-    <div class="subtitle" style="text-align:center">
+    <div
+      class="subtitle"
+      style="text-align:center"
+    >
       Введите данные, выданные администратором
     </div>
 
-    <div id="loginError" class="error">
+
+    <div
+      id="loginError"
+      class="error"
+    >
       Ошибка входа
     </div>
 
+
     <div class="field">
-      <label>Почта (Gmail)</label>
+
+      <label>
+        Почта (Gmail)
+      </label>
+
       <input
         id="loginEmail"
         type="email"
         autocomplete="username"
         placeholder="example@gmail.com"
       >
+
     </div>
 
+
     <div class="field">
-      <label>Пароль</label>
+
+      <label>
+        Пароль
+      </label>
+
       <input
         id="loginPassword"
         type="password"
         autocomplete="current-password"
         placeholder="Введите пароль"
       >
+
     </div>
 
-    <button class="btn primary" onclick="login()">
+
+    <button
+      class="btn primary"
+      onclick="login()"
+    >
       Войти →
     </button>
+
 
     <div
       class="small"
@@ -621,85 +1014,158 @@ button{
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
 
-<div id="app" class="app" style="display:none">
+<!-- =========================================================
+     APPLICATION
+========================================================= -->
 
-  <aside id="sidebar" class="sidebar">
+<div
+  id="app"
+  class="app"
+  style="display:none"
+>
+
+
+  <!-- =======================================================
+       SIDEBAR
+  ======================================================== -->
+
+  <aside
+    id="sidebar"
+    class="sidebar"
+  >
+
+    <!-- LOGO FIXED -->
 
     <div class="logo">
       P2P<span>SPARK</span>
     </div>
 
+
+    <!-- ONLY THIS ELEMENT SCROLLS -->
+
     <div class="nav">
+
 
       <div class="nav-title">
         Основное
       </div>
 
-      <button data-page="dashboard" onclick="go('dashboard')">
+
+      <button
+        data-page="dashboard"
+        onclick="go('dashboard')"
+      >
         ▣ &nbsp; Дашборд
       </button>
 
-      <button data-page="finance" onclick="go('finance')">
+
+      <button
+        data-page="finance"
+        onclick="go('finance')"
+      >
         ◈ &nbsp; Финансы
       </button>
 
-      <button data-page="deals" onclick="go('deals')">
+
+      <button
+        data-page="deals"
+        onclick="go('deals')"
+      >
         ↔ &nbsp; Сделки
       </button>
 
-      <button data-page="requests" onclick="go('requests')">
+
+      <button
+        data-page="requests"
+        onclick="go('requests')"
+      >
         ◌ &nbsp; Заявки
       </button>
 
-      <button data-page="disputes" onclick="go('disputes')">
+
+      <button
+        data-page="disputes"
+        onclick="go('disputes')"
+      >
         ⚠ &nbsp; Споры
       </button>
+
 
 
       <div class="nav-title">
         Работа
       </div>
 
-      <button data-page="requisites" onclick="go('requisites')">
+
+      <button
+        data-page="requisites"
+        onclick="go('requisites')"
+      >
         ▤ &nbsp; Реквизиты
       </button>
 
-      <button data-page="devices" onclick="go('devices')">
+
+      <button
+        data-page="devices"
+        onclick="go('devices')"
+      >
         ▣ &nbsp; Устройства
       </button>
 
-      <button data-page="messages" onclick="go('messages')">
+
+      <button
+        data-page="messages"
+        onclick="go('messages')"
+      >
         ✉ &nbsp; Сообщения
       </button>
 
-      <button data-page="turbo" onclick="go('turbo')">
+
+      <button
+        data-page="turbo"
+        onclick="go('turbo')"
+      >
         ⚡ &nbsp; Турбозалив
       </button>
 
-      <button data-page="counterparties" onclick="go('counterparties')">
+
+      <button
+        data-page="counterparties"
+        onclick="go('counterparties')"
+      >
         ♙ &nbsp; Контрагенты
       </button>
 
-      <button data-page="reports" onclick="go('reports')">
+
+      <button
+        data-page="reports"
+        onclick="go('reports')"
+      >
         ▥ &nbsp; Отчёты
       </button>
 
-      <button data-page="profile" onclick="go('profile')">
+
+      <button
+        data-page="profile"
+        onclick="go('profile')"
+      >
         ◉ &nbsp; Профиль
       </button>
 
 
-      <!-- ADMIN ONLY -->
 
-      <div id="adminNav" style="display:none">
+      <!-- ADMIN -->
+
+      <div
+        id="adminNav"
+        style="display:none"
+      >
 
         <div class="nav-title">
           Администрирование
         </div>
+
 
         <button
           class="admin"
@@ -712,24 +1178,43 @@ button{
       </div>
 
 
+
       <div class="nav-title">
         Аккаунт
       </div>
 
-      <button onclick="logout()">
+
+      <button
+        onclick="logout()"
+      >
         ↪ &nbsp; Выйти
       </button>
+
 
     </div>
 
   </aside>
 
 
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
   <main class="main">
+
+
+    <!-- TOP -->
 
     <div class="top">
 
-      <div style="display:flex;align-items:center;gap:12px">
+      <div
+        style="
+          display:flex;
+          align-items:center;
+          gap:12px
+        "
+      >
 
         <button
           class="mobile-menu"
@@ -737,6 +1222,7 @@ button{
         >
           ☰
         </button>
+
 
         <div>
 
@@ -766,6 +1252,7 @@ button{
 
         </div>
 
+
         <div
           class="avatar"
           id="avatar"
@@ -778,9 +1265,10 @@ button{
     </div>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          DASHBOARD
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="dashboard"
@@ -788,6 +1276,7 @@ button{
     >
 
       <div class="grid">
+
 
         <div class="card">
 
@@ -868,6 +1357,7 @@ button{
 
         </div>
 
+
       </div>
 
 
@@ -889,9 +1379,10 @@ button{
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          FINANCE
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="finance"
@@ -911,6 +1402,7 @@ button{
         class="grid"
         style="margin-top:20px"
       >
+
 
         <div class="card">
 
@@ -975,14 +1467,16 @@ button{
 
         </div>
 
+
       </div>
 
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          DEALS
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="deals"
@@ -997,6 +1491,7 @@ button{
         История и текущие операции
       </div>
 
+
       <div
         class="table-wrap"
         style="margin-top:20px"
@@ -1007,15 +1502,31 @@ button{
           <thead>
 
             <tr>
-              <th>ID</th>
-              <th>Направление</th>
-              <th>Сумма</th>
-              <th>Статус</th>
+
+              <th>
+                ID
+              </th>
+
+              <th>
+                Направление
+              </th>
+
+              <th>
+                Сумма
+              </th>
+
+              <th>
+                Статус
+              </th>
+
             </tr>
 
           </thead>
 
-          <tbody id="dealsTable"></tbody>
+
+          <tbody
+            id="dealsTable"
+          ></tbody>
 
         </table>
 
@@ -1024,9 +1535,10 @@ button{
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          REQUESTS
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="requests"
@@ -1040,6 +1552,7 @@ button{
       <div class="subtitle">
         Входящие и исходящие заявки
       </div>
+
 
       <div
         class="card"
@@ -1055,9 +1568,10 @@ button{
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          DISPUTES
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="disputes"
@@ -1067,6 +1581,7 @@ button{
       <h2>
         Споры
       </h2>
+
 
       <div
         class="card"
@@ -1082,9 +1597,10 @@ button{
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          REQUISITES
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="requisites"
@@ -1107,6 +1623,7 @@ button{
 
         <div class="form-grid">
 
+
           <div>
 
             <div class="label">
@@ -1127,12 +1644,16 @@ button{
           <div>
 
             <div class="label">
-              Кошелёк
+              Кошелёк / реквизит
             </div>
 
             <div
               id="pWallet"
-              style="margin-top:7px;word-break:break-all;font-weight:700"
+              style="
+                margin-top:7px;
+                word-break:break-all;
+                font-weight:700
+              "
             >
               —
             </div>
@@ -1142,7 +1663,10 @@ button{
 
           <div
             id="pWalletLinkWrap"
-            style="grid-column:1/-1;display:none"
+            style="
+              grid-column:1/-1;
+              display:none
+            "
           >
 
             <div class="label">
@@ -1154,10 +1678,18 @@ button{
               href="#"
               target="_blank"
               rel="noopener noreferrer"
-              style="display:block;margin-top:7px;word-break:break-all;font-weight:700;color:var(--blue);text-decoration:none"
+              style="
+                display:block;
+                margin-top:7px;
+                word-break:break-all;
+                font-weight:700;
+                color:var(--blue);
+                text-decoration:none
+              "
             ></a>
 
           </div>
+
 
         </div>
 
@@ -1183,9 +1715,10 @@ button{
     </section>
 
 
-    <!-- =========================
-         OTHER
-    ========================= -->
+
+    <!-- =====================================================
+         DEVICES
+    ====================================================== -->
 
     <section
       id="devices"
@@ -1195,6 +1728,7 @@ button{
       <h2>
         Устройства
       </h2>
+
 
       <div
         class="card"
@@ -1210,6 +1744,11 @@ button{
     </section>
 
 
+
+    <!-- =====================================================
+         MESSAGES
+    ====================================================== -->
+
     <section
       id="messages"
       class="section"
@@ -1218,6 +1757,7 @@ button{
       <h2>
         Сообщения
       </h2>
+
 
       <div
         class="card"
@@ -1237,6 +1777,11 @@ button{
     </section>
 
 
+
+    <!-- =====================================================
+         TURBO
+    ====================================================== -->
+
     <section
       id="turbo"
       class="section"
@@ -1245,6 +1790,7 @@ button{
       <h2>
         Турбозалив
       </h2>
+
 
       <div
         class="card"
@@ -1260,6 +1806,11 @@ button{
     </section>
 
 
+
+    <!-- =====================================================
+         COUNTERPARTIES
+    ====================================================== -->
+
     <section
       id="counterparties"
       class="section"
@@ -1268,6 +1819,7 @@ button{
       <h2>
         Контрагенты
       </h2>
+
 
       <div
         class="card"
@@ -1283,6 +1835,11 @@ button{
     </section>
 
 
+
+    <!-- =====================================================
+         REPORTS
+    ====================================================== -->
+
     <section
       id="reports"
       class="section"
@@ -1292,6 +1849,7 @@ button{
         Отчёты
       </h2>
 
+
       <div
         class="card"
         style="margin-top:20px"
@@ -1299,7 +1857,11 @@ button{
 
         <button
           class="btn primary"
-          onclick="alert('Раздел отчётов будет подключён следующим этапом')"
+          onclick="
+            alert(
+              'Раздел отчётов будет подключён следующим этапом'
+            )
+          "
         >
           Сформировать отчёт
         </button>
@@ -1309,10 +1871,11 @@ button{
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          PROFILE
          ROLE REMOVED
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="profile"
@@ -1323,12 +1886,14 @@ button{
         Профиль
       </h2>
 
+
       <div
         class="card"
         style="margin-top:20px"
       >
 
         <div class="form-grid">
+
 
           <div class="field">
 
@@ -1357,6 +1922,7 @@ button{
 
           </div>
 
+
         </div>
 
       </div>
@@ -1364,14 +1930,16 @@ button{
     </section>
 
 
-    <!-- =========================
+
+    <!-- =====================================================
          ADMIN
-    ========================= -->
+    ====================================================== -->
 
     <section
       id="admin"
       class="section"
     >
+
 
       <div class="admin-head">
 
@@ -1386,6 +1954,7 @@ button{
       </div>
 
 
+
       <!-- CREATE USER -->
 
       <div class="card">
@@ -1395,7 +1964,7 @@ button{
         </h2>
 
         <div class="subtitle">
-          Каждому новому USER автоматически создаются финансовые данные и профиль.
+          Каждому новому USER автоматически создаётся профиль.
         </div>
 
 
@@ -1403,6 +1972,7 @@ button{
           class="form-grid"
           style="margin-top:18px"
         >
+
 
           <div class="field">
 
@@ -1447,6 +2017,7 @@ button{
 
           </div>
 
+
         </div>
 
 
@@ -1461,6 +2032,7 @@ button{
       </div>
 
 
+
       <!-- USERS -->
 
       <div class="card">
@@ -1468,6 +2040,7 @@ button{
         <h2>
           Пользователи
         </h2>
+
 
         <div
           class="table-wrap"
@@ -1479,24 +2052,45 @@ button{
             <thead>
 
               <tr>
-                <th>Имя</th>
-                <th>Email</th>
-                <th>Роль</th>
-                <th>Статус</th>
-                <th>Действие</th>
+
+                <th>
+                  Имя
+                </th>
+
+                <th>
+                  Email
+                </th>
+
+                <th>
+                  Роль
+                </th>
+
+                <th>
+                  Статус
+                </th>
+
+                <th>
+                  Действие
+                </th>
+
               </tr>
 
             </thead>
 
-            <tbody id="usersTable">
+
+            <tbody
+              id="usersTable"
+            >
 
               <tr>
+
                 <td
                   colspan="5"
                   class="empty"
                 >
                   Загрузка...
                 </td>
+
               </tr>
 
             </tbody>
@@ -1506,6 +2100,7 @@ button{
         </div>
 
       </div>
+
 
 
       <div class="card">
@@ -1523,16 +2118,19 @@ button{
 
       </div>
 
+
     </section>
+
 
   </main>
 
 </div>
 
 
-<!-- =========================
+
+<!-- =========================================================
      MANAGE USER MODAL
-========================= -->
+========================================================= -->
 
 <div
   id="manageModal"
@@ -1540,6 +2138,7 @@ button{
 >
 
   <div class="modalbox">
+
 
     <button
       class="close"
@@ -1553,10 +2152,12 @@ button{
       Управление ЛК
     </h2>
 
+
     <div
       class="subtitle"
       id="manageEmail"
     ></div>
+
 
 
     <!-- ACCOUNT -->
@@ -1565,7 +2166,9 @@ button{
       1. Аккаунт
     </div>
 
+
     <div class="form-grid">
+
 
       <div class="field">
 
@@ -1573,7 +2176,9 @@ button{
           Имя
         </label>
 
-        <input id="mName">
+        <input
+          id="mName"
+        >
 
       </div>
 
@@ -1613,7 +2218,9 @@ button{
           Статус
         </label>
 
-        <select id="mStatus">
+        <select
+          id="mStatus"
+        >
 
           <option value="active">
             Активен
@@ -1627,7 +2234,9 @@ button{
 
       </div>
 
+
     </div>
+
 
 
     <!-- FINANCE -->
@@ -1636,7 +2245,9 @@ button{
       2. Финансы
     </div>
 
+
     <div class="form-grid">
+
 
       <div class="field">
 
@@ -1712,7 +2323,9 @@ button{
 
       </div>
 
+
     </div>
+
 
 
     <!-- REQUISITES -->
@@ -1721,7 +2334,9 @@ button{
       3. Реквизиты
     </div>
 
+
     <div class="form-grid">
+
 
       <div class="field">
 
@@ -1729,7 +2344,9 @@ button{
           Сеть
         </label>
 
-        <select id="mNetwork">
+        <select
+          id="mNetwork"
+        >
 
           <option value="">
             Не выбрана
@@ -1809,7 +2426,11 @@ button{
           type="file"
           accept="image/png,image/jpeg,image/webp"
           onchange="previewQr(event)"
-          style="padding:10px;background:#eef2f7;border-radius:10px"
+          style="
+            padding:10px;
+            background:#eef2f7;
+            border-radius:10px
+          "
         >
 
         <div
@@ -1820,6 +2441,7 @@ button{
         </div>
 
       </div>
+
 
     </div>
 
@@ -1836,12 +2458,14 @@ button{
       style="margin-top:22px"
     >
 
+
       <button
         class="btn primary"
         onclick="saveManagedUser()"
       >
         Сохранить всё
       </button>
+
 
       <button
         class="btn light"
@@ -1850,6 +2474,7 @@ button{
         Удалить QR
       </button>
 
+
       <button
         class="btn danger"
         onclick="toggleManagedStatus()"
@@ -1857,24 +2482,29 @@ button{
         Заблокировать / разблокировать
       </button>
 
+
     </div>
+
 
   </div>
 
 </div>
 
 
+
 <script>
 
 /* =========================================================
-   SUPABASE
+   SUPABASE CONFIG
 ========================================================= */
 
 const SUPABASE_URL =
   "https://kzdaiqhnjcdsinzaygao.supabase.co";
 
+
 const SUPABASE_PUBLISHABLE_KEY =
   "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
+
 
 const supabaseClient =
   window.supabase.createClient(
@@ -1884,14 +2514,17 @@ const supabaseClient =
 
 
 /* =========================================================
-   GLOBAL STATE
+   STATE
 ========================================================= */
 
 let currentUser = null;
+
 let currentProfile = null;
+
 let currentRequisite = null;
 
 let managedId = null;
+
 let qrData = "";
 
 
@@ -1902,8 +2535,8 @@ let qrData = "";
 function money(n){
 
   return Number(n || 0)
-    .toLocaleString("ru-RU") +
-    " USDT";
+    .toLocaleString("ru-RU")
+    + " USDT";
 
 }
 
@@ -1936,13 +2569,17 @@ function escAttr(s){
 
 function setLoginError(text){
 
-  const e =
-    document.getElementById("loginError");
+  const el =
+    document.getElementById(
+      "loginError"
+    );
 
-  e.textContent =
+
+  el.textContent =
     text || "Ошибка входа";
 
-  e.style.display =
+
+  el.style.display =
     "block";
 
 }
@@ -1961,12 +2598,17 @@ async function login(){
       .trim()
       .toLowerCase();
 
+
   const password =
     document
       .getElementById("loginPassword")
       .value;
 
-  if(!email || !password){
+
+  if(
+    !email ||
+    !password
+  ){
 
     return setLoginError(
       "Введите email и пароль"
@@ -1986,10 +2628,12 @@ async function login(){
       data,
       error
     } =
-      await supabaseClient.auth.signInWithPassword({
-        email,
-        password
-      });
+      await supabaseClient
+        .auth
+        .signInWithPassword({
+          email,
+          password
+        });
 
 
     if(error){
@@ -1999,10 +2643,13 @@ async function login(){
         error
       );
 
+
       return setLoginError(
         "Supabase: " +
-        (error.message ||
-        "Ошибка входа")
+        (
+          error.message ||
+          "Ошибка входа"
+        )
       );
 
     }
@@ -2019,6 +2666,7 @@ async function login(){
 
     await start();
 
+
   }catch(error){
 
     console.error(
@@ -2026,10 +2674,13 @@ async function login(){
       error
     );
 
+
     setLoginError(
       "Ошибка подключения: " +
-      (error?.message ||
-      "неизвестная ошибка")
+      (
+        error?.message ||
+        "неизвестная ошибка"
+      )
     );
 
   }
@@ -2065,11 +2716,15 @@ async function loadProfile(){
       error
     );
 
+
     setLoginError(
       "Auth работает, но профиль недоступен: " +
-      (error.message ||
-      "неизвестная ошибка")
+      (
+        error.message ||
+        "неизвестная ошибка"
+      )
     );
+
 
     return false;
 
@@ -2088,7 +2743,12 @@ async function loadProfile(){
       .from("requisites")
       .select("*")
       .eq("user_id",currentUser.id)
-      .order("created_at",{ascending:false})
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      )
       .limit(1)
       .maybeSingle();
 
@@ -2113,7 +2773,7 @@ async function loadProfile(){
 
 
 /* =========================================================
-   START APP
+   START
 ========================================================= */
 
 async function start(){
@@ -2124,7 +2784,9 @@ async function start(){
       data,
       error
     } =
-      await supabaseClient.auth.getSession();
+      await supabaseClient
+        .auth
+        .getSession();
 
 
     if(error){
@@ -2138,7 +2800,8 @@ async function start(){
 
 
     currentUser =
-      data?.session?.user || null;
+      data?.session?.user ||
+      null;
 
 
     if(!currentUser){
@@ -2147,37 +2810,50 @@ async function start(){
         .getElementById("loginScreen")
         .style.display="grid";
 
+
       document
         .getElementById("app")
         .style.display="none";
 
+
       return;
 
     }
 
 
-    const profileLoaded =
+    const ok =
       await loadProfile();
 
 
-    if(!profileLoaded){
+    if(!ok){
 
-      await supabaseClient.auth.signOut();
+      await supabaseClient
+        .auth
+        .signOut();
+
 
       return;
 
     }
 
 
-    if(currentProfile.status === "blocked"){
+    if(
+      currentProfile.status ===
+      "blocked"
+    ){
 
       alert(
         "Ваш аккаунт заблокирован администратором"
       );
 
-      await supabaseClient.auth.signOut();
+
+      await supabaseClient
+        .auth
+        .signOut();
+
 
       location.reload();
+
 
       return;
 
@@ -2195,13 +2871,16 @@ async function start(){
 
 
     const isAdmin =
-      currentProfile.role === "ADMIN";
+      currentProfile.role ===
+      "ADMIN";
 
 
     document
       .getElementById("adminNav")
       .style.display =
-        isAdmin ? "block" : "none";
+        isAdmin
+          ? "block"
+          : "none";
 
 
     document
@@ -2213,14 +2892,17 @@ async function start(){
 
 
     /*
-      Роль больше НЕ показываем обычному пользователю.
-      Для ADMIN оставляем внутреннюю отметку в верхней панели.
+      Для USER роль не показываем.
+      ADMIN может видеть отметку
+      администратора в верхней части.
     */
 
     document
       .getElementById("roleText")
       .textContent =
-        isAdmin ? "Администратор" : "";
+        isAdmin
+          ? "Администратор"
+          : "";
 
 
     document
@@ -2236,8 +2918,8 @@ async function start(){
 
 
     /*
-      В ПРОФИЛЕ теперь только Email + Статус.
-      Поля role/profileRole больше нет.
+      Профиль:
+      только Email + Статус.
     */
 
     document
@@ -2251,12 +2933,14 @@ async function start(){
     document
       .getElementById("profileStatus")
       .value =
-        currentProfile.status === "blocked"
+        currentProfile.status ===
+        "blocked"
           ? "Заблокирован"
           : "Активен";
 
 
     render();
+
 
   }catch(error){
 
@@ -2265,10 +2949,13 @@ async function start(){
       error
     );
 
+
     setLoginError(
       "Ошибка запуска: " +
-      (error?.message ||
-      "неизвестная ошибка")
+      (
+        error?.message ||
+        "неизвестная ошибка"
+      )
     );
 
   }
@@ -2282,7 +2969,10 @@ async function start(){
 
 async function logout(){
 
-  await supabaseClient.auth.signOut();
+  await supabaseClient
+    .auth
+    .signOut();
+
 
   location.reload();
 
@@ -2295,8 +2985,13 @@ async function logout(){
 
 function toggleMenu(){
 
-  document
-    .getElementById("sidebar")
+  const sidebar =
+    document.getElementById(
+      "sidebar"
+    );
+
+
+  sidebar
     .classList
     .toggle("open");
 
@@ -2311,10 +3006,14 @@ function go(page){
 
   if(
     page === "admin" &&
-    currentProfile?.role !== "ADMIN"
+    currentProfile?.role !==
+      "ADMIN"
   ){
 
-    alert("Доступ запрещён");
+    alert(
+      "Доступ запрещён"
+    );
+
 
     return;
 
@@ -2322,14 +3021,21 @@ function go(page){
 
 
   document
-    .querySelectorAll(".section")
+    .querySelectorAll(
+      ".section"
+    )
     .forEach(
-      x => x.classList.remove("active")
+      x =>
+        x.classList.remove(
+          "active"
+        )
     );
 
 
   const section =
-    document.getElementById(page);
+    document.getElementById(
+      page
+    );
 
 
   if(!section){
@@ -2339,12 +3045,15 @@ function go(page){
       page
     );
 
+
     return;
 
   }
 
 
-  section.classList.add("active");
+  section
+    .classList
+    .add("active");
 
 
   document
@@ -2355,7 +3064,8 @@ function go(page){
       x =>
         x.classList.toggle(
           "active",
-          x.dataset.page === page
+          x.dataset.page ===
+            page
         )
     );
 
@@ -2380,15 +3090,46 @@ function go(page){
 
 
   document
-    .getElementById("pageTitle")
+    .getElementById(
+      "pageTitle"
+    )
     .textContent =
-      titles[page] || "P2PSPARK";
+      titles[page] ||
+      "P2PSPARK";
 
+
+  /*
+    На телефоне после выбора пункта
+    закрываем меню.
+  */
 
   document
-    .getElementById("sidebar")
+    .getElementById(
+      "sidebar"
+    )
     .classList
     .remove("open");
+
+
+  /*
+    Возвращаем основную страницу
+    в начало.
+  */
+
+  const main =
+    document.querySelector(
+      ".main"
+    );
+
+
+  if(main){
+
+    main.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
 
 
   render();
@@ -2411,51 +3152,68 @@ function render(){
 
 
   document
-    .getElementById("dDeposit")
+    .getElementById(
+      "dDeposit"
+    )
     .textContent =
       money(f.deposit);
 
 
   document
-    .getElementById("fDeposit")
+    .getElementById(
+      "fDeposit"
+    )
     .textContent =
       money(f.deposit);
 
 
   document
-    .getElementById("dTurnover")
+    .getElementById(
+      "dTurnover"
+    )
     .textContent =
       money(f.turnover);
 
 
   document
-    .getElementById("fTurnover")
+    .getElementById(
+      "fTurnover"
+    )
     .textContent =
       money(f.turnover);
 
 
   document
-    .getElementById("dProfit")
+    .getElementById(
+      "dProfit"
+    )
     .textContent =
       money(f.profit);
 
 
   document
-    .getElementById("fProfit")
+    .getElementById(
+      "fProfit"
+    )
     .textContent =
       money(f.profit);
 
 
   document
-    .getElementById("dDeals")
+    .getElementById(
+      "dDeals"
+    )
     .textContent =
       f.deals || 0;
 
 
   document
-    .getElementById("fCommission")
+    .getElementById(
+      "fCommission"
+    )
     .textContent =
-      (f.commission || 0) + "%";
+      (f.commission || 0) +
+      "%";
 
 
   renderPayment(
@@ -2466,7 +3224,9 @@ function render(){
   renderDeals();
 
 
-  if(f.role === "ADMIN"){
+  if(
+    f.role === "ADMIN"
+  ){
 
     renderAdmin();
 
@@ -2477,55 +3237,72 @@ function render(){
 
 /* =========================================================
    DEALS
-   Пока реальные сделки не подключены.
-   Никаких тестовых #1000/#1001.
 ========================================================= */
 
 function renderDeals(){
 
   document
-    .getElementById("dealsTable")
+    .getElementById(
+      "dealsTable"
+    )
     .innerHTML = `
+
       <tr>
+
         <td colspan="4">
+
           <div class="empty">
             Пока нет сделок
           </div>
+
         </td>
+
       </tr>
+
     `;
 
 
   document
-    .getElementById("dashDeals")
+    .getElementById(
+      "dashDeals"
+    )
     .innerHTML = `
+
       <div class="empty">
         Пока нет сделок
       </div>
+
     `;
 
 }
 
 
 /* =========================================================
-   PAYMENT / REQUISITES
+   PAYMENT
 ========================================================= */
 
 function renderPayment(p){
 
-  p = p || {};
+  p =
+    p || {};
 
 
   document
-    .getElementById("pNetwork")
+    .getElementById(
+      "pNetwork"
+    )
     .textContent =
-      p.network || "—";
+      p.network ||
+      "—";
 
 
   document
-    .getElementById("pWallet")
+    .getElementById(
+      "pWallet"
+    )
     .textContent =
-      p.wallet || "Не указан";
+      p.wallet ||
+      "Не указан";
 
 
   const wrap =
@@ -2541,7 +3318,11 @@ function renderPayment(p){
 
 
   const walletLink =
-    (p.wallet_link || "").trim();
+    (
+      p.wallet_link ||
+      ""
+    )
+    .trim();
 
 
   if(walletLink){
@@ -2549,8 +3330,10 @@ function renderPayment(p){
     wrap.style.display =
       "block";
 
+
     link.href =
       walletLink;
+
 
     link.textContent =
       walletLink;
@@ -2560,9 +3343,11 @@ function renderPayment(p){
     wrap.style.display =
       "none";
 
+
     link.removeAttribute(
       "href"
     );
+
 
     link.textContent =
       "";
@@ -2581,6 +3366,7 @@ function renderPayment(p){
     img.style.display =
       "block";
 
+
     img.src =
       p.qr_url;
 
@@ -2588,6 +3374,7 @@ function renderPayment(p){
 
     img.style.display =
       "none";
+
 
     img.removeAttribute(
       "src"
@@ -2605,7 +3392,8 @@ function renderPayment(p){
 async function copyWallet(){
 
   const wallet =
-    currentRequisite?.wallet || "";
+    currentRequisite?.wallet ||
+    "";
 
 
   if(!wallet){
@@ -2619,19 +3407,28 @@ async function copyWallet(){
 
   try{
 
-    await navigator.clipboard.writeText(
-      wallet
-    );
+    await navigator
+      .clipboard
+      .writeText(
+        wallet
+      );
+
 
     alert(
       "Реквизит скопирован"
     );
 
+
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
-    alert(wallet);
+
+    alert(
+      wallet
+    );
 
   }
 
@@ -2640,15 +3437,14 @@ async function copyWallet(){
 
 /* =========================================================
    ADMIN USERS
-   ВАЖНО:
-   используем RPC admin_get_users()
-   вместо прямого SELECT profiles.
+   RPC
 ========================================================= */
 
 async function renderAdmin(){
 
   if(
-    currentProfile?.role !== "ADMIN"
+    currentProfile?.role !==
+    "ADMIN"
   ){
 
     return;
@@ -2667,14 +3463,18 @@ async function renderAdmin(){
 
 
   body.innerHTML = `
+
     <tr>
+
       <td
         colspan="5"
         class="empty"
       >
         Загрузка пользователей...
       </td>
+
     </tr>
+
   `;
 
 
@@ -2685,7 +3485,9 @@ async function renderAdmin(){
       error
     } =
       await supabaseClient
-        .rpc("admin_get_users");
+        .rpc(
+          "admin_get_users"
+        );
 
 
     console.log(
@@ -2709,19 +3511,28 @@ async function renderAdmin(){
 
 
       body.innerHTML = `
+
         <tr>
+
           <td
             colspan="5"
             class="empty"
             style="color:#dc2626"
           >
-            Ошибка загрузки пользователей:<br>
+
+            Ошибка загрузки пользователей:
+
+            <br>
+
             ${esc(
               error.message ||
               "Неизвестная ошибка"
             )}
+
           </td>
+
         </tr>
+
       `;
 
 
@@ -2730,7 +3541,8 @@ async function renderAdmin(){
     }
 
 
-    body.innerHTML = "";
+    body.innerHTML =
+      "";
 
 
     if(
@@ -2739,14 +3551,18 @@ async function renderAdmin(){
     ){
 
       body.innerHTML = `
+
         <tr>
+
           <td
             colspan="5"
             class="empty"
           >
             Пользователи не найдены
           </td>
+
         </tr>
+
       `;
 
 
@@ -2765,58 +3581,82 @@ async function renderAdmin(){
 
 
         const role =
-          u.role || "USER";
+          u.role ||
+          "USER";
 
 
         const status =
-          u.status || "active";
+          u.status ||
+          "active";
 
 
         tr.innerHTML = `
 
           <td>
+
             <b>
               ${esc(
-                u.name || "—"
+                u.name ||
+                "—"
               )}
             </b>
+
           </td>
+
 
           <td>
             ${esc(
-              u.email || "—"
+              u.email ||
+              "—"
             )}
           </td>
 
+
           <td>
-            <span class="badge gray">
-              ${esc(role)}
+
+            <span
+              class="badge gray"
+            >
+              ${esc(
+                role
+              )}
             </span>
+
           </td>
+
 
           <td>
 
             <span
               class="badge ${
-                status === "active"
+                status ===
+                "active"
                   ? "green"
                   : "red"
               }"
             >
+
               ${
-                status === "active"
+                status ===
+                "active"
                   ? "Активен"
                   : "Заблокирован"
               }
+
             </span>
 
           </td>
+
 
           <td>
 
             <button
               class="btn light"
-              onclick="openManage('${escAttr(u.id)}')"
+              onclick="
+                openManage(
+                  '${escAttr(u.id)}'
+                )
+              "
             >
               Управлять
             </button>
@@ -2826,14 +3666,18 @@ async function renderAdmin(){
         `;
 
 
-        body.appendChild(tr);
+        body.appendChild(
+          tr
+        );
 
       }
     );
 
 
     document
-      .getElementById("auditLog")
+      .getElementById(
+        "auditLog"
+      )
       .textContent =
         "Пользователей загружено: " +
         data.length;
@@ -2848,19 +3692,28 @@ async function renderAdmin(){
 
 
     body.innerHTML = `
+
       <tr>
+
         <td
           colspan="5"
           class="empty"
           style="color:#dc2626"
         >
-          Ошибка:<br>
+
+          Ошибка:
+
+          <br>
+
           ${esc(
             error?.message ||
             "Неизвестная ошибка"
           )}
+
         </td>
+
       </tr>
+
     `;
 
   }
@@ -2875,7 +3728,8 @@ async function renderAdmin(){
 async function createUser(){
 
   if(
-    currentProfile?.role !== "ADMIN"
+    currentProfile?.role !==
+    "ADMIN"
   ){
 
     return alert(
@@ -2887,14 +3741,18 @@ async function createUser(){
 
   const name =
     document
-      .getElementById("newName")
+      .getElementById(
+        "newName"
+      )
       .value
       .trim();
 
 
   const email =
     document
-      .getElementById("newEmail")
+      .getElementById(
+        "newEmail"
+      )
       .value
       .trim()
       .toLowerCase();
@@ -2902,7 +3760,9 @@ async function createUser(){
 
   const password =
     document
-      .getElementById("newPassword")
+      .getElementById(
+        "newPassword"
+      )
       .value;
 
 
@@ -2920,7 +3780,8 @@ async function createUser(){
 
 
   if(
-    !/^\S+@\S+\.\S+$/.test(email)
+    !/^\S+@\S+\.\S+$/
+      .test(email)
   ){
 
     return alert(
@@ -2930,7 +3791,9 @@ async function createUser(){
   }
 
 
-  if(password.length < 6){
+  if(
+    password.length < 6
+  ){
 
     return alert(
       "Пароль минимум 6 символов"
@@ -3017,7 +3880,9 @@ async function createUser(){
     }
 
 
-    if(!data?.success){
+    if(
+      !data?.success
+    ){
 
       return alert(
         "Ошибка создания USER: " +
@@ -3031,18 +3896,27 @@ async function createUser(){
 
 
     document
-      .getElementById("newName")
-      .value = "";
+      .getElementById(
+        "newName"
+      )
+      .value =
+      "";
 
 
     document
-      .getElementById("newEmail")
-      .value = "";
+      .getElementById(
+        "newEmail"
+      )
+      .value =
+      "";
 
 
     document
-      .getElementById("newPassword")
-      .value = "";
+      .getElementById(
+        "newPassword"
+      )
+      .value =
+      "";
 
 
     await renderAdmin();
@@ -3060,7 +3934,7 @@ async function createUser(){
   }catch(error){
 
     console.error(
-      "CREATE USER EXCEPTION:",
+      "CREATE USER ERROR:",
       error
     );
 
@@ -3085,7 +3959,8 @@ async function createUser(){
 async function openManage(id){
 
   if(
-    currentProfile?.role !== "ADMIN"
+    currentProfile?.role !==
+    "ADMIN"
   ){
 
     return;
@@ -3110,10 +3985,13 @@ async function openManage(id){
         .single();
 
 
-    if(error || !u){
+    if(
+      error ||
+      !u
+    ){
 
       console.error(
-        "OPEN MANAGE PROFILE ERROR:",
+        "OPEN MANAGE ERROR:",
         error
       );
 
@@ -3135,7 +4013,9 @@ async function openManage(id){
         .eq("user_id",id)
         .order(
           "created_at",
-          {ascending:false}
+          {
+            ascending:false
+          }
         )
         .limit(1)
         .maybeSingle();
@@ -3144,7 +4024,7 @@ async function openManage(id){
     if(reqError){
 
       console.warn(
-        "OPEN MANAGE REQUISITES ERROR:",
+        "REQUISITES ERROR:",
         reqError
       );
 
@@ -3156,93 +4036,136 @@ async function openManage(id){
 
 
     document
-      .getElementById("manageEmail")
+      .getElementById(
+        "manageEmail"
+      )
       .textContent =
         "Редактирование: " +
-        (u.email || "");
+        (
+          u.email ||
+          ""
+        );
 
 
     document
-      .getElementById("mName")
+      .getElementById(
+        "mName"
+      )
       .value =
-        u.name || "";
+        u.name ||
+        "";
 
 
     document
-      .getElementById("mEmail")
+      .getElementById(
+        "mEmail"
+      )
       .value =
-        u.email || "";
+        u.email ||
+        "";
 
 
     document
-      .getElementById("mPassword")
+      .getElementById(
+        "mPassword"
+      )
       .value =
         "";
 
 
     document
-      .getElementById("mStatus")
+      .getElementById(
+        "mStatus"
+      )
       .value =
-        u.status || "active";
+        u.status ||
+        "active";
 
 
     document
-      .getElementById("mDeposit")
+      .getElementById(
+        "mDeposit"
+      )
       .value =
-        u.deposit || 0;
+        u.deposit ||
+        0;
 
 
     document
-      .getElementById("mTurnover")
+      .getElementById(
+        "mTurnover"
+      )
       .value =
-        u.turnover || 0;
+        u.turnover ||
+        0;
 
 
     document
-      .getElementById("mProfit")
+      .getElementById(
+        "mProfit"
+      )
       .value =
-        u.profit || 0;
+        u.profit ||
+        0;
 
 
     document
-      .getElementById("mCommission")
+      .getElementById(
+        "mCommission"
+      )
       .value =
-        u.commission || 0;
+        u.commission ||
+        0;
 
 
     document
-      .getElementById("mDeals")
+      .getElementById(
+        "mDeals"
+      )
       .value =
-        u.deals || 0;
+        u.deals ||
+        0;
 
 
     document
-      .getElementById("mNetwork")
+      .getElementById(
+        "mNetwork"
+      )
       .value =
-        r.network || "";
+        r.network ||
+        "";
 
 
     document
-      .getElementById("mWallet")
+      .getElementById(
+        "mWallet"
+      )
       .value =
-        r.wallet || "";
+        r.wallet ||
+        "";
 
 
     document
-      .getElementById("mWalletLink")
+      .getElementById(
+        "mWalletLink"
+      )
       .value =
-        r.wallet_link || "";
+        r.wallet_link ||
+        "";
 
 
     qrData =
-      r.qr_url || "";
+      r.qr_url ||
+      "";
 
 
     showQrPreview();
 
 
     document
-      .getElementById("manageModal")
+      .getElementById(
+        "manageModal"
+      )
       .classList
       .add("show");
 
@@ -3250,7 +4173,7 @@ async function openManage(id){
   }catch(error){
 
     console.error(
-      "OPEN MANAGE ERROR:",
+      "OPEN MANAGE EXCEPTION:",
       error
     );
 
@@ -3275,7 +4198,9 @@ async function openManage(id){
 function closeManage(){
 
   document
-    .getElementById("manageModal")
+    .getElementById(
+      "manageModal"
+    )
     .classList
     .remove("show");
 
@@ -3291,7 +4216,7 @@ function closeManage(){
 
 
 /* =========================================================
-   SAVE USER
+   SAVE MANAGED USER
 ========================================================= */
 
 async function saveManagedUser(){
@@ -3302,7 +4227,9 @@ async function saveManagedUser(){
 
   const newEmail =
     document
-      .getElementById("mEmail")
+      .getElementById(
+        "mEmail"
+      )
       .value
       .trim()
       .toLowerCase();
@@ -3310,7 +4237,9 @@ async function saveManagedUser(){
 
   const walletLink =
     document
-      .getElementById("mWalletLink")
+      .getElementById(
+        "mWalletLink"
+      )
       .value
       .trim();
 
@@ -3326,9 +4255,8 @@ async function saveManagedUser(){
 
   if(
     walletLink &&
-    !/^https?:\/\//i.test(
-      walletLink
-    )
+    !/^https?:\/\//i
+      .test(walletLink)
   ){
 
     return alert(
@@ -3344,53 +4272,75 @@ async function saveManagedUser(){
 
       name:
         document
-          .getElementById("mName")
+          .getElementById(
+            "mName"
+          )
           .value
           .trim() ||
         "Пользователь",
 
+
       status:
         document
-          .getElementById("mStatus")
+          .getElementById(
+            "mStatus"
+          )
           .value,
+
 
       deposit:
         Number(
           document
-            .getElementById("mDeposit")
+            .getElementById(
+              "mDeposit"
+            )
             .value
         ) || 0,
+
 
       turnover:
         Number(
           document
-            .getElementById("mTurnover")
+            .getElementById(
+              "mTurnover"
+            )
             .value
         ) || 0,
+
 
       profit:
         Number(
           document
-            .getElementById("mProfit")
+            .getElementById(
+              "mProfit"
+            )
             .value
         ) || 0,
+
 
       commission:
         Number(
           document
-            .getElementById("mCommission")
+            .getElementById(
+              "mCommission"
+            )
             .value
         ) || 0,
+
 
       deals:
         Number(
           document
-            .getElementById("mDeals")
+            .getElementById(
+              "mDeals"
+            )
             .value
         ) || 0,
 
+
       updated_at:
-        new Date().toISOString()
+        new Date()
+          .toISOString()
 
     };
 
@@ -3400,8 +4350,13 @@ async function saveManagedUser(){
     } =
       await supabaseClient
         .from("profiles")
-        .update(profileUpdate)
-        .eq("id",managedId);
+        .update(
+          profileUpdate
+        )
+        .eq(
+          "id",
+          managedId
+        );
 
 
     if(e1){
@@ -3419,25 +4374,36 @@ async function saveManagedUser(){
       user_id:
         managedId,
 
+
       network:
         document
-          .getElementById("mNetwork")
+          .getElementById(
+            "mNetwork"
+          )
           .value,
+
 
       wallet:
         document
-          .getElementById("mWallet")
+          .getElementById(
+            "mWallet"
+          )
           .value
           .trim(),
+
 
       wallet_link:
         walletLink,
 
+
       qr_url:
-        qrData || null,
+        qrData ||
+        null,
+
 
       updated_at:
-        new Date().toISOString()
+        new Date()
+          .toISOString()
 
     };
 
@@ -3449,7 +4415,10 @@ async function saveManagedUser(){
       await supabaseClient
         .from("requisites")
         .select("id")
-        .eq("user_id",managedId)
+        .eq(
+          "user_id",
+          managedId
+        )
         .limit(1)
         .maybeSingle();
 
@@ -3464,7 +4433,8 @@ async function saveManagedUser(){
     }
 
 
-    let e2 = null;
+    let e2 =
+      null;
 
 
     if(existing){
@@ -3474,7 +4444,10 @@ async function saveManagedUser(){
           await supabaseClient
             .from("requisites")
             .update(req)
-            .eq("id",existing.id)
+            .eq(
+              "id",
+              existing.id
+            )
         ).error;
 
     }else{
@@ -3499,23 +4472,26 @@ async function saveManagedUser(){
     }
 
 
+    const savedId =
+      managedId;
+
+
     closeManage();
 
 
     if(
-      currentUser &&
-      managedId === currentUser.id
+      currentUser?.id ===
+      savedId
     ){
 
       await loadProfile();
+
+      render();
 
     }
 
 
     await renderAdmin();
-
-
-    render();
 
 
     alert(
@@ -3526,7 +4502,7 @@ async function saveManagedUser(){
   }catch(error){
 
     console.error(
-      "SAVE MANAGED USER ERROR:",
+      "SAVE USER ERROR:",
       error
     );
 
@@ -3562,12 +4538,20 @@ async function toggleManagedStatus(){
     } =
       await supabaseClient
         .from("profiles")
-        .select("role,status")
-        .eq("id",managedId)
+        .select(
+          "role,status"
+        )
+        .eq(
+          "id",
+          managedId
+        )
         .single();
 
 
-    if(error || !u){
+    if(
+      error ||
+      !u
+    ){
 
       return alert(
         "Пользователь не найден"
@@ -3576,7 +4560,10 @@ async function toggleManagedStatus(){
     }
 
 
-    if(u.role === "ADMIN"){
+    if(
+      u.role ===
+      "ADMIN"
+    ){
 
       return alert(
         "ADMIN нельзя заблокировать"
@@ -3586,7 +4573,8 @@ async function toggleManagedStatus(){
 
 
     const next =
-      u.status === "active"
+      u.status ===
+      "active"
         ? "blocked"
         : "active";
 
@@ -3597,11 +4585,18 @@ async function toggleManagedStatus(){
       await supabaseClient
         .from("profiles")
         .update({
+
           status:next,
+
           updated_at:
-            new Date().toISOString()
+            new Date()
+              .toISOString()
+
         })
-        .eq("id",managedId);
+        .eq(
+          "id",
+          managedId
+        );
 
 
     if(updateError){
@@ -3619,6 +4614,7 @@ async function toggleManagedStatus(){
 
 
     await renderAdmin();
+
 
   }catch(error){
 
@@ -3648,19 +4644,26 @@ async function toggleManagedStatus(){
 function previewQr(event){
 
   const file =
-    event.target.files?.[0];
+    event
+      .target
+      .files?.[0];
 
 
   if(!file)
     return;
 
 
+  const allowed = [
+    "image/png",
+    "image/jpeg",
+    "image/webp"
+  ];
+
+
   if(
-    ![
-      "image/png",
-      "image/jpeg",
-      "image/webp"
-    ].includes(file.type)
+    !allowed.includes(
+      file.type
+    )
   ){
 
     return alert(
@@ -3671,7 +4674,8 @@ function previewQr(event){
 
 
   if(
-    file.size > 2 * 1024 * 1024
+    file.size >
+    2 * 1024 * 1024
   ){
 
     return alert(
@@ -3689,6 +4693,7 @@ function previewQr(event){
 
     qrData =
       reader.result;
+
 
     showQrPreview();
 
@@ -3724,6 +4729,7 @@ function showQrPreview(){
     img.style.display =
       "block";
 
+
     img.src =
       qrData;
 
@@ -3731,6 +4737,7 @@ function showQrPreview(){
 
     img.style.display =
       "none";
+
 
     img.removeAttribute(
       "src"
@@ -3767,14 +4774,17 @@ function clearQr(){
 
 
 /* =========================================================
-   ESC / AUTH
+   ESC
 ========================================================= */
 
 document.addEventListener(
   "keydown",
-  e => {
+  event => {
 
-    if(e.key === "Escape"){
+    if(
+      event.key ===
+      "Escape"
+    ){
 
       closeManage();
 
@@ -3784,27 +4794,33 @@ document.addEventListener(
 );
 
 
-supabaseClient.auth.onAuthStateChange(
-  (_event,session) => {
+/* =========================================================
+   AUTH STATE
+========================================================= */
 
-    if(
-      session &&
-      !currentUser
-    ){
+supabaseClient
+  .auth
+  .onAuthStateChange(
+    (_event,session) => {
 
-      setTimeout(
-        () => start(),
-        0
-      );
+      if(
+        session &&
+        !currentUser
+      ){
+
+        setTimeout(
+          () => start(),
+          0
+        );
+
+      }
 
     }
-
-  }
-);
+  );
 
 
 /* =========================================================
-   START
+   START APP
 ========================================================= */
 
 start();
