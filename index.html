@@ -16,8 +16,7 @@
   --blue2:#eaf1ff;
   --green:#16a34a;
   --red:#dc2626;
-  --dark:#111827;
-  --purple:#7c3aed;
+  --dark:#111827
 }
 
 *{box-sizing:border-box}
@@ -26,7 +25,7 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   background:var(--bg);
-  color:var(--text);
+  color:var(--text)
 }
 
 button,input,select{font:inherit}
@@ -44,14 +43,14 @@ button{cursor:pointer}
   border-right:1px solid var(--line);
   padding:25px 15px;
   z-index:20;
-  overflow-y:auto;
+  overflow-y:auto
 }
 
 .logo{
   font-size:25px;
   font-weight:900;
   letter-spacing:.5px;
-  padding:4px 14px 28px;
+  padding:4px 14px 28px
 }
 
 .logo span{color:var(--blue)}
@@ -61,7 +60,7 @@ button{cursor:pointer}
   text-transform:uppercase;
   letter-spacing:1.2px;
   color:#9aa3b2;
-  margin:17px 13px 7px;
+  margin:17px 13px 7px
 }
 
 .nav button{
@@ -74,46 +73,44 @@ button{cursor:pointer}
   border-radius:11px;
   color:#657083;
   margin:3px 0;
-  font-weight:600;
+  font-weight:600
 }
 
 .nav button:hover,
 .nav button.active{
   background:var(--blue2);
-  color:var(--blue);
+  color:var(--blue)
 }
 
-.nav button.admin{
-  color:var(--purple);
-}
+.nav button.admin{color:#7c3aed}
 
 .main{
   margin-left:245px;
   padding:30px;
-  max-width:1500px;
+  max-width:1500px
 }
 
 .top{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:25px;
+  margin-bottom:25px
 }
 
 .top h1{
   margin:0;
-  font-size:30px;
+  font-size:30px
 }
 
 .subtitle{
   color:var(--muted);
-  margin-top:5px;
+  margin-top:5px
 }
 
 .userbox{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:10px
 }
 
 .avatar{
@@ -124,7 +121,7 @@ button{cursor:pointer}
   color:#fff;
   display:grid;
   place-items:center;
-  font-weight:800;
+  font-weight:800
 }
 
 .mobile-menu{
@@ -132,7 +129,7 @@ button{cursor:pointer}
   border:1px solid var(--line);
   background:#fff;
   border-radius:10px;
-  padding:9px 12px;
+  padding:9px 12px
 }
 
 .section{display:none}
@@ -141,7 +138,7 @@ button{cursor:pointer}
 .grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:18px;
+  gap:18px
 }
 
 .card{
@@ -150,90 +147,89 @@ button{cursor:pointer}
   border-radius:17px;
   padding:21px;
   box-shadow:0 6px 25px rgba(16,24,40,.04);
-  margin-bottom:18px;
+  margin-bottom:18px
 }
 
 .label{
   font-size:13px;
   color:var(--muted);
-  font-weight:600;
+  font-weight:600
 }
 
 .big{
   font-size:28px;
   font-weight:850;
-  margin-top:8px;
+  margin-top:8px
 }
 
 .green{color:var(--green)}
 .red{color:var(--red)}
-
 .small{
   font-size:13px;
-  color:var(--muted);
+  color:var(--muted)
 }
 
 .btn{
   border:0;
   border-radius:10px;
   padding:11px 16px;
-  font-weight:750;
+  font-weight:750
 }
 
 .primary{
   background:var(--blue);
-  color:#fff;
+  color:#fff
 }
 
 .light{
   background:#eef2f7;
-  color:#253044;
+  color:#253044
 }
 
 .danger{
   background:#fee2e2;
-  color:#b91c1c;
+  color:#b91c1c
 }
 
 .success{
   background:#dcfce7;
-  color:#15803d;
+  color:#15803d
 }
 
 .actions{
   display:flex;
   gap:10px;
-  flex-wrap:wrap;
+  flex-wrap:wrap
 }
 
 .table-wrap{
   overflow:auto;
   background:#fff;
   border:1px solid var(--line);
-  border-radius:17px;
+  border-radius:17px
 }
 
 .table{
   width:100%;
   border-collapse:collapse;
-  min-width:650px;
+  min-width:650px
 }
 
 .table th,
 .table td{
   padding:15px 17px;
   border-bottom:1px solid var(--line);
-  text-align:left;
+  text-align:left
 }
 
 .table th{
   font-size:12px;
   text-transform:uppercase;
-  color:#8a94a5;
+  color:#8a94a5
 }
 
 .table tr:last-child td{
-  border-bottom:0;
+  border-bottom:0
 }
 
 .badge{
@@ -241,35 +237,35 @@ button{cursor:pointer}
   padding:5px 9px;
   border-radius:999px;
   font-size:12px;
-  font-weight:750;
+  font-weight:750
 }
 
 .badge.green{
   background:#dcfce7;
-  color:#15803d;
+  color:#15803d
 }
 
 .badge.red{
   background:#fee2e2;
-  color:#b91c1c;
+  color:#b91c1c
 }
 
 .badge.gray{
   background:#eef2f7;
-  color:#667085;
+  color:#667085
 }
 
 .form-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:15px
 }
 
 .field label{
   display:block;
   font-size:13px;
   font-weight:750;
-  margin-bottom:7px;
+  margin-bottom:7px
 }
 
 .field input,
@@ -279,13 +275,13 @@ button{cursor:pointer}
   background:#fff;
   border-radius:11px;
   padding:12px 13px;
-  outline:none;
+  outline:none
 }
 
 .field input:focus,
 .field select:focus{
   border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(37,99,235,.1);
+  box-shadow:0 0 0 3px rgba(37,99,235,.1)
 }
 
 .login-screen{
@@ -293,7 +289,7 @@ button{cursor:pointer}
   display:grid;
   place-items:center;
   padding:20px;
-  background:linear-gradient(145deg,#f6f8fb,#eaf0f8);
+  background:linear-gradient(145deg,#f6f8fb,#eaf0f8)
 }
 
 .login-card{
@@ -303,14 +299,14 @@ button{cursor:pointer}
   border:1px solid var(--line);
   border-radius:25px;
   padding:34px;
-  box-shadow:0 25px 70px rgba(15,23,42,.12);
+  box-shadow:0 25px 70px rgba(15,23,42,.12)
 }
 
 .login-logo{
   text-align:center;
   font-size:31px;
   font-weight:950;
-  letter-spacing:1px;
+  letter-spacing:1px
 }
 
 .login-sub{
@@ -319,23 +315,23 @@ button{cursor:pointer}
   letter-spacing:4px;
   font-size:11px;
   font-weight:750;
-  margin:8px 0 30px;
+  margin:8px 0 30px
 }
 
 .login-card h2{
   text-align:center;
   font-size:27px;
-  margin:0 0 8px;
+  margin:0 0 8px
 }
 
 .login-card .field{
-  margin-top:17px;
+  margin-top:17px
 }
 
 .login-card .btn{
   width:100%;
   margin-top:20px;
-  height:50px;
+  height:50px
 }
 
 .error{
@@ -345,7 +341,7 @@ button{cursor:pointer}
   border-radius:10px;
   padding:10px 12px;
   margin-top:15px;
-  font-size:13px;
+  font-size:13px
 }
 
 .modal{
@@ -355,12 +351,12 @@ button{cursor:pointer}
   background:rgba(15,23,42,.55);
   z-index:100;
   padding:20px;
-  overflow:auto;
+  overflow:auto
 }
 
 .modal.show{
   display:grid;
-  place-items:center;
+  place-items:center
 }
 
 .modalbox{
@@ -371,7 +367,7 @@ button{cursor:pointer}
   padding:24px;
   position:relative;
   max-height:92vh;
-  overflow:auto;
+  overflow:auto
 }
 
 .close{
@@ -383,7 +379,7 @@ button{cursor:pointer}
   width:36px;
   height:36px;
   border-radius:50%;
-  font-size:22px;
+  font-size:22px
 }
 
 .modalbox h2{margin-top:0}
@@ -391,7 +387,7 @@ button{cursor:pointer}
 .section-title{
   font-size:16px;
   font-weight:850;
-  margin:22px 0 12px;
+  margin:22px 0 12px
 }
 
 .preview{
@@ -400,7 +396,7 @@ button{cursor:pointer}
   border-radius:12px;
   border:1px solid var(--line);
   display:none;
-  margin-top:10px;
+  margin-top:10px
 }
 
 .admin-head{
@@ -408,98 +404,122 @@ button{cursor:pointer}
   color:#fff;
   border-radius:17px;
   padding:20px;
-  margin-bottom:18px;
+  margin-bottom:18px
 }
 
 .admin-head h2{
-  margin:0 0 5px;
+  margin:0 0 5px
 }
 
 .empty{
   text-align:center;
   color:var(--muted);
-  padding:35px;
+  padding:35px
 }
 
-.requisite-box{
+.action-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:20px
 }
 
-.requisite-item{
-  background:#f8fafc;
-  border:1px solid var(--line);
-  padding:16px;
-  border-radius:14px;
+.action-btn{
+  min-height:100px;
+  border:0;
+  border-radius:17px;
+  padding:20px;
+  text-align:left;
+  font-weight:800;
+  font-size:18px
 }
 
-.qr{
-  max-width:230px;
-  max-height:230px;
-  border-radius:15px;
-  border:1px solid var(--line);
+.action-btn .action-small{
+  display:block;
+  font-size:13px;
+  font-weight:500;
+  margin-top:6px;
+  opacity:.8
+}
+
+.deposit-btn{
+  background:#eaf1ff;
+  color:#2563eb
+}
+
+.withdraw-btn{
+  background:#dcfce7;
+  color:#15803d
+}
+
+.empty-requisites{
+  text-align:center;
+  padding:45px 20px;
+  color:var(--muted)
+}
+
+.empty-requisites .empty-icon{
+  font-size:40px;
+  margin-bottom:10px
 }
 
 @media(max-width:900px){
-
   .sidebar{
     transform:translateX(-100%);
-    transition:.2s;
+    transition:.2s
   }
 
   .sidebar.open{
-    transform:translateX(0);
+    transform:translateX(0)
   }
 
   .main{
     margin-left:0;
-    padding:20px 15px;
+    padding:20px 15px
   }
 
   .mobile-menu{
-    display:block;
+    display:block
   }
 
   .top{
-    gap:10px;
+    gap:10px
   }
 
   .top h1{
-    font-size:25px;
+    font-size:25px
   }
 
   .grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr)
   }
 }
 
 @media(max-width:560px){
-
   .grid,
   .form-grid,
-  .requisite-box{
-    grid-template-columns:1fr;
+  .action-grid{
+    grid-template-columns:1fr
   }
 
   .card{
-    padding:17px;
+    padding:17px
   }
 
   .top{
-    align-items:flex-start;
+    align-items:flex-start
   }
 
   .userbox{
-    display:none;
+    display:none
   }
 
   .login-card{
-    padding:25px;
+    padding:25px
   }
 
   .actions .btn{
-    width:100%;
+    width:100%
   }
 }
 </style>
@@ -512,12 +532,9 @@ button{cursor:pointer}
 <!-- LOGIN -->
 
 <div id="loginScreen" class="login-screen">
-
   <div class="login-card">
 
-    <div class="login-logo">
-      P2PSPARK
-    </div>
+    <div class="login-logo">P2PSPARK</div>
 
     <div class="login-sub">
       PEOPLE • DEALS • OPPORTUNITIES
@@ -529,10 +546,12 @@ button{cursor:pointer}
       Введите данные, выданные администратором
     </div>
 
-    <div id="loginError" class="error"></div>
+    <div id="loginError" class="error">
+      Неверный email или пароль
+    </div>
 
     <div class="field">
-      <label>Почта</label>
+      <label>Почта (Gmail)</label>
       <input
         id="loginEmail"
         type="email"
@@ -560,15 +579,12 @@ button{cursor:pointer}
     </div>
 
   </div>
-
 </div>
 
 
 <!-- APP -->
 
 <div id="app" class="app" style="display:none">
-
-  <!-- SIDEBAR -->
 
   <aside id="sidebar" class="sidebar">
 
@@ -578,9 +594,7 @@ button{cursor:pointer}
 
     <div class="nav">
 
-      <div class="nav-title">
-        Основное
-      </div>
+      <div class="nav-title">Основное</div>
 
       <button data-page="dashboard" onclick="go('dashboard')">
         ▣ &nbsp; Дашборд
@@ -665,8 +679,6 @@ button{cursor:pointer}
 
   </aside>
 
-
-  <!-- MAIN -->
 
   <main class="main">
 
@@ -812,6 +824,40 @@ button{cursor:pointer}
       </div>
 
 
+      <!-- НОВЫЕ КНОПКИ -->
+
+      <div class="action-grid">
+
+        <button
+          class="action-btn deposit-btn"
+          onclick="go('deposit')"
+        >
+
+          💳 Пополнить
+
+          <span class="action-small">
+            Пополнить депозит
+          </span>
+
+        </button>
+
+
+        <button
+          class="action-btn withdraw-btn"
+          onclick="go('withdraw')"
+        >
+
+          ↗ Вывод
+
+          <span class="action-small">
+            Создать заявку на вывод
+          </span>
+
+        </button>
+
+      </div>
+
+
       <div class="card">
 
         <h2>
@@ -837,7 +883,9 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Финансы</h2>
+      <h2>
+        Финансы
+      </h2>
 
       <div class="subtitle">
         Ваши финансовые показатели
@@ -849,43 +897,66 @@ button{cursor:pointer}
       >
 
         <div class="card">
-          <div class="label">Депозит</div>
+
+          <div class="label">
+            Депозит
+          </div>
+
           <div
             id="fDeposit"
             class="big"
           >
             0 USDT
           </div>
+
         </div>
 
+
         <div class="card">
-          <div class="label">Оборот</div>
+
+          <div class="label">
+            Оборот
+          </div>
+
           <div
             id="fTurnover"
             class="big"
           >
             0 USDT
           </div>
+
         </div>
 
+
         <div class="card">
-          <div class="label">Прибыль</div>
+
+          <div class="label">
+            Прибыль
+          </div>
+
           <div
             id="fProfit"
             class="big green"
           >
             0 USDT
           </div>
+
         </div>
 
+
         <div class="card">
-          <div class="label">Комиссия</div>
+
+          <div class="label">
+            Комиссия
+          </div>
+
           <div
             id="fCommission"
             class="big"
           >
             0%
           </div>
+
         </div>
 
       </div>
@@ -900,7 +971,9 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Сделки</h2>
+      <h2>
+        Сделки
+      </h2>
 
       <div class="subtitle">
         История и текущие операции
@@ -916,10 +989,12 @@ button{cursor:pointer}
           <thead>
 
             <tr>
+
               <th>ID</th>
-              <th>Тип</th>
+              <th>Направление</th>
               <th>Сумма</th>
               <th>Статус</th>
+
             </tr>
 
           </thead>
@@ -940,12 +1015,23 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Заявки</h2>
+      <h2>
+        Заявки
+      </h2>
 
-      <div class="card">
+      <div class="subtitle">
+        Входящие и исходящие заявки
+      </div>
+
+      <div
+        class="card"
+        style="margin-top:20px"
+      >
+
         <div class="empty">
-          Заявок пока нет
+          Новых заявок нет
         </div>
+
       </div>
 
     </section>
@@ -958,12 +1044,16 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Споры</h2>
+      <h2>
+        Споры
+      </h2>
 
-      <div class="card">
+      <div class="card" style="margin-top:20px">
+
         <div class="empty">
           Активных споров нет
         </div>
+
       </div>
 
     </section>
@@ -976,116 +1066,126 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Реквизиты</h2>
+      <h2>
+        Реквизиты
+      </h2>
 
       <div class="subtitle">
-        Реквизиты для пополнения
+        Реквизиты назначаются администратором
       </div>
+
 
       <div
         class="card"
         style="margin-top:20px"
       >
 
-        <div class="requisite-box">
+        <div id="requisitesContent">
 
-          <div>
+          <div class="empty-requisites">
 
-            <div class="requisite-item">
-              <div class="label">
-                Платёжный метод
-              </div>
-
-              <strong id="pMethod">
-                —
-              </strong>
+            <div class="empty-icon">
+              ▤
             </div>
 
+            <b>
+              Реквизиты пока не назначены
+            </b>
 
-            <div
-              class="requisite-item"
-              style="margin-top:12px"
-            >
-
-              <div class="label">
-                Сеть
-              </div>
-
-              <strong id="pNetwork">
-                TRC20
-              </strong>
-
-            </div>
-
-
-            <div
-              class="requisite-item"
-              style="margin-top:12px"
-            >
-
-              <div class="label">
-                USDT кошелёк
-              </div>
-
-              <div
-                id="pWallet"
-                style="word-break:break-all;margin-top:5px"
-              >
-                Не указан
-              </div>
-
-              <button
-                class="btn light"
-                style="margin-top:10px"
-                onclick="copyWallet()"
-              >
-                Скопировать
-              </button>
-
-            </div>
-
-
-            <div
-              id="pWalletLinkWrap"
-              class="requisite-item"
-              style="margin-top:12px;display:none"
-            >
-
-              <div class="label">
-                Ссылка на кошелёк
-              </div>
-
-              <a
-                id="pWalletLink"
-                href="#"
-                target="_blank"
-                rel="noopener"
-              ></a>
-
+            <div class="small" style="margin-top:8px">
+              Администратор ещё не назначил реквизиты для этого аккаунта.
             </div>
 
           </div>
 
+        </div>
 
-          <div>
+      </div>
 
-            <div class="label">
-              QR-код
+    </section>
+
+
+    <!-- DEPOSIT -->
+
+    <section
+      id="deposit"
+      class="section"
+    >
+
+      <h2>
+        Пополнение
+      </h2>
+
+      <div class="subtitle">
+        Пополнение депозита
+      </div>
+
+
+      <div
+        class="card"
+        style="margin-top:20px"
+      >
+
+        <div id="depositContent">
+
+          <div class="empty-requisites">
+
+            <div class="empty-icon">
+              💳
             </div>
 
-            <img
-              id="pQr"
-              class="qr"
-              style="display:none;margin-top:10px"
-              alt="QR"
-            >
+            <b>
+              Реквизиты для пополнения не назначены
+            </b>
 
-            <div
-              id="noQr"
-              class="small"
-              style="margin-top:10px"
-            >
-              QR-код не добавлен
+            <div class="small" style="margin-top:8px">
+              Обратитесь к администратору.
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- WITHDRAW -->
+
+    <section
+      id="withdraw"
+      class="section"
+    >
+
+      <h2>
+        Вывод
+      </h2>
+
+      <div class="subtitle">
+        Вывод средств
+      </div>
+
+
+      <div
+        class="card"
+        style="margin-top:20px"
+      >
+
+        <div id="withdrawContent">
+
+          <div class="empty-requisites">
+
+            <div class="empty-icon">
+              ↗
+            </div>
+
+            <b>
+              Реквизиты для вывода не назначены
+            </b>
+
+            <div class="small" style="margin-top:8px">
+              Обратитесь к администратору.
             </div>
 
           </div>
@@ -1104,12 +1204,14 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Устройства</h2>
+      <h2>
+        Устройства
+      </h2>
 
-      <div class="card">
+      <div class="card" style="margin-top:20px">
 
         <div class="empty">
-          Текущее устройство: браузер
+          Текущее устройство · Активно
         </div>
 
       </div>
@@ -1124,12 +1226,18 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Сообщения</h2>
+      <h2>
+        Сообщения
+      </h2>
 
-      <div class="card">
+      <div class="card" style="margin-top:20px">
 
-        <div class="empty">
-          Сообщений пока нет
+        <h3>
+          Системное сообщение
+        </h3>
+
+        <div class="subtitle">
+          Добро пожаловать в P2PSPARK.
         </div>
 
       </div>
@@ -1144,12 +1252,14 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Турбозалив</h2>
+      <h2>
+        Турбозалив
+      </h2>
 
-      <div class="card">
+      <div class="card" style="margin-top:20px">
 
         <div class="empty">
-          Функция будет подключена позже
+          Функция будет подключена на следующем этапе
         </div>
 
       </div>
@@ -1164,12 +1274,14 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Контрагенты</h2>
+      <h2>
+        Контрагенты
+      </h2>
 
-      <div class="card">
+      <div class="card" style="margin-top:20px">
 
         <div class="empty">
-          Контрагентов пока нет
+          Контрагенты пока отсутствуют
         </div>
 
       </div>
@@ -1184,13 +1296,18 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Отчёты</h2>
+      <h2>
+        Отчёты
+      </h2>
 
-      <div class="card">
+      <div class="card" style="margin-top:20px">
 
-        <div class="empty">
-          Отчётов пока нет
-        </div>
+        <button
+          class="btn primary"
+          onclick="alert('Раздел отчётов будет подключён следующим этапом')"
+        >
+          Сформировать отчёт
+        </button>
 
       </div>
 
@@ -1204,42 +1321,56 @@ button{cursor:pointer}
       class="section"
     >
 
-      <h2>Профиль</h2>
+      <h2>
+        Профиль
+      </h2>
 
-      <div class="card">
+      <div
+        class="card"
+        style="margin-top:20px"
+      >
 
         <div class="form-grid">
 
           <div class="field">
-            <label>Имя</label>
-            <input
-              id="profileName"
-              readonly
-            >
-          </div>
 
-          <div class="field">
-            <label>Email</label>
+            <label>
+              Email
+            </label>
+
             <input
               id="profileEmail"
-              readonly
+              disabled
             >
+
           </div>
 
+
           <div class="field">
-            <label>Роль</label>
+
+            <label>
+              Роль
+            </label>
+
             <input
               id="profileRole"
-              readonly
+              disabled
             >
+
           </div>
 
+
           <div class="field">
-            <label>Статус</label>
+
+            <label>
+              Статус
+            </label>
+
             <input
               id="profileStatus"
-              readonly
+              disabled
             >
+
           </div>
 
         </div>
@@ -1263,7 +1394,7 @@ button{cursor:pointer}
         </h2>
 
         <div>
-          Управление пользователями P2PSPARK
+          Полное управление пользователями P2PSPARK
         </div>
 
       </div>
@@ -1272,23 +1403,28 @@ button{cursor:pointer}
       <div class="card">
 
         <h2>
-          Создать пользователя
+          Создать новый ЛК
         </h2>
+
+        <div class="subtitle">
+          Каждому новому USER автоматически создаются финансовые данные и профиль.
+        </div>
+
 
         <div
           class="form-grid"
-          style="margin-top:15px"
+          style="margin-top:18px"
         >
 
           <div class="field">
 
             <label>
-              Имя
+              Имя пользователя
             </label>
 
             <input
               id="newName"
-              placeholder="Имя пользователя"
+              placeholder="Имя"
             >
 
           </div>
@@ -1297,7 +1433,7 @@ button{cursor:pointer}
           <div class="field">
 
             <label>
-              Email
+              Email (Gmail)
             </label>
 
             <input
@@ -1317,7 +1453,7 @@ button{cursor:pointer}
 
             <input
               id="newPassword"
-              type="password"
+              type="text"
               placeholder="Минимум 6 символов"
             >
 
@@ -1328,10 +1464,10 @@ button{cursor:pointer}
 
         <button
           class="btn primary"
-          style="margin-top:15px"
+          style="margin-top:18px"
           onclick="createUser()"
         >
-          + Создать пользователя
+          Создать USER
         </button>
 
       </div>
@@ -1353,11 +1489,13 @@ button{cursor:pointer}
             <thead>
 
               <tr>
+
                 <th>Имя</th>
                 <th>Email</th>
                 <th>Роль</th>
                 <th>Статус</th>
                 <th>Действие</th>
+
               </tr>
 
             </thead>
@@ -1374,13 +1512,15 @@ button{cursor:pointer}
       <div class="card">
 
         <h2>
-          Журнал
+          Журнал действий
         </h2>
 
         <div
           id="auditLog"
           class="small"
-        ></div>
+        >
+          Пока нет действий
+        </div>
 
       </div>
 
@@ -1391,7 +1531,7 @@ button{cursor:pointer}
 </div>
 
 
-<!-- MANAGE MODAL -->
+<!-- ADMIN MANAGE MODAL -->
 
 <div
   id="manageModal"
@@ -1407,18 +1547,19 @@ button{cursor:pointer}
       ×
     </button>
 
+
     <h2>
-      Управление пользователем
+      Управление ЛК
     </h2>
 
     <div
+      class="subtitle"
       id="manageEmail"
-      class="small"
     ></div>
 
 
     <div class="section-title">
-      Основные данные
+      1. Аккаунт
     </div>
 
     <div class="form-grid">
@@ -1456,8 +1597,8 @@ button{cursor:pointer}
 
         <input
           id="mPassword"
-          type="password"
-          placeholder="Оставьте пустым"
+          type="text"
+          placeholder="Оставьте пустым, чтобы не менять"
         >
 
       </div>
@@ -1487,41 +1628,7 @@ button{cursor:pointer}
 
 
     <div class="section-title">
-      Финансовые показатели
-    </div>
-
-    <div class="form-grid">
-
-      <div class="field">
-        <label>Депозит USDT</label>
-        <input id="mDeposit" type="number" step="0.01">
-      </div>
-
-      <div class="field">
-        <label>Оборот USDT</label>
-        <input id="mTurnover" type="number" step="0.01">
-      </div>
-
-      <div class="field">
-        <label>Прибыль USDT</label>
-        <input id="mProfit" type="number" step="0.01">
-      </div>
-
-      <div class="field">
-        <label>Комиссия %</label>
-        <input id="mCommission" type="number" step="0.01">
-      </div>
-
-      <div class="field">
-        <label>Активные сделки</label>
-        <input id="mDeals" type="number">
-      </div>
-
-    </div>
-
-
-    <div class="section-title">
-      Реквизиты USDT
+      2. Финансы
     </div>
 
     <div class="form-grid">
@@ -1529,24 +1636,111 @@ button{cursor:pointer}
       <div class="field">
 
         <label>
-          Платёжный метод
+          Баланс депозита
+        </label>
+
+        <input
+          id="mDeposit"
+          type="number"
+          step="any"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Оборот
+        </label>
+
+        <input
+          id="mTurnover"
+          type="number"
+          step="any"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Прибыль
+        </label>
+
+        <input
+          id="mProfit"
+          type="number"
+          step="any"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Комиссия %
+        </label>
+
+        <input
+          id="mCommission"
+          type="number"
+          step="any"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Активные сделки
+        </label>
+
+        <input
+          id="mDeals"
+          type="number"
+          step="1"
+        >
+
+      </div>
+
+    </div>
+
+
+    <div class="section-title">
+      3. Реквизиты
+    </div>
+
+    <div class="form-grid">
+
+      <div class="field">
+
+        <label>
+          Способ оплаты
         </label>
 
         <select id="mMethod">
 
-          <option value="USDT">
-            USDT
+          <option value="">
+            Не назначен
           </option>
 
-          <option value="Binance">
+          <option>
+            Trust Wallet
+          </option>
+
+          <option>
             Binance
           </option>
 
-          <option value="Bybit">
+          <option>
             Bybit
           </option>
 
-          <option value="Other">
+          <option>
             Другой
           </option>
 
@@ -1563,19 +1757,27 @@ button{cursor:pointer}
 
         <select id="mNetwork">
 
-          <option value="TRC20">
+          <option value="">
+            Не назначена
+          </option>
+
+          <option>
             TRC20
           </option>
 
-          <option value="ERC20">
+          <option>
             ERC20
           </option>
 
-          <option value="BEP20">
+          <option>
             BEP20
           </option>
 
-          <option value="TON">
+          <option>
+            SOL
+          </option>
+
+          <option>
             TON
           </option>
 
@@ -1590,12 +1792,12 @@ button{cursor:pointer}
       >
 
         <label>
-          USDT кошелёк
+          Кошелёк / реквизит
         </label>
 
         <input
           id="mWallet"
-          placeholder="TRC20 адрес"
+          placeholder="Введите реквизит"
         >
 
       </div>
@@ -1607,11 +1809,12 @@ button{cursor:pointer}
       >
 
         <label>
-          Ссылка на кошелёк
+          Ссылка на крипто-кошелёк
         </label>
 
         <input
           id="mWalletLink"
+          type="url"
           placeholder="https://..."
         >
 
@@ -1624,60 +1827,61 @@ button{cursor:pointer}
       >
 
         <label>
-          QR-код
+          QR-код пользователя
         </label>
 
         <input
           id="mQrFile"
           type="file"
-          accept="image/*"
+          accept="image/png,image/jpeg,image/webp"
           onchange="previewQr(event)"
+          style="padding:10px;background:#eef2f7;border-radius:10px"
         >
 
-        <img
-          id="mQrPreview"
-          class="preview"
-          alt="QR"
+        <div
+          class="small"
+          style="margin-top:7px"
         >
-
-        <button
-          class="btn light"
-          type="button"
-          style="margin-top:10px"
-          onclick="clearQr()"
-        >
-          Удалить QR
-        </button>
+          QR сохраняется только для выбранного пользователя.
+        </div>
 
       </div>
 
     </div>
 
 
+    <img
+      id="mQrPreview"
+      class="preview"
+    >
+
+
     <div
       class="actions"
-      style="margin-top:25px"
+      style="margin-top:22px"
     >
 
       <button
         class="btn primary"
         onclick="saveManagedUser()"
       >
-        Сохранить
+        Сохранить всё
       </button>
+
+
+      <button
+        class="btn light"
+        onclick="clearQr()"
+      >
+        Удалить QR
+      </button>
+
 
       <button
         class="btn danger"
         onclick="toggleManagedStatus()"
       >
-        Заблокировать / активировать
-      </button>
-
-      <button
-        class="btn light"
-        onclick="closeManage()"
-      >
-        Закрыть
+        Заблокировать / разблокировать
       </button>
 
     </div>
@@ -1689,100 +1893,95 @@ button{cursor:pointer}
 
 <script>
 
+/* =========================
+   SUPABASE
+========================= */
+
 const SUPABASE_URL =
-"https://kzdaiqhnjcdsinzaygao.supabase.co";
+  "https://kzdaiqhnjcdsinzaygao.supabase.co";
 
 const SUPABASE_PUBLISHABLE_KEY =
-"sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag";
-
+  "sb_publishable_sBlX-C1Wyp36sVki_6q1_A_13_Nl-ag8";
 
 const supabaseClient =
-window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
 
 
 let currentUser = null;
 let currentProfile = null;
 let currentRequisite = null;
+
 let managedId = null;
 let qrData = "";
 
 
-function $(id){
-  return document.getElementById(id);
-}
+/* =========================
+   HELPERS
+========================= */
 
+function money(n){
 
-function setLoginError(message){
-
-  const el = $("loginError");
-
-  el.textContent = message || "Ошибка входа";
-
-  el.style.display = "block";
-}
-
-
-function clearLoginError(){
-
-  const el = $("loginError");
-
-  el.textContent = "";
-
-  el.style.display = "none";
-}
-
-
-function money(value){
-
-  return (
-    Number(value || 0)
-      .toLocaleString("en-US",{
-        minimumFractionDigits:2,
-        maximumFractionDigits:2
-      })
-    + " USDT"
-  );
+  return Number(n || 0)
+    .toLocaleString("ru-RU") +
+    " USDT";
 
 }
 
 
-function esc(value){
+function esc(s){
 
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+  return String(s ?? "")
+    .replace(/[&<>"']/g,m => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[m]));
 
 }
 
 
-function escAttr(value){
+function escAttr(s){
 
-  return String(value ?? "")
+  return String(s ?? "")
     .replace(/\\/g,"\\\\")
     .replace(/'/g,"\\'");
 
 }
 
 
-/* LOGIN */
+function setLoginError(text){
+
+  const e =
+    document.getElementById("loginError");
+
+  e.textContent = text;
+  e.style.display = "block";
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
 
 async function login(){
 
-  clearLoginError();
-
   const email =
-    $("loginEmail").value
+    document
+      .getElementById("loginEmail")
+      .value
       .trim()
       .toLowerCase();
 
   const password =
-    $("loginPassword").value;
+    document
+      .getElementById("loginPassword")
+      .value;
 
 
   if(!email || !password){
@@ -1794,28 +1993,27 @@ async function login(){
   }
 
 
+  setLoginError(
+    "Выполняется вход..."
+  );
+
+
   try{
 
-    const {
-      data,
-      error
-    } =
-    await supabaseClient.auth.signInWithPassword({
-      email,
-      password
-    });
+    const {data,error} =
+      await supabaseClient.auth.signInWithPassword({
+        email,
+        password
+      });
 
 
     if(error){
 
-      console.error(
-        "LOGIN ERROR:",
-        error
-      );
+      console.error(error);
 
       return setLoginError(
-        error.message ||
-        "Ошибка входа"
+        "Supabase: " +
+        (error.message || "Ошибка входа")
       );
 
     }
@@ -1830,18 +2028,17 @@ async function login(){
     }
 
 
+    currentUser = data.user;
+
     await start();
 
   }catch(error){
 
-    console.error(
-      "LOGIN EXCEPTION:",
-      error
-    );
+    console.error(error);
 
     setLoginError(
-      error?.message ||
-      "Ошибка подключения к Supabase"
+      "Ошибка подключения: " +
+      (error?.message || "Неизвестная ошибка")
     );
 
   }
@@ -1849,168 +2046,9 @@ async function login(){
 }
 
 
-/* START */
-
-async function start(){
-
-  try{
-
-    const {
-      data,
-      error
-    } =
-    await supabaseClient.auth.getSession();
-
-
-    if(error){
-
-      console.error(
-        "SESSION ERROR:",
-        error
-      );
-
-      return;
-
-    }
-
-
-    const session =
-      data?.session;
-
-
-    if(!session?.user){
-
-      $("loginScreen").style.display =
-        "grid";
-
-      $("app").style.display =
-        "none";
-
-      return;
-
-    }
-
-
-    currentUser =
-      session.user;
-
-
-    const profileOk =
-      await loadProfile();
-
-
-    if(!profileOk){
-
-      console.error(
-        "PROFILE NOT FOUND"
-      );
-
-      await supabaseClient.auth.signOut();
-
-      return;
-
-    }
-
-
-    if(
-      currentProfile.status ===
-      "blocked"
-    ){
-
-      alert(
-        "Ваш аккаунт заблокирован администратором."
-      );
-
-      await supabaseClient.auth.signOut();
-
-      return;
-
-    }
-
-
-    $("loginScreen").style.display =
-      "none";
-
-    $("app").style.display =
-      "block";
-
-
-    $("topEmail").textContent =
-      currentUser.email || "";
-
-
-    $("roleText").textContent =
-      currentProfile.role === "ADMIN"
-        ? "ADMIN"
-        : "USER";
-
-
-    $("avatar").textContent =
-      (
-        currentProfile.name ||
-        currentUser.email ||
-        "U"
-      )
-      .charAt(0)
-      .toUpperCase();
-
-
-    $("profileName").value =
-      currentProfile.name || "";
-
-
-    $("profileEmail").value =
-      currentProfile.email ||
-      currentUser.email ||
-      "";
-
-
-    $("profileRole").value =
-      currentProfile.role || "USER";
-
-
-    $("profileStatus").value =
-      currentProfile.status || "active";
-
-
-    if(
-      currentProfile.role ===
-      "ADMIN"
-    ){
-
-      $("adminNav").style.display =
-        "block";
-
-    }else{
-
-      $("adminNav").style.display =
-        "none";
-
-    }
-
-
-    render();
-
-    go("dashboard");
-
-  }catch(error){
-
-    console.error(
-      "START ERROR:",
-      error
-    );
-
-    setLoginError(
-      error?.message ||
-      "Ошибка запуска кабинета"
-    );
-
-  }
-
-}
-
-
-/* PROFILE */
+/* =========================
+   LOAD PROFILE
+========================= */
 
 async function loadProfile(){
 
@@ -2018,59 +2056,44 @@ async function loadProfile(){
     return false;
 
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",currentUser.id)
-    .single();
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",currentUser.id)
+      .single();
 
 
   if(error){
 
     console.error(
-      "PROFILE ERROR:",
+      "PROFILES ERROR:",
       error
     );
 
-
-    alert(
-      "Профиль пользователя не найден.\n\n" +
-      "Auth ID:\n" +
-      currentUser.id +
-      "\n\n" +
-      "Ошибка:\n" +
-      error.message
+    setLoginError(
+      "Auth работает, но profiles недоступен: " +
+      (error.message || "Ошибка")
     );
-
 
     return false;
 
   }
 
 
-  currentProfile =
-    data;
+  currentProfile = data;
 
 
-  const {
-    data:req
-  } =
-  await supabaseClient
-    .from("requisites")
-    .select("*")
-    .eq("user_id",currentUser.id)
-    .order(
-      "created_at",
-      {
+  const {data:req} =
+    await supabaseClient
+      .from("requisites")
+      .select("*")
+      .eq("user_id",currentUser.id)
+      .order("created_at",{
         ascending:false
-      }
-    )
-    .limit(1)
-    .maybeSingle();
+      })
+      .limit(1)
+      .maybeSingle();
 
 
   currentRequisite =
@@ -2082,7 +2105,157 @@ async function loadProfile(){
 }
 
 
-/* LOGOUT */
+/* =========================
+   START
+========================= */
+
+async function start(){
+
+  const {data,error} =
+    await supabaseClient.auth.getSession();
+
+
+  if(error){
+
+    console.error(
+      "SESSION ERROR:",
+      error
+    );
+
+    setLoginError(
+      "Ошибка сессии: " +
+      error.message
+    );
+
+    return;
+
+  }
+
+
+  currentUser =
+    data.session?.user || null;
+
+
+  if(!currentUser){
+
+    document
+      .getElementById("loginScreen")
+      .style.display="grid";
+
+    document
+      .getElementById("app")
+      .style.display="none";
+
+    return;
+
+  }
+
+
+  if(!(await loadProfile())){
+
+    document
+      .getElementById("loginScreen")
+      .style.display="grid";
+
+    document
+      .getElementById("app")
+      .style.display="none";
+
+    return;
+
+  }
+
+
+  if(currentProfile.status === "blocked"){
+
+    alert(
+      "Ваш аккаунт заблокирован администратором"
+    );
+
+    await supabaseClient.auth.signOut();
+
+    return;
+
+  }
+
+
+  document
+    .getElementById("loginScreen")
+    .style.display="none";
+
+
+  document
+    .getElementById("app")
+    .style.display="block";
+
+
+  document
+    .getElementById("adminNav")
+    .style.display =
+      currentProfile.role === "ADMIN"
+        ? "block"
+        : "none";
+
+
+  document
+    .getElementById("topEmail")
+    .textContent =
+      currentProfile.email ||
+      currentUser.email ||
+      "";
+
+
+  document
+    .getElementById("roleText")
+    .textContent =
+      currentProfile.role === "ADMIN"
+        ? "ADMIN"
+        : "USER";
+
+
+  document
+    .getElementById("avatar")
+    .textContent =
+      (
+        currentProfile.name ||
+        currentProfile.email ||
+        "U"
+      )
+      .charAt(0)
+      .toUpperCase();
+
+
+  document
+    .getElementById("profileEmail")
+    .value =
+      currentProfile.email ||
+      currentUser.email ||
+      "";
+
+
+  document
+    .getElementById("profileRole")
+    .value =
+      currentProfile.role ||
+      "USER";
+
+
+  document
+    .getElementById("profileStatus")
+    .value =
+      currentProfile.status === "blocked"
+        ? "Заблокирован"
+        : "Активен";
+
+
+  render();
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
 
 async function logout(){
 
@@ -2093,18 +2266,18 @@ async function logout(){
 }
 
 
-/* MOBILE */
-
 function toggleMenu(){
 
-  $("sidebar")
-    .classList
-    .toggle("open");
+  document
+    .getElementById("sidebar")
+    .classList.toggle("open");
 
 }
 
 
-/* NAVIGATION */
+/* =========================
+   NAVIGATION
+========================= */
 
 function go(page){
 
@@ -2113,9 +2286,7 @@ function go(page){
     currentProfile?.role !== "ADMIN"
   ){
 
-    alert(
-      "Доступ запрещён"
-    );
+    alert("Доступ запрещён");
 
     return;
 
@@ -2124,30 +2295,31 @@ function go(page){
 
   document
     .querySelectorAll(".section")
-    .forEach(
-      x =>
-        x.classList.remove("active")
+    .forEach(x =>
+      x.classList.remove("active")
     );
 
 
-  const target =
-    $(page);
+  const section =
+    document.getElementById(page);
 
 
-  if(target)
-    target.classList.add("active");
+  if(!section)
+    return;
+
+
+  section.classList.add("active");
 
 
   document
     .querySelectorAll(
       ".nav button[data-page]"
     )
-    .forEach(
-      x =>
-        x.classList.toggle(
-          "active",
-          x.dataset.page === page
-        )
+    .forEach(x =>
+      x.classList.toggle(
+        "active",
+        x.dataset.page === page
+      )
     );
 
 
@@ -2159,6 +2331,8 @@ function go(page){
     requests:"Заявки",
     disputes:"Споры",
     requisites:"Реквизиты",
+    deposit:"Пополнение",
+    withdraw:"Вывод",
     devices:"Устройства",
     messages:"Сообщения",
     turbo:"Турбозалив",
@@ -2170,13 +2344,15 @@ function go(page){
   };
 
 
-  $("pageTitle").textContent =
-    titles[page] || page;
+  document
+    .getElementById("pageTitle")
+    .textContent =
+      titles[page] || page;
 
 
-  $("sidebar")
-    .classList
-    .remove("open");
+  document
+    .getElementById("sidebar")
+    .classList.remove("open");
 
 
   render();
@@ -2184,7 +2360,9 @@ function go(page){
 }
 
 
-/* RENDER */
+/* =========================
+   RENDER
+========================= */
 
 function render(){
 
@@ -2199,43 +2377,64 @@ function render(){
   [
     "dDeposit",
     "fDeposit"
-  ]
-  .forEach(
-    id =>
-      $(id).textContent =
-        money(f.deposit)
-  );
+  ].forEach(id => {
+
+    const el =
+      document.getElementById(id);
+
+    if(el)
+      el.textContent =
+        money(f.deposit);
+
+  });
 
 
   [
     "dTurnover",
     "fTurnover"
-  ]
-  .forEach(
-    id =>
-      $(id).textContent =
-        money(f.turnover)
-  );
+  ].forEach(id => {
+
+    const el =
+      document.getElementById(id);
+
+    if(el)
+      el.textContent =
+        money(f.turnover);
+
+  });
 
 
   [
     "dProfit",
     "fProfit"
-  ]
-  .forEach(
-    id =>
-      $(id).textContent =
-        money(f.profit)
-  );
+  ].forEach(id => {
+
+    const el =
+      document.getElementById(id);
+
+    if(el)
+      el.textContent =
+        money(f.profit);
+
+  });
 
 
-  $("dDeals").textContent =
-    f.deals || 0;
+  const dDeals =
+    document.getElementById("dDeals");
+
+  if(dDeals)
+    dDeals.textContent =
+      f.deals || 0;
 
 
-  $("fCommission").textContent =
-    (f.commission || 0) +
-    "%";
+  const commission =
+    document.getElementById(
+      "fCommission"
+    );
+
+  if(commission)
+    commission.textContent =
+      (f.commission || 0) + "%";
 
 
   renderPayment(
@@ -2244,6 +2443,12 @@ function render(){
 
 
   renderDeals();
+
+
+  renderDeposit();
+
+
+  renderWithdraw();
 
 
   if(
@@ -2257,146 +2462,562 @@ function render(){
 }
 
 
-/* DEALS */
+/* =========================
+   DEALS
+   УБРАНЫ #1000 #1001
+========================= */
 
 function renderDeals(){
 
-  const rows =
-
-    "<tr>" +
-      "<td>#1001</td>" +
-      "<td>Обмен</td>" +
-      "<td>500 USDT</td>" +
-      '<td><span class="badge green">Новая</span></td>' +
-    "</tr>" +
-
-    "<tr>" +
-      "<td>#1000</td>" +
-      "<td>Вывод</td>" +
-      "<td>250 USDT</td>" +
-      '<td><span class="badge gray">Обработана</span></td>' +
-    "</tr>";
+  const deals =
+    document.getElementById(
+      "dealsTable"
+    );
 
 
-  $("dealsTable").innerHTML =
-    rows;
+  if(deals){
+
+    deals.innerHTML =
+      '<tr>' +
+      '<td colspan="4">' +
+      '<div class="empty">' +
+      'Пока нет сделок' +
+      '</div>' +
+      '</td>' +
+      '</tr>';
+
+  }
 
 
-  $("dashDeals").innerHTML =
-    '<div class="table-wrap">' +
-      '<table class="table">' +
-        '<tbody>' +
-          rows +
-        '</tbody>' +
-      '</table>' +
-    '</div>';
+  const dash =
+    document.getElementById(
+      "dashDeals"
+    );
+
+
+  if(dash){
+
+    dash.innerHTML =
+      '<div class="empty">' +
+      'Пока нет сделок' +
+      '</div>';
+
+  }
 
 }
 
 
-/* PAYMENT */
+/* =========================
+   EMPTY REQUISITES
+========================= */
+
+function emptyRequisitesHtml(
+  text = "Реквизиты пока не назначены"
+){
+
+  return `
+
+    <div class="empty-requisites">
+
+      <div class="empty-icon">
+        ▤
+      </div>
+
+      <b>
+        ${esc(text)}
+      </b>
+
+      <div
+        class="small"
+        style="margin-top:8px"
+      >
+        Администратор ещё не назначил
+        реквизиты для этого аккаунта.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   REQUISITES
+========================= */
 
 function renderPayment(p){
 
   p = p || {};
 
 
-  $("pMethod").textContent =
-    p.payment_method || "—";
-
-
-  $("pNetwork").textContent =
-    p.network || "—";
-
-
-  $("pWallet").textContent =
-    p.wallet ||
-    "Не указан";
-
-
-  const wrap =
-    $("pWalletLinkWrap");
-
-  const link =
-    $("pWalletLink");
-
-
-  const walletLink =
-    (p.wallet_link || "")
-      .trim();
-
-
-  if(walletLink){
-
-    wrap.style.display =
-      "block";
-
-    link.href =
-      walletLink;
-
-    link.textContent =
-      walletLink;
-
-  }else{
-
-    wrap.style.display =
-      "none";
-
-    link.removeAttribute(
-      "href"
+  const hasAny =
+    !!(
+      p.payment_method ||
+      p.network ||
+      p.wallet ||
+      p.wallet_link ||
+      p.qr_url
     );
 
-    link.textContent =
-      "";
+
+  const content =
+    document.getElementById(
+      "requisitesContent"
+    );
+
+
+  if(!content)
+    return;
+
+
+  if(!hasAny){
+
+    content.innerHTML =
+      emptyRequisitesHtml();
+
+    return;
 
   }
 
 
-  const img =
-    $("pQr");
+  let html = `
 
-  const noQr =
-    $("noQr");
+    <div class="form-grid">
+
+      <div>
+
+        <div class="label">
+          Способ оплаты
+        </div>
+
+        <div
+          class="big"
+          style="font-size:20px"
+        >
+          ${esc(
+            p.payment_method || "—"
+          )}
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="label">
+          Сеть
+        </div>
+
+        <div
+          class="big"
+          style="font-size:20px"
+        >
+          ${esc(
+            p.network || "—"
+          )}
+        </div>
+
+      </div>
+
+
+      <div
+        style="grid-column:1/-1"
+      >
+
+        <div class="label">
+          Кошелёк / реквизит
+        </div>
+
+        <div
+          style="
+            margin-top:7px;
+            word-break:break-all;
+            font-weight:700
+          "
+        >
+          ${esc(
+            p.wallet || "—"
+          )}
+        </div>
+
+      </div>
+
+  `;
+
+
+  if(
+    p.wallet_link
+  ){
+
+    html += `
+
+      <div
+        style="grid-column:1/-1"
+      >
+
+        <div class="label">
+          Ссылка на крипто-кошелёк
+        </div>
+
+        <a
+          href="${escAttr(p.wallet_link)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="
+            display:block;
+            margin-top:7px;
+            word-break:break-all;
+            font-weight:700;
+            color:var(--blue);
+            text-decoration:none
+          "
+        >
+          ${esc(p.wallet_link)}
+        </a>
+
+      </div>
+
+    `;
+
+  }
+
+
+  html += `
+    </div>
+  `;
 
 
   if(p.qr_url){
 
-    img.style.display =
-      "block";
+    html += `
 
-    img.src =
-      p.qr_url;
+      <img
+        src="${escAttr(p.qr_url)}"
+        style="
+          max-width:220px;
+          max-height:220px;
+          border-radius:12px;
+          border:1px solid var(--line);
+          display:block;
+          margin-top:15px
+        "
+      >
 
-    noQr.style.display =
-      "none";
-
-  }else{
-
-    img.style.display =
-      "none";
-
-    img.removeAttribute(
-      "src"
-    );
-
-    noQr.style.display =
-      "block";
+    `;
 
   }
+
+
+  if(p.wallet){
+
+    html += `
+
+      <button
+        class="btn light"
+        style="margin-top:15px"
+        onclick="copyWallet()"
+      >
+        Скопировать реквизит
+      </button>
+
+    `;
+
+  }
+
+
+  content.innerHTML =
+    html;
 
 }
 
 
-/* COPY */
+/* =========================
+   DEPOSIT
+========================= */
+
+function renderDeposit(){
+
+  const box =
+    document.getElementById(
+      "depositContent"
+    );
+
+
+  if(!box)
+    return;
+
+
+  const p =
+    currentRequisite;
+
+
+  const hasAny =
+    !!(
+      p &&
+      (
+        p.payment_method ||
+        p.network ||
+        p.wallet ||
+        p.wallet_link ||
+        p.qr_url
+      )
+    );
+
+
+  if(!hasAny){
+
+    box.innerHTML =
+      emptyRequisitesHtml(
+        "Реквизиты для пополнения не назначены"
+      );
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="form-grid">
+
+      <div>
+
+        <div class="label">
+          Способ оплаты
+        </div>
+
+        <div
+          class="big"
+          style="font-size:20px"
+        >
+          ${esc(
+            p.payment_method || "—"
+          )}
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="label">
+          Сеть
+        </div>
+
+        <div
+          class="big"
+          style="font-size:20px"
+        >
+          ${esc(
+            p.network || "—"
+          )}
+        </div>
+
+      </div>
+
+
+      <div
+        style="grid-column:1/-1"
+      >
+
+        <div class="label">
+          Реквизит для пополнения
+        </div>
+
+        <div
+          style="
+            margin-top:8px;
+            font-weight:800;
+            word-break:break-all
+          "
+        >
+          ${esc(
+            p.wallet || "—"
+          )}
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  if(p.wallet_link){
+
+    html += `
+
+      <a
+        href="${escAttr(p.wallet_link)}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn primary"
+        style="
+          display:inline-block;
+          margin-top:15px;
+          text-decoration:none
+        "
+      >
+        Открыть кошелёк
+      </a>
+
+    `;
+
+  }
+
+
+  if(p.qr_url){
+
+    html += `
+
+      <div
+        style="
+          margin-top:20px;
+          font-weight:700
+        "
+      >
+        QR-код для пополнения
+      </div>
+
+      <img
+        src="${escAttr(p.qr_url)}"
+        style="
+          max-width:250px;
+          max-height:250px;
+          display:block;
+          margin-top:10px;
+          border-radius:14px;
+          border:1px solid var(--line)
+        "
+      >
+
+    `;
+
+  }
+
+
+  box.innerHTML =
+    html;
+
+}
+
+
+/* =========================
+   WITHDRAW
+========================= */
+
+function renderWithdraw(){
+
+  const box =
+    document.getElementById(
+      "withdrawContent"
+    );
+
+
+  if(!box)
+    return;
+
+
+  const p =
+    currentRequisite;
+
+
+  const hasAny =
+    !!(
+      p &&
+      (
+        p.payment_method ||
+        p.network ||
+        p.wallet ||
+        p.wallet_link ||
+        p.qr_url
+      )
+    );
+
+
+  if(!hasAny){
+
+    box.innerHTML =
+      emptyRequisitesHtml(
+        "Реквизиты для вывода не назначены"
+      );
+
+    return;
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="card"
+      style="
+        margin:0;
+        box-shadow:none
+      "
+    >
+
+      <div class="label">
+        Сеть
+      </div>
+
+      <div
+        class="big"
+        style="font-size:20px"
+      >
+        ${esc(
+          p.network || "—"
+        )}
+      </div>
+
+
+      <div
+        class="label"
+        style="margin-top:20px"
+      >
+        Реквизит
+      </div>
+
+      <div
+        style="
+          margin-top:8px;
+          font-weight:800;
+          word-break:break-all
+        "
+      >
+        ${esc(
+          p.wallet || "—"
+        )}
+      </div>
+
+
+      <div
+        class="small"
+        style="margin-top:20px"
+      >
+        Заявка на вывод будет подключена
+        на следующем этапе.
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================
+   COPY WALLET
+========================= */
 
 async function copyWallet(){
 
-  const wallet =
+  const w =
     currentRequisite?.wallet ||
     "";
 
 
-  if(!wallet){
+  if(!w){
 
     return alert(
       "Реквизит не указан"
@@ -2407,8 +3028,9 @@ async function copyWallet(){
 
   try{
 
-    await navigator.clipboard
-      .writeText(wallet);
+    await navigator.clipboard.writeText(
+      w
+    );
 
     alert(
       "Реквизит скопирован"
@@ -2416,144 +3038,113 @@ async function copyWallet(){
 
   }catch(e){
 
-    alert(wallet);
+    alert(w);
 
   }
 
 }
 
 
-/* ADMIN USERS */
+/* =========================
+   ADMIN
+========================= */
 
 async function renderAdmin(){
 
   if(
-    currentProfile?.role !==
-    "ADMIN"
+    currentProfile?.role !== "ADMIN"
   )
     return;
 
 
-  const {
-    data,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "id,name,email,role,status,created_at"
-    )
-    .order(
-      "created_at",
-      {
-        ascending:false
-      }
-    );
+  const {data,error} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "id,name,email,role,status"
+      )
+      .order(
+        "created_at",
+        {ascending:false}
+      );
 
 
   const body =
-    $("usersTable");
+    document.getElementById(
+      "usersTable"
+    );
 
 
-  body.innerHTML =
-    "";
+  body.innerHTML = "";
 
 
   if(error){
 
-    console.error(
-      "USERS ERROR:",
-      error
-    );
-
-
     body.innerHTML =
-      '<tr>' +
-        '<td colspan="5">' +
-          "Ошибка загрузки пользователей: " +
-          esc(error.message) +
-        "</td>" +
-      "</tr>";
+      '<tr><td colspan="5">' +
+      'Ошибка загрузки пользователей' +
+      '</td></tr>';
+
+    console.error(error);
 
     return;
 
   }
 
 
-  if(!data || data.length === 0){
-
-    body.innerHTML =
-      '<tr>' +
-        '<td colspan="5">' +
-          "Пользователей нет" +
-        "</td>" +
-      "</tr>";
-
-    return;
-
-  }
-
-
-  data.forEach(u => {
+  (data || []).forEach(u => {
 
     const tr =
       document.createElement("tr");
 
 
-    const statusActive =
-      u.status === "active";
-
-
     tr.innerHTML =
 
-      "<td>" +
-        esc(u.name || "—") +
-      "</td>" +
+      '<td>' +
+      esc(u.name || "—") +
+      '</td>' +
 
-      "<td>" +
-        esc(u.email || "—") +
-      "</td>" +
+      '<td>' +
+      esc(u.email || "—") +
+      '</td>' +
 
-      "<td>" +
-        esc(u.role || "USER") +
-      "</td>" +
+      '<td>' +
+      esc(u.role || "USER") +
+      '</td>' +
 
-      "<td>" +
+      '<td>' +
 
-        '<span class="badge ' +
-        (
-          statusActive
-            ? "green"
-            : "red"
-        ) +
-        '">' +
+      '<span class="badge ' +
+      (
+        u.status === "active"
+          ? "green"
+          : "red"
+      ) +
+      '">' +
 
-        (
-          statusActive
-            ? "Активен"
-            : "Заблокирован"
-        ) +
+      (
+        u.status === "active"
+          ? "Активен"
+          : "Заблокирован"
+      ) +
 
-        "</span>" +
+      '</span>' +
 
-      "</td>" +
+      '</td>' +
 
-      "<td>" +
+      '<td>' +
 
-        '<button class="btn light">' +
-          "Управлять" +
-        "</button>" +
+      '<button ' +
+      'class="btn light" ' +
+      'onclick="openManage(\'' +
+      escAttr(u.id) +
+      '\')">' +
 
-      "</td>";
+      'Управлять' +
 
+      '</button>' +
 
-    tr
-      .querySelector("button")
-      .addEventListener(
-        "click",
-        () =>
-          openManage(u.id)
-      );
+      '</td>';
 
 
     body.appendChild(tr);
@@ -2561,19 +3152,22 @@ async function renderAdmin(){
   });
 
 
-  $("auditLog").innerHTML =
-    "Управление пользователями выполняется через Supabase.";
+  document
+    .getElementById("auditLog")
+    .innerHTML =
+      "Журнал действий будет подключён через Supabase на следующем этапе.";
 
 }
 
 
-/* CREATE USER */
+/* =========================
+   CREATE USER
+========================= */
 
 async function createUser(){
 
   if(
-    currentProfile?.role !==
-    "ADMIN"
+    currentProfile?.role !== "ADMIN"
   ){
 
     return alert(
@@ -2584,20 +3178,23 @@ async function createUser(){
 
 
   const name =
-    $("newName")
+    document
+      .getElementById("newName")
       .value
       .trim();
 
 
   const email =
-    $("newEmail")
+    document
+      .getElementById("newEmail")
       .value
       .trim()
       .toLowerCase();
 
 
   const password =
-    $("newPassword")
+    document
+      .getElementById("newPassword")
       .value;
 
 
@@ -2642,8 +3239,7 @@ async function createUser(){
       data:sessionData,
       error:sessionError
     } =
-    await supabaseClient.auth
-      .getSession();
+      await supabaseClient.auth.getSession();
 
 
     if(sessionError){
@@ -2675,9 +3271,7 @@ async function createUser(){
       data,
       error
     } =
-    await supabaseClient
-      .functions
-      .invoke(
+      await supabaseClient.functions.invoke(
         "create-user",
         {
           body:{
@@ -2694,22 +3288,15 @@ async function createUser(){
       );
 
 
-    console.log(
-      "CREATE USER RESPONSE:",
-      data
-    );
-
-
     if(error){
 
       console.error(
-        "CREATE USER ERROR:",
+        "create-user error:",
         error
       );
 
-
       return alert(
-        "Ошибка создания USER:\n\n" +
+        "Ошибка создания USER: " +
         (
           error.message ||
           "Ошибка Edge Function"
@@ -2722,7 +3309,7 @@ async function createUser(){
     if(!data?.success){
 
       return alert(
-        "Ошибка создания USER:\n\n" +
+        "Ошибка создания USER: " +
         (
           data?.error ||
           "Неизвестная ошибка"
@@ -2732,14 +3319,19 @@ async function createUser(){
     }
 
 
-    $("newName").value =
-      "";
+    document
+      .getElementById("newName")
+      .value = "";
 
-    $("newEmail").value =
-      "";
 
-    $("newPassword").value =
-      "";
+    document
+      .getElementById("newEmail")
+      .value = "";
+
+
+    document
+      .getElementById("newPassword")
+      .value = "";
 
 
     await renderAdmin();
@@ -2749,22 +3341,17 @@ async function createUser(){
       "USER успешно создан!\n\n" +
       "Email: " +
       email +
-      "\n\n" +
-      "Пароль: " +
+      "\nПароль: " +
       password
     );
 
 
   }catch(error){
 
-    console.error(
-      "CREATE USER EXCEPTION:",
-      error
-    );
-
+    console.error(error);
 
     alert(
-      "Ошибка создания USER:\n\n" +
+      "Ошибка создания USER: " +
       (
         error?.message ||
         "Неизвестная ошибка"
@@ -2776,33 +3363,36 @@ async function createUser(){
 }
 
 
-/* OPEN USER */
+/* =========================
+   MANAGE USER
+========================= */
 
 async function openManage(id){
 
   if(
-    currentProfile?.role !==
-    "ADMIN"
+    currentProfile?.role !== "ADMIN"
   )
     return;
 
 
-  managedId =
-    id;
+  managedId = id;
 
 
   const {
     data:u,
     error
   } =
-  await supabaseClient
-    .from("profiles")
-    .select("*")
-    .eq("id",id)
-    .single();
+    await supabaseClient
+      .from("profiles")
+      .select("*")
+      .eq("id",id)
+      .single();
 
 
-  if(error || !u){
+  if(
+    error ||
+    !u
+  ){
 
     return alert(
       "Пользователь не найден"
@@ -2811,84 +3401,105 @@ async function openManage(id){
   }
 
 
-  const {
-    data:p
-  } =
-  await supabaseClient
-    .from("requisites")
-    .select("*")
-    .eq("user_id",id)
-    .order(
-      "created_at",
-      {
-        ascending:false
-      }
-    )
-    .limit(1)
-    .maybeSingle();
+  const {data:p} =
+    await supabaseClient
+      .from("requisites")
+      .select("*")
+      .eq("user_id",id)
+      .order(
+        "created_at",
+        {ascending:false}
+      )
+      .limit(1)
+      .maybeSingle();
 
 
   const r =
     p || {};
 
 
-  $("manageEmail").textContent =
-    "Редактирование: " +
-    (u.email || "");
+  document
+    .getElementById("manageEmail")
+    .textContent =
+      "Редактирование: " +
+      (u.email || "");
 
 
-  $("mName").value =
-    u.name || "";
+  document
+    .getElementById("mName")
+    .value =
+      u.name || "";
 
 
-  $("mEmail").value =
-    u.email || "";
+  document
+    .getElementById("mEmail")
+    .value =
+      u.email || "";
 
 
-  $("mPassword").value =
-    "";
+  document
+    .getElementById("mPassword")
+    .value = "";
 
 
-  $("mStatus").value =
-    u.status || "active";
+  document
+    .getElementById("mStatus")
+    .value =
+      u.status || "active";
 
 
-  $("mDeposit").value =
-    u.deposit || 0;
+  document
+    .getElementById("mDeposit")
+    .value =
+      u.deposit || 0;
 
 
-  $("mTurnover").value =
-    u.turnover || 0;
+  document
+    .getElementById("mTurnover")
+    .value =
+      u.turnover || 0;
 
 
-  $("mProfit").value =
-    u.profit || 0;
+  document
+    .getElementById("mProfit")
+    .value =
+      u.profit || 0;
 
 
-  $("mCommission").value =
-    u.commission || 0;
+  document
+    .getElementById("mCommission")
+    .value =
+      u.commission || 0;
 
 
-  $("mDeals").value =
-    u.deals || 0;
+  document
+    .getElementById("mDeals")
+    .value =
+      u.deals || 0;
 
 
-  $("mMethod").value =
-    r.payment_method ||
-    "USDT";
+  document
+    .getElementById("mMethod")
+    .value =
+      r.payment_method || "";
 
 
-  $("mNetwork").value =
-    r.network ||
-    "TRC20";
+  document
+    .getElementById("mNetwork")
+    .value =
+      r.network || "";
 
 
-  $("mWallet").value =
-    r.wallet || "";
+  document
+    .getElementById("mWallet")
+    .value =
+      r.wallet || "";
 
 
-  $("mWalletLink").value =
-    r.wallet_link || "";
+  document
+    .getElementById("mWalletLink")
+    .value =
+      r.wallet_link || "";
 
 
   qrData =
@@ -2898,33 +3509,33 @@ async function openManage(id){
   showQrPreview();
 
 
-  $("manageModal")
-    .classList
-    .add("show");
+  document
+    .getElementById("manageModal")
+    .classList.add("show");
 
 }
 
 
-/* CLOSE */
+/* =========================
+   CLOSE MODAL
+========================= */
 
 function closeManage(){
 
-  $("manageModal")
-    .classList
-    .remove("show");
+  document
+    .getElementById("manageModal")
+    .classList.remove("show");
 
 
-  managedId =
-    null;
-
-
-  qrData =
-    "";
+  managedId = null;
+  qrData = "";
 
 }
 
 
-/* SAVE USER */
+/* =========================
+   SAVE USER
+========================= */
 
 async function saveManagedUser(){
 
@@ -2933,14 +3544,16 @@ async function saveManagedUser(){
 
 
   const newEmail =
-    $("mEmail")
+    document
+      .getElementById("mEmail")
       .value
       .trim()
       .toLowerCase();
 
 
   const walletLink =
-    $("mWalletLink")
+    document
+      .getElementById("mWalletLink")
       .value
       .trim();
 
@@ -2971,37 +3584,50 @@ async function saveManagedUser(){
   const profileUpdate = {
 
     name:
-      $("mName")
+      document
+        .getElementById("mName")
         .value
         .trim() ||
       "Пользователь",
 
     status:
-      $("mStatus").value,
+      document
+        .getElementById("mStatus")
+        .value,
 
     deposit:
       Number(
-        $("mDeposit").value
+        document
+          .getElementById("mDeposit")
+          .value
       ) || 0,
 
     turnover:
       Number(
-        $("mTurnover").value
+        document
+          .getElementById("mTurnover")
+          .value
       ) || 0,
 
     profit:
       Number(
-        $("mProfit").value
+        document
+          .getElementById("mProfit")
+          .value
       ) || 0,
 
     commission:
       Number(
-        $("mCommission").value
+        document
+          .getElementById("mCommission")
+          .value
       ) || 0,
 
     deals:
       Number(
-        $("mDeals").value
+        document
+          .getElementById("mDeals")
+          .value
       ) || 0,
 
     updated_at:
@@ -3013,16 +3639,16 @@ async function saveManagedUser(){
   const {
     error:e1
   } =
-  await supabaseClient
-    .from("profiles")
-    .update(profileUpdate)
-    .eq("id",managedId);
+    await supabaseClient
+      .from("profiles")
+      .update(profileUpdate)
+      .eq("id",managedId);
 
 
   if(e1){
 
     return alert(
-      "Ошибка сохранения профиля:\n\n" +
+      "Ошибка сохранения профиля: " +
       e1.message
     );
 
@@ -3035,13 +3661,18 @@ async function saveManagedUser(){
       managedId,
 
     payment_method:
-      $("mMethod").value,
+      document
+        .getElementById("mMethod")
+        .value,
 
     network:
-      $("mNetwork").value,
+      document
+        .getElementById("mNetwork")
+        .value,
 
     wallet:
-      $("mWallet")
+      document
+        .getElementById("mWallet")
         .value
         .trim(),
 
@@ -3060,12 +3691,12 @@ async function saveManagedUser(){
   const {
     data:existing
   } =
-  await supabaseClient
-    .from("requisites")
-    .select("id")
-    .eq("user_id",managedId)
-    .limit(1)
-    .maybeSingle();
+    await supabaseClient
+      .from("requisites")
+      .select("id")
+      .eq("user_id",managedId)
+      .limit(1)
+      .maybeSingle();
 
 
   let e2;
@@ -3078,10 +3709,7 @@ async function saveManagedUser(){
         await supabaseClient
           .from("requisites")
           .update(req)
-          .eq(
-            "id",
-            existing.id
-          )
+          .eq("id",existing.id)
       ).error;
 
   }else{
@@ -3099,7 +3727,7 @@ async function saveManagedUser(){
   if(e2){
 
     return alert(
-      "Профиль сохранён, но реквизиты не сохранились:\n\n" +
+      "Профиль сохранён, но реквизиты не сохранились: " +
       e2.message
     );
 
@@ -3108,18 +3736,21 @@ async function saveManagedUser(){
 
   closeManage();
 
+
   await loadProfile();
 
   render();
 
   alert(
-    "Данные пользователя сохранены"
+    "Данные пользователя сохранены в Supabase"
   );
 
 }
 
 
-/* BLOCK USER */
+/* =========================
+   BLOCK USER
+========================= */
 
 async function toggleManagedStatus(){
 
@@ -3127,26 +3758,18 @@ async function toggleManagedStatus(){
     return;
 
 
-  const {
-    data:u,
-    error
-  } =
-  await supabaseClient
-    .from("profiles")
-    .select(
-      "role,status"
-    )
-    .eq("id",managedId)
-    .single();
+  const {data:u} =
+    await supabaseClient
+      .from("profiles")
+      .select(
+        "role,status"
+      )
+      .eq("id",managedId)
+      .single();
 
 
-  if(error || !u){
-
-    return alert(
-      "Пользователь не найден"
-    );
-
-  }
+  if(!u)
+    return;
 
 
   if(
@@ -3166,26 +3789,21 @@ async function toggleManagedStatus(){
       : "active";
 
 
-  const {
-    error:updateError
-  } =
-  await supabaseClient
-    .from("profiles")
-    .update({
-      status:next,
-      updated_at:
-        new Date().toISOString()
-    })
-    .eq(
-      "id",
-      managedId
-    );
+  const {error} =
+    await supabaseClient
+      .from("profiles")
+      .update({
+        status:next,
+        updated_at:
+          new Date().toISOString()
+      })
+      .eq("id",managedId);
 
 
-  if(updateError){
+  if(error){
 
     return alert(
-      updateError.message
+      error.message
     );
 
   }
@@ -3201,12 +3819,14 @@ async function toggleManagedStatus(){
 }
 
 
-/* QR */
+/* =========================
+   QR
+========================= */
 
-function previewQr(event){
+function previewQr(e){
 
   const file =
-    event.target.files[0];
+    e.target.files[0];
 
 
   if(!file)
@@ -3242,15 +3862,14 @@ function previewQr(event){
     new FileReader();
 
 
-  reader.onload =
-    () => {
+  reader.onload = () => {
 
-      qrData =
-        reader.result;
+    qrData =
+      reader.result;
 
-      showQrPreview();
+    showQrPreview();
 
-    };
+  };
 
 
   reader.readAsDataURL(
@@ -3263,7 +3882,9 @@ function previewQr(event){
 function showQrPreview(){
 
   const img =
-    $("mQrPreview");
+    document.getElementById(
+      "mQrPreview"
+    );
 
 
   img.style.display =
@@ -3272,40 +3893,58 @@ function showQrPreview(){
       : "none";
 
 
-  if(qrData){
-
+  if(qrData)
     img.src =
       qrData;
-
-  }
 
 }
 
 
 function clearQr(){
 
-  qrData =
-    "";
+  qrData = "";
 
-  $("mQrFile").value =
-    "";
+
+  document
+    .getElementById("mQrFile")
+    .value = "";
+
 
   showQrPreview();
 
 }
 
 
-/* ESC */
+/* =========================
+   ESC
+========================= */
 
 document.addEventListener(
   "keydown",
-  event => {
+  e => {
 
     if(
-      event.key === "Escape"
+      e.key === "Escape"
+    )
+      closeManage();
+
+  }
+);
+
+
+/* =========================
+   AUTH LISTENER
+========================= */
+
+supabaseClient.auth.onAuthStateChange(
+  (_event,session) => {
+
+    if(
+      session &&
+      !currentUser
     ){
 
-      closeManage();
+      start();
 
     }
 
@@ -3313,34 +3952,9 @@ document.addEventListener(
 );
 
 
-/* AUTH LISTENER */
-
-supabaseClient.auth
-  .onAuthStateChange(
-    (
-      event,
-      session
-    ) => {
-
-      console.log(
-        "AUTH EVENT:",
-        event
-      );
-
-      if(
-        session &&
-        !currentUser
-      ){
-
-        start();
-
-      }
-
-    }
-  );
-
-
-/* START */
+/* =========================
+   START APP
+========================= */
 
 start();
 
